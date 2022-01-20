@@ -17,7 +17,11 @@
 </p>
 
 # 特性
-待编辑
+
+- 轻量化
+- 组件丰富
+- 高扩展性
+- TypeScript支持
 
 # 准备
 你需要在本地安装 `node` 和 `git`。本项目技术栈基于 `ES2016`、`vue3.0`、`vuex@next`、`vue-router@next` 、`vue-cli` 、`axios` 和 `element-plus`,提前了解和学习这些知识会对使用本项目有很大的帮助。
@@ -26,44 +30,45 @@
 ### 示例
 [[后台Demo](http://demo.yuetchn.top )]
 
-### 待完成
-- [x]面包屑
-- [x]标题
-- [x]图表
-- [x]表单
-- [x]按钮权限
-- [x]动态路由
+# ✅待完成
 
-# 目录说明
+- ❎面包屑
+- ❎导航标题
+- ❎Echarts图表
+- ❎封装表单
+- ❎按钮权限
+- ❎动态路由
 
-- public - 公共资源文件
-- src - 主目录
-  - api - Api 模块
-  - assets - 静态资源
-  - components - 公共组件
-  - layout - Layout 模板
-  - plugins - 插件
-  - router - Vue-Router 路由
-  - store - Vuex
-  - types - 类型声明文件
-  - utils - Util 包
-  - views - 页面
-  - App.vue
-  - env.d.ts
-  - main.ts
-- .env - 环境变量
-- .env.development - 开发环境变量
-- .env.production - 生产环境变量
-- .eslintrc.js - EsLint 配置
-- .gitignore
-- .tslint.json - TsLint 配置
-- index.html - 主入口 HTML 文件
-- package.json - 包配置
-- tsconfig.json - TypeScript 配置
-- vite.config.ts - Vite 配置
+# 目录
 
-# 功能
-待编辑
+    ├── public
+    │   └── favicon.ico
+    ├── src
+    │   ├── api
+    │   ├── assets
+    │   ├── components
+    │   ├── layout
+    │   ├── plugins
+    │   ├── router
+    │   ├── store
+    │   ├── types
+    │   ├── utils
+    │   ├── views
+    │   ├── App.vue
+    │   ├── env.d.ts
+    │   └── main.ts
+    ├── .env
+    ├── .env.development
+    ├── .env.production
+    ├── .eslintrc.js
+    ├── .tslint.json
+    ├── a.md
+    ├── index.html
+    ├── package.json
+    ├── README.md
+    ├── tsconfig.json
+    └── vite.config.ts
+
 
 # 开发
     # 安装依赖,在项目列表执行命令

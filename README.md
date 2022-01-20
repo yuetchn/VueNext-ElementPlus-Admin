@@ -24,7 +24,7 @@
 - TypeScript支持
 
 # 准备
-你需要在本地安装 `node` 和 `git`。本项目技术栈基于 `ES2016`、`vue3.0`、`vuex@next`、`vue-router@next` 、`vue-cli` 、`axios` 和 `element-plus`,提前了解和学习这些知识会对使用本项目有很大的帮助。
+你需要在本地安装 `node` 和 `git`。本项目技术栈基于 `ES2016`、`vue3.0`、`vuex@next`、`vue-router@next` 、`vite` 、`axios` 和 `element-plus`,提前了解和学习这些知识会对使用本项目有很大的帮助。
 
 
 ### 示例
@@ -102,5 +102,7 @@
 Could you please give me an ⭐ if it is helpful
 
 # License
+
+<font size=5>[MIT](https://gitee.com/yuetchn_admin/vue-element-plus-admin/blob/master/LICENSE "MIT")</font>
 
 Copyright (c) 2022-present YuetChn

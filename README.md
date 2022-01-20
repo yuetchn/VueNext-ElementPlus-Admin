@@ -62,7 +62,6 @@
     ├── .env.production
     ├── .eslintrc.js
     ├── .tslint.json
-    ├── a.md
     ├── index.html
     ├── package.json
     ├── README.md

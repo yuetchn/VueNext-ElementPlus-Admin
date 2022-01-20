@@ -70,7 +70,13 @@
 
 
 # 开发
-    # 安装依赖,在项目列表执行命令
+    # 拉取代码仓库到本地
+    git clone https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin
+    
+    # 切换项目目录
+    cd VueNext-ElementPlus-Admin
+    
+    # 安装依赖
     npm i
     or
     yarn

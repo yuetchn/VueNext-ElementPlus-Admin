@@ -1,0 +1,9 @@
+node_modules
+.DS_Store
+.vscode
+dist
+dists
+dist-ssr
+yarn.lock
+yarn.error.log
+*.local

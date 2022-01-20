@@ -1,6 +1,7 @@
 node_modules
 .DS_Store
 .vscode
+.git
 dist
 dists
 dist-ssr

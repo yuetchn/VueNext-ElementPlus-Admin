@@ -1,5 +1,5 @@
 
-<h1 align="center">Vue3-ElementPlus-Admin</h1>
+<h1 align="center">VueNext-ElementPlus-Admin</h1>
 <p align="center">
 <img src="https://img.shields.io/badge/vue-3.2.25-%23FFC21A" />
 <img src="https://img.shields.io/badge/vite-2.7.2-%23FFC21A" />
@@ -9,7 +9,7 @@
 </p>
 
 # 简介
-`Vue3-ElementPlus-Admin` 是一个后台前端解决方案，它基于 [vue3.0](https://v3.cn.vuejs.org/ "vue官网") 和 [element-plus](https://element-plus.gitee.io/zh-CN/ "Element-Plus官网")实现。它使用了最新的前端技术栈，内置了动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以帮助你快速搭建企业级中后台产品原型。相信不管你的需求是什么，本项目都能帮助到你。
+`VueNext-ElementPlus-Admin` 是一个后台前端解决方案，它基于 [vue3.x](https://v3.cn.vuejs.org/ "vue官网") 和 [element-plus](https://element-plus.gitee.io/zh-CN/ "Element-Plus官网")实现。它使用了最新的前端技术栈，内置了动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以帮助你快速搭建企业级中后台产品原型。相信不管你的需求是什么，本项目都能帮助到你。
 
 ***该项目不支持低版本浏览器(如 ie)***
 <p align="center">
@@ -24,7 +24,7 @@
 - TypeScript支持
 
 # 准备
-你需要在本地安装 `node` 和 `git`。本项目技术栈基于 `ES2016`、`vue3.0`、`vuex@next`、`vue-router@next` 、`vite` 、`axios` 和 `element-plus`,提前了解和学习这些知识会对使用本项目有很大的帮助。
+你需要在本地安装 `node` 和 `git`。本项目技术栈基于 `ES2016>`、`vue3.x`、`vuex@next`、`vue-router@next` 、`vite` 、`axios` 和 `element-plus`,提前了解和学习这些知识会对使用本项目有很大的帮助。
 
 
 ### 示例

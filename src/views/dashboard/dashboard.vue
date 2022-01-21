@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Dashboard
  * @Author: 乐涛
- * @LastEditTime: 2022-01-21 17:36:55
+ * @LastEditTime: 2022-01-21 17:43:59
 -->
 <template>
   <div>
@@ -9,8 +9,6 @@
       仪表盘
       <el-button type="primary" @click="showDialog = true">测试弹窗</el-button>
       <el-button type="info">打印</el-button>
-      <br />
-      <el-link type="primary">Git</el-link>
     </div>
 
     <el-table :data="tableData" border>

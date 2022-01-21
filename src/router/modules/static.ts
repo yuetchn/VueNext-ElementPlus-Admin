@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 静态路由
  * @Author: 乐涛
- * @LastEditTime: 2022-01-20 09:26:40
+ * @LastEditTime: 2022-01-21 10:58:10
  */
 import { RouteRecordRaw } from "vue-router";
 
@@ -10,7 +10,7 @@ const Layout = () => import("@/layout/Layout.vue");
 const staticRoutes: RouteRecordRaw[] = [
   {
     path: "/",
-    redirect: "/test",
+    redirect: "/dashboard",
     name: "/",
     meta: {
       title: "/",
@@ -18,36 +18,29 @@ const staticRoutes: RouteRecordRaw[] = [
     },
   },
   {
-    path: "/test",
+    path: "/dashboard",
     component: Layout,
-    name: "test",
-    redirect: "/test/index",
+    name: "dashboard",
+    redirect: "/dashboard/dashboardIndex",
     meta: {
       title: "首页",
+      icon: "home",
     },
     children: [
       {
-        path: "index",
-        name: "testIndex",
-        component: () => import("@/views/testDemo.vue"),
+        path: "dashboardIndex",
+        name: "dashboardIndex",
+        component: () => import("@/views/dashboard/dashboard.vue"),
         meta: {
-          title: "测试首页",
-        },
-      },
-      {
-        path: "test2",
-        name: "test2",
-        component: () => import("@/views/testDemo2.vue"),
-        meta: {
-          title: "测试2",
-          hide: true,
+          title: "首页",
+          icon: "home",
         },
       },
     ],
   },
   {
     path: "/login",
-    component: () => import("@/views/login.vue"),
+    component: () => import("@/views/login/login.vue"),
     name: "login",
     meta: {
       title: "登录",
@@ -57,7 +50,7 @@ const staticRoutes: RouteRecordRaw[] = [
   {
     path: "/:pathMatch(.*)*",
     name: "NotFound",
-    component: () => import("@/views/404.vue"),
+    component: () => import("@/views/404/404.vue"),
     meta: {
       title: "404",
       hide: true,

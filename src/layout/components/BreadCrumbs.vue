@@ -1,7 +1,7 @@
 <!--
- * @ModuleName: 面包屑
+ * @ModuleName: BreadCrumbs
  * @Author: 乐涛
- * @LastEditTime: 2022-01-21 10:07:39
+ * @LastEditTime: 2022-01-21 11:41:17
 -->
 <template>
   <div>
@@ -20,7 +20,6 @@ export default defineComponent({
     const state = reactive({
       paths: computed(() => route.matched),
     });
-    console.log(route.matched);
 
     return {
       // refs

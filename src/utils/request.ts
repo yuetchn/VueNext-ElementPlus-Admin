@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 请求封装
  * @Author: 乐涛
- * @LastEditTime: 2022-01-14 15:05:23
+ * @LastEditTime: 2022-01-21 14:17:02
  */
 import axios from "axios";
 import { message } from "ant-design-vue";
@@ -64,6 +64,10 @@ req.interceptors.response.use(
     HiddenLoading();
     const data = response.data;
     if (response.status === 200 && data.code !== 200) {
+      /// 2xx - 成功
+      /// 3xx - 重定向
+      /// 4xx - 错误
+      /// 5xx - 服务异常
       switch (data.code) {
         case 401:
           message.warning("会话超时");

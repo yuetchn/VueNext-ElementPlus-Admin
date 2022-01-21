@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Dialog 弹窗
  * @Author: 乐涛
- * @LastEditTime: 2022-01-18 17:49:08
+ * @LastEditTime: 2022-01-21 17:02:20
 -->
 
 <template>
@@ -125,7 +125,7 @@ export default defineComponent({
 }
 
 .m_dialog_content {
-  padding: 10;
+  padding: 10px;
   min-height: 100px;
 }
 

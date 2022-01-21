@@ -9,19 +9,26 @@
 </p>
 
 # 简介
-`VueNext-ElementPlus-Admin` 是一个后台前端解决方案，它基于 [vue3.x](https://v3.cn.vuejs.org/ "vue官网") 和 [element-plus](https://element-plus.gitee.io/zh-CN/ "Element-Plus官网")实现。它使用了最新的前端技术栈，内置了动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以帮助你快速搭建企业级中后台产品原型。相信不管你的需求是什么，本项目都能帮助到你。
+`VueNext-ElementPlus-Admin` 是一个后台前端解决方案，它基于 [vue3.x](https://v3.cn.vuejs.org/ "vue官网") 和 [element-plus](https://element-plus.gitee.io/zh-CN/ "Element-Plus官网")实现。它使用了前沿的前端技术栈，内置了动态路由，权限验证，提炼了典型的业务模型，模块化开发，提供了丰富的功能组件，拥抱 [Vite](https://vitejs.cn/ "Vite") 急速的服务启动以及轻量快速的热重载提高开发效率，让你体验它可以帮助你快速搭建企业级中后台产品原型。相信不管你的需求是什么，本项目都能帮助到你。
 
-***该项目不支持低版本浏览器(如 ie)***
+***该项目不支持 `IE` 浏览器***
+
+[Vue 3 已经官方放弃对 IE11 的支持 ](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md)
+
+***
+
 <p align="center">
 <img align="center" src="http://www.yuetchn.top/img.png">
 </p>
 
 # 特性
 
+- 速度快
 - 轻量化
 - 组件丰富
 - 高扩展性
 - TypeScript支持
+- Tsx/Jsx支持
 
 # 准备
 你需要在本地安装 `node` 和 `git`。本项目技术栈基于 `ES2016>`、`vue3.x`、`vuex@next`、`vue-router@next` 、`vite` 、`axios` 和 `element-plus`,提前了解和学习这些知识会对使用本项目有很大的帮助。
@@ -30,14 +37,20 @@
 ### 示例
 [[后台Demo](http://demo.yuetchn.top )]
 
-# ✅待完成
-
+# 功能
+- ✅路由
+- ✅缓存
+- ✅权限验证
+- ✅Ts/Tsx
+- ✅基本组件
+- ✅Request请求
+- ✅Mixin混入
+- ✅环境变量
 - ❎面包屑
 - ❎导航标题
-- ❎Echarts图表
+- ❎图表组件
 - ❎封装表单
 - ❎按钮权限
-- ❎动态路由
 
 # 目录
 

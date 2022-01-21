@@ -1,7 +1,7 @@
 /*
- * @ModuleName: 主入口
+ * @ModuleName: Main
  * @Author: 乐涛
- * @LastEditTime: 2022-01-19 16:42:22
+ * @LastEditTime: 2022-01-21 08:58:32
  */
 import { createApp } from "vue";
 import Antd from "ant-design-vue";

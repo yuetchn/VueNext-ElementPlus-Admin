@@ -46,8 +46,6 @@
 - ✅Request请求
 - ✅Mixin混入
 - ✅环境变量
-- ❎面包屑
-- ❎导航标题
 - ❎图表组件
 - ❎封装表单
 - ❎按钮权限
@@ -98,13 +96,24 @@
     npm run dev
     or
     yarn dev
+
+    # 启动项目 - 生产环境
+    npm run serve
+    or
+    yarn serve
+    
 浏览器访问地址：[http://localhost:85](http://localhost:85)
 
 # 发布
-    # 构建生产环境
-    npm run build
+    # 构建开发环境
+    npm run build:dev
     or
-    yarn build
+    yarn build:dev
+
+    # 构建生产环境
+    npm run build:prod
+    or
+    yarn build:prod
 
 # 其他
     # 代码检查

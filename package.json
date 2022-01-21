@@ -5,7 +5,9 @@
   "author":"YuetChn",
   "scripts": {
     "dev": "npm run lint && vite",
-    "build": "npm run lint && vue-tsc --noEmit && vite build",
+    "serve":"npm run lint && vue-tsc --noEmit && vite serve --mode production",
+    "build:prod": "npm run lint && vue-tsc --noEmit && vite build",
+    "build:dev": "npm run lint && vue-tsc --noEmit && vite build --mode development",
     "preview": "npm run lint && vite preview",
     "lint": "eslint --cache --max-warnings 0  \"src/**/*.{vue,ts,tsx,jsx,js}\" --fix"
   },

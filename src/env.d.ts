@@ -1,7 +1,7 @@
 /*
- * @ModuleName: 环境注解
+ * @ModuleName: Vite环境变量
  * @Author: 乐涛
- * @LastEditTime: 2022-01-13 16:48:09
+ * @LastEditTime: 2022-01-21 08:58:23
  */
 /// <reference types="vite/client" />
 

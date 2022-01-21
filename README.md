@@ -15,6 +15,7 @@
 
 [Vue 3 已经官方放弃对 IE11 的支持 ](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md)
 
+
 ***
 
 <p align="center">
@@ -31,40 +32,77 @@
 - Tsx/Jsx支持
 
 # 准备
+
 你需要在本地安装 `node` 和 `git`。本项目技术栈基于 `ES2016>`、`vue3.x`、`vuex@next`、`vue-router@next` 、`vite` 、`axios` 和 `element-plus`,提前了解和学习这些知识会对使用本项目有很大的帮助。
 
 
 ### 示例
+
 [[后台Demo](http://demo.yuetchn.top )]
 
 # 功能
+
 - ✅路由
 - ✅缓存
-- ✅权限验证
-- ✅Ts/Tsx
 - ✅基本组件
-- ✅Request请求
+- ✅Request
+- ✅权限验证
+- ✅Mock
+- ✅Ts/Tsx
 - ✅Mixin混入
 - ✅环境变量
 - ❎图表组件
 - ❎封装表单
 - ❎按钮权限
+- ❎表格组件
 
 # 目录
 
     ├── public
-    │   └── favicon.ico
+    │   └── favicon.ico 
     ├── src
     │   ├── api
-    │   ├── assets
+    │   │   └── login.ts
+    │   ├── assets      
+    │   │   ├── icons
+    │   │   ├── style
+    │   │   └── logo.png
     │   ├── components
+    │   │   ├── Charts
+    │   │   ├── Dialog
+    │   │   ├── LoadingShade
+    │   │   ├── SvgIcon
+    │   │   └── index.ts
     │   ├── layout
+    │   │   ├── components
+    │   │   └── Layout.vue
+    │   ├── mock
+    │   │   ├── user
+    │   │   └── index.ts
     │   ├── plugins
+    │   │   └── Element.ts
     │   ├── router
+    │   │   ├── modules
+    │   │   └── index.ts
     │   ├── store
+    │   │   ├── modules
+    │   │   └── index.ts
     │   ├── types
+    │   │   ├── global
+    │   │   ├── router
+    │   │   └── store
     │   ├── utils
+    │   │   ├── cookie.ts
+    │   │   ├── directive.ts
+    │   │   ├── func.ts
+    │   │   ├── global.ts
+    │   │   ├── mixin.ts
+    │   │   ├── permission.ts
+    │   │   └── request.ts
     │   ├── views
+    │   │   ├── 404
+    │   │   ├── dashboard
+    │   │   └── login
     │   ├── App.vue
     │   ├── env.d.ts
     │   └── main.ts
@@ -77,10 +115,13 @@
     ├── package.json
     ├── README.md
     ├── tsconfig.json
-    └── vite.config.ts
+    ├── vite.config.ts
+    ├── yarn-error.log
+    └── yarn.lock
 
 
 # 开发
+
     # 拉取代码仓库到本地
     git clone https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin
     
@@ -105,6 +146,7 @@
 浏览器访问地址：[http://localhost:85](http://localhost:85)
 
 # 发布
+
     # 构建开发环境
     npm run build:dev
     or
@@ -116,6 +158,7 @@
     yarn build:prod
 
 # 其他
+
     # 代码检查
     npm run lint
     or

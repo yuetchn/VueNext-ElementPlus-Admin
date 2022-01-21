@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Main
  * @Author: 乐涛
- * @LastEditTime: 2022-01-21 08:58:32
+ * @LastEditTime: 2022-01-21 16:47:21
  */
 import { createApp } from "vue";
 import Antd from "ant-design-vue";
@@ -9,6 +9,9 @@ import "ant-design-vue/dist/antd.css";
 import App from "./App.vue";
 import "@/utils/permission";
 import router from "./router";
+
+// mock server
+import "@/mock"
 
 import { GlobalMixin } from "../src/utils/mixin";
 import { store, key } from "./store";

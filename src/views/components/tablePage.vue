@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: TablePage
  * @Author: 乐涛
- * @LastEditTime: 2022-01-23 14:19:04
+ * @LastEditTime: 2022-01-23 15:11:19
 -->
 <template>
   <div>
@@ -69,6 +69,7 @@ export default defineComponent({
         pageSize: 10,
         pageNumber: 1,
         total: 0,
+        keyWord: "",
       },
     });
 

@@ -52,26 +52,28 @@
 - ✅Ts/Tsx
 - ✅Mixin混入
 - ✅环境变量
-- ❎图表组件
-- ❎封装表单
-- ❎按钮权限
-- ❎表格组件
+- ❎富文本
+- ❎文件上传
+- ❎导出Excel
+- ❎Icons
+- ❎pdf
 
 # 目录
 
     ├── public
-    │   └── favicon.ico 
+    │   └── favicon.ico
     ├── src
     │   ├── api
-    │   │   └── login.ts
-    │   ├── assets      
+    │   │   ├── login.ts
+    │   │   └── user.ts
+    │   ├── assets
     │   │   ├── icons
     │   │   ├── style
     │   │   └── logo.png
     │   ├── components
-    │   │   ├── Charts
     │   │   ├── Dialog
     │   │   ├── LoadingShade
+    │   │   ├── Page
     │   │   ├── SvgIcon
     │   │   └── index.ts
     │   ├── layout
@@ -102,6 +104,7 @@
     │   │   └── request.ts
     │   ├── views
     │   │   ├── 404
+    │   │   ├── components
     │   │   ├── dashboard
     │   │   └── login
     │   ├── App.vue
@@ -113,13 +116,11 @@
     ├── .eslintrc.js
     ├── .tslint.json
     ├── index.html
+    ├── LICENSE
     ├── package.json
     ├── README.md
     ├── tsconfig.json
-    ├── vite.config.ts
-    ├── yarn-error.log
-    └── yarn.lock
-
+    └── vite.config.ts
 
 # 开发
 

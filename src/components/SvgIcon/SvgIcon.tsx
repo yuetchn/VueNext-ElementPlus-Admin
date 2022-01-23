@@ -4,7 +4,7 @@ export default defineComponent({
   props: {
     name: {
       type: String,
-      default: "module",
+      default: "",
     },
     color: {
       type: String,

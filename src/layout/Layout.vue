@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Layout
  * @Author: 乐涛
- * @LastEditTime: 2022-01-19 15:56:37
+ * @LastEditTime: 2022-01-23 13:48:08
 -->
 <template>
   <div class="m_layout">
@@ -37,5 +37,6 @@ export default defineComponent({
 
 .m_right_content{
   flex:1;
+  overflow:hidden;
 }
 </style>

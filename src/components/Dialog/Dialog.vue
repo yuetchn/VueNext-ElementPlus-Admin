@@ -1,7 +1,7 @@
 <!--
- * @ModuleName: Dialog 弹窗
+ * @ModuleName: Dialog 对话框
  * @Author: 乐涛
- * @LastEditTime: 2022-01-21 17:02:20
+ * @LastEditTime: 2022-01-23 14:09:11
 -->
 
 <template>
@@ -38,18 +38,22 @@ export default defineComponent({
       type: String,
       default: "",
     },
+    /** 遮罩层是否显示 */
     shade: {
       type: Boolean,
       default: true,
     },
+    /** 距离顶部距离 */
     top: {
       type: String,
-      default: "3vh",
+      default: "15vh",
     },
+    /** 对话框宽度 */
     width: {
       type: String,
       default: "500px",
     },
+    /** 对话框高度 */
     height: {
       type: String,
       default: "auto",
@@ -131,6 +135,7 @@ export default defineComponent({
 
 .m_dialog_footer {
   padding: 10px;
+  text-align: center;
   // border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 

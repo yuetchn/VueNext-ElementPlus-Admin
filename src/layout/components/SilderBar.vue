@@ -1,24 +1,37 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: 乐涛
- * @LastEditTime: 2022-01-21 10:21:51
+ * @LastEditTime: 2022-01-23 14:41:39
 -->
 <template>
   <div class="m_silder_bar" :class="{ m_silder_bar_shrink: isShrink }">
     <Logo></Logo>
-    <a-menu v-model:selectedKeys="nowSelMenuKeys" v-model:openKeys="nowOpemMenuKeys" :inline-collapsed="isShrink" mode="inline">
+    <a-menu
+      v-model:selectedKeys="nowSelMenuKeys"
+      v-model:openKeys="nowOpemMenuKeys"
+      :inline-collapsed="isShrink"
+      mode="inline"
+    >
       <a-sub-menu v-for="item of routes" :key="item.path">
         <template #icon>
           <g-svg-icon :name="item.meta?.icon"></g-svg-icon>
         </template>
         <template #title>{{ item.meta?.title || "Not Title" }}</template>
-        <a-menu-item v-if="!item.children?.length" :key="item.path" @click="titleClick(item)">
+        <a-menu-item
+          v-if="!item.children?.length"
+          :key="item.path"
+          @click="titleClick(item.path)"
+        >
           <template #icon>
             <g-svg-icon :name="item.meta?.icon"></g-svg-icon>
           </template>
           <span> {{ item.meta?.title || "Not Title" }}</span>
         </a-menu-item>
-        <a-menu-item v-for="c of item.children" :key="`${item.path}/${c.path}`" @click="titleClick(c)">
+        <a-menu-item
+          v-for="c of item.children"
+          :key="`${item.path}/${c.path}`"
+          @click="titleClick(`${item.path}/${c.path}`)"
+        >
           <template #icon>
             <g-svg-icon :name="c.meta?.icon"></g-svg-icon>
           </template>
@@ -31,7 +44,7 @@
 </template>
 <script lang="ts">
 import { computed, defineComponent, watch, reactive, toRefs } from "vue";
-import { RouteRecordRaw, useRouter, useRoute } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { routes } from "@/router";
 import { useStore } from "@/store";
 import Logo from "./Logo.vue";
@@ -53,8 +66,8 @@ export default defineComponent({
 
     state.nowSelMenuKeys = store.getters["AppModule/getNowRoutePath"];
     state.nowOpemMenuKeys = store.getters["AppModule/getNowRouteSpread"];
-    const titleClick = (item: RouteRecordRaw) => {
-      router.push(item.path);
+    const titleClick = (path:string) => {
+      router.push(path);
     };
 
     watch(
@@ -70,6 +83,7 @@ export default defineComponent({
         store.dispatch("AppModule/setNowRoutePath", path);
         state.nowSelMenuKeys = [path];
       },
+
       { deep: true, immediate: true },
     );
 
@@ -82,6 +96,8 @@ export default defineComponent({
           store.dispatch("AppModule/set_shrink", false);
         }
       },
+
+      { immediate: true },
     );
     return {
       // refs
@@ -95,7 +111,7 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .m_silder_bar {
-  width: 180px;
+  width: 220px;
   height: 100%;
   transition: all 0.3s;
   box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.08);

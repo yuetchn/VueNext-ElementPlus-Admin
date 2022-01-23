@@ -1,11 +1,12 @@
 /*
  * @ModuleName: User Module
  * @Author: 乐涛
- * @LastEditTime: 2022-01-20 10:39:24
+ * @LastEditTime: 2022-01-23 13:56:11
  */
 import { Module } from "vuex";
 import { GetToken, SetToken, RemoveToken } from "@/utils/cookie";
 import { Login } from "@/api/login";
+import { GetUserInfo } from "@/api/user"
 import router from "@/router";
 import RootStates from "@/types/store/storeInterface";
 import { store } from "@/store";
@@ -13,36 +14,47 @@ import { store } from "@/store";
 export interface UserStates {
   /** Token */
   token: string | undefined;
-  /** UserInfo */
-  userInfo: any;
+  /** userName */
+  userName: string;
+  /** avatar */
+  avatar: string;
 }
-const UserModule: Module<UserStates, RootStates> = {
+const UserModule: Module < UserStates, RootStates > = {
   namespaced: true,
   state: {
     token: GetToken(),
-    userInfo: JSON.parse(localStorage.getItem("userInfo") || "{}") || {},
+    userName: localStorage.getItem("usrName") || "",
+    avatar: localStorage.getItem("avatar") || "",
   },
   mutations: {
     SET_TOKEN(state, token: string) {
       state.token = token;
       SetToken(token);
     },
-    SET_USER_INFO(state, userInfo: any) {
-      state.userInfo = userInfo;
-      localStorage.setItem("userInfo", userInfo);
+    SET_USER_INFO(state, { userName, avatar }) {
+      state.userName = userName;
+      state.avatar = avatar;
+      localStorage.setItem("userName", userName);
+      localStorage.setItem("avatar", avatar);
     },
     REMOVE_USER_INFO(state) {
-      state.userInfo = undefined;
-      localStorage.removeItem("userInfo");
+      state.userName = "";
+      state.avatar = "";
+      localStorage.removeItem("userName");
+      localStorage.removeItem("avatar");
     },
   },
   actions: {
     // 登录
-    async login({ commit }, dt: { account: string; password: string }) {
+    async login({ commit }, dt: { account: string;password: string }) {
       const { data } = await Login(dt);
       if (data.code === 200) {
-        commit("SET_TOKEN", data.data);
-        return Promise.resolve({ data });
+        const res = await GetUserInfo();
+        if (res.data.code === 200) {
+          commit("SET_USER_INFO", res.data.data)
+          commit("SET_TOKEN", data.data);
+          return Promise.resolve({ data });
+        }
       }
       return Promise.reject(data);
     },

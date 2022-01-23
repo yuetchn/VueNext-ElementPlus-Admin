@@ -1,13 +1,13 @@
 <!--
  * @ModuleName: 
  * @Author: 乐涛
- * @LastEditTime: 2022-01-21 11:54:42
+ * @LastEditTime: 2022-01-23 15:07:06
 -->
 <template>
   <div class="m_login">
     <img src="@/assets/logo.png" />
     <h2>Hi,Welcome~</h2>
-    <el-link type="primary" @click="login">测试登录</el-link>
+    <el-link type="primary" @click="login">进入DEMO</el-link>
   </div>
 </template>
 <script lang="ts">
@@ -33,6 +33,7 @@ export default defineComponent({
         router.push("/");
       }
     };
+
     return {
       // refs
       ...toRefs(state),

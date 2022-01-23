@@ -1,9 +1,9 @@
-node_modules
 .DS_Store
 .vscode
 .gitee
 .eslintcache
 .yarn-error.log
+node_modules
 dist
 dists
 dist-ssr

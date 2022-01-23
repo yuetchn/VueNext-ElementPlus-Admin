@@ -1,7 +1,7 @@
 /*
  * @ModuleName: App Module
  * @Author: 乐涛
- * @LastEditTime: 2022-01-20 10:35:34
+ * @LastEditTime: 2022-01-21 09:26:43
  */
 import { Module } from "vuex";
 import RootStates from "@/types/store/storeInterface";
@@ -15,6 +15,8 @@ export interface AppStates {
   nowRoutePath: string;
   /** 当前路由展开状态 */
   nowRouteSpread: string;
+  /** client 宽度 */
+  clientWidth: number;
 }
 const UserModule: Module<AppStates, RootStates> = {
   namespaced: true,
@@ -23,6 +25,7 @@ const UserModule: Module<AppStates, RootStates> = {
     nowRoutePath: sessionStorage.getItem("nowRoutePath") || "/",
     isShrink: sessionStorage.getItem("isShrink") === "1" ? true : false || false,
     nowRouteSpread: sessionStorage.getItem("nowRouteSpread") || "",
+    clientWidth: 0,
   },
   mutations: {
     SET_LOADING_SHADE(state, loadingShade: boolean) {
@@ -46,6 +49,9 @@ const UserModule: Module<AppStates, RootStates> = {
       sessionStorage.removeItem("nowRoutePath");
       sessionStorage.removeItem("nowRouteSpread");
     },
+    SET_CLIENT_WIDTH(state, clientWidth: number) {
+      state.clientWidth = clientWidth;
+    },
   },
   actions: {
     // 修改遮罩状态
@@ -67,6 +73,9 @@ const UserModule: Module<AppStates, RootStates> = {
     // 重置路由状态
     resetRouteState({ commit }) {
       commit("RESET_ROUTE_STATE");
+    },
+    setClientWidth({ commit }, clientWidth) {
+      commit("SET_CLIENT_WIDTH", clientWidth)
     },
   },
   getters: {

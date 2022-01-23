@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: 
  * @Author: 乐涛
- * @LastEditTime: 2022-01-20 11:55:00
+ * @LastEditTime: 2022-01-21 11:54:42
 -->
 <template>
   <div class="m_login">
@@ -30,7 +30,7 @@ export default defineComponent({
       });
       if (data.code === 200) {
         message.success(data.info);
-        router.push("/test");
+        router.push("/");
       }
     };
     return {

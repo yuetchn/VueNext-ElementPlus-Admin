@@ -1,5 +1,5 @@
 
-<h1 align="center">Vue3-ElementPlus-Admin</h1>
+<h1 align="center">VueNext-ElementPlus-Admin</h1>
 <p align="center">
 <img src="https://img.shields.io/badge/vue-3.2.25-%23FFC21A" />
 <img src="https://img.shields.io/badge/vite-2.7.2-%23FFC21A" />
@@ -9,64 +9,127 @@
 </p>
 
 # 简介
-`Vue3-ElementPlus-Admin` 是一个后台前端解决方案，它基于 [vue3.0](https://v3.cn.vuejs.org/ "vue官网") 和 [element-plus](https://element-plus.gitee.io/zh-CN/ "Element-Plus官网")实现。它使用了最新的前端技术栈，内置了动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以帮助你快速搭建企业级中后台产品原型。相信不管你的需求是什么，本项目都能帮助到你。
+`VueNext-ElementPlus-Admin` 是一个后台前端解决方案，它基于 [vue3.x](https://v3.cn.vuejs.org/ "vue官网") 和 [element-plus](https://element-plus.gitee.io/zh-CN/ "Element-Plus官网")实现。它使用了前沿的前端技术栈，内置了动态路由，权限验证，提炼了典型的业务模型，模块化开发，提供了丰富的功能组件，拥抱 [Vite](https://vitejs.cn/ "Vite") 急速的服务启动以及轻量快速的热重载提高开发效率，让你体验它可以帮助你快速搭建企业级中后台产品原型。
+轻量级框架只保留了基本核心功能，不冗余不需要的功能，可根据业务随意扩展，快速搭建定制的后台应用。
 
-***该项目不支持低版本浏览器(如 ie)***
+***该项目不支持 `IE` 浏览器***
+
+[Vue 3 已经官方放弃对 IE11 的支持 ](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md)
+
+
+***
+
 <p align="center">
 <img align="center" src="http://www.yuetchn.top/img.png">
 </p>
 
 # 特性
-待编辑
+
+- 速度快
+- 轻量化
+- 组件丰富
+- 高扩展性
+- TypeScript支持
+- Tsx/Jsx支持
 
 # 准备
-你需要在本地安装 `node` 和 `git`。本项目技术栈基于 `ES2016`、`vue3.0`、`vuex@next`、`vue-router@next` 、`vue-cli` 、`axios` 和 `element-plus`,提前了解和学习这些知识会对使用本项目有很大的帮助。
+
+你需要在本地安装 `node` 和 `git`。本项目技术栈基于 `ES2016>`、`vue3.x`、`vuex@next`、`vue-router@next` 、`vite` 、`axios` 和 `element-plus`,提前了解和学习这些知识会对使用本项目有很大的帮助。
 
 
 ### 示例
+
 [[后台Demo](http://demo.yuetchn.top )]
 
-### 待完成
-- [x]面包屑
-- [x]标题
-- [x]图表
-- [x]表单
-- [x]按钮权限
-- [x]动态路由
-
-# 目录说明
-
-- public - 公共资源文件
-- src - 主目录
-  - api - Api 模块
-  - assets - 静态资源
-  - components - 公共组件
-  - layout - Layout 模板
-  - plugins - 插件
-  - router - Vue-Router 路由
-  - store - Vuex
-  - types - 类型声明文件
-  - utils - Util 包
-  - views - 页面
-  - App.vue
-  - env.d.ts
-  - main.ts
-- .env - 环境变量
-- .env.development - 开发环境变量
-- .env.production - 生产环境变量
-- .eslintrc.js - EsLint 配置
-- .gitignore
-- .tslint.json - TsLint 配置
-- index.html - 主入口 HTML 文件
-- package.json - 包配置
-- tsconfig.json - TypeScript 配置
-- vite.config.ts - Vite 配置
-
 # 功能
-待编辑
+
+- ✅路由
+- ✅缓存
+- ✅基本组件
+- ✅Request
+- ✅权限验证
+- ✅Mock
+- ✅Ts/Tsx
+- ✅Mixin混入
+- ✅环境变量
+- ❎图表组件
+- ❎封装表单
+- ❎按钮权限
+- ❎表格组件
+
+# 目录
+
+    ├── public
+    │   └── favicon.ico 
+    ├── src
+    │   ├── api
+    │   │   └── login.ts
+    │   ├── assets      
+    │   │   ├── icons
+    │   │   ├── style
+    │   │   └── logo.png
+    │   ├── components
+    │   │   ├── Charts
+    │   │   ├── Dialog
+    │   │   ├── LoadingShade
+    │   │   ├── SvgIcon
+    │   │   └── index.ts
+    │   ├── layout
+    │   │   ├── components
+    │   │   └── Layout.vue
+    │   ├── mock
+    │   │   ├── user
+    │   │   └── index.ts
+    │   ├── plugins
+    │   │   └── Element.ts
+    │   ├── router
+    │   │   ├── modules
+    │   │   └── index.ts
+    │   ├── store
+    │   │   ├── modules
+    │   │   └── index.ts
+    │   ├── types
+    │   │   ├── global
+    │   │   ├── router
+    │   │   └── store
+    │   ├── utils
+    │   │   ├── cookie.ts
+    │   │   ├── directive.ts
+    │   │   ├── func.ts
+    │   │   ├── global.ts
+    │   │   ├── mixin.ts
+    │   │   ├── permission.ts
+    │   │   └── request.ts
+    │   ├── views
+    │   │   ├── 404
+    │   │   ├── dashboard
+    │   │   └── login
+    │   ├── App.vue
+    │   ├── env.d.ts
+    │   └── main.ts
+    ├── .env
+    ├── .env.development
+    ├── .env.production
+    ├── .eslintrc.js
+    ├── .tslint.json
+    ├── index.html
+    ├── package.json
+    ├── README.md
+    ├── tsconfig.json
+    ├── vite.config.ts
+    ├── yarn-error.log
+    └── yarn.lock
+
 
 # 开发
-    # 安装依赖,在项目列表执行命令
+
+    # 拉取代码仓库到本地
+    git clone https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin
+    
+    # 切换项目目录
+    cd VueNext-ElementPlus-Admin
+    
+    # 安装依赖
     npm i
     or
     yarn
@@ -75,15 +138,28 @@
     npm run dev
     or
     yarn dev
+
+    # 启动项目 - 生产环境
+    npm run serve
+    or
+    yarn serve
+    
 浏览器访问地址：[http://localhost:85](http://localhost:85)
 
 # 发布
-    # 构建生产环境
-    npm run build
+
+    # 构建开发环境
+    npm run build:dev
     or
-    yarn build
+    yarn build:dev
+
+    # 构建生产环境
+    npm run build:prod
+    or
+    yarn build:prod
 
 # 其他
+
     # 代码检查
     npm run lint
     or
@@ -97,5 +173,7 @@
 Could you please give me an ⭐ if it is helpful
 
 # License
+
+<font size=5>[MIT](https://gitee.com/yuetchn_admin/vue-element-plus-admin/blob/master/LICENSE "MIT")</font>
 
 Copyright (c) 2022-present YuetChn

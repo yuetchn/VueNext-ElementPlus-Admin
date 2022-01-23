@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Vite Config
  * @Author: 乐涛
- * @LastEditTime: 2022-01-19 16:44:30
+ * @LastEditTime: 2022-01-21 14:17:23
  */
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -29,6 +29,13 @@ export default defineConfig({
     host: "127.0.0.1",
     port: 85,
     strictPort: false,
+    proxy: {
+      // "/api/": {
+      //   target: config.VITE_BASE_HOST,
+      //   changeOrigin: true,
+      //   rewrite: (path) => path.replace(/^\/api\//, ""),
+      // },
+    },
   },
   resolve: {
     alias: {
@@ -60,4 +67,4 @@ export default defineConfig({
       },
     },
   },
-});
+})

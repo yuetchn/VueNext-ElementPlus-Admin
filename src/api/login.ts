@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Login Api
  * @Author: 乐涛
- * @LastEditTime: 2022-01-14 16:42:32
+ * @LastEditTime: 2022-01-21 16:44:09
  */
 import req from "@/utils/request";
 
@@ -10,10 +10,4 @@ import req from "@/utils/request";
  * @param data
  * @returns
  */
-export const Login = (data: any) => req.Post("Login", data);
-
-/**
- * 获取动态路由树
- * @returns
- */
-export const GetTreeMenu = () => req.Get("GetTreeMenu");
+export const Login = (data: any) => req.Post("user/login", data);

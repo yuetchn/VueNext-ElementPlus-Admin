@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 通用函数
  * @Author: 乐涛
- * @LastEditTime: 2022-01-13 17:14:13
+ * @LastEditTime: 2022-01-21 09:43:51
  */
 import { Md5 as tsMd5 } from "ts-md5";
 
@@ -44,6 +44,7 @@ export class Throttle {
       }
       self.timer = setTimeout(() => {
         fn.apply(this, args);
+        self.timer = 0;
       }, delay);
     };
   }

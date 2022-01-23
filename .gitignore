@@ -2,6 +2,8 @@ node_modules
 .DS_Store
 .vscode
 .gitee
+.eslintcache
+.yarn-error.log
 dist
 dists
 dist-ssr

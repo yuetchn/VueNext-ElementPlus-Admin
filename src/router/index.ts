@@ -1,7 +1,7 @@
 /*
- * @ModuleName: 路由
+ * @ModuleName: Router
  * @Author: 乐涛
- * @LastEditTime: 2022-01-20 09:37:00
+ * @LastEditTime: 2022-01-21 11:49:18
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 // 静态路由

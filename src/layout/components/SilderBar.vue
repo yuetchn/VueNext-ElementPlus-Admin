@@ -1,11 +1,11 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: 乐涛
- * @LastEditTime: 2022-01-20 11:02:46
+ * @LastEditTime: 2022-01-21 10:21:51
 -->
 <template>
   <div class="m_silder_bar" :class="{ m_silder_bar_shrink: isShrink }">
-    <div class="m_silderBar_title">{{ title }}</div>
+    <Logo></Logo>
     <a-menu v-model:selectedKeys="nowSelMenuKeys" v-model:openKeys="nowOpemMenuKeys" :inline-collapsed="isShrink" mode="inline">
       <a-sub-menu v-for="item of routes" :key="item.path">
         <template #icon>
@@ -34,8 +34,10 @@ import { computed, defineComponent, watch, reactive, toRefs } from "vue";
 import { RouteRecordRaw, useRouter, useRoute } from "vue-router";
 import { routes } from "@/router";
 import { useStore } from "@/store";
+import Logo from "./Logo.vue";
 
 export default defineComponent({
+  components: { Logo },
   setup() {
     const store = useStore();
     const router = useRouter();
@@ -44,9 +46,9 @@ export default defineComponent({
     const state = reactive({
       nowSelMenuKeys: <string[]>[],
       nowOpemMenuKeys: <string[]>[],
-      title: import.meta.env.VITE_APP_TITLE,
       isShrink: computed(() => store.state.AppModule.isShrink),
       routes: routes.filter((f) => !f.meta?.hide),
+      clientWidth: computed(() => store.state.AppModule.clientWidth),
     });
 
     state.nowSelMenuKeys = store.getters["AppModule/getNowRoutePath"];
@@ -69,6 +71,17 @@ export default defineComponent({
         state.nowSelMenuKeys = [path];
       },
       { deep: true, immediate: true },
+    );
+
+    watch(
+      () => state.clientWidth,
+      (v: number) => {
+        if (v < 1000) {
+          store.dispatch("AppModule/set_shrink", true);
+        } else {
+          store.dispatch("AppModule/set_shrink", false);
+        }
+      },
     );
     return {
       // refs

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User Module
  * @Author: 乐涛
- * @LastEditTime: 2022-01-23 13:56:11
+ * @LastEditTime: 2022-01-23 15:17:17
  */
 import { Module } from "vuex";
 import { GetToken, SetToken, RemoveToken } from "@/utils/cookie";
@@ -23,7 +23,7 @@ const UserModule: Module < UserStates, RootStates > = {
   namespaced: true,
   state: {
     token: GetToken(),
-    userName: localStorage.getItem("usrName") || "",
+    userName: localStorage.getItem("userName") || "",
     avatar: localStorage.getItem("avatar") || "",
   },
   mutations: {

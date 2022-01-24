@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 路由元数据注解
  * @Author: 乐涛
- * @LastEditTime: 2022-01-20 09:30:54
+ * @LastEditTime: 2022-01-24 11:41:21
  */
 import "vue-router";
 
@@ -17,6 +17,8 @@ declare module "vue-router" {
     icon?: string;
     /** 是否禁用 */
     disabled?: boolean;
+    /** 外链 */
+    link?: string;
     /** 按钮权限 */
     buttonOptions?: { [key: string]: string };
   }

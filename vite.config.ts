@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Vite Config
  * @Author: 乐涛
- * @LastEditTime: 2022-01-21 14:17:23
+ * @LastEditTime: 2022-01-24 16:17:27
  */
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -45,7 +45,6 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        // additionalData: "@use \"@/assets/style/element/theme.scss\" as *;@import \"@/assets/style/global.scss\";@import \"@/assets/style/__variables.scss\";",
         additionalData: "@use \"@/assets/style/global.scss\" as *;",
       },
     },
@@ -67,4 +66,4 @@ export default defineConfig({
       },
     },
   },
-})
+});

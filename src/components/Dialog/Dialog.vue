@@ -1,14 +1,14 @@
 <!--
  * @ModuleName: Dialog 对话框
  * @Author: 乐涛
- * @LastEditTime: 2022-01-23 14:09:11
+ * @LastEditTime: 2022-01-24 16:58:07
 -->
 
 <template>
   <teleport to="body">
     <div v-if="modelValue && shade" class="m_dialog_shade" @click="close"></div>
     <transition enter-active-class="m_dialog_enter_active" leave-active-class="m_dialog_leave_active">
-      <div v-if="modelValue" class="m_dialog" :style="dialogStyle">
+      <div v-if="modelValue" ref="dialogRef" class="m_dialog" tabindex="0" :style="dialogStyle" @keydown.esc="close">
         <!-- title -->
         <div class="m_dialog_header">
           <slot name="title">{{ title }}</slot>
@@ -26,7 +26,7 @@
   </teleport>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, toRefs, watch } from "vue";
+import { defineComponent, reactive, toRefs, watch, ref, nextTick } from "vue";
 
 export default defineComponent({
   props: {
@@ -58,6 +58,11 @@ export default defineComponent({
       type: String,
       default: "auto",
     },
+    /** 是否全屏 */
+    isFull: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: {
     close: null,
@@ -65,12 +70,19 @@ export default defineComponent({
     "update:modelValue": null,
   },
   setup(props, { emit }) {
+    const dialogRef = ref();
     const state = reactive({
-      dialogStyle: {
-        top: props.top,
-        width: props.width,
-        height: props.height,
-      },
+      dialogStyle: props.isFull
+        ? {
+          top: 0,
+          width: "100%",
+          height: "100%",
+        }
+        : {
+          top: props.top,
+          width: props.width,
+          height: props.height,
+        },
     });
 
     const open = () => emit("open");
@@ -81,9 +93,19 @@ export default defineComponent({
 
     watch(
       () => props.modelValue,
-      (v) => (v ? open() : ""),
+      (v) => {
+        if (v) {
+          open();
+          nextTick(() => {
+            dialogRef.value.focus();
+          });
+        }
+      },
     );
     return {
+      // ref
+      dialogRef,
+
       // refs
       ...toRefs(state),
 
@@ -107,12 +129,14 @@ export default defineComponent({
 .m_dialog {
   position: absolute;
   left: 50%;
-  transform: translate(-50%,0);
+  transform: translate(-50%, 0);
   z-index: 900;
   border-radius: 4px;
   box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.08);
   background: #ffffff;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .m_dialog_enter_active {
@@ -126,14 +150,17 @@ export default defineComponent({
 .m_dialog_header {
   padding: 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  flex: 0 0 auto;
 }
 
 .m_dialog_content {
   padding: 10px;
   min-height: 100px;
+  flex: 1;
 }
 
 .m_dialog_footer {
+  flex: 0 0 auto;
   padding: 10px;
   text-align: center;
   // border-top: 1px solid rgba(0, 0, 0, 0.08);

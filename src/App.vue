@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: App
  * @Author: 乐涛
- * @LastEditTime: 2022-01-24 14:49:10
+ * @LastEditTime: 2022-01-24 16:13:06
 -->
 <template>
   <suspense>
@@ -42,6 +42,7 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
+  overflow:hidden;
 }
 
 #app {

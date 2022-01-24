@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User
  * @Author: 乐涛
- * @LastEditTime: 2022-01-23 13:43:15
+ * @LastEditTime: 2022-01-24 16:18:06
  */
 
 import { mock } from "mockjs";
@@ -26,7 +26,7 @@ export const getUserInfo = () => ({
   code: 200,
   info: "操作成功",
   data: {
-    userName: "Demo",
+    userName: "DEMO",
     avatar: "http://www.baidu.com",
     menu: [
 

@@ -1,13 +1,14 @@
 <!--
  * @ModuleName: ExportExcel
  * @Author: 乐涛
- * @LastEditTime: 2022-01-24 11:01:28
+ * @LastEditTime: 2022-01-24 15:45:07
 -->
 <template>
   <div>
     <a-alert message="使用说明：" type="info">
       <template #description>
         <p>
+          util函数方式导出: ExportExcel(header,data,fileName)<br />
           Header: 标题数组<br />
           Data: 数据数组<br />
           FileName: Excel文件名<br />

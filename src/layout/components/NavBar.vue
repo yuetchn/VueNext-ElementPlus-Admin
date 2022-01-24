@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: NavBar
  * @Author: 乐涛
- * @LastEditTime: 2022-01-24 15:18:26
+ * @LastEditTime: 2022-01-24 15:52:31
 -->
 <template>
   <div class="m_navbar">
@@ -12,7 +12,10 @@
       <BreadCrumbs class="u_bread_crumbs"></BreadCrumbs>
     </div>
     <div class="m_right">
-      <div class="m_screenfull" @click="toggleScreen">
+      <div class="m_nav_item" @click="reload">
+        <g-svg-icon size="20" name="refresh" />
+      </div>
+      <div class="m_nav_item" @click="toggleScreen">
         <g-svg-icon size="20" :name="isOpen ? 'no-fullscreen' : 'fullscreen'" />
       </div>
       <div class="m_right_dropdown">
@@ -64,6 +67,8 @@ export default defineComponent({
       screenfull.toggle();
     };
 
+    const reload = () => window.location.reload();
+
     onMounted(() => {
       window.addEventListener("fullscreenchange", () => {
         isOpen.value = !isOpen.value;
@@ -80,6 +85,7 @@ export default defineComponent({
       loginOut,
       check,
       toggleScreen,
+      reload,
     };
   },
 });
@@ -138,7 +144,7 @@ export default defineComponent({
   }
 }
 
-.m_screenfull {
+.m_nav_item {
   width: 50px;
   height: 100%;
   display: flex;

@@ -1,42 +1,26 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: 乐涛
- * @LastEditTime: 2022-01-23 14:41:39
+ * @LastEditTime: 2022-01-24 11:42:04
 -->
 <template>
   <div class="m_silder_bar" :class="{ m_silder_bar_shrink: isShrink }">
-    <Logo></Logo>
-    <a-menu
-      v-model:selectedKeys="nowSelMenuKeys"
-      v-model:openKeys="nowOpemMenuKeys"
-      :inline-collapsed="isShrink"
-      mode="inline"
-    >
+    <a-menu v-model:selectedKeys="nowSelMenuKeys" v-model:openKeys="nowOpemMenuKeys" theme="dark" :inline-collapsed="isShrink" mode="inline">
+      <Logo></Logo>
       <a-sub-menu v-for="item of routes" :key="item.path">
         <template #icon>
           <g-svg-icon :name="item.meta?.icon"></g-svg-icon>
         </template>
         <template #title>{{ item.meta?.title || "Not Title" }}</template>
-        <a-menu-item
-          v-if="!item.children?.length"
-          :key="item.path"
-          @click="titleClick(item.path)"
-        >
-          <template #icon>
-            <g-svg-icon :name="item.meta?.icon"></g-svg-icon>
-          </template>
-          <span> {{ item.meta?.title || "Not Title" }}</span>
-        </a-menu-item>
-        <a-menu-item
-          v-for="c of item.children"
-          :key="`${item.path}/${c.path}`"
-          @click="titleClick(`${item.path}/${c.path}`)"
-        >
-          <template #icon>
-            <g-svg-icon :name="c.meta?.icon"></g-svg-icon>
-          </template>
-          <span> {{ c.meta?.title || "Not Title" }}</span>
-        </a-menu-item>
+        <span v-for="c of item.children" :key="`${item.path}/${c.path}`">
+          <a-menu-item v-if="!c.children?.length" :key="`${item.path}/${c.path}`" @click="titleClick(`${item.path}/${c.path}`, c)">
+            <template #icon>
+              <g-svg-icon :name="c.meta?.icon"></g-svg-icon>
+            </template>
+            <span> {{ c.meta?.title || "Not Title" }}</span>
+          </a-menu-item>
+          <SilderBarItem v-else :router="c" :parent-router="item.path" @title-click="titleClick"></SilderBarItem>
+        </span>
       </a-sub-menu>
     </a-menu>
     <!-- <div>版本号</div> -->
@@ -44,13 +28,14 @@
 </template>
 <script lang="ts">
 import { computed, defineComponent, watch, reactive, toRefs } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { useRouter, useRoute, RouteRecordRaw } from "vue-router";
+import SilderBarItem from "./SiderBarItem.vue";
 import { routes } from "@/router";
 import { useStore } from "@/store";
 import Logo from "./Logo.vue";
 
 export default defineComponent({
-  components: { Logo },
+  components: { Logo, SilderBarItem },
   setup() {
     const store = useStore();
     const router = useRouter();
@@ -66,7 +51,11 @@ export default defineComponent({
 
     state.nowSelMenuKeys = store.getters["AppModule/getNowRoutePath"];
     state.nowOpemMenuKeys = store.getters["AppModule/getNowRouteSpread"];
-    const titleClick = (path:string) => {
+    const titleClick = (path: string, route: RouteRecordRaw) => {
+      if (route.meta?.link) {
+        window.open(route.meta.link);
+        return;
+      }
       router.push(path);
     };
 
@@ -96,8 +85,6 @@ export default defineComponent({
           store.dispatch("AppModule/set_shrink", false);
         }
       },
-
-      { immediate: true },
     );
     return {
       // refs
@@ -123,10 +110,33 @@ export default defineComponent({
 
 .m_silderBar_title {
   height: 45px;
-  background: #333333;
+  background-color: $g_silderBar_background_color;
   color: #fff;
   line-height: 45px;
   text-align: center;
   overflow: hidden;
+}
+
+.ant-menu {
+  background-color: $g_silderBar_background_color;
+  color: $g_silderBar_color;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+::v-deep(.ant-menu-sub.ant-menu-inline) {
+  background-color: $g_silderBar_selected_background_color;
+  color: $g_silderBar_color;
+}
+
+::v-deep(.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected) {
+  background-color: $g_silderBar_selected_background_color;
+}
+
+.ant-menu-inline,
+.ant-menu-vertical,
+.ant-menu-vertical-left {
+  border-right: 1px solid $g_silderBar_background_color;
 }
 </style>

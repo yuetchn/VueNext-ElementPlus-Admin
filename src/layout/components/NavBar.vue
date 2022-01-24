@@ -1,13 +1,13 @@
 <!--
  * @ModuleName: Main
  * @Author: 乐涛
- * @LastEditTime: 2022-01-23 14:46:01
+ * @LastEditTime: 2022-01-24 09:35:41
 -->
 <template>
   <div class="m_navbar">
     <div class="m_left_bread">
-      <div class="m_shrink">
-        <g-svg-icon name="shrink" size="22" style="cursor: pointer" color="#A4A4A4" :class="{ shrink: isShrink }" @click="check"></g-svg-icon>
+      <div class="m_shrink" @click="check">
+        <g-svg-icon name="shrink" size="22" color="#A4A4A4" :class="{ shrink: isShrink }"></g-svg-icon>
       </div>
       <BreadCrumbs class="u_bread_crumbs"></BreadCrumbs>
     </div>
@@ -67,6 +67,7 @@ export default defineComponent({
 
   .m_shrink {
     height: 100%;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;

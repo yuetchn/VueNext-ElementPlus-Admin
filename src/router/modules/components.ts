@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 组件展示
  * @Author: 乐涛
- * @LastEditTime: 2022-01-24 11:46:52
+ * @LastEditTime: 2022-01-24 14:39:46
  */
 import { RouteRecordRaw } from "vue-router";
 
@@ -102,6 +102,7 @@ const staticRoutes: RouteRecordRaw[] = [
         component: () => import("@/views/components/dialog.vue"),
         meta: {
           title: "子路由1",
+          icon: "module",
         },
         children: [
           {
@@ -110,6 +111,7 @@ const staticRoutes: RouteRecordRaw[] = [
             component: () => import("@/views/components/dialog.vue"),
             meta: {
               title: "子子路由1",
+              icon: "module",
             },
           },
           {
@@ -118,6 +120,7 @@ const staticRoutes: RouteRecordRaw[] = [
             component: () => import("@/views/components/dialog.vue"),
             meta: {
               title: "子子路由2",
+              icon: "module",
             },
           },
           {
@@ -126,6 +129,7 @@ const staticRoutes: RouteRecordRaw[] = [
             component: () => import("@/views/components/dialog.vue"),
             meta: {
               title: "子子路由3",
+              icon: "module",
             },
           },
         ],
@@ -136,6 +140,7 @@ const staticRoutes: RouteRecordRaw[] = [
         component: () => import("@/views/components/dialog.vue"),
         meta: {
           title: "子路由2",
+          icon: "module",
         },
       },
       {
@@ -144,6 +149,7 @@ const staticRoutes: RouteRecordRaw[] = [
         component: () => import("@/views/components/dialog.vue"),
         meta: {
           title: "子路由3",
+          icon: "module",
         },
       },
     ],
@@ -163,6 +169,7 @@ const staticRoutes: RouteRecordRaw[] = [
         component: () => import("@/views/components/exportExcel.vue"),
         meta: {
           title: "导出Excel",
+          icon: "exportExcel",
         },
       },
     ],
@@ -203,7 +210,7 @@ const staticRoutes: RouteRecordRaw[] = [
         component: Layout,
         meta: {
           title: "外链",
-          icon: "",
+          icon: "link",
           link: "https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin",
         },
       },

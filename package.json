@@ -12,6 +12,7 @@
     "lint": "eslint --cache --max-warnings 0  \"src/**/*.{vue,ts,tsx,jsx,js}\" --fix"
   },
   "dependencies": {
+    "@tinymce/tinymce-vue": "^4.0.5",
     "ant-design-vue": "^2.2.8",
     "axios": "^0.24.0",
     "dayjs": "^1.10.7",
@@ -22,6 +23,7 @@
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "sass": "^1.47.0",
+    "tinymce": "^5.10.2",
     "ts-md5": "^1.2.10",
     "vue": "^3.2.25",
     "vue-router": "^4.0.12",

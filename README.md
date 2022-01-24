@@ -45,20 +45,23 @@
 
 - ✅路由
 - ✅缓存
-- ✅基本组件
+- ✅丰富组件
 - ✅Request
 - ✅权限验证
 - ✅Mock
 - ✅Ts/Tsx
 - ✅Mixin混入
 - ✅环境变量
-- ❎富文本
+- ✅富文本
 - ❎文件上传
 - ❎pdf
 
 # 目录
 
     ├── public
+    │   ├── tinymce
+    │   │   ├── langs
+    │   │   └── skins
     │   └── favicon.ico
     ├── src
     │   ├── api
@@ -69,14 +72,20 @@
     │   │   ├── style
     │   │   └── logo.png
     │   ├── components
+    │   │   ├── Charts
     │   │   ├── Dialog
+    │   │   ├── Editor
     │   │   ├── LoadingShade
     │   │   ├── Page
     │   │   ├── SvgIcon
     │   │   └── index.ts
+    │   ├── directive
+    │   │   └── index.ts
     │   ├── layout
     │   │   ├── components
     │   │   └── Layout.vue
+    │   ├── mixins
+    │   │   └── index.ts
     │   ├── mock
     │   │   ├── user
     │   │   └── index.ts
@@ -93,11 +102,10 @@
     │   │   ├── router
     │   │   └── store
     │   ├── utils
+    │   │   ├── excel
     │   │   ├── cookie.ts
-    │   │   ├── directive.ts
     │   │   ├── func.ts
     │   │   ├── global.ts
-    │   │   ├── mixin.ts
     │   │   ├── permission.ts
     │   │   └── request.ts
     │   ├── views

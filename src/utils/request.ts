@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 请求封装
  * @Author: 乐涛
- * @LastEditTime: 2022-01-21 14:17:02
+ * @LastEditTime: 2022-01-24 17:33:16
  */
 import axios from "axios";
 import { message } from "ant-design-vue";
@@ -64,6 +64,7 @@ req.interceptors.response.use(
     HiddenLoading();
     const data = response.data;
     if (response.status === 200 && data.code !== 200) {
+      /// 根据业务结合后端在不同状态码执行不同操作
       /// 2xx - 成功
       /// 3xx - 重定向
       /// 4xx - 错误

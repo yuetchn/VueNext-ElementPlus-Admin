@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 组件展示
  * @Author: 乐涛
- * @LastEditTime: 2022-01-24 14:39:46
+ * @LastEditTime: 2022-01-24 15:41:49
  */
 import { RouteRecordRaw } from "vue-router";
 
@@ -51,6 +51,7 @@ const staticRoutes: RouteRecordRaw[] = [
         component: () => import("@/views/components/dialog.vue"),
         meta: {
           title: "Dialog",
+          icon: "dialog",
         },
       },
     ],
@@ -183,6 +184,27 @@ const staticRoutes: RouteRecordRaw[] = [
       icon: "echart",
     },
     children: [],
+  },
+  {
+    path: "/404",
+    name: "404",
+    component: Layout,
+    redirect: "/404/404Index",
+    meta: {
+      title: "404",
+      icon: "404",
+    },
+    children: [
+      {
+        path: "404Index",
+        name: "404Index",
+        component: () => import("@/views/404/404.vue"),
+        meta: {
+          title: "404",
+          icon: "404",
+        },
+      },
+    ],
   },
   {
     path: "/pdf",

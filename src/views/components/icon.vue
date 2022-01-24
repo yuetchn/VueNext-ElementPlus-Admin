@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Icons
  * @Author: 乐涛
- * @LastEditTime: 2022-01-24 11:23:46
+ * @LastEditTime: 2022-01-24 15:42:48
 -->
 <template>
   <div>
@@ -60,5 +60,6 @@ export default defineComponent({
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 4px;
   margin-right: 10px;
+  margin-bottom:10px;
 }
 </style>

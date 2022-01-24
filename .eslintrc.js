@@ -1,7 +1,7 @@
 /*
  * @ModuleName:
  * @Author: 乐涛
- * @LastEditTime: 2022-01-19 17:45:43
+ * @LastEditTime: 2022-01-24 14:03:50
  */
 module.exports = {
   root: true,
@@ -26,7 +26,7 @@ module.exports = {
     quotes: ["error", "double"], // 强制使用一致的反勾号、双引号或单引号
     "comma-dangle": ["error", "always-multiline"], // 要求或禁止末尾逗号
     "object-curly-spacing": ["error", "always"], // 强制在大括号中使用一致的空格
-    "max-len": ["error", 220], // 强制一行的最大长度
+    "max-len": ["error", 580], // 强制一行的最大长度
     "max-classes-per-file": 0,
     "vue/multi-word-component-names": 0,
     "no-new": "off", // 禁止使用 new 以避免产生副作用

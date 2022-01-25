@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User Module
  * @Author: 乐涛
- * @LastEditTime: 2022-01-25 16:32:34
+ * @LastEditTime: 2022-01-25 17:50:28
  */
 import { Module } from "vuex";
 import { RouteRecordRaw } from "vue-router";

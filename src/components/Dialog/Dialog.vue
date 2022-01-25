@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Dialog 对话框
  * @Author: 乐涛
- * @LastEditTime: 2022-01-24 16:58:07
+ * @LastEditTime: 2022-01-25 16:49:14
 -->
 
 <template>
@@ -11,14 +11,19 @@
       <div v-if="modelValue" ref="dialogRef" class="m_dialog" tabindex="0" :style="dialogStyle" @keydown.esc="close">
         <!-- title -->
         <div class="m_dialog_header">
-          <slot name="title">{{ title }}</slot>
+          <slot name="title">
+            <div class="u_dialog_title">{{ title }}</div>
+          </slot>
+          <div class="u_dialog_close" @click="close">
+            <g-svg-icon size="12" name="close"></g-svg-icon>
+          </div>
         </div>
         <!-- content -->
         <div class="m_dialog_content">
           <slot name="default"></slot>
         </div>
         <!-- footer -->
-        <div class="m_dialog_footer">
+        <div class="m_dialog_footer" :style="{ textAlign: align }">
           <slot name="footer"></slot>
         </div>
       </div>
@@ -26,7 +31,7 @@
   </teleport>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, toRefs, watch, ref, nextTick } from "vue";
+import { defineComponent, reactive, toRefs, watch, ref, nextTick, PropType } from "vue";
 
 export default defineComponent({
   props: {
@@ -62,6 +67,11 @@ export default defineComponent({
     isFull: {
       type: Boolean,
       default: false,
+    },
+    /** 底部对齐格式 */
+    align: {
+      type: String as PropType<"left" | "center" | "right">,
+      default: "center",
     },
   },
   emits: {
@@ -148,9 +158,31 @@ export default defineComponent({
 }
 
 .m_dialog_header {
-  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   flex: 0 0 auto;
+  height: 40px;
+  overflow: hidden;
+  padding: 5px;
+  .u_dialog_title {
+    padding: 5px;
+  }
+  .u_dialog_close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    height: 100%;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+  }
 }
 
 .m_dialog_content {
@@ -162,7 +194,7 @@ export default defineComponent({
 .m_dialog_footer {
   flex: 0 0 auto;
   padding: 10px;
-  text-align: center;
+  // text-align: center;
   // border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 

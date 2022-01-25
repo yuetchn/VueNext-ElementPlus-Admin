@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 权限拦截
  * @Author: 乐涛
- * @LastEditTime: 2022-01-25 16:31:26
+ * @LastEditTime: 2022-01-25 17:52:24
  */
 import { RouteRecordRaw } from "vue-router";
 import Nprogress from "nprogress";
@@ -33,7 +33,7 @@ router.beforeEach((to, from, next) => {
     next(from.path);
     return;
   }
-
+ 
   // 挂载动态路由
   if (router.getRoutes().length === GetStaticRoutes()) {
     const dynamicRoutes = ((store.state as any).UserModule as UserStates).menus;

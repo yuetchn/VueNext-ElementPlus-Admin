@@ -1,11 +1,11 @@
 <!--
- * @ModuleName: Permissin Test
+ * @ModuleName: Permission Test2
  * @Author: 乐涛
- * @LastEditTime: 2022-01-25 17:50:06
+ * @LastEditTime: 2022-01-25 17:44:48
 -->
 <template>
   <div>
-    <h2>菜单权限测试页</h2>
+    <h2>菜单权限测试页 - Test 2</h2>
     <a-alert message="使用说明：" type="info">
       <template #description>
         <p>

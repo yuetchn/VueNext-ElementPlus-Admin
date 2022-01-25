@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User
  * @Author: 乐涛
- * @LastEditTime: 2022-01-25 15:36:28
+ * @LastEditTime: 2022-01-25 16:57:51
  */
 import { mock } from "mockjs";
 
@@ -89,6 +89,15 @@ const adminMenu = [
         component: "components/permission/test",
         meta: {
           title: "菜单权限",
+          icon: "permission",
+        },
+      },
+      {
+        path: "test2",
+        name: "permissionTest2",
+        component: "components/permission/test2",
+        meta: {
+          title: "菜单权限2",
           icon: "permission",
         },
       },
@@ -310,11 +319,11 @@ const testMenu = [
     },
     children: [
       {
-        path: "test",
-        name: "permissionTest",
-        component: "components/permission/test",
+        path: "test2",
+        name: "permissionTest2",
+        component: "components/permission/test2",
         meta: {
-          title: "菜单权限",
+          title: "菜单权限2",
           icon: "permission",
         },
       },

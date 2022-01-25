@@ -69,11 +69,12 @@ export default defineComponent({
   setup(props, context) {
     const state = reactive({
       init: {
-        language_url: "/tinymce/langs/zh_CN.js", // 中文语言包路径
+        language_url: "tinymce/langs/zh_CN.js", // 中文语言包路径
         language: "zh_CN",
         min_height: props.height,
         width: props.width ? props.width : "",
-        skin_url: "/tinymce/skins/ui/oxide", // 编辑器皮肤样式
+        skin_url: "tinymce/skins/ui/oxide", // 编辑器皮肤样式
+        content_css: "tinymce/skins/content/default/content.css",
         menubar: false, // 隐藏菜单栏
         autoresize_bottom_margin: 50,
         //   max_height: 500,

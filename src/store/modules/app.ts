@@ -1,7 +1,7 @@
 /*
  * @ModuleName: App Module
  * @Author: 乐涛
- * @LastEditTime: 2022-01-21 09:26:43
+ * @LastEditTime: 2022-01-25 17:33:26
  */
 import { Module } from "vuex";
 import RootStates from "@/types/store/storeInterface";
@@ -75,7 +75,7 @@ const UserModule: Module<AppStates, RootStates> = {
       commit("RESET_ROUTE_STATE");
     },
     setClientWidth({ commit }, clientWidth) {
-      commit("SET_CLIENT_WIDTH", clientWidth)
+      commit("SET_CLIENT_WIDTH", clientWidth);
     },
   },
   getters: {

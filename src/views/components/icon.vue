@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Icons
  * @Author: 乐涛
- * @LastEditTime: 2022-01-24 15:42:48
+ * @LastEditTime: 2022-01-25 09:35:31
 -->
 <template>
   <div>
@@ -12,7 +12,9 @@
           属性:<br />
           Size: 大小 <br />
           Name: Icon文件名字<br />
-          Color: Icon 颜色
+          Color: Icon 颜色<br />
+          新增图标：只需要将Svg图片放入/assets/icons下即可<br />
+          规则: icon-[dir]-[name]
         </p>
       </template>
     </a-alert>

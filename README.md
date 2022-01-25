@@ -52,7 +52,6 @@
 - ✅Ts/Tsx
 - ✅Mixin混入
 - ✅环境变量
-- ✅富文本
 - ❎文件上传
 - ❎pdf
 
@@ -78,8 +77,11 @@
     │   │   ├── LoadingShade
     │   │   ├── Page
     │   │   ├── SvgIcon
+    │   │   ├── Table
     │   │   └── index.ts
     │   ├── directive
+    │   │   ├── clipboard
+    │   │   ├── permission
     │   │   └── index.ts
     │   ├── layout
     │   │   ├── components
@@ -126,7 +128,7 @@
     ├── package.json
     ├── README.md
     ├── tsconfig.json
-    └── vite.config.ts
+    ├── vite.config.ts
 
 # 开发
 

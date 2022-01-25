@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Main
  * @Author: 乐涛
- * @LastEditTime: 2022-01-19 17:47:43
+ * @LastEditTime: 2022-01-25 11:04:59
 -->
 <template>
   <div class="m_main">
@@ -37,8 +37,7 @@ export default defineComponent({
 .m_main {
   height: calc(100% - 45px);
   padding: 8px;
-  overflow: hidden;
-  overflow-y: auto;
+  overflow: auto;
 }
 .enter_active {
   animation: enter_active 1s ease;

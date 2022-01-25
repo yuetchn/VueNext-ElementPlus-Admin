@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 组件展示
  * @Author: 乐涛
- * @LastEditTime: 2022-01-24 15:41:49
+ * @LastEditTime: 2022-01-25 11:06:44
  */
 import { RouteRecordRaw } from "vue-router";
 
@@ -52,6 +52,26 @@ const staticRoutes: RouteRecordRaw[] = [
         meta: {
           title: "Dialog",
           icon: "dialog",
+        },
+      },
+    ],
+  },
+  {
+    path: "/clipboard",
+    name: "clipboard",
+    component: Layout,
+    meta: {
+      title: "剪切板",
+      icon: "clipboard",
+    },
+    children: [
+      {
+        path: "clipboardIndex",
+        name: "clipboardIndex",
+        component: () => import("@/views/components/clipboard.vue"),
+        meta: {
+          title: "剪切板",
+          icon: "clipboard",
         },
       },
     ],
@@ -183,15 +203,25 @@ const staticRoutes: RouteRecordRaw[] = [
       title: "图表",
       icon: "echart",
     },
-    children: [],
+    children: [
+      {
+        path: "chartLine",
+        name: "chartLine",
+        component: () => import("@/views/components/echarts/chartLine.vue"),
+        meta: {
+          title: "Line",
+          icon: "echart",
+        },
+      },
+    ],
   },
   {
-    path: "/404",
-    name: "404",
+    path: "/error",
+    name: "error",
     component: Layout,
-    redirect: "/404/404Index",
+    redirect: "/error/404Index",
     meta: {
-      title: "404",
+      title: "错误页面",
       icon: "404",
     },
     children: [

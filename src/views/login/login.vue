@@ -1,14 +1,13 @@
 <!--
  * @ModuleName: 
  * @Author: 乐涛
- * @LastEditTime: 2022-01-24 17:53:40
+ * @LastEditTime: 2022-01-25 10:45:07
 -->
 <template>
   <div class="m_login">
     <img src="@/assets/logo.png" />
     <h2>Hi,Welcome~</h2>
     <el-link type="primary" @click="login">进入DEMO</el-link>
-    <button v-copy:data="'ffffff'" @click="test">写入剪切板</button>
   </div>
 </template>
 <script lang="ts">
@@ -35,17 +34,12 @@ export default defineComponent({
       }
     };
 
-    const test = () => {
-      navigator.clipboard.writeText("测试");
-    };
-
     return {
       // refs
       ...toRefs(state),
 
       // func
       login,
-      test,
     };
   },
 });

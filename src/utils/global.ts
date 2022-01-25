@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 全局属性挂载
  * @Author: 乐涛
- * @LastEditTime: 2022-01-12 11:21:07
+ * @LastEditTime: 2022-01-25 10:18:51
  */
 import { App } from "vue";
 import axios from "@/utils/request";

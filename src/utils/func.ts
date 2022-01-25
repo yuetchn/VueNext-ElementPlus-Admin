@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 通用函数
  * @Author: 乐涛
- * @LastEditTime: 2022-01-25 09:17:03
+ * @LastEditTime: 2022-01-25 17:55:14
  */
 import { Md5 as tsMd5 } from "ts-md5";
 

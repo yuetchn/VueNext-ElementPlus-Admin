@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: 乐涛
- * @LastEditTime: 2022-01-25 10:53:18
+ * @LastEditTime: 2022-01-25 11:58:14
 -->
 <template>
   <div class="m_silder_bar" :class="{ m_silder_bar_shrink: isShrink }">
@@ -81,8 +81,6 @@ export default defineComponent({
       (v: number, o: number) => {
         if (v < 1000 && v < o) {
           store.dispatch("AppModule/set_shrink", true);
-        } else {
-          store.dispatch("AppModule/set_shrink", false);
         }
       },
     );

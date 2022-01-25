@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "YuetChn",
   "scripts": {
-    "dev": "npm run lint && vite",
+    "dev": "npm run lint && vite --host",
     "serve": "npm run lint && vue-tsc --noEmit && vite serve --mode production",
     "build:prod": "npm run lint && vue-tsc --noEmit && vite build",
     "build:dev": "npm run lint && vue-tsc --noEmit && vite build --mode development",

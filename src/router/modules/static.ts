@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 静态路由
  * @Author: 乐涛
- * @LastEditTime: 2022-01-24 11:34:30
+ * @LastEditTime: 2022-01-25 14:22:52
  */
 import { RouteRecordRaw } from "vue-router";
 
@@ -57,5 +57,15 @@ const staticRoutes: RouteRecordRaw[] = [
     },
   },
 ];
+
+export const GetStaticRoutes = (routes = staticRoutes) => {
+  let count = routes.length;
+  routes.forEach((f) => {
+    if (f.children) {
+      count += GetStaticRoutes(f.children);
+    }
+  });
+  return count;
+};
 
 export default staticRoutes;

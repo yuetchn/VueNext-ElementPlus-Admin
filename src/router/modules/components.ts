@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 组件展示
  * @Author: 乐涛
- * @LastEditTime: 2022-01-25 11:06:44
+ * @LastEditTime: 2022-01-25 15:31:05
  */
 import { RouteRecordRaw } from "vue-router";
 
@@ -84,7 +84,17 @@ const staticRoutes: RouteRecordRaw[] = [
       title: "权限",
       icon: "permission",
     },
-    children: [],
+    children: [
+      {
+        path: "test",
+        name: "permissionTest",
+        component: () => import("@/views/components/permission/test.vue"),
+        meta: {
+          title: "菜单权限",
+          icon: "permission",
+        },
+      },
+    ],
   },
   {
     path: "/icon",

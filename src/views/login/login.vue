@@ -1,13 +1,14 @@
 <!--
  * @ModuleName: 
  * @Author: 乐涛
- * @LastEditTime: 2022-01-25 10:45:07
+ * @LastEditTime: 2022-01-25 15:24:18
 -->
 <template>
   <div class="m_login">
     <img src="@/assets/logo.png" />
     <h2>Hi,Welcome~</h2>
-    <el-link type="primary" @click="login">进入DEMO</el-link>
+    <el-link type="primary" @click="login('admin')">Admin角色进入DEMO</el-link>
+    <el-link type="primary" @click="login('test')">Test角色进入DEMO</el-link>
   </div>
 </template>
 <script lang="ts">
@@ -23,9 +24,9 @@ export default defineComponent({
     const router = useRouter();
     const state = reactive({});
 
-    const login = async () => {
+    const login = async (role: string) => {
       const { data } = await store.dispatch("UserModule/login", {
-        account: "admin",
+        account: role,
         password: md5("123456"),
       });
       if (data.code === 200) {

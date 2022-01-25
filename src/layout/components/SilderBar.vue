@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: 乐涛
- * @LastEditTime: 2022-01-25 11:58:14
+ * @LastEditTime: 2022-01-25 14:45:51
 -->
 <template>
   <div class="m_silder_bar" :class="{ m_silder_bar_shrink: isShrink }">
@@ -45,7 +45,7 @@ export default defineComponent({
       nowSelMenuKeys: <string[]>[],
       nowOpemMenuKeys: <string[]>[],
       isShrink: computed(() => store.state.AppModule.isShrink),
-      routes: routes.filter((f) => !f.meta?.hide),
+      routes: computed(() => [...routes, ...store.state.UserModule.menus].filter((f) => !f.meta?.hide)),
       clientWidth: computed(() => store.state.AppModule.clientWidth),
     });
 

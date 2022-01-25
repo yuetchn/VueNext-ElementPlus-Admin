@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Mock Server
  * @Author: 乐涛
- * @LastEditTime: 2022-01-23 14:21:12
+ * @LastEditTime: 2022-01-25 15:02:52
  */
 import Mock from "mockjs";
 
@@ -11,7 +11,7 @@ if (import.meta.env.MODE === "development") {
     const module = m.replace(/^.\//, "").replace(/\/.*/, "")
 
     Object.keys(mocks[m]).forEach(f => {
-      Mock.mock(`${ import.meta.env.VITE_BASE_HOST + module }/${ f }`, mocks[m][f])
+      Mock.mock(RegExp(`${ import.meta.env.VITE_BASE_HOST + module }/${ f }.*`), mocks[m][f])
     })
   });
 }

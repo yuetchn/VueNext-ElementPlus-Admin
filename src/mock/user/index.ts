@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User
  * @Author: 乐涛
- * @LastEditTime: 2022-01-25 16:57:51
+ * @LastEditTime: 2022-01-26 15:33:05
  */
 import { mock } from "mockjs";
 
@@ -23,6 +23,7 @@ const adminMenu = [
         meta: {
           title: "表格",
           icon: "table",
+          affix: 1,
         },
       },
       {

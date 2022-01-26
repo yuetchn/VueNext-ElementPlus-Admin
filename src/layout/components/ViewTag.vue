@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: ViewTag
  * @Author: 乐涛
- * @LastEditTime: 2022-01-26 15:18:25
+ * @LastEditTime: 2022-01-26 16:13:20
 -->
 <template>
   <div class="m_view_tag">
@@ -36,7 +36,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, watch, toRefs, reactive, computed } from "vue";
-import { useRoute, useRouter, RouteRecordRaw, RouteLocationNormalizedLoaded } from "vue-router";
+import { useRoute, useRouter, RouteLocationNormalizedLoaded } from "vue-router";
 import { useStore } from "@/store";
 
 export default defineComponent({
@@ -45,40 +45,12 @@ export default defineComponent({
     const router = useRouter();
     const store = useStore();
     const state = reactive({
-      initTags: <RouteLocationNormalizedLoaded[]>[],
+      initTags: computed(() => store.state.ViewTagModule.initTags),
       selTag: computed(() => <RouteLocationNormalizedLoaded>store.getters["ViewTagModule/getTag"]),
       showIndex: -1,
     });
 
-    const getAffixRoutes = (routes: RouteRecordRaw[]) => {
-      let rts: RouteLocationNormalizedLoaded[] = [];
-      routes.forEach((r) => {
-        if (r.meta && r.meta.affix && !r.meta.noTag) {
-          rts.push({
-            path: r.path,
-            name: r.name,
-            meta: { ...r.meta },
-            query: {},
-            params: {},
-            matched: [],
-            hash: "",
-            redirectedFrom: undefined,
-            fullPath: r.path,
-          });
-
-          if (r.children) {
-            rts = [...rts, ...getAffixRoutes(r.children)];
-          }
-        }
-      });
-      return rts;
-    };
     const viewTags = computed(() => [...state.initTags, ...store.state.ViewTagModule.viewTags]);
-
-    const initViewTags = () => {
-      state.initTags = getAffixRoutes(router.getRoutes());
-    };
-    initViewTags();
 
     const closeTag = async (t: RouteLocationNormalizedLoaded) => {
       await store.dispatch("ViewTagModule/delTag", { ...t });

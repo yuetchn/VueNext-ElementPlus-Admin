@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User Module
  * @Author: 乐涛
- * @LastEditTime: 2022-01-26 09:56:41
+ * @LastEditTime: 2022-01-26 16:10:11
  */
 import { Module } from "vuex";
 import { RouteRecordRaw } from "vue-router";
@@ -59,6 +59,7 @@ const UserModule: Module<UserStates, RootStates> = {
         }
         router.removeRoute(f.name as string);
       });
+
       state.menus = menus;
       localStorage.setItem("menus", JSON.stringify(menus));
     },
@@ -70,6 +71,7 @@ const UserModule: Module<UserStates, RootStates> = {
         }
         router.removeRoute(f.name as string);
       });
+
       state.menus = [];
       localStorage.removeItem("menus");
     },
@@ -84,6 +86,7 @@ const UserModule: Module<UserStates, RootStates> = {
         if (res.data.code === 200) {
           commit("SET_USER_INFO", res.data.data);
           commit("SET_TOKEN", data.data);
+          await store.dispatch("ViewTagModule/closeAllTag");
           commit("SET_MENUS", res.data.data.menu);
           return Promise.resolve({ data });
         }

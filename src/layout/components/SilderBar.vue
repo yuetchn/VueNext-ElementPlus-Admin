@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: 乐涛
- * @LastEditTime: 2022-01-26 15:12:38
+ * @LastEditTime: 2022-01-26 15:30:08
 -->
 <template>
   <div class="m_silder_bar" :class="{ m_silder_bar_shrink: isShrink }">
@@ -102,6 +102,7 @@ export default defineComponent({
   height: 100%;
   transition: all 0.3s;
   box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.08);
+  background-color: $g_silderBar_background_color;
 }
 
 .m_silder_bar_shrink {

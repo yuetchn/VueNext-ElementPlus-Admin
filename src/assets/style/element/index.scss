@@ -1,0 +1,13 @@
+// styles/element/index.scss
+/* just override what you need */
+@forward "element-plus/theme-chalk/src/common/var.scss" with (
+  $colors: (
+    // "primary": (
+    //   "base": black,
+    // ),
+  )
+);
+@use "element-plus/theme-chalk/src/index.scss" as *;
+// If you just import on demand, you can ignore the following content.
+// 如果你想导入所有样式:
+// @use "element-plus/theme-chalk/src/index.scss" as *;

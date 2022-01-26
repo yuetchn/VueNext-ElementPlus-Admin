@@ -1,15 +1,15 @@
 /*
  * @ModuleName: User Module
  * @Author: 乐涛
- * @LastEditTime: 2022-01-25 17:50:28
+ * @LastEditTime: 2022-01-26 09:56:41
  */
 import { Module } from "vuex";
 import { RouteRecordRaw } from "vue-router";
+import RootStates from "@/types/store/storeInterface";
 import { GetToken, SetToken, RemoveToken } from "@/utils/cookie";
 import { Login } from "@/api/login";
 import { GetUserInfo } from "@/api/user";
 import router from "@/router";
-import RootStates from "@/types/store/storeInterface";
 import { store } from "@/store";
 
 export interface UserStates {

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 静态路由
  * @Author: 乐涛
- * @LastEditTime: 2022-01-25 14:22:52
+ * @LastEditTime: 2022-01-26 14:27:23
  */
 import { RouteRecordRaw } from "vue-router";
 
@@ -34,6 +34,7 @@ const staticRoutes: RouteRecordRaw[] = [
         meta: {
           title: "综合示例",
           icon: "home",
+          affix: true,
         },
       },
     ],
@@ -48,12 +49,34 @@ const staticRoutes: RouteRecordRaw[] = [
     },
   },
   {
-    path: "/:pathMatch(.*)*",
+    path: "/redirect",
+    name: "Redirect",
+    component: Layout,
+    meta: {
+      title: "Redirect",
+      hide: true,
+    },
+    children: [
+      {
+        path: ":path(.*)",
+        name: "RedirectPath",
+        component: () => import("@/views/Redirect/Redirect"),
+        meta: {
+          title: "RedirectPath",
+          hide: true,
+          noTag: true,
+        },
+      },
+    ],
+  },
+  {
+    path: "/:path(.*)*",
     name: "NotFound",
     component: () => import("@/views/404/404.vue"),
     meta: {
       title: "404",
       hide: true,
+      noTag: true,
     },
   },
 ];

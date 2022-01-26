@@ -4,7 +4,7 @@
 <img src="https://img.shields.io/badge/vue-3.2.25-%23FFC21A" />
 <img src="https://img.shields.io/badge/vite-2.7.2-%23FFC21A" />
 <img src="https://img.shields.io/badge/typescript-4.4.4-%23FFC21A" />
-<img src="https://img.shields.io/badge/element--plus-1.3.0-%23FFC21A" />
+<img src="https://img.shields.io/badge/element--plus-1.3.0--beta9-FFC21A" />
 <img src="https://img.shields.io/badge/ant--design--vue-2.2.8-%23FFC21A" />
 </p>
 
@@ -59,9 +59,9 @@
 
     ├── public
     │   ├── tinymce
-    │   │   ├── langs
-    │   │   └── skins
-    │   └── favicon.ico
+    │   │   ├── langs        
+    │   │   └── skins        
+    │   └── favicon.ico      
     ├── src
     │   ├── api
     │   │   ├── login.ts
@@ -114,7 +114,8 @@
     │   │   ├── 404
     │   │   ├── components
     │   │   ├── dashboard
-    │   │   └── login
+    │   │   ├── login
+    │   │   └── Redirect
     │   ├── App.vue
     │   ├── env.d.ts
     │   └── main.ts

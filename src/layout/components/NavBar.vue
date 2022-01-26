@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: NavBar
  * @Author: 乐涛
- * @LastEditTime: 2022-01-24 15:52:31
+ * @LastEditTime: 2022-01-26 09:40:36
 -->
 <template>
   <div class="m_navbar">
@@ -35,6 +35,7 @@
 import { computed, defineComponent, onMounted, ref } from "vue";
 import screenfull from "screenfull";
 import { message } from "ant-design-vue";
+import { useRouter, useRoute } from "vue-router";
 import { useStore } from "@/store";
 import BreadCrumbs from "./BreadCrumbs.vue";
 
@@ -42,6 +43,8 @@ export default defineComponent({
   components: { BreadCrumbs },
   setup() {
     const store = useStore();
+    const router = useRouter();
+    const route = useRoute();
 
     const isOpen = ref(screenfull.isFullscreen);
     const isShrink = computed(() => store.state.AppModule.isShrink);
@@ -67,7 +70,7 @@ export default defineComponent({
       screenfull.toggle();
     };
 
-    const reload = () => window.location.reload();
+    const reload = () => router.replace({ path: `/redirect${ route.fullPath }` })
 
     onMounted(() => {
       window.addEventListener("fullscreenchange", () => {
@@ -93,10 +96,12 @@ export default defineComponent({
 <style lang="scss" scoped>
 .m_navbar {
   height: 45px;
-  box-shadow: 2px 0 5px 2px rgba(0, 0, 0, 0.08);
+  // box-shadow: 2px 0 5px 2px rgba(0, 0, 0, 0.08);
+  border-bottom:1px solid rgba(0,0,0,0.03);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background:#FFF;
 }
 
 .m_shrink {

@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: ViewTag
  * @Author: 乐涛
- * @LastEditTime: 2022-01-26 16:13:20
+ * @LastEditTime: 2022-01-27 09:26:07
 -->
 <template>
   <div class="m_view_tag">
@@ -22,7 +22,8 @@
     </div>
 
     <div class="m_view_operate" @click="closeAllTag">
-      Close All
+      <!-- Close All -->
+      <g-svg-icon name="close" size="13"></g-svg-icon>
       <!-- <el-dropdown>
         <g-svg-icon name="down" size="10"></g-svg-icon>
         <template #dropdown>
@@ -103,18 +104,16 @@ export default defineComponent({
   z-index: 200;
   display: flex;
   align-items: center;
-  padding: 0 10px;
 }
 
 .m_view_tags {
   flex: 1;
-  padding-right: 10px;
+  padding: 0 10px;
 }
 
 .m_view_operate {
   width: 60px;
-  border-left: 1px solid rgba(0, 0, 0, 0.2);
-  padding-left: 5px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: ViewTagModule
  * @Author: 乐涛
- * @LastEditTime: 2022-01-26 16:10:07
+ * @LastEditTime: 2022-01-27 09:52:33
  */
 import { Module } from "vuex";
 import { RouteLocationNormalizedLoaded, RouteRecordRaw } from "vue-router";
@@ -85,6 +85,9 @@ const ViewTagModule: Module<ViewTagStates, RootStates> = {
   getters: {
     getTag(state) {
       return state.tag || {};
+    },
+    getCacheNames(state) {
+      return [...state.initTags, ...state.viewTags].filter(f => f.meta?.cache).map(m => m.name)
     },
   },
 };

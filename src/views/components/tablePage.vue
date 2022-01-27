@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: TablePage
  * @Author: 乐涛
- * @LastEditTime: 2022-01-24 11:39:16
+ * @LastEditTime: 2022-01-27 09:48:24
 -->
 <template>
   <div>
@@ -25,6 +25,7 @@ import { defineComponent, onMounted, reactive, toRefs } from "vue";
 import { GetUserData } from "@/api/user";
 
 export default defineComponent({
+  name: "tablePage",
   setup() {
     const state = reactive({
       tableData: [],

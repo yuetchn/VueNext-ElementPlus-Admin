@@ -1,14 +1,14 @@
 <!--
  * @ModuleName: Main
  * @Author: 乐涛
- * @LastEditTime: 2022-01-26 14:59:00
+ * @LastEditTime: 2022-01-27 09:53:17
 -->
 <template>
   <section class="m_main">
     <div class="m_main_content">
       <router-view v-slot="{ Component, route }">
         <transition :name="route.name" enter-active-class="enter_active">
-          <keep-alive :include="[]" :exclude="[]" :max="cacheMax">
+          <keep-alive :include="cacheNames" :exclude="[]" :max="cacheMax">
             <component :is="Component"></component>
           </keep-alive>
         </transition>
@@ -18,37 +18,39 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive, toRefs, computed } from "vue";
+import { useStore } from "@/store";
 
 export default defineComponent({
   setup() {
     const state = reactive({});
-
+    const store = useStore();
     const cacheMax = computed((import.meta.env.VITE_ROUTER_CACHE_MAX, (v) => v));
-
+    const cacheNames = computed(() => store.getters["ViewTagModule/getCacheNames"]);
     return {
       // refs
       ...toRefs(state),
 
       // computed
       cacheMax,
+      cacheNames,
     };
   },
 });
 </script>
 <style lang="scss" scoped>
 .m_main {
-  height: calc(100% - 45px - 40px);
+  height: calc(100% - 45px - 35px);
   // padding: 8px;
-  background:#FFF;
-  overflow:hidden;
+  background: #fff;
+  overflow: hidden;
 }
 
-.m_main_content{
-  padding:5px;
-  background:#FFF;
+.m_main_content {
+  padding: 5px;
+  background: #fff;
   // border-radius:4px;
-  box-shadow:0 0 8px 2px rgba(0,0,0,0.05);
-  height:100%;
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05);
+  height: 100%;
   overflow: auto;
 }
 .enter_active {

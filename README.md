@@ -42,8 +42,8 @@
 [[后台Demo](http://demo.yuetchn.top )]
 
 ### 链接
-[[GiteHub](https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin)]
-[[Gitee](https://github.com/yuetchn/VueNext-ElementPlus-Admin)]
+[[Gitee](https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin)]
+[[GitHub](https://github.com/yuetchn/VueNext-ElementPlus-Admin)]
 
 # 功能
 

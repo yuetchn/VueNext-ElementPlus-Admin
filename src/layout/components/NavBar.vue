@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: NavBar
  * @Author: 乐涛
- * @LastEditTime: 2022-01-26 09:40:36
+ * @LastEditTime: 2022-01-27 09:12:59
 -->
 <template>
   <div class="m_navbar">
@@ -12,10 +12,10 @@
       <BreadCrumbs class="u_bread_crumbs"></BreadCrumbs>
     </div>
     <div class="m_right">
-      <div class="m_nav_item" @click="reload">
+      <div class="u_nav_item" @click="reload">
         <g-svg-icon size="20" name="refresh" />
       </div>
-      <div class="m_nav_item" @click="toggleScreen">
+      <div class="u_nav_item" @click="toggleScreen">
         <g-svg-icon size="20" :name="isOpen ? 'no-fullscreen' : 'fullscreen'" />
       </div>
       <div class="m_right_dropdown">
@@ -70,7 +70,7 @@ export default defineComponent({
       screenfull.toggle();
     };
 
-    const reload = () => router.replace({ path: `/redirect${ route.fullPath }` })
+    const reload = () => router.replace({ path: `/redirect${ route.fullPath }` });
 
     onMounted(() => {
       window.addEventListener("fullscreenchange", () => {
@@ -97,11 +97,11 @@ export default defineComponent({
 .m_navbar {
   height: 45px;
   // box-shadow: 2px 0 5px 2px rgba(0, 0, 0, 0.08);
-  border-bottom:1px solid rgba(0,0,0,0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background:#FFF;
+  background: #fff;
 }
 
 .m_shrink {
@@ -143,23 +143,26 @@ export default defineComponent({
   padding-right: 20px;
   margin-left: 10px;
   cursor: pointer;
+  
   .u_name {
     font-size: 18px;
     font-weight: bold;
   }
 }
 
-.m_nav_item {
+.u_nav_item {
   width: 50px;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color 0.3s;
+  color: #a4a4a4;
+  transition: background-color 0.3s, color 0.3s;
 
   &:hover {
     background: rgba(0, 0, 0, 0.08);
+    color: #333333;
   }
 }
 </style>

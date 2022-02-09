@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: ViewTag
  * @Author: 乐涛
- * @LastEditTime: 2022-01-27 09:42:33
+ * @LastEditTime: 2022-02-09 13:53:06
 -->
 <template>
   <div class="m_view_tag">
@@ -104,12 +104,11 @@ export default defineComponent({
   z-index: 200;
   display: flex;
   align-items: center;
-  padding-top: 5px;
 }
 
 .m_view_tags {
   flex: 1;
-  padding: 0 10px;
+  padding: 5px 10px 0;
 }
 
 .m_view_operate {

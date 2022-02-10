@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Layout
  * @Author: 乐涛
- * @LastEditTime: 2022-02-10 15:30:14
+ * @LastEditTime: 2022-02-10 16:18:16
 -->
 <template>
   <div class="m_layout">
@@ -71,5 +71,6 @@ export default defineComponent({
   overflow: hidden;
   margin-left: 220px;
   transition: margin-left 0.3s;
+  height: 100%;
 }
 </style>

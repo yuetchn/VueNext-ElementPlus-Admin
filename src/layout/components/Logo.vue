@@ -1,13 +1,13 @@
 <!--
  * @ModuleName: Logo
  * @Author: 乐涛
- * @LastEditTime: 2022-01-21 10:48:53
+ * @LastEditTime: 2022-02-10 15:15:14
 -->
 <template>
   <div class="m_logo">
     <div>
       <img src="/favicon.ico" :alt="title" />
-      <span v-if="!isShrink" class="m_logo_content">{{ title }}</span>
+      <span v-show="!isShrink" class="m_logo_content">{{ title }}</span>
     </div>
   </div>
 </template>
@@ -42,19 +42,6 @@ export default defineComponent({
   img {
     width: 30px;
     height: 30px;
-  }
-}
-
-.m_logo_content {
-  animation: logo 1s ease;
-}
-
-@keyframes logo {
-  from {
-    opacity:0;
-  }
-  to {
-    opacity:1;
   }
 }
 </style>

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Custom Table
  * @Author: 乐涛
- * @LastEditTime: 2022-02-11 14:58:19
+ * @LastEditTime: 2022-02-11 15:23:12
  */
 import { defineComponent, ref } from "vue";
 import { props, emits, ElTable } from "./index";
@@ -10,17 +10,17 @@ export default defineComponent({
   props,
   emits,
   setup() {
-    const tableRef = ref<InstanceType<typeof ElTable>>(null);
+    const tableRef = ref<InstanceType<typeof ElTable>>();
 
-    const clearSelection = () => tableRef.value.clearSelection();
-    const toggleRowSelection = (...args) => tableRef.value.toggleRowSelection(args);
-    const toggleAllSelection = () => tableRef.value.toggleAllSelection();
-    const toggleRowExpansion = (...args) => tableRef.value.toggleRowExpansion(args);
-    const setCurrentRow = (...args) => tableRef.value.setCurrentRow(args);
-    const clearSort = () => tableRef.value.clearSort();
-    const clearFilter = (...args) => tableRef.value.clearFilter(args);
-    const doLayout = () => tableRef.value.doLayout();
-    const sort = (...args) => tableRef.value.sort(args);
+    const clearSelection = () => tableRef.value?.clearSelection();
+    const toggleRowSelection = (...args: any[]) => tableRef.value?.toggleRowSelection(args[0], args[1]);
+    const toggleAllSelection = () => tableRef.value?.toggleAllSelection();
+    const toggleRowExpansion = (...args: any[]) => tableRef.value?.toggleRowExpansion(args[0], args[1]);
+    const setCurrentRow = (...args: any[]) => tableRef.value?.setCurrentRow(args);
+    const clearSort = () => tableRef.value?.clearSort();
+    const clearFilter = (...args: any[]) => tableRef.value?.clearFilter(args);
+    const doLayout = () => tableRef.value?.doLayout();
+    const sort = (...args: any[]) => tableRef.value?.sort(args[0], args[1]);
 
     return {
       // ref
@@ -41,7 +41,7 @@ export default defineComponent({
   render() {
     const p = this.$props;
     const slots = this.$slots;
-    const elTableColumns = p.columns.map((f) => {
+    const elTableColumns = p.columns?.map((f) => {
       const column = (
         <el-table-column
           label={f.label}

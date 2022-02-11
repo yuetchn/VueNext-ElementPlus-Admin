@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 权限拦截
  * @Author: 乐涛
- * @LastEditTime: 2022-01-26 16:13:01
+ * @LastEditTime: 2022-01-27 10:02:18
  */
 import { RouteRecordRaw } from "vue-router";
 import Nprogress from "nprogress";
@@ -46,8 +46,11 @@ router.beforeEach((to, from, next) => {
       routes.forEach((f: RouteRecordRaw) => {
         if ((f.component as any) === "Layout") {
           f.component = () => import("@/layout/Layout.vue");
-        } else {
+        } else if (routerComponents[`/src/views/${ f.component }.vue`]) {
           f.component = routerComponents[`/src/views/${ f.component }.vue`];
+        } else {
+          console.warn(`失效的路由:[${ f.path }],找不到对应模块:[${ f.component }]`);
+          return;
         }
         if (f.children) {
           f.children = registerRoute(f.children);

@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Dashboard
  * @Author: 乐涛
- * @LastEditTime: 2022-01-23 15:11:56
+ * @LastEditTime: 2022-02-10 15:48:43
 -->
 <template>
   <div>
@@ -12,7 +12,7 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary">检索</el-button>
-          <el-button type="primary" @click="showDialog=true">新增</el-button>
+          <el-button type="primary" @click="showDialog = true">新增</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -50,8 +50,8 @@
         </el-form-item>
       </el-form>
       <template #footer>
-        <el-button @click="showDialog=false">取消</el-button>
-        <el-button type="primary" @click="showDialog=false">确定</el-button>
+        <el-button @click="showDialog = false">取消</el-button>
+        <el-button type="primary" @click="showDialog = false">确定</el-button>
       </template>
     </g-dialog>
   </div>
@@ -61,6 +61,7 @@ import { defineComponent, onMounted, reactive, toRefs } from "vue";
 import { GetUserData } from "@/api/user";
 
 export default defineComponent({
+  name: "dashboardIndex",
   setup() {
     const state = reactive({
       showDialog: false,
@@ -77,7 +78,7 @@ export default defineComponent({
       const { data } = await GetUserData(state.searchInfo);
       if (data.code === 200) {
         state.tableData = data.data;
-        state.searchInfo.total = data.total
+        state.searchInfo.total = data.total;
       }
     };
 

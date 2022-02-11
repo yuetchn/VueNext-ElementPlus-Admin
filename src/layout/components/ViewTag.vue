@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: ViewTag
  * @Author: 乐涛
- * @LastEditTime: 2022-01-27 09:26:07
+ * @LastEditTime: 2022-02-09 13:53:06
 -->
 <template>
   <div class="m_view_tag">
@@ -96,7 +96,7 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .m_view_tag {
-  height: 40px;
+  height: 35px;
   overflow: hidden;
   background: #fff;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.06);
@@ -108,7 +108,7 @@ export default defineComponent({
 
 .m_view_tags {
   flex: 1;
-  padding: 0 10px;
+  padding: 5px 10px 0;
 }
 
 .m_view_operate {

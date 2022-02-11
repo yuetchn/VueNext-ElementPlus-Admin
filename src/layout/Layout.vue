@@ -1,14 +1,14 @@
 <!--
  * @ModuleName: Layout
  * @Author: 乐涛
- * @LastEditTime: 2022-01-26 09:31:42
+ * @LastEditTime: 2022-02-10 16:18:16
 -->
 <template>
   <div class="m_layout">
     <div class="m_left_silder">
       <SilderBar></SilderBar>
     </div>
-    <div class="m_right_content">
+    <div class="m_right_content" :style="mRightContent">
       <NavBar></NavBar>
       <ViewTag></ViewTag>
       <Main></Main>
@@ -16,7 +16,8 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, reactive, watch, toRefs } from "vue";
+import { useStore } from "@/store";
 import Main from "./components/Main.vue";
 import SilderBar from "./components/SilderBar.vue";
 import NavBar from "./components/NavBar.vue";
@@ -25,21 +26,51 @@ import ViewTag from "./components/ViewTag.vue";
 export default defineComponent({
   name: "Layout",
   components: { Main, SilderBar, NavBar, ViewTag },
+  setup() {
+    const store = useStore();
+    const state = reactive({
+      mRightContent: {},
+    });
+    watch(
+      () => store.state.AppModule.isShrink,
+      (n) => {
+        if (n) {
+          state.mRightContent = {
+            marginLeft: "80px",
+          };
+        } else {
+          state.mRightContent = {};
+        }
+      },
+      { immediate: true },
+    );
+
+    return {
+      // refs
+      ...toRefs(state),
+    };
+  },
 });
 </script>
 <style lang="scss" scoped>
 .m_layout {
-  display: flex;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.05);
 }
 .m_left_silder {
   height: 100%;
-  flex: 0 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 1000;
 }
 
 .m_right_content {
-  flex: 1;
   overflow: hidden;
+  margin-left: 220px;
+  transition: margin-left 0.3s;
+  height: 100%;
 }
 </style>

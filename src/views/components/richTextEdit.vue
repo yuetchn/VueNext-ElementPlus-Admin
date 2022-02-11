@@ -5,7 +5,7 @@
 -->
 <template>
   <div>
-    <a-alert message="使用说明：" type="info">
+    <a-alert message="使用说明：" type="warning" show-icon>
       <template #description>
         <p>
           使用全局组件: g-editor<br />

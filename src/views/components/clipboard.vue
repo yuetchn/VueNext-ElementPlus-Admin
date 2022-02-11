@@ -1,11 +1,11 @@
 <!--
  * @ModuleName: clipboard
  * @Author: 乐涛
- * @LastEditTime: 2022-01-25 11:45:15
+ * @LastEditTime: 2022-02-11 09:12:43
 -->
 <template>
   <div>
-    <a-alert message="使用说明：" type="info">
+    <a-alert message="使用说明：" type="warning" show-icon>
       <template #description>
         <p>
           两种方式调用: 指令 v-copy:data,v-copy:success,v-copy:error,函数 clipboardFunction(data)<br />

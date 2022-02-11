@@ -5,7 +5,7 @@
 -->
 <template>
   <div>
-    <a-alert message="使用说明：" type="info">
+    <a-alert message="使用说明：" type="warning" show-icon>
       <template #description>
         <p>
           util函数方式导出: ExportExcel(header,data,fileName)<br />

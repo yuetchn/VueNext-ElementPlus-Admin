@@ -6,7 +6,7 @@
 <template>
   <div>
     <h2>菜单权限测试页 - Test 2</h2>
-    <a-alert message="使用说明：" type="info">
+    <a-alert message="使用说明：" type="warning" show-icon>
       <template #description>
         <p>
           调用UserStore中的 login 方法切换用户<br />

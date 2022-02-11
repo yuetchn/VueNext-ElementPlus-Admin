@@ -1,27 +1,16 @@
 <!--
  * @ModuleName: TablePage
  * @Author: 乐涛
- * @LastEditTime: 2022-02-11 14:59:30
+ * @LastEditTime: 2022-02-11 16:37:27
 -->
 <template>
-  <div>
-    <button @click="test">ddd</button>
-    <g-table ref="tableRef" :data="tableData" :columns="columns">
-      <template #name="{row}"> {{ row.id.toString() }} </template>
+  <div class="app-container">
+    <g-table ref="tableRef" v-model:page-size="search.pageSize" v-model:page-number="search.pageNumber" page :total="search.total" :data="tableData" :columns="columns" @page-change="pageChange">
+      <div>
+        <el-button type="primary" @click="toggleSelect">全选/取消</el-button>
+      </div>
+      <template #name="{ row }"> {{ row.name }} </template>
     </g-table>
-    <!-- <el-table v-if="false" :data="tableData" border>
-      <el-table-column type="selection" width="50px" align="center"></el-table-column>
-      <el-table-column label="ID" prop="id" width="80px" align="center"></el-table-column>
-      <el-table-column label="Name" prop="name"></el-table-column>
-      <el-table-column label="Address" prop="address"></el-table-column>
-      <el-table-column label="Email" prop="email"></el-table-column>
-      <el-table-column label="状态" align="center" width="100px" prop="status">
-        <template #default="{ row }">
-          <el-tag :type="row.status.type">{{ row.status.label }}</el-tag>
-        </template>
-      </el-table-column>
-    </el-table> -->
-    <!-- <g-page v-model:page-size="searchInfo.pageSize" v-model:page-number="searchInfo.pageNumber" :total="searchInfo.total" @change="getUserDt"></g-page> -->
   </div>
 </template>
 <script lang="ts">
@@ -35,6 +24,11 @@ export default defineComponent({
     const tableRef = ref<InstanceType<typeof ElTable>>();
     const state = reactive({
       tableData: [],
+      search: {
+        pageSize: 20,
+        pageNumber: 1,
+        total: 100,
+      },
       columns: <TableColumns[]>[
         {
           type: "selection",
@@ -71,8 +65,12 @@ export default defineComponent({
       getUserDt();
     });
 
-    const test = () => {
+    const toggleSelect = () => {
       tableRef.value?.toggleAllSelection();
+    };
+
+    const pageChange = () => {
+      console.log("改变");
     };
     return {
       // ref
@@ -83,7 +81,8 @@ export default defineComponent({
 
       // func
       getUserDt,
-      test,
+      toggleSelect,
+      pageChange,
     };
   },
 });

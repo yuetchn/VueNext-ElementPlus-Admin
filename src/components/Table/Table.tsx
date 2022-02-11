@@ -1,16 +1,21 @@
 /*
  * @ModuleName: Custom Table
  * @Author: 乐涛
- * @LastEditTime: 2022-02-11 15:23:12
+ * @LastEditTime: 2022-02-11 16:35:01
  */
-import { defineComponent, ref } from "vue";
+import { defineComponent, reactive, ref, toRefs } from "vue";
 import { props, emits, ElTable } from "./index";
+import style from "./Table.module.scss";
 
 export default defineComponent({
   props,
   emits,
-  setup() {
+  setup(p, { emit }) {
     const tableRef = ref<InstanceType<typeof ElTable>>();
+    const state = reactive({
+      pageSize: p.pageSize,
+      pageNumber: p.pageNumber,
+    });
 
     const clearSelection = () => tableRef.value?.clearSelection();
     const toggleRowSelection = (...args: any[]) => tableRef.value?.toggleRowSelection(args[0], args[1]);
@@ -21,10 +26,17 @@ export default defineComponent({
     const clearFilter = (...args: any[]) => tableRef.value?.clearFilter(args);
     const doLayout = () => tableRef.value?.doLayout();
     const sort = (...args: any[]) => tableRef.value?.sort(args[0], args[1]);
-
+    const pageChange = () => {
+      emit("update:pageSize", state.pageSize);
+      emit("update:pageNumber", state.pageNumber);
+      emit("page-change");
+    };
     return {
       // ref
       tableRef,
+
+      // refs
+      ...toRefs(state),
 
       // func
       clearSelection,
@@ -36,11 +48,13 @@ export default defineComponent({
       clearFilter,
       doLayout,
       sort,
+      pageChange,
     };
   },
   render() {
     const p = this.$props;
     const slots = this.$slots;
+    const emit = this.$emit;
     const elTableColumns = p.columns?.map((f) => {
       const column = (
         <el-table-column
@@ -81,43 +95,71 @@ export default defineComponent({
     });
 
     return (
-      <el-table
-        ref="tableRef"
-        data={p.data}
-        height={p.height}
-        max-height={p.maxHeight}
-        stripe={p.stripe}
-        border={p.border}
-        size={p.size}
-        fit={p.fit}
-        show-header={p.showHeader}
-        highlight-current-row={p.highlightCurrentRow}
-        current-row-key={p.currentRowKey}
-        row-class-name={p.rowClassName}
-        row-style={p.rowStyle}
-        cell-class-name={p.cellClassName}
-        cell-style={p.cellStyle}
-        header-row-class-name={p.headerRowClassName}
-        header-row-style={p.headerRowStyle}
-        header-cell-class-name={p.headerCellClassName}
-        header-cell-style={p.headerCellStyle}
-        row-key={p.rowKey}
-        empty-text={p.emptyText}
-        default-expand-all={p.defaultExpandAll}
-        default-sort={p.defaultSort}
-        tooltip-effect={p.tooltipEffect}
-        show-summary={p.showSummary}
-        sum-text={p.sumText}
-        summary-method={p.summaryMethod}
-        span-method={p.spanMethod}
-        select-on-indeterminate={p.selectOnIndeterminate}
-        indent={p.indent}
-        lazy={p.lazy}
-        load={p.load}
-        tree-props={p.treeProps}
-      >
-        {elTableColumns}
-      </el-table>
+      <div class={style.g_table_root}>
+        {/* 头部,表单查询 - 默认插槽#default */}
+        <div class={style.m_table_nav}>{slots.default?.()}</div>
+        <div class={style.m_table_table}>
+          <el-table
+            ref="tableRef"
+            data={p.data}
+            height={p.height}
+            max-height={p.maxHeight}
+            stripe={p.stripe}
+            border={p.border}
+            size={p.size}
+            fit={p.fit}
+            show-header={p.showHeader}
+            highlight-current-row={p.highlightCurrentRow}
+            current-row-key={p.currentRowKey}
+            row-class-name={p.rowClassName}
+            row-style={p.rowStyle}
+            cell-class-name={p.cellClassName}
+            cell-style={p.cellStyle}
+            header-row-class-name={p.headerRowClassName}
+            header-row-style={p.headerRowStyle}
+            header-cell-class-name={p.headerCellClassName}
+            header-cell-style={p.headerCellStyle}
+            row-key={p.rowKey}
+            empty-text={p.emptyText}
+            default-expand-all={p.defaultExpandAll}
+            default-sort={p.defaultSort}
+            tooltip-effect={p.tooltipEffect}
+            show-summary={p.showSummary}
+            sum-text={p.sumText}
+            summary-method={p.summaryMethod}
+            span-method={p.spanMethod}
+            select-on-indeterminate={p.selectOnIndeterminate}
+            indent={p.indent}
+            lazy={p.lazy}
+            load={p.load}
+            tree-props={p.treeProps}
+            on-select={emit("select")}
+            on-select-all={emit("select-all")}
+            selection-change={emit("selection-change")}
+            cell-mouse-enter={emit("cell-mouse-enter")}
+            cell-mouse-leave={emit("cell-mouse-leave")}
+            cell-click={emit("cell-click")}
+            cell-dblclick={emit("cell-dblclick")}
+            cell-contextmenu={emit("cell-contextmenu")}
+            row-click={emit("row-click")}
+            row-contextmenu={emit("row-contextmenu")}
+            row-dblclick={emit("row-dblclick")}
+            header-click={emit("header-click")}
+            header-contextmenu={emit("header-contextmenu")}
+            sort-change={emit("sort-change")}
+            filter-change={emit("filter-change")}
+            current-change={emit("current-change")}
+            header-dragend={emit("header-dragend")}
+            expand-change={emit("expand-change")}
+          >
+            {elTableColumns}
+          </el-table>
+        </div>
+        {/* 底部,Page分页 */}
+        <div v-show={p.page} class={style.m_table_page}>
+          <g-page v-model:pageNumber={this.pageNumber} v-model:pageSize={this.pageSize} total={this.total} on-change={this.pageChange()}></g-page>
+        </div>
+      </div>
     );
   },
 });

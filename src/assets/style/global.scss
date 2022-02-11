@@ -2,3 +2,8 @@
 @import "./element/index.scss";
 
 @import "./_variables";
+
+.app-container {
+  height: 100%;
+  box-sizing: border-box;
+}

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Custom Table Attribute
  * @Author: 乐涛
- * @LastEditTime: 2022-02-11 14:58:22
+ * @LastEditTime: 2022-02-11 16:30:34
  */
 import { PropType } from "vue";
 import { TableColumns as columns } from "./columns";
@@ -14,7 +14,26 @@ export const props = {
   data: Array,
   /** 表格列集合 */
   columns: Array as PropType<columns[]>,
-  height: [String, Number],
+  page: {
+    type: Boolean,
+    default: false,
+  },
+  pageSize: {
+    type: Number,
+    default: 20,
+  },
+  pageNumber: {
+    type: Number,
+    default: 1,
+  },
+  total: {
+    type: Number,
+    default: 0,
+  },
+  height: {
+    type: [String, Number],
+    default: "100%",
+  },
   maxHeight: [String, Number],
   stripe: {
     type: Boolean,
@@ -134,4 +153,7 @@ export const emits = [
   "current-change",
   "header-dragend",
   "expand-change",
+  "page-change",
+  "update:pageSize",
+  "update:pageNumber",
 ];

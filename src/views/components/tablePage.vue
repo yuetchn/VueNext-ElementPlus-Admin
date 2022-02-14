@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: TablePage
  * @Author: 乐涛
- * @LastEditTime: 2022-02-11 16:37:27
+ * @LastEditTime: 2022-02-14 10:36:14
 -->
 <template>
   <div class="app-container">
@@ -15,8 +15,8 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, reactive, toRefs, ref } from "vue";
+import { TableColumns, ElTable, SearchForm } from "@base";
 import { GetUserData } from "@/api/user";
-import { TableColumns, ElTable } from "@/components/Table";
 
 export default defineComponent({
   name: "tablePage",
@@ -24,11 +24,7 @@ export default defineComponent({
     const tableRef = ref<InstanceType<typeof ElTable>>();
     const state = reactive({
       tableData: [],
-      search: {
-        pageSize: 20,
-        pageNumber: 1,
-        total: 100,
-      },
+      search: new SearchForm(),
       columns: <TableColumns[]>[
         {
           type: "selection",

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Vite Config
  * @Author: 乐涛
- * @LastEditTime: 2022-01-24 16:17:27
+ * @LastEditTime: 2022-02-14 10:27:04
  */
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -40,6 +40,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": "/src/",
+      "@base": "/src/utils/base.ts",
     },
   },
   css: {

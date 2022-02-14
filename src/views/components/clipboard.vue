@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: clipboard
  * @Author: 乐涛
- * @LastEditTime: 2022-02-11 09:12:43
+ * @LastEditTime: 2022-02-14 13:21:56
 -->
 <template>
   <div>
@@ -45,6 +45,6 @@ const copyError = () => {
 const copy = () => {
   clipboardFunc(text.value)
   .then(() => copySuccess())
-  .catch(() => message.success("copy成功"));
+  .catch(() => message.success("copy失败"));
 };
 </script>

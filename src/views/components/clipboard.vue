@@ -45,6 +45,6 @@ const copyError = () => {
 const copy = () => {
   clipboardFunc(text.value)
   .then(() => copySuccess())
-  .catch(() => message.success("copy失败"));
+  .catch(() => copyError());
 };
 </script>

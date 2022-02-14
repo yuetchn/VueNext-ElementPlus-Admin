@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: NavBar
  * @Author: 乐涛
- * @LastEditTime: 2022-01-27 09:12:59
+ * @LastEditTime: 2022-02-14 10:42:01
 -->
 <template>
   <div class="m_navbar">
@@ -12,12 +12,17 @@
       <BreadCrumbs class="u_bread_crumbs"></BreadCrumbs>
     </div>
     <div class="m_right">
-      <div class="u_nav_item" @click="reload">
-        <g-svg-icon size="20" name="refresh" />
-      </div>
-      <div class="u_nav_item" @click="toggleScreen">
-        <g-svg-icon size="20" :name="isOpen ? 'no-fullscreen' : 'fullscreen'" />
-      </div>
+      <el-tooltip content="刷新" placement="bottom">
+        <div class="u_nav_item" @click="reload">
+          <g-svg-icon size="20" name="refresh" />
+        </div>
+      </el-tooltip>
+      <el-tooltip content="全屏" placement="bottom">
+        <div class="u_nav_item" @click="toggleScreen">
+          <g-svg-icon size="20" :name="isOpen ? 'no-fullscreen' : 'fullscreen'" />
+        </div>
+      </el-tooltip>
+
       <div class="m_right_dropdown">
         <el-dropdown>
           <div class="u_name">你好,{{ userName }}</div>
@@ -143,7 +148,7 @@ export default defineComponent({
   padding-right: 20px;
   margin-left: 10px;
   cursor: pointer;
-  
+
   .u_name {
     font-size: 18px;
     font-weight: bold;

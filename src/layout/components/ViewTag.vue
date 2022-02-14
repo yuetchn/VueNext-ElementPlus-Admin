@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: ViewTag
  * @Author: 乐涛
- * @LastEditTime: 2022-02-09 13:53:06
+ * @LastEditTime: 2022-02-14 10:43:21
 -->
 <template>
   <div class="m_view_tag">
@@ -21,9 +21,10 @@
       </el-scrollbar>
     </div>
 
-    <div class="m_view_operate" @click="closeAllTag">
-      <!-- Close All -->
-      <g-svg-icon name="close" size="13"></g-svg-icon>
+    <el-tooltip content="关闭所有Tag" placement="left">
+      <div class="m_view_operate" @click="closeAllTag">
+        <!-- Close All -->
+        <g-svg-icon name="close" size="13"></g-svg-icon>
       <!-- <el-dropdown>
         <g-svg-icon name="down" size="10"></g-svg-icon>
         <template #dropdown>
@@ -32,7 +33,8 @@
           </el-dropdown-menu>
         </template>
       </el-dropdown> -->
-    </div>
+      </div>
+    </el-tooltip>
   </div>
 </template>
 <script lang="ts">

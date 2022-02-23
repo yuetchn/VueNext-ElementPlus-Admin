@@ -1,6 +1,6 @@
 /*
  * @ModuleName: 全局属性注解
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-25 10:20:51
  */
 import { message } from "ant-design-vue";

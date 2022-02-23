@@ -1,6 +1,6 @@
 /*
  * @ModuleName: 路由元数据注解
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-26 14:26:43
  */
 import "vue-router";

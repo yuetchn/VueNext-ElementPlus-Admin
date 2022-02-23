@@ -1,6 +1,6 @@
 /*
  * @ModuleName: Cookies
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-12 11:49:03
  */
 import Cookie from "js-cookie";

@@ -1,6 +1,6 @@
 <!--
  * @ModuleName: richTextEdit
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-24 14:29:02
 -->
 <template>

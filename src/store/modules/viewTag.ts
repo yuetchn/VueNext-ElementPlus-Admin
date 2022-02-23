@@ -1,6 +1,6 @@
 /*
  * @ModuleName: ViewTagModule
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-27 09:52:33
  */
 import { Module } from "vuex";

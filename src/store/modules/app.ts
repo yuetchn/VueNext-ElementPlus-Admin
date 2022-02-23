@@ -1,6 +1,6 @@
 /*
  * @ModuleName: App Module
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-25 17:33:26
  */
 import { Module } from "vuex";

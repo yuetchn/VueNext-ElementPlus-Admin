@@ -1,6 +1,6 @@
 /*
  * @ModuleName: 全局指令注册
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-25 11:08:41
  */
 import { App } from "vue";

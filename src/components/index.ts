@@ -1,6 +1,6 @@
 /*
  * @ModuleName: Global components
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-02-11 09:55:07
  */
 import { App } from "vue";

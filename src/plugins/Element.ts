@@ -1,6 +1,6 @@
 /*
  * @ModuleName: Element Use
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-23 13:19:11
  */
 import { App } from "vue";

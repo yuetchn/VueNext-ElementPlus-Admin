@@ -1,6 +1,6 @@
 /*
  * @ModuleName: Custom Table Attribute
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-02-11 16:42:25
  */
 import { PropType } from "vue";

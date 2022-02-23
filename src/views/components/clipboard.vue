@@ -1,6 +1,6 @@
 <!--
  * @ModuleName: clipboard
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-02-14 13:21:56
 -->
 <template>

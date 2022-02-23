@@ -1,6 +1,6 @@
 /*
  * @ModuleName: 权限拦截
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-27 10:02:18
  */
 import { RouteRecordRaw } from "vue-router";

@@ -1,6 +1,6 @@
 <!--
  * @ModuleName: SilderBar
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-26 15:30:08
 -->
 <template>

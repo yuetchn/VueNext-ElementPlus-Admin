@@ -1,6 +1,6 @@
 /*
  * @ModuleName: 全局属性挂载
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-25 10:18:51
  */
 import { App } from "vue";

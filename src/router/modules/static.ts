@@ -1,6 +1,6 @@
 /*
  * @ModuleName: 静态路由
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-27 09:49:30
  */
 import { RouteRecordRaw } from "vue-router";

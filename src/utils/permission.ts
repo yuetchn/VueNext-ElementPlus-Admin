@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 权限拦截
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-27 10:02:18
+ * @LastEditTime: 2022-02-23 11:44:14
  */
 import { RouteRecordRaw } from "vue-router";
 import Nprogress from "nprogress";
@@ -21,7 +21,7 @@ router.beforeEach((to, from, next) => {
   Nprogress.start();
 
   if (!GetToken()) {
-    if (RouterWrite.indexOf(to.path) >= 0) {
+    if (RouterWrite.includes(to.path)) {
       next();
       return;
     }

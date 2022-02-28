@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Main
- * @Author: 乐涛
- * @LastEditTime: 2022-01-27 09:53:17
+ * @Author: yuetchn@163.com
+ * @LastEditTime: 2022-02-28 13:30:02
 -->
 <template>
   <section class="m_main">
@@ -40,15 +40,13 @@ export default defineComponent({
 <style lang="scss" scoped>
 .m_main {
   height: calc(100% - 45px - 35px);
-  // padding: 8px;
-  background: #fff;
+  background: $g-main-background-color;
+  color: $text-color-primary;
   overflow: hidden;
 }
 
 .m_main_content {
-  padding: 5px;
-  background: #fff;
-  // border-radius:4px;
+  padding: 15px;
   box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05);
   height: 100%;
   overflow: auto;

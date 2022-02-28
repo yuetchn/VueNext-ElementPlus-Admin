@@ -1,6 +1,6 @@
 /*
  * @ModuleName: Vuex
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-26 09:58:49
  */
 import { createStore, Store, useStore as _useStore } from "vuex";

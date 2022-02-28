@@ -1,6 +1,6 @@
 /*
  * @ModuleName: Redirect
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-26 09:16:25
  */
 import { defineComponent } from "vue";

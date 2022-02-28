@@ -1,6 +1,6 @@
 /*
  * @ModuleName: EChartsComponent Setup
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-25 11:04:17
  */
 

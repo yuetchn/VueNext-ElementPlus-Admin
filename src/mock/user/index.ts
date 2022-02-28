@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User
- * @Author: 乐涛
- * @LastEditTime: 2022-01-27 09:54:51
+ * @Author: yuetchn@163.com
+ * @LastEditTime: 2022-02-28 10:33:30
  */
 import { mock } from "mockjs";
 
@@ -287,6 +287,15 @@ const adminMenu = [
       },
     ],
   },
+  {
+    path: "/user",
+    component: "components/user",
+    name: "user",
+    meta: {
+      title: "个人中心",
+      hide: true,
+    },
+  },
 ];
 const testMenu = [
   {
@@ -330,6 +339,15 @@ const testMenu = [
         },
       },
     ],
+  },
+  {
+    path: "/user",
+    component: "components/user.vue",
+    name: "user",
+    meta: {
+      title: "个人中心",
+      hide: true,
+    },
   },
 ];
 

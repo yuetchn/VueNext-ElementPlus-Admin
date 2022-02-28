@@ -1,12 +1,13 @@
 <!--
  * @ModuleName: 404 Page
- * @Author: 乐涛
- * @LastEditTime: 2022-01-24 15:43:20
+ * @Author: yuetchn@163.com
+ * @LastEditTime: 2022-02-28 09:59:18
 -->
 <template>
   <div class="m_404">
     <div>
-      <g-svg-icon size="400" name="404-img"></g-svg-icon>
+      <!-- <g-svg-icon size="400" name="404-img"></g-svg-icon> -->
+      <img src="@/assets/imgs/404.png" style="width: 400px" />
     </div>
     <div class="m_404_desc">
       <div class="u_title">页面不见了~</div>
@@ -45,7 +46,7 @@
     line-height: 30px;
     text-align: center;
     cursor: pointer;
-    margin-top:50px;
+    margin-top: 50px;
   }
 }
 </style>

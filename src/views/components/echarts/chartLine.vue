@@ -1,6 +1,6 @@
 <!--
  * @ModuleName: Echart Line
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-25 10:46:48
 -->
 <template>

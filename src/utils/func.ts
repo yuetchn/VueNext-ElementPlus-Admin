@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 通用函数
- * @Author: 乐涛
- * @LastEditTime: 2022-01-25 17:55:14
+ * @Author: yuetchn@163.com
+ * @LastEditTime: 2022-02-28 11:55:15
  */
 import { Md5 as tsMd5 } from "ts-md5";
 
@@ -54,3 +54,41 @@ export class Throttle {
 export const md5 = (str: string) => tsMd5.hashStr(str);
 
 export { clipboardFunc } from "@/directive/clipboard";
+
+/**
+ * @description 格式化数字
+ * @param number：要格式化的数字
+ * @param decimals：保留几位小数 默认0位
+ * @param decPoint：小数点符号 默认.
+ * @param thousandsSep：千分位符号 默认为,
+ */
+export const formatNumber = (number: number, decimals = 0, decPoint = ".", thousandsSep = ",") => {
+  const s = [];
+  let n = (number / 1000).toString();
+
+  // 小数
+  let last = "";
+  let l = "";
+  if (n.includes(".")) {
+    l = n.split(".")[1];
+    last = l.substring(0, decimals);
+    if (decimals - l.length > 0) {
+      last += new Array(decimals - l.length + 1).join("0");
+    }
+    n = n.split(".")[0];
+  } else {
+    last = new Array(decimals + 1).join("0");
+    n = "0";
+  }
+
+  if (n === "0") {
+    return `0${ decimals !== 0 ? decPoint : "" }${ last }`;
+  }
+  do {
+    n = (parseInt(n) / 1000).toString();
+    s.unshift(parseInt(n.split(".")[1]).toString());
+    n = n.split(".")[0];
+  } while (n.split(".")[0] !== "0" || n !== "0");
+
+  return `${ s.join(thousandsSep) }${ decimals !== 0 ? decPoint : "" }${ last }`;
+};

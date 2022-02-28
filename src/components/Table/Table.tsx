@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Custom Table
- * @Author: 乐涛
- * @LastEditTime: 2022-02-11 16:35:01
+ * @Author: yuetchn@163.com
+ * @LastEditTime: 2022-02-28 14:32:50
  */
 import { defineComponent, reactive, ref, toRefs } from "vue";
 import { props, emits, ElTable } from "./index";
@@ -16,7 +16,6 @@ export default defineComponent({
       pageSize: p.pageSize,
       pageNumber: p.pageNumber,
     });
-
     const clearSelection = () => tableRef.value?.clearSelection();
     const toggleRowSelection = (...args: any[]) => tableRef.value?.toggleRowSelection(args[0], args[1]);
     const toggleAllSelection = () => tableRef.value?.toggleAllSelection();
@@ -31,6 +30,7 @@ export default defineComponent({
       emit("update:pageNumber", state.pageNumber);
       emit("page-change");
     };
+
     return {
       // ref
       tableRef,

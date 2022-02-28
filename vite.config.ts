@@ -1,13 +1,16 @@
 /*
  * @ModuleName: Vite Config
- * @Author: 乐涛
- * @LastEditTime: 2022-01-24 16:17:27
+ * @Author: yuetchn@163.com
+ * @LastEditTime: 2022-02-28 10:38:20
  */
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import legacy from "@vitejs/plugin-legacy";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import viteSvgIcons from "vite-plugin-svg-icons";
+// 解决首次启动页面加载慢,本地第一次运行会创建缓存,之后从缓存中读取预加载项
+import OptimizationPersist from "vite-plugin-optimize-persist";
+import PkgConfig from "vite-plugin-package-config";
 import path from "path";
 
 const timeStamp = new Date().valueOf();
@@ -18,6 +21,8 @@ export default defineConfig({
     vue(),
     legacy(),
     vueJsx(),
+    OptimizationPersist(),
+    PkgConfig(),
     viteSvgIcons({
       // 指定需要缓存的图标文件夹，地址可改
       iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
@@ -40,6 +45,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": "/src/",
+      "@base": "/src/utils/base.ts",
     },
   },
   css: {

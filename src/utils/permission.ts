@@ -1,8 +1,9 @@
 /*
  * @ModuleName: 权限拦截
- * @Author: 乐涛
- * @LastEditTime: 2022-01-27 10:02:18
+ * @Author: yuetchn@163.com
+ * @LastEditTime: 2022-02-28 16:13:59
  */
+import { computed } from "vue";
 import { RouteRecordRaw } from "vue-router";
 import Nprogress from "nprogress";
 import router from "@/router";
@@ -13,6 +14,7 @@ import { store } from "@/store";
 import { UserStates } from "@/store/modules/user";
 
 const RouterWrite = ["/login", "/404"];
+const StaticRouterCount = computed<number>(() => GetStaticRoutes());
 
 Nprogress.configure({});
 
@@ -21,7 +23,7 @@ router.beforeEach((to, from, next) => {
   Nprogress.start();
 
   if (!GetToken()) {
-    if (RouterWrite.indexOf(to.path) >= 0) {
+    if (RouterWrite.includes(to.path)) {
       next();
       return;
     }
@@ -35,7 +37,7 @@ router.beforeEach((to, from, next) => {
   }
 
   // 挂载动态路由
-  if (router.getRoutes().length === GetStaticRoutes()) {
+  if (router.getRoutes().length === StaticRouterCount.value) {
     const dynamicRoutes = ((store.state as any).UserModule as UserStates).menus;
     if (!dynamicRoutes.length) {
       return next();

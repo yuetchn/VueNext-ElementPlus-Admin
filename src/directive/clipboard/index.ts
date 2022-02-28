@@ -1,6 +1,6 @@
 /*
  * @ModuleName: Clipboard
- * @Author: 乐涛
+ * @Author: yuetchn@163.com
  * @LastEditTime: 2022-01-25 11:44:06
  */
 import { Directive } from "vue";

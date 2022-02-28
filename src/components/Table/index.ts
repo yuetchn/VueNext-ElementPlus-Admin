@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Custom Table Attribute
- * @Author: 乐涛
- * @LastEditTime: 2022-02-11 16:30:34
+ * @Author: yuetchn@163.com
+ * @LastEditTime: 2022-02-11 16:42:25
  */
 import { PropType } from "vue";
 import { TableColumns as columns } from "./columns";
@@ -14,18 +14,22 @@ export const props = {
   data: Array,
   /** 表格列集合 */
   columns: Array as PropType<columns[]>,
+  /** 是否开启分页,页码或者每页条数发生改变会触发 【page-change】 函数 */
   page: {
     type: Boolean,
     default: false,
   },
+  /** 每页条数 */
   pageSize: {
     type: Number,
     default: 20,
   },
+  /** 分页页码 */
   pageNumber: {
     type: Number,
     default: 1,
   },
+  /** 总条数 */
   total: {
     type: Number,
     default: 0,

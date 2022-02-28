@@ -4,10 +4,14 @@
   $colors: (
     // "primary": (
     //   "base": black,
-    // ),
+    // ),,
   )
 );
 @use "element-plus/theme-chalk/src/index.scss" as *;
 // If you just import on demand, you can ignore the following content.
 // 如果你想导入所有样式:
 // @use "element-plus/theme-chalk/src/index.scss" as *;
+
+.el-card__header {
+  padding: 15px 20px;
+}

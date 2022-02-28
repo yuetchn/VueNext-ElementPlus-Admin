@@ -2,14 +2,17 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   props: {
+    /** Svg图标名称 */
     name: {
       type: String,
       default: "",
     },
+    /** Svg颜色 */
     color: {
       type: String,
       default: "",
     },
+    /** Svg大小 */
     size: {
       type: [Number, String],
       default: 16,

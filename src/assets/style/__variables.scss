@@ -1,8 +1,16 @@
-// SilderBarItem Color
-$g_silderBar_background_color:#333333;
-$g_silderBar_color:rgba(255, 255, 255, 0.65);
-$g_silderBar_sub_background_color:#3F3F3F;
-$g_silderBar_selected_background_color:#3F3F3F;
+// Layout SilderBarItem Color
+$g-silderBar-background-color: #333333;
+$g-silderBar-color: rgba(255, 255, 255, 0.65);
+$g-silderBar-sub-background-color: #3f3f3f;
+$g-silderBar-selected-background-color: #3f3f3f;
 
-// color
-$g-color-white: #ffffff;
+// Layout Main Color
+$g-main-background-color: #f8f8f8;
+
+// base color
+$color-primary: #409eff;
+
+// text color
+$text-color-primary: #303133;
+$text-color-regular: #606266;
+$text-color-secondary: #909399;

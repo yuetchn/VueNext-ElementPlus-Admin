@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: ViewTag
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-14 10:43:21
+ * @LastEditTime: 2022-02-28 09:49:36
 -->
 <template>
   <div class="m_view_tag">
@@ -13,8 +13,8 @@
             <div class="tag_title">
               {{ item.meta.title || "Not Title" }}
             </div>
-            <div v-if="(showIndex === i || selTag.path === item.path) && !item.meta.affix" class="tag_close" @click.stop="closeTag(item)">
-              <g-svg-icon name="close" color="#333333" size="8"></g-svg-icon>
+            <div v-if="!item.meta.affix" class="tag_close" @click.stop="closeTag(item)">
+              <g-svg-icon name="close" color="#333333" size="6"></g-svg-icon>
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   height: 100%;
-  font-size: 12px;
+  font-size: 11px;
   color: rgba(0, 0, 0, 0.5);
   transition: background-color 0.3s;
   cursor: pointer;
@@ -136,7 +136,7 @@ export default defineComponent({
   padding: 3px 8px 3px 15px;
   border-radius: 2px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 11px;
   transition-property: padding, background-color;
   transition-duration: 0.3s, 0.5s;
   flex: 0 0 auto;
@@ -155,8 +155,8 @@ export default defineComponent({
   }
 
   .tag_close {
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
     display: flex;
     justify-content: center;
     align-items: center;

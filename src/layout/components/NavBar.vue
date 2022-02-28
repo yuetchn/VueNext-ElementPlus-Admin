@@ -1,13 +1,13 @@
 <!--
  * @ModuleName: NavBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-14 10:42:01
+ * @LastEditTime: 2022-02-28 10:49:57
 -->
 <template>
   <div class="m_navbar">
     <div class="m_left_bread">
       <div class="m_shrink" @click="check">
-        <g-svg-icon name="shrink" size="22" color="#A4A4A4" :class="{ shrink: isShrink }"></g-svg-icon>
+        <g-svg-icon name="shrink" size="18" color="#606266" :class="{ shrink: isShrink }"></g-svg-icon>
       </div>
       <BreadCrumbs class="u_bread_crumbs"></BreadCrumbs>
     </div>
@@ -28,6 +28,7 @@
           <div class="u_name">你好,{{ userName }}</div>
           <template #dropdown>
             <el-dropdown-menu>
+              <el-dropdown-item @click="$router.push('/user')">个人中心</el-dropdown-item>
               <el-dropdown-item @click="loginOut">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -133,7 +134,7 @@ export default defineComponent({
   height: 100%;
 
   .u_bread_crumbs {
-    margin-left: 20px;
+    margin-left: 15px;
   }
 }
 

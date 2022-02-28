@@ -7,5 +7,7 @@
   height: 100%;
   box-sizing: border-box;
   padding: 10px;
-  background-color: $g_main_content_background_color;
+  background-color: #ffffff;
+  position: relative;
+  overflow: auto;
 }

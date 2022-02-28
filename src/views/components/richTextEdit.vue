@@ -1,30 +1,51 @@
 <!--
  * @ModuleName: richTextEdit
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-24 14:29:02
+ * @LastEditTime: 2022-02-28 15:24:37
 -->
 <template>
   <div>
-    <a-alert message="使用说明：" type="warning" show-icon>
-      <template #description>
-        <p>
-          使用全局组件: g-editor<br />
-          属性:<br />
-          Width: 编辑器宽度<br />
-          Height: 编辑器高度<br />
-          其他定制可直接修改组件源码。
-        </p>
-      </template>
-    </a-alert>
-    <br />
-    <h2>演示:</h2>
-    <el-input v-model="text" style="margin-bottom:20px;" type="textarea"></el-input>
-    
-    <g-editor v-model="text"></g-editor>
+    <el-card>
+      <template #header> 使用富文本 </template>
+      <div>
+        <g-editor v-model="text"></g-editor>
+      </div>
+    </el-card>
+    <el-card style="margin-top: 15px">
+      <template #header>属性说明</template>
+      <g-table :columns="help.PropertyColumns" :data="data"></g-table>
+    </el-card>
   </div>
 </template>
 <script lang="ts" setup>
 import { ref } from "vue";
+import help from "./index";
 
+const data = ref([
+  {
+    name: "v-model",
+    desc: "内容绑定",
+    type: "any",
+    default: "",
+  },
+  {
+    name: "tag-name",
+    desc: "生成指定tag标签",
+    type: "string",
+    default: "div",
+  },
+  {
+    name: "width",
+    desc: "编辑器宽度",
+    type: "number",
+    default: "0",
+  },
+  {
+    name: "height",
+    desc: "编辑器高度",
+    type: "number",
+    default: "300",
+  },
+]);
 const text = ref("<p>测试文档编辑</p>");
 </script>

@@ -1,36 +1,43 @@
 <!--
  * @ModuleName: clipboard
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-14 13:21:56
+ * @LastEditTime: 2022-02-28 15:48:46
 -->
 <template>
   <div>
-    <a-alert message="使用说明：" type="warning" show-icon>
-      <template #description>
-        <p>
-          两种方式调用: 指令 v-copy:data,v-copy:success,v-copy:error,函数 clipboardFunction(data)<br />
-          v-copy:data - 传入要写入剪切板的数据<br />
-          v-copy:success - 写入成功回调<br />
-          v-copy:error - 写入失败回调<br />
-          clipboardFunction(data): 函数调用，返回Promise
-        </p>
-      </template>
-    </a-alert>
-    <br />
-    <h2>指令方式</h2>
-    <el-input v-model="text" style="width: 200px; margin-right: 10px"></el-input>
-    <el-button v-copy:data="text" v-copy:success="copySuccess" v-copy:error="copyError" type="primary">指令调用v-copy</el-button>
+    <el-card>
+      <template #header> 说明 </template>
+      <div>剪切板提供 [Vue指令]\[函数调用] 两种方式以便使用。</div>
+    </el-card>
 
-    <br />
-    <h2>函数方式</h2>
-    <el-input v-model="text" style="width: 200px; margin-right: 10px"></el-input>
-    <el-button type="primary" @click="copy">函数调用clipboardFunc</el-button>
+    <el-card style="margin-top: 15px">
+      <template #header>指令调用[v-copy]</template>
+      <el-input v-model="text" style="width: 200px; margin-right: 10px"></el-input>
+      <el-button v-copy:data="text" v-copy:success="copySuccess" v-copy:error="copyError" type="primary">指令调用v-copy</el-button>
+    </el-card>
+
+    <el-card style="margin-top: 15px">
+      <template #header>函数调用[clipboardFunc]</template>
+      <el-input v-model="text" style="width: 200px; margin-right: 10px"></el-input>
+      <el-button type="primary" @click="copy">函数调用clipboardFunc</el-button>
+    </el-card>
+
+    <el-card style="margin-top: 15px">
+      <template #header>属性</template>
+      <g-table :columns="help.PropertyColumns" :data="data"></g-table>
+    </el-card>
+
+    <el-card style="margin-top: 15px">
+      <template #header>方法</template>
+      <g-table :columns="help.FuncColumns" :data="data1"></g-table>
+    </el-card>
   </div>
 </template>
 <script lang="ts" setup>
 import { message } from "ant-design-vue";
 import { ref } from "vue";
 import { clipboardFunc } from "@/utils/func";
+import help from "./index";
 
 const text = ref("测试Copy");
 
@@ -47,4 +54,29 @@ const copy = () => {
   .then(() => copySuccess())
   .catch(() => copyError());
 };
+
+const data = ref([
+  {
+    name: "v-copy:data",
+    desc: "传入要复制的数据",
+    type: "any",
+  },
+  {
+    name: "v-copy:success",
+    desc: "调用成功回调",
+    type: "function",
+  },
+  {
+    name: "v-copy:error",
+    desc: "调用失败回调",
+    type: "function",
+  },
+]);
+
+const data1 = ref([
+  {
+    name: "clipboardFunc(data)",
+    desc: "函数调用,返回<Promise>",
+  },
+]);
 </script>

@@ -1,25 +1,30 @@
 <!--
  * @ModuleName: Permissin Test
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-25 17:50:06
+ * @LastEditTime: 2022-02-28 15:52:04
 -->
 <template>
   <div>
-    <h2>菜单权限测试页</h2>
-    <a-alert message="使用说明：" type="warning" show-icon>
-      <template #description>
+    <el-card>
+      <template #header>权限说明</template>
+      <div>
         <p>
           调用UserStore中的 login 方法切换用户<br />
           切换用户后根据接口返回的菜单以及角色生成动态路由表:<br />
           避免刷新后动态路由丢失问题，动态路由生成放到了路由拦截里面<br />
           <br />
         </p>
-      </template>
-    </a-alert>
-    <br />
-    <h4>当前用户：{{ userName }}</h4>
-    <el-button type="primary" @click="toggleUser(1)">切换到Admin</el-button>
-    <el-button type="primary" @click="toggleUser(2)">切换到Test</el-button>
+      </div>
+    </el-card>
+
+    <el-card style="margin-top: 15px">
+      <template #header>切换权限</template>
+      <div>
+        <h4>当前用户：{{ userName }}</h4>
+        <el-button type="primary" @click="toggleUser(1)">切换到Admin</el-button>
+        <el-button type="primary" @click="toggleUser(2)">切换到Test</el-button>
+      </div>
+    </el-card>
   </div>
 </template>
 <script lang="ts" setup>

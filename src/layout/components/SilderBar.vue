@@ -102,7 +102,7 @@ export default defineComponent({
   height: 100%;
   transition: all 0.3s;
   box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.08);
-  background-color: $g_silderBar_background_color;
+  background-color: $g-silderBar-background-color;
 }
 
 .m_silder_bar_shrink {
@@ -111,7 +111,7 @@ export default defineComponent({
 
 .m_silderBar_title {
   height: 45px;
-  background-color: $g_silderBar_background_color;
+  background-color: $g-silderBar-background-color;
   color: #fff;
   line-height: 45px;
   text-align: center;
@@ -119,25 +119,25 @@ export default defineComponent({
 }
 
 .ant-menu {
-  background-color: $g_silderBar_background_color;
-  color: $g_silderBar_color;
+  background-color: $g-silderBar-background-color;
+  color: $g-silderBar-color;
   height: 100%;
   // overflow: hidden;
   // overflow-y: auto;
 }
 
 ::v-deep(.ant-menu-sub.ant-menu-inline) {
-  background-color: $g_silderBar_selected_background_color;
-  color: $g_silderBar_color;
+  background-color: $g-silderBar-selected-background-color;
+  color: $g-silderBar-color;
 }
 
 ::v-deep(.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected) {
-  background-color: $g_silderBar_selected_background_color;
+  background-color: $g-silderBar-selected-background-color;
 }
 
 .ant-menu-inline,
 .ant-menu-vertical,
 .ant-menu-vertical-left {
-  border-right: 1px solid $g_silderBar_background_color;
+  border-right: 1px solid $g-silderBar-background-color;
 }
 </style>

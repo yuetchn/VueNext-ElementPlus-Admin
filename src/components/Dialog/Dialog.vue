@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Dialog 对话框
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-25 16:49:14
+ * @LastEditTime: 2022-02-28 15:39:29
 -->
 
 <template>
@@ -128,7 +128,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .m_dialog_shade {
   position: absolute;
-  z-index: 899;
+  z-index: 1199;
   width: 100%;
   top: 0;
   height: 100%;
@@ -140,7 +140,7 @@ export default defineComponent({
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
-  z-index: 900;
+  z-index: 1200;
   border-radius: 4px;
   box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.08);
   background: #ffffff;

@@ -1,9 +1,11 @@
 // Element Style
 @import "./element/index.scss";
-
+// Variables
 @import "./_variables";
 
 .app-container {
   height: 100%;
   box-sizing: border-box;
+  padding: 10px;
+  background-color: $g_main_content_background_color;
 }

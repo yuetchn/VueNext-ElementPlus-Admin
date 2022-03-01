@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height: 100%">
     <el-row :gutter="15">
       <el-col :span="6">
         <div class="m_card_item">
@@ -49,13 +49,13 @@
 
     <el-row style="margin-top: 15px" :gutter="15">
       <el-col :span="16">
-        <div style="background-color: #fff; padding: 10px; border-radius: 4px">
-          <g-chart-line></g-chart-line>
+        <div style="background-color: #fff; border-radius: 4px">
+          <g-chart height="500px" :options="lineOptions"></g-chart>
         </div>
       </el-col>
       <el-col :span="8">
-        <div style="background-color: #fff; padding: 10px; border-radius: 4px">
-          <g-chart-line></g-chart-line>
+        <div style="background-color: #fff; border-radius: 4px">
+          <g-chart height="500px" :options="pieOptions"></g-chart>
         </div>
       </el-col>
     </el-row>
@@ -66,14 +66,76 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   setup() {
-    return {};
+    return {
+      lineOptions: {
+        title: {
+          text: "访问人数",
+          left: "center",
+          padding: 10,
+        },
+        xAxis: {
+          type: "category",
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: "line",
+            smooth: true,
+          },
+        ],
+      },
+      pieOptions: {
+        title: {
+          left: "center",
+          padding: 10,
+          text: "来源",
+        },
+        tooltip: {
+          trigger: "item",
+        },
+        legend: {
+          top: "8%",
+          left: "center",
+        },
+        series: [
+          {
+            name: "来源",
+            type: "pie",
+            radius: ["40%", "70%"],
+            avoidLabelOverlap: false,
+            label: {
+              show: false,
+              position: "center",
+            },
+            emphasis: {
+              label: {
+                show: true,
+                fontSize: "40",
+                fontWeight: "bold",
+              },
+            },
+            labelLine: {
+              show: false,
+            },
+            data: [
+              { value: 1048, name: "网络" },
+              { value: 735, name: "官网" },
+              { value: 580, name: "朋友" },
+              { value: 484, name: "链接" },
+              { value: 300, name: "广告" },
+            ],
+          },
+        ],
+      },
+    };
   },
 });
 </script>
 <style lang="scss" scoped>
-.m_nav_card {
-}
-
 .m_card_item {
   background-color: #fff;
   display: flex;
@@ -100,9 +162,8 @@ export default defineComponent({
 
   &:hover {
     cursor: pointer;
-    .u_card_num {
-      font-size: 33px;
-    }
+
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.08);
     .m_card_right {
       background: rgba(0, 0, 0, 0.05);
       border-radius: 8px;

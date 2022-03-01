@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 组件展示
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-25 15:31:05
+ * @LastEditTime: 2022-03-01 13:14:43
  */
 import { RouteRecordRaw } from "vue-router";
 
@@ -113,6 +113,27 @@ const staticRoutes: RouteRecordRaw[] = [
         meta: {
           title: "Icon图标",
           icon: "icon",
+        },
+      },
+    ],
+  },
+  {
+    path: "/verify",
+    redirect: "/verify/index",
+    name: "verify",
+    component: Layout,
+    meta: {
+      title: "正则验证",
+      icon: "verify",
+    },
+    children: [
+      {
+        path: "index",
+        name: "verifyIndex",
+        component: () => import("@/views/components/verifys.vue"),
+        meta: {
+          title: "正则验证",
+          icon: "verify",
         },
       },
     ],

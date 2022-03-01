@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Main
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 13:30:02
+ * @LastEditTime: 2022-03-01 09:45:41
 -->
 <template>
   <section class="m_main">
@@ -40,7 +40,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .m_main {
   height: calc(100% - 45px - 35px);
-  background: $g-main-background-color;
+  background-color: $g-main-background-color;
   color: $text-color-primary;
   overflow: hidden;
 }

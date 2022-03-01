@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 10:33:30
+ * @LastEditTime: 2022-03-01 13:14:54
  */
 import { mock } from "mockjs";
 
@@ -122,6 +122,27 @@ const adminMenu = [
         meta: {
           title: "Icon图标",
           icon: "icon",
+        },
+      },
+    ],
+  },
+  {
+    path: "/verify",
+    redirect: "/verify/index",
+    name: "verify",
+    component: "Layout",
+    meta: {
+      title: "正则验证",
+      icon: "verify",
+    },
+    children: [
+      {
+        path: "index",
+        name: "verifyIndex",
+        component: "components/verifys",
+        meta: {
+          title: "正则验证",
+          icon: "verify",
         },
       },
     ],

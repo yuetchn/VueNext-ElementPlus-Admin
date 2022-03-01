@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-01 14:02:32
+ * @LastEditTime: 2022-03-01 14:07:49
 -->
 <template>
   <div class="m_silder_bar" :class="{ m_silder_bar_shrink: isShrink }">
@@ -9,11 +9,11 @@
       <a-menu v-model:selectedKeys="nowSelMenuKeys" v-model:openKeys="nowOpemMenuKeys" theme="dark" :inline-collapsed="isShrink" mode="inline">
         <Logo></Logo>
         <span v-for="item of routes" :key="item.path">
-          <a-menu-item v-if="item.children?.length === 1" :key="`${item.path}/${item?.children[0].path}`" @click="titleClick(`${item.path}/${item.children && item.children[0].path}`, item.children && item.children[0])">
+          <a-menu-item v-if="item.children?.length === 1" :key="`${item.path}/${item.children && item.children[0].path}`" @click="titleClick(`${item.path}/${item.children && item.children[0].path}`, item.children && item.children[0])">
             <template #icon>
-              <g-svg-icon :name="item?.children[0].meta?.icon"></g-svg-icon>
+              <g-svg-icon :name="item.children && item.children[0].meta?.icon"></g-svg-icon>
             </template>
-            <span> {{ item?.children[0].meta?.title || "Not Title" }}</span>
+            <span> {{ (item.children && item.children[0].meta?.title) || "Not Title" }}</span>
           </a-menu-item>
           <a-sub-menu v-else :key="item.path">
             <template #icon>
@@ -61,8 +61,8 @@ export default defineComponent({
 
     state.nowSelMenuKeys = store.getters["AppModule/getNowRoutePath"];
     state.nowOpemMenuKeys = store.getters["AppModule/getNowRouteSpread"];
-    const titleClick = (path: string, route: RouteRecordRaw) => {
-      if (route.meta?.link) {
+    const titleClick = (path: string, route: RouteRecordRaw | undefined) => {
+      if (route?.meta?.link) {
         window.open(route.meta.link);
         return;
       }

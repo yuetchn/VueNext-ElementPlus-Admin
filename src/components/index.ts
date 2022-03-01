@@ -1,14 +1,14 @@
 /*
  * @ModuleName: Global components
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-11 09:55:07
+ * @LastEditTime: 2022-03-01 09:58:46
  */
 import { App } from "vue";
 import Dialog from "./Dialog/Dialog.vue";
 import SvgIcon from "./SvgIcon/SvgIcon";
 import Page from "./Page/Page.vue";
 import Editor from "./Editor/Editor.vue";
-import ChartLine from "./Charts/ChartLine.vue";
+import Chart from "./Charts/Chart";
 import Table from "./Table/Table";
 
 export default (app: App) => {
@@ -16,6 +16,6 @@ export default (app: App) => {
   app.component("g-svg-icon", SvgIcon);
   app.component("g-page", Page);
   app.component("g-editor", Editor);
-  app.component("g-chart-line", ChartLine);
+  app.component("g-chart", Chart);
   app.component("g-table", Table);
 };

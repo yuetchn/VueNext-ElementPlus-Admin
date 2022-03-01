@@ -6,6 +6,7 @@
 import { defineComponent, reactive, ref, toRefs } from "vue";
 import { props, emits, ElTable } from "./index";
 import style from "./Table.module.scss";
+
 export default defineComponent({
   props,
   emits,

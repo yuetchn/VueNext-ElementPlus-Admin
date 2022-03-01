@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 静态路由
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 10:16:15
+ * @LastEditTime: 2022-03-01 10:47:50
  */
 import { RouteRecordRaw } from "vue-router";
 
@@ -32,7 +32,7 @@ const staticRoutes: RouteRecordRaw[] = [
         name: "dashboardIndex",
         component: () => import("@/views/dashboard/dashboard.vue"),
         meta: {
-          title: "综合示例",
+          title: "控制台",
           icon: "home",
           affix: true,
           cache: true,

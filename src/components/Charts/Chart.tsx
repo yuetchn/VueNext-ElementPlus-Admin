@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Cahrt
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-01 10:33:19
+ * @LastEditTime: 2022-03-01 13:21:25
  */
 
 import { defineComponent, onMounted, reactive, toRefs, ref, watch } from "vue";
@@ -31,8 +31,8 @@ export default defineComponent({
     watch(
       () => p.options,
       (v) => {
-        echarts?.setOption(p.options);
-      }
+        echarts?.setOption(v);
+      },
     );
 
     return {

@@ -1,14 +1,14 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-01 14:07:49
+ * @LastEditTime: 2022-03-01 15:16:25
 -->
 <template>
   <div class="m_silder_bar" :class="{ m_silder_bar_shrink: isShrink }">
     <el-scrollbar>
       <a-menu v-model:selectedKeys="nowSelMenuKeys" v-model:openKeys="nowOpemMenuKeys" theme="dark" :inline-collapsed="isShrink" mode="inline">
         <Logo></Logo>
-        <span v-for="item of routes" :key="item.path">
+        <template v-for="item of routes" :key="item.path">
           <a-menu-item v-if="item.children?.length === 1" :key="`${item.path}/${item.children && item.children[0].path}`" @click="titleClick(`${item.path}/${item.children && item.children[0].path}`, item.children && item.children[0])">
             <template #icon>
               <g-svg-icon :name="item.children && item.children[0].meta?.icon"></g-svg-icon>
@@ -20,7 +20,7 @@
               <g-svg-icon :name="item.meta?.icon"></g-svg-icon>
             </template>
             <template #title>{{ item.meta?.title || "Not Title" }}</template>
-            <span v-for="c of item.children" :key="`${item.path}/${c.path}`">
+            <template v-for="c of item.children" :key="`${item.path}/${c.path}`">
               <a-menu-item v-if="!c.children?.length" :key="`${item.path}/${c.path}`" @click="titleClick(`${item.path}/${c.path}`, c)">
                 <template #icon>
                   <g-svg-icon :name="c.meta?.icon"></g-svg-icon>
@@ -28,9 +28,9 @@
                 <span> {{ c.meta?.title || "Not Title" }}</span>
               </a-menu-item>
               <SilderBarItem v-else :router="c" :parent-router="item.path" @title-click="titleClick"></SilderBarItem>
-            </span>
+            </template>
           </a-sub-menu>
-        </span>
+        </template>
       </a-menu>
     </el-scrollbar>
     <!-- <div>版本号</div> -->

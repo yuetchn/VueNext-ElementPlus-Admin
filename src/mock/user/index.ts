@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-08 09:08:20
+ * @LastEditTime: 2022-03-08 11:26:12
  */
 import { mock } from "mockjs";
 
@@ -34,6 +34,15 @@ const adminMenu = [
         meta: {
           title: "富文本编辑器",
           icon: "richText",
+        },
+      },
+      {
+        path: "index",
+        name: "markdownIndex",
+        component: "components/markdown",
+        meta: {
+          title: "MarkDown",
+          icon: "markdown",
         },
       },
       {

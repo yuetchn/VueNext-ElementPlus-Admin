@@ -50,12 +50,13 @@
 - ✅路由
 - ✅缓存
 - ✅丰富组件
-- ✅Request
 - ✅权限验证
+- ✅环境变量
+- ✅Request
 - ✅Mock
 - ✅Ts/Tsx
 - ✅Mixin混入
-- ✅环境变量
+- ✅MarkDown
 - ❎文件上传
 - ❎pdf
 
@@ -63,15 +64,16 @@
 
     ├── public
     │   ├── tinymce
-    │   │   ├── langs        
-    │   │   └── skins        
-    │   └── favicon.ico      
+    │   │   ├── langs
+    │   │   └── skins
+    │   └── favicon.ico
     ├── src
     │   ├── api
     │   │   ├── login.ts
     │   │   └── user.ts
     │   ├── assets
     │   │   ├── icons
+    │   │   ├── imgs
     │   │   ├── style
     │   │   └── logo.png
     │   ├── components
@@ -79,6 +81,7 @@
     │   │   ├── Dialog
     │   │   ├── Editor
     │   │   ├── LoadingShade
+    │   │   ├── MarkDown
     │   │   ├── Page
     │   │   ├── SvgIcon
     │   │   ├── Table
@@ -104,16 +107,20 @@
     │   │   ├── modules
     │   │   └── index.ts
     │   ├── types
+    │   │   ├── components
     │   │   ├── global
     │   │   ├── router
     │   │   └── store
     │   ├── utils
     │   │   ├── excel
+    │   │   ├── base.ts
     │   │   ├── cookie.ts
     │   │   ├── func.ts
     │   │   ├── global.ts
     │   │   ├── permission.ts
-    │   │   └── request.ts
+    │   │   ├── request.ts
+    │   │   ├── verifys.ts
+    │   │   └── xss.ts
     │   ├── views
     │   │   ├── 404
     │   │   ├── components
@@ -133,7 +140,7 @@
     ├── package.json
     ├── README.md
     ├── tsconfig.json
-    ├── vite.config.ts
+    └── vite.config.ts
 
 # 开发
 

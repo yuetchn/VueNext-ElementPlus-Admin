@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: xss
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-08 10:15:14
+ * @LastEditTime: 2022-03-08 11:20:34
 -->
 <template>
   <div>
@@ -37,15 +37,15 @@
         <div v-html="$xss(val)"></div>
       </div>
     </el-card>
-    <el-card v-if="false" style="margin-top: 15px">
-      <template #header>属性</template>
-      <!-- <div v-html="md"></div> -->
+    <el-card style="margin-top: 15px">
+      <template #header>文档</template>
+      <g-mark-down v-model="md"></g-mark-down>
     </el-card>
   </div>
 </template>
 <script lang="ts" setup>
 import { ref } from "vue";
-// import md from "./xss.md?raw";
+import md from "./xss.md?raw";
 
 const val = ref("<div onclick=\"alert('注入成功')\" style='width:100%;padding:10px 0;'>测试注入(你可以尝试点击我触发onclick事件)</div>");
 </script>

@@ -106,27 +106,34 @@ export default defineComponent({
           };
         },
         setup: (ed: any) => {
-          ed.on("change", () => {
-            state.content = ed.getContent();
-          });
-          ed.on("input", () => {
+          ed.on("change input", () => {
+            state.flag = false
             state.content = ed.getContent();
           });
         },
       },
       content: "",
+      flag: true,
     });
 
     onMounted(async () => {
       // init
       await tinymce.init(state.init as any);
       tinymce.editors[props.id as any].setContent(props.modelValue);
+      cursorGoEnd()
     });
 
     onUnmounted(() => {
       tinymce.editors[props.id as any].destroy();
     });
-
+ 
+    /** 光标移动到最后 */
+    const cursorGoEnd = () => {
+      const editor = tinymce.editors[props.id as any];
+      editor.execCommand("selectAll");
+      editor.selection.getRng().collapse(false);
+      editor.focus();
+    }
     /** 插入内容 */
     const insertContent = (v: string) => tinymce.editors[props.id as any].insertContent(v);
     /** 复制选中内容 */
@@ -135,6 +142,10 @@ export default defineComponent({
       () => props.modelValue,
       (v: string) => {
         state.content = v;
+        if (!state.flag) { 
+          state.flag = true
+          return 
+        }
         nextTick(() => {
           tinymce.editors[props.id as any].setContent(v);
         });
@@ -153,6 +164,7 @@ export default defineComponent({
       // func
       insertContent,
       copyContent,
+      cursorGoEnd,
     };
   },
   data() {

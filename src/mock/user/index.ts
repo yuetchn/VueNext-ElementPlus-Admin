@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-01 13:14:54
+ * @LastEditTime: 2022-03-08 09:08:20
  */
 import { mock } from "mockjs";
 
@@ -143,6 +143,27 @@ const adminMenu = [
         meta: {
           title: "正则验证",
           icon: "verify",
+        },
+      },
+    ],
+  },
+  {
+    path: "/xss",
+    redirect: "/xss/index",
+    name: "xss",
+    component: "Layout",
+    meta: {
+      title: "Xss注入",
+      icon: "xss",
+    },
+    children: [
+      {
+        path: "index",
+        name: "xssIndex",
+        component: "components/xss",
+        meta: {
+          title: "Xss注入",
+          icon: "xss",
         },
       },
     ],

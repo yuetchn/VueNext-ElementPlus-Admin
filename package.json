@@ -115,7 +115,8 @@
         "vue-demi",
         "vue-router",
         "vuex",
-        "xlsx"
+        "xlsx",
+        "xss"
       ]
     }
   }

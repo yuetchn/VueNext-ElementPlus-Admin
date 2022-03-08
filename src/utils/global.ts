@@ -1,10 +1,10 @@
 /*
  * @ModuleName: 全局属性挂载
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-08 08:59:46
+ * @LastEditTime: 2022-03-08 09:20:05
  */
 import { App } from "vue";
-import xss from "xss";
+import xss from "./xss";
 import axios from "@/utils/request";
 import * as func from "@/utils/func";
 

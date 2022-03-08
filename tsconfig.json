@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "target": "esnext",
+    "skipLibCheck": true,
     "useDefineForClassFields": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -13,7 +14,7 @@
     "lib": ["esnext", "dom"],
     "paths": {
       "@/*": ["./src/*"],
-      "@base":["./src/utils/base.ts"]
+      "@base": ["./src/utils/base.ts"]
     },
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },

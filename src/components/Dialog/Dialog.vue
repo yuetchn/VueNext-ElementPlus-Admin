@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Dialog 对话框
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 15:39:29
+ * @LastEditTime: 2022-03-08 15:22:50
 -->
 
 <template>
@@ -32,6 +32,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive, toRefs, watch, ref, nextTick, PropType } from "vue";
+import init from "./index";
 
 export default defineComponent({
   props: {
@@ -42,6 +43,11 @@ export default defineComponent({
     title: {
       type: String,
       default: "",
+    },
+    /** 是否拖拽 */
+    drag: {
+      type: Boolean,
+      default: false,
     },
     /** 遮罩层是否显示 */
     shade: {
@@ -108,9 +114,12 @@ export default defineComponent({
           open();
           nextTick(() => {
             dialogRef.value.focus();
+            console.log(props);
+            init("m_dialog", "m_dialog_header", props.drag);
           });
         }
       },
+      { immediate: true },
     );
     return {
       // ref
@@ -138,8 +147,8 @@ export default defineComponent({
 
 .m_dialog {
   position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
+  // left: 50%;
+  // transform: translate(-50%, 0);
   z-index: 1200;
   border-radius: 4px;
   box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.08);

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: MarkDown
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-08 11:31:43
+ * @LastEditTime: 2022-03-08 15:37:53
  */
 import { defineComponent } from "vue";
 import MD from "markdown-it";
@@ -34,13 +34,13 @@ export default defineComponent({
         // 还有 ['«\xA0', '\xA0»', '‹\xA0', '\xA0›'] 给法国人使用（包括 nbsp）。
         quotes: "“”‘’",
 
-        // 高亮函数，会返回转义的HTML。
-        // 或 '' 如果源字符串未更改，则应在外部进行转义。
-        // 如果结果以 <pre ... 开头，内部包装器则会跳过。
-        highlight(/* str, lang */) {
-          return "";
-        },
-      }).render(v);
+      // 高亮函数，会返回转义的HTML。
+      // 或 '' 如果源字符串未更改，则应在外部进行转义。
+      // 如果结果以 <pre ... 开头，内部包装器则会跳过。
+      highlight(/* str, lang */) {
+        return "";
+      },
+    }).render(v);
     return () => <div class={style.mark_down} v-html={mdRender(props.modelValue)}></div>;
   },
 });

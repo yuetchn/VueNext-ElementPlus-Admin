@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Dialog
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 15:38:39
+ * @LastEditTime: 2022-03-08 15:23:43
 -->
 <template>
   <div>
@@ -10,6 +10,18 @@
       <el-button type="primary" @click="showDialog = true">show dialog</el-button>
       <g-dialog v-model="showDialog" title="dialog title">
         test dialog demo
+        <template #footer>
+          <el-button>Close</el-button>
+          <el-button type="primary">Submit</el-button>
+        </template>
+      </g-dialog>
+    </el-card>
+
+    <el-card style="margin-top: 15px">
+      <template #header>示例(可拖拽弹窗)</template>
+      <el-button type="primary" @click="showDialog3 = true">show dialog</el-button>
+      <g-dialog v-model="showDialog3" drag title="dialog title">
+        test dialog drag
         <template #footer>
           <el-button>Close</el-button>
           <el-button type="primary">Submit</el-button>
@@ -51,6 +63,7 @@ import help from "./index";
 
 const showDialog = ref(false);
 const showDialog2 = ref(false);
+const showDialog3 = ref(false)
 const data = ref([
   {
     name: "v-model",
@@ -72,6 +85,13 @@ const data = ref([
     type: "boolean",
     default: "true",
     options: "false",
+  },
+  {
+    name: "drag",
+    desc: "是否拖拽",
+    type: "boolean",
+    default: "false",
+    options: "true",
   },
   {
     name: "top",

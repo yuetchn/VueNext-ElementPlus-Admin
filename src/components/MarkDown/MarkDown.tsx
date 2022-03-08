@@ -40,6 +40,6 @@ export default defineComponent({
         return "";
       },
     }).render(v);
-    return () => <div class={style.mark_down} v-html={mdRender(props.modelValue)}></div> ;
+    return () => <div class={style.mark_down} v-html={mdRender(props.modelValue)}></div>;
   },
 });

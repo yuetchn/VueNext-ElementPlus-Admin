@@ -1,10 +1,9 @@
 <template>
-  <editor v-model="content" :tag-name="tagName" :init="init" />
+  <textarea :id="id" />
 </template>
 
 <script lang="ts">
 import tinymce from "tinymce/tinymce";
-import Editor from "@tinymce/tinymce-vue";
 import "tinymce/themes/silver/theme"; // 引用主题文件
 import "tinymce/icons/default"; // 引用图标文件
 import "tinymce/plugins/link";
@@ -13,7 +12,7 @@ import "tinymce/plugins/lists";
 import "tinymce/plugins/advlist";
 import "tinymce/plugins/anchor";
 import "tinymce/plugins/autolink"; // 锚点
-import "tinymce/plugins/autoresize";
+// import "tinymce/plugins/autoresize";
 import "tinymce/plugins/autosave";
 import "tinymce/plugins/charmap"; // 特殊字符
 import "tinymce/plugins/code"; // 查看源码
@@ -41,47 +40,53 @@ import "tinymce/plugins/textpattern";
 import "tinymce/plugins/visualblocks";
 import "tinymce/plugins/visualchars";
 import "tinymce/plugins/wordcount";
-import { defineComponent, onMounted, reactive, toRefs, watch } from "vue";
+import { defineComponent, onMounted, nextTick, reactive, toRefs, watch, onUnmounted } from "vue";
+
 // 数字统计
 export default defineComponent({
-  components: {
-    editor: Editor,
-  },
   props: {
+    id: {
+      type: String,
+      default: "editor",
+    },
     modelValue: {
       type: String,
       default: "",
     },
     height: {
-      type: Number,
-      default: 300,
+      type: [String, Number],
+      default: "",
+    },
+    minHeight: {
+      type: [String, Number],
+      default: 150,
     },
     width: {
       type: Number,
       default: 0,
-    },
-    tagName: {
-      type: String,
-      default: "div",
     },
   },
   emits: { "update:modelValue": null },
   setup(props, context) {
     const state = reactive({
       init: {
+        selector: `#${ props.id }`,
+        height: props.height,
         language_url: "tinymce/langs/zh_CN.js", // 中文语言包路径
         language: "zh_CN",
-        min_height: props.height,
+        min_height: props.minHeight,
         width: props.width ? props.width : "",
         skin_url: "tinymce/skins/ui/oxide", // 编辑器皮肤样式
         content_css: "tinymce/skins/content/default/content.css",
         menubar: false, // 隐藏菜单栏
-        autoresize_bottom_margin: 50,
+        // autoresize_bottom_margin: 50,
         //   max_height: 500,
         //   min_height: 350,
         toolbar_mode: "none",
+        // plugins:
+        //   "wordcount visualchars visualblocks textpattern template tabfocus searchreplace save quickbars print preview paste pagebreak noneditable nonbreaking media insertdatetime importcss image hr help fullscreen directionality codesample code charmap link code table lists advlist anchor autolink autoresize autosave", // 插件需要import进来
         plugins:
-          "wordcount visualchars visualblocks textpattern template tabfocus searchreplace save quickbars print preview paste pagebreak noneditable nonbreaking media insertdatetime importcss image hr help fullscreen directionality codesample code charmap link code table lists advlist anchor autolink autoresize autosave", // 插件需要import进来
+          "wordcount visualchars visualblocks textpattern template tabfocus searchreplace save quickbars print preview paste pagebreak noneditable nonbreaking media insertdatetime importcss image hr help fullscreen directionality codesample code charmap link code table lists advlist anchor autolink autosave", // 插件需要import进来
         toolbar:
           "formats undo redo paste print fontsizeselect fontselect template wordcount ltr rtl visualchars visualblocks searchreplace|save preview pagebreak nonbreaking|media image|outdent indent aligncenter alignleft alignright alignjustify lineheight  underline quicklink h2 h3 blockquote numlist bullist table removeformat forecolor backcolor bold italic  strikethrough hr charmap link insertdatetime|subscript superscript cut codesample code |anchor preview fullscreen|help",
         content_style: "p {margin: 5px 0; font-size: 14px}",
@@ -100,19 +105,50 @@ export default defineComponent({
             success(this.result);
           };
         },
+        setup: (ed: any) => {
+          ed.on("change input", () => {
+            state.flag = false
+            state.content = ed.getContent();
+          });
+        },
       },
-      content: props.modelValue,
+      content: "",
+      flag: true,
     });
 
-    onMounted(() => {
+    onMounted(async () => {
       // init
-      tinymce.init;
+      await tinymce.init(state.init as any);
+      tinymce.editors[props.id as any].setContent(props.modelValue);
+      cursorGoEnd()
     });
 
+    onUnmounted(() => {
+      tinymce.editors[props.id as any].destroy();
+    });
+ 
+    /** 光标移动到最后 */
+    const cursorGoEnd = () => {
+      const editor = tinymce.editors[props.id as any];
+      editor.execCommand("selectAll");
+      editor.selection.getRng().collapse(false);
+      editor.focus();
+    }
+    /** 插入内容 */
+    const insertContent = (v: string) => tinymce.editors[props.id as any].insertContent(v);
+    /** 复制选中内容 */
+    const copyContent = () => tinymce.editors[props.id as any].execCommand("copy");
     watch(
       () => props.modelValue,
       (v: string) => {
         state.content = v;
+        if (!state.flag) { 
+          state.flag = true
+          return 
+        }
+        nextTick(() => {
+          tinymce.editors[props.id as any].setContent(v);
+        });
       },
     );
     watch(
@@ -124,6 +160,11 @@ export default defineComponent({
     return {
       // refs
       ...toRefs(state),
+
+      // func
+      insertContent,
+      copyContent,
+      cursorGoEnd,
     };
   },
   data() {

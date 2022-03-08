@@ -12,7 +12,6 @@
     "lint": "eslint --cache --max-warnings 0  \"src/**/*.{vue,ts,tsx,jsx,js}\" --fix"
   },
   "dependencies": {
-    "@tinymce/tinymce-vue": "^4.0.5",
     "ant-design-vue": "^2.2.8",
     "axios": "^0.24.0",
     "dayjs": "^1.10.7",
@@ -64,7 +63,6 @@
   "vite": {
     "optimizeDeps": {
       "include": [
-        "@tinymce/tinymce-vue",
         "ant-design-vue",
         "axios",
         "echarts",

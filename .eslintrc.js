@@ -1,7 +1,7 @@
 /*
  * @ModuleName:
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-24 14:03:50
+ * @LastEditTime: 2022-03-08 09:22:02
  */
 module.exports = {
   root: true,
@@ -88,5 +88,6 @@ module.exports = {
     "@typescript-eslint/ban-types": 0,
     "vue/require-explicit-emits": 0,
     "vue/component-definition-name-casing": 0,
+    "vue/no-v-html": 0, // no-xss
   },
 };

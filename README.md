@@ -3,8 +3,8 @@
 <p align="center">
 <img src="https://img.shields.io/badge/vue-3.2.25-%23FFC21A" />
 <img src="https://img.shields.io/badge/vite-2.7.2-%23FFC21A" />
-<img src="https://img.shields.io/badge/typescript-4.4.4-%23FFC21A" />
-<img src="https://img.shields.io/badge/element--plus-2.0.3-FFC21A" />
+<img src="https://img.shields.io/badge/typescript-4.6.2-23FFC21A" />
+<img src="https://img.shields.io/badge/element--plus-2.0.5-FFC21A" />
 <img src="https://img.shields.io/badge/ant--design--vue-2.2.8-%23FFC21A" />
 </p>
 

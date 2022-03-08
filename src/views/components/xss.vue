@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: xss
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-08 09:35:18
+ * @LastEditTime: 2022-03-08 10:15:14
 -->
 <template>
   <div>
@@ -18,9 +18,7 @@
       <template #header>使用</template>
       <div style="padding: 10px 0">
         <span style="display: block; color: rgba(0, 0, 0, 0.35); font-weight: bold; font-size: 15px">模板中使用：</span>
-        <div>
-          全局方法：$xss('html')
-        </div>
+        <div>全局方法：$xss('html')</div>
         <br />
         <span style="display: block; color: rgba(0, 0, 0, 0.35); font-weight: bold; font-size: 15px">script中使用：</span>
         <div>
@@ -41,13 +39,13 @@
     </el-card>
     <el-card v-if="false" style="margin-top: 15px">
       <template #header>属性</template>
-      <div v-html="md"></div>
+      <!-- <div v-html="md"></div> -->
     </el-card>
   </div>
 </template>
 <script lang="ts" setup>
 import { ref } from "vue";
-import md from "./xss.md?raw";
+// import md from "./xss.md?raw";
 
 const val = ref("<div onclick=\"alert('注入成功')\" style='width:100%;padding:10px 0;'>测试注入(你可以尝试点击我触发onclick事件)</div>");
 </script>

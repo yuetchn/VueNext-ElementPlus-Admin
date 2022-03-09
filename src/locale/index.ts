@@ -1,7 +1,7 @@
 /*
  * @ModuleName: i18n
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 15:53:43
+ * @LastEditTime: 2022-03-09 18:03:14
  */
 import { createI18n } from "vue-i18n";
 import store from "@/store";
@@ -36,6 +36,8 @@ const getLangFiles = (mList: any, msg: any) => {
 };
 
 export const t = (value: string) => {
+  // 此处判断切换语言后，控制台会批量警告
+  // console.log后又不出现警告
   if (i18n.global.te(value)) {
     return i18n.global.t(value);
   }

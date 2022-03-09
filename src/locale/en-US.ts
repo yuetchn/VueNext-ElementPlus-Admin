@@ -1,7 +1,7 @@
 /*
  * @ModuleName: en-US
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 15:39:56
+ * @LastEditTime: 2022-03-09 20:40:13
  */
 export default {
   home: "home",
@@ -41,4 +41,8 @@ export default {
   exportExcelIndex: "ExportExcel",
   link: "ExternalLink",
   linkIndex: "ExternalLink",
+  echarts: "Echarts",
+  chartLine: "Line",
+  error: "Error",
+  "404Index": "404",
 };

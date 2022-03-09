@@ -1,7 +1,7 @@
 /*
  * @ModuleName: i18n
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 18:03:14
+ * @LastEditTime: 2022-03-09 20:11:45
  */
 import { createI18n } from "vue-i18n";
 import store from "@/store";
@@ -38,6 +38,7 @@ const getLangFiles = (mList: any, msg: any) => {
 export const t = (value: string) => {
   // 此处判断切换语言后，控制台会批量警告
   // console.log后又不出现警告
+
   if (i18n.global.te(value)) {
     return i18n.global.t(value);
   }
@@ -45,21 +46,20 @@ export const t = (value: string) => {
 };
 
 export const toggleLocale = (key: string) => {
+  store.dispatch("AppModule/setLocale", key)
   i18n.global.locale = key;
-  store.dispatch("AppModule/setLocale", key);
 };
 
-export const localeTypes = [
-  {
-    key: "zh-CN",
-    name: "中文",
-    disabled: false,
-  },
-  {
-    key: "en-US",
-    name: "English",
-    disabled: false,
-  },
+export const localeTypes = [{
+  key: "zh-CN",
+  name: "中文",
+  disabled: false,
+},
+{
+  key: "en-US",
+  name: "English",
+  disabled: false,
+},
 ];
 
 // You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.

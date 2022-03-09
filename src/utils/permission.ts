@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 权限拦截
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 15:49:43
+ * @LastEditTime: 2022-03-09 20:40:44
  */
 import { computed, watch } from "vue";
 import { RouteRecordRaw } from "vue-router";
@@ -15,7 +15,7 @@ import { UserStates } from "@/store/modules/user";
 import { t } from "@/locale";
 
 const RouterWrite = ["/login", "/404"];
-const StaticRouterCount = computed<number>(() => GetStaticRoutes());
+const StaticRouterCount = computed < number >(() => GetStaticRoutes());
 let NowRoute: any = null;
 Nprogress.configure({});
 

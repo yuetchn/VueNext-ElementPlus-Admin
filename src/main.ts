@@ -1,11 +1,13 @@
 /*
  * @ModuleName: Main
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-24 10:34:11
+ * @LastEditTime: 2022-03-09 13:19:04
  */
 import { createApp } from "vue";
 import Antd from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
+import ElementPlus from "element-plus";
+import locale from "element-plus/lib/locale/lang/zh-cn"
 import App from "@/App.vue";
 import "@/utils/permission";
 import router from "@/router";
@@ -15,7 +17,6 @@ import "@/mock"
 
 import { GlobalMixin } from "@/mixins";
 import { store, key } from "@/store";
-import RegisterElement from "@/plugins/Element";
 import RegisterDirective from "@/directive";
 import RegisterComponent from "@/components";
 import RegisterGlobal from "@/utils/global";
@@ -31,7 +32,7 @@ RegisterComponent(app);
 RegisterGlobal(app);
 
 // ElementPlus
-RegisterElement(app);
+app.use(ElementPlus, { size: "mini", locale });
 // AntDesign
 app.use(Antd);
 

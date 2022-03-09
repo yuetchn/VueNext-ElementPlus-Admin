@@ -12,7 +12,6 @@
     "lint": "eslint --cache --max-warnings 0  \"src/**/*.{vue,ts,tsx,jsx,js}\" --fix"
   },
   "dependencies": {
-    "@tinymce/tinymce-vue": "^4.0.5",
     "ant-design-vue": "^2.2.8",
     "axios": "^0.24.0",
     "dayjs": "^1.10.7",
@@ -28,6 +27,7 @@
     "tinymce": "^5.10.2",
     "ts-md5": "^1.2.10",
     "vue": "^3.2.25",
+    "vue-i18n": "^9.1.9",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2",
     "xlsx": "^0.17.5",
@@ -64,7 +64,6 @@
   "vite": {
     "optimizeDeps": {
       "include": [
-        "@tinymce/tinymce-vue",
         "ant-design-vue",
         "axios",
         "echarts",
@@ -116,6 +115,9 @@
         "ts-md5",
         "vue",
         "vue-demi",
+        "vue-i18n",
+        "vue-i18n/dist/vue-i18n.esm-bundler.js",
+        "vue-i18n/index",
         "vue-router",
         "vuex",
         "xlsx",

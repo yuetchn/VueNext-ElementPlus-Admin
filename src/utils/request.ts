@@ -1,12 +1,12 @@
 /*
  * @ModuleName: 请求封装
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-24 17:33:16
+ * @LastEditTime: 2022-03-09 14:48:38
  */
 import axios from "axios";
 import { message } from "ant-design-vue";
 import { GetToken } from "@/utils/cookie";
-import { store } from "@/store";
+import store from "@/store";
 
 const timeout = 1000 * 30;
 const req = axios.create({
@@ -46,7 +46,9 @@ req.interceptors.request.use(
   (config) => {
     ShowLoading();
     // headers
-    const headers: { [key: string]: any } = {};
+    const headers: { [key: string]: any } = {
+      "Accept-Language": (store.state as any).AppModule.locale,
+    };
 
     if (GetToken()) {
       headers["X-Access-Token"] = GetToken() as string;

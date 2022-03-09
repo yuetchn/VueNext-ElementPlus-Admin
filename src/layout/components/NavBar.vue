@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: NavBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 10:49:57
+ * @LastEditTime: 2022-03-09 15:12:10
 -->
 <template>
   <div class="m_navbar">
@@ -12,24 +12,32 @@
       <BreadCrumbs class="u_bread_crumbs"></BreadCrumbs>
     </div>
     <div class="m_right">
-      <el-tooltip content="刷新" placement="bottom">
+      <el-dropdown class="u_nav_item">
+        <div><g-svg-icon size="20" color="#A4A4A4" name="locale" /></div>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item v-for="item of localeList" :key="item.key" :disabled="$store.state.AppModule.locale === item.key" @click="setLocale(item.key)">{{ item.name }}</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+      <el-tooltip :content="$t('refresh')" placement="bottom">
         <div class="u_nav_item" @click="reload">
-          <g-svg-icon size="20" name="refresh" />
+          <g-svg-icon size="20" color="#A4A4A4" name="refresh" />
         </div>
       </el-tooltip>
-      <el-tooltip content="全屏" placement="bottom">
+      <el-tooltip :content="$t('fullScreen')" placement="bottom">
         <div class="u_nav_item" @click="toggleScreen">
-          <g-svg-icon size="20" :name="isOpen ? 'no-fullscreen' : 'fullscreen'" />
+          <g-svg-icon size="20" color="#A4A4A4" :name="isOpen ? 'no-fullscreen' : 'fullscreen'" />
         </div>
       </el-tooltip>
 
       <div class="m_right_dropdown">
         <el-dropdown>
-          <div class="u_name">你好,{{ userName }}</div>
+          <div class="u_name">{{ $t("hellow") }},{{ userName }}</div>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item @click="$router.push('/user')">个人中心</el-dropdown-item>
-              <el-dropdown-item @click="loginOut">退出登录</el-dropdown-item>
+              <el-dropdown-item @click="$router.push('/user')">{{ $t("userCenter") }}</el-dropdown-item>
+              <el-dropdown-item @click="loginOut">{{ $t("loginOut") }}</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -44,6 +52,7 @@ import { message } from "ant-design-vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "@/store";
 import BreadCrumbs from "./BreadCrumbs.vue";
+import { localeTypes, toggleLocale } from "@/locale";
 
 export default defineComponent({
   components: { BreadCrumbs },
@@ -51,6 +60,7 @@ export default defineComponent({
     const store = useStore();
     const router = useRouter();
     const route = useRoute();
+    const localeList = localeTypes;
 
     const isOpen = ref(screenfull.isFullscreen);
     const isShrink = computed(() => store.state.AppModule.isShrink);
@@ -62,6 +72,8 @@ export default defineComponent({
     const check = () => {
       store.dispatch("AppModule/set_shrink", !isShrink.value);
     };
+
+    const setLocale = (key: string) => toggleLocale(key);
 
     const toggleScreen = () => {
       if (!screenfull.isEnabled) {
@@ -85,6 +97,7 @@ export default defineComponent({
     });
 
     return {
+      localeList,
       // computed
       isShrink,
       userName,
@@ -95,6 +108,7 @@ export default defineComponent({
       check,
       toggleScreen,
       reload,
+      setLocale,
     };
   },
 });
@@ -151,6 +165,9 @@ export default defineComponent({
   cursor: pointer;
 
   .u_name {
+    width: 130px;
+    overflow: hidden;
+    text-align: right;
     font-size: 18px;
     font-weight: bold;
   }

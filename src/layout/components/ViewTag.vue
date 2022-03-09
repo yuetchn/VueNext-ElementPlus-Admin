@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: ViewTag
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 09:49:36
+ * @LastEditTime: 2022-03-09 15:41:44
 -->
 <template>
   <div class="m_view_tag">
@@ -11,7 +11,8 @@
           <div v-for="(item, i) in viewTags" :key="i" class="u_view_tag" :class="{ u_view_tag__active: item.path === selTag.path }" @click="$router.push(item.path)" @mouseenter="showIndex = i" @mouseleave="showIndex = -1">
             <div v-if="selTag.path === item.path" class="beforeTip"></div>
             <div class="tag_title">
-              {{ item.meta.title || "Not Title" }}
+              <!-- {{ item.meta.title || "Not Title" }} -->
+              {{ $t(item.name?.toString() || "") === item.name ? item.meta.title : $t(item.name?.toString() || "") }}
             </div>
             <div v-if="!item.meta.affix" class="tag_close" @click.stop="closeTag(item)">
               <g-svg-icon name="close" color="#333333" size="6"></g-svg-icon>
@@ -21,11 +22,11 @@
       </el-scrollbar>
     </div>
 
-    <el-tooltip content="关闭所有Tag" placement="left">
+    <el-tooltip :content="$t('closeAllTags')" placement="left">
       <div class="m_view_operate" @click="closeAllTag">
         <!-- Close All -->
         <g-svg-icon name="close" size="13"></g-svg-icon>
-      <!-- <el-dropdown>
+        <!-- <el-dropdown>
         <g-svg-icon name="down" size="10"></g-svg-icon>
         <template #dropdown>
           <el-dropdown-menu>

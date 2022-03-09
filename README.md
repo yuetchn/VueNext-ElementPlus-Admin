@@ -6,10 +6,11 @@
 <img src="https://img.shields.io/badge/typescript-4.6.2-23FFC21A" />
 <img src="https://img.shields.io/badge/element--plus-2.0.5-FFC21A" />
 <img src="https://img.shields.io/badge/ant--design--vue-2.2.8-%23FFC21A" />
+<img src="https://img.shields.io/badge/license-MIT-FFC21A" />
 </p>
 
 # 简介
-`VueNext-ElementPlus-Admin` 是一个后台前端解决方案，它基于 [vue3.x](https://v3.cn.vuejs.org/ "vue官网") 和 [element-plus](https://element-plus.gitee.io/zh-CN/ "Element-Plus官网")实现。它使用了前沿的前端技术栈，内置了动态路由，权限验证，提炼了典型的业务模型，模块化开发，提供了丰富的功能组件，拥抱 [Vite](https://vitejs.cn/ "Vite") 急速的服务启动以及轻量快速的热重载提高开发效率，可以帮助你快速搭建企业级中后台产品原型。
+`VueNext-ElementPlus-Admin` 是一个后台前端解决方案，它基于 [vue3.x](https://v3.cn.vuejs.org/ "vue官网") 和 [element-plus](https://element-plus.gitee.io/zh-CN/ "Element-Plus官网")实现。它使用了前沿的前端技术栈，内置了动态路由，权限验证，提炼了典型的业务模型，模块化开发，提供了丰富的功能组件，内置 `i18n` 国际化解决方案，拥抱 [Vite](https://vitejs.cn/ "Vite") 急速的服务启动以及轻量快速的热重载提高开发效率，可以帮助你快速搭建企业级中后台产品原型。
 轻量级框架只保留了基本核心功能，不冗余不需要的功能，可根据业务随意扩展，快速搭建定制的后台应用。
 
 ***该项目不支持 `IE` 浏览器***
@@ -31,6 +32,7 @@
 - 高扩展性
 - TypeScript支持
 - Tsx/Jsx支持
+- 国际化支持
 
 # 准备
 
@@ -52,6 +54,7 @@
 - ✅丰富组件
 - ✅权限验证
 - ✅环境变量
+- ✅I18n
 - ✅Request
 - ✅Mock
 - ✅Ts/Tsx

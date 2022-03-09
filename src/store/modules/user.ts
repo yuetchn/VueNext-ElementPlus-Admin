@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User Module
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-26 16:10:11
+ * @LastEditTime: 2022-03-09 14:26:16
  */
 import { Module } from "vuex";
 import { RouteRecordRaw } from "vue-router";
@@ -10,7 +10,7 @@ import { GetToken, SetToken, RemoveToken } from "@/utils/cookie";
 import { Login } from "@/api/login";
 import { GetUserInfo } from "@/api/user";
 import router from "@/router";
-import { store } from "@/store";
+import store from "@/store";
 
 export interface UserStates {
   /** token */

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: App Module
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-25 17:33:26
+ * @LastEditTime: 2022-03-09 14:23:16
  */
 import { Module } from "vuex";
 import RootStates from "@/types/store/storeInterface";
@@ -17,6 +17,8 @@ export interface AppStates {
   nowRouteSpread: string;
   /** client 宽度 */
   clientWidth: number;
+  /** 国际化语言 */
+  locale: string;
 }
 const UserModule: Module<AppStates, RootStates> = {
   namespaced: true,
@@ -26,6 +28,7 @@ const UserModule: Module<AppStates, RootStates> = {
     isShrink: sessionStorage.getItem("isShrink") === "1" ? true : false || false,
     nowRouteSpread: sessionStorage.getItem("nowRouteSpread") || "",
     clientWidth: 0,
+    locale: localStorage.getItem("locale") || "zh-CN",
   },
   mutations: {
     SET_LOADING_SHADE(state, loadingShade: boolean) {
@@ -52,6 +55,10 @@ const UserModule: Module<AppStates, RootStates> = {
     SET_CLIENT_WIDTH(state, clientWidth: number) {
       state.clientWidth = clientWidth;
     },
+    SET_LOCALE(state, locale: string) {
+      state.locale = locale;
+      localStorage.setItem("locale", locale);
+    },
   },
   actions: {
     // 修改遮罩状态
@@ -74,8 +81,11 @@ const UserModule: Module<AppStates, RootStates> = {
     resetRouteState({ commit }) {
       commit("RESET_ROUTE_STATE");
     },
-    setClientWidth({ commit }, clientWidth) {
+    setClientWidth({ commit }, clientWidth: any) {
       commit("SET_CLIENT_WIDTH", clientWidth);
+    },
+    setLocale({ commit }, locale: string) {
+      commit("SET_LOCALE", locale);
     },
   },
   getters: {

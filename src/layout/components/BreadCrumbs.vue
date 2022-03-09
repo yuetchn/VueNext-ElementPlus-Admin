@@ -6,7 +6,10 @@
 <template>
   <div>
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item v-for="item of paths" :key="item.path" :to="{ path: item.path }">{{ item.meta?.title || item.path }}</el-breadcrumb-item>
+      <el-breadcrumb-item v-for="item of paths" :key="item.path" :to="{ path: item.path }">
+        <!-- {{ item.meta?.title || item.path }} -->
+        {{ $t(item.name?.toString() || "") === item.name ? item.meta?.title || item.path : $t(item.name?.toString() || "") }}
+      </el-breadcrumb-item>
     </el-breadcrumb>
   </div>
 </template>

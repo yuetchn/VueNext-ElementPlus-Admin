@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-08 11:26:12
+ * @LastEditTime: 2022-03-09 15:38:21
  */
 import { mock } from "mockjs";
 
@@ -59,7 +59,7 @@ const adminMenu = [
         name: "dialog",
         component: "components/dialog",
         meta: {
-          title: "Dialog",
+          title: "弹窗",
           icon: "dialog",
         },
       },
@@ -120,7 +120,7 @@ const adminMenu = [
     name: "icon",
     component: "Layout",
     meta: {
-      title: "Icon图标",
+      title: "Icon",
       icon: "icon",
     },
     children: [
@@ -129,7 +129,7 @@ const adminMenu = [
         name: "iconIndex",
         component: "components/icon",
         meta: {
-          title: "Icon图标",
+          title: "Icon",
           icon: "icon",
         },
       },
@@ -318,7 +318,7 @@ const adminMenu = [
   },
   {
     path: "/link",
-    name: "外链",
+    name: "link",
     component: "Layout",
     redirect: "/link/index",
     meta: {

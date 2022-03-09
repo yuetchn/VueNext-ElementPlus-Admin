@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: 
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-25 15:24:18
+ * @LastEditTime: 2022-03-09 14:41:22
 -->
 <template>
   <div class="m_login">
@@ -23,7 +23,6 @@ export default defineComponent({
     const store = useStore();
     const router = useRouter();
     const state = reactive({});
-
     const login = async (role: string) => {
       const { data } = await store.dispatch("UserModule/login", {
         account: role,

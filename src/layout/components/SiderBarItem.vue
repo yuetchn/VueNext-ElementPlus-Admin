@@ -1,19 +1,21 @@
 <!--
  * @ModuleName: SilderBarItem
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-24 11:42:03
+ * @LastEditTime: 2022-03-09 15:25:50
 -->
 <template>
   <a-sub-menu>
     <template #icon>
       <g-svg-icon :name="router.meta?.icon"></g-svg-icon>
     </template>
-    <template #title>{{ router.meta?.title || "Not Title" }}</template>
-    <a-menu-item v-for="c of router.children" :key="`${parentRouter}/${router.path}/${c.path}`" @click="$emit('titleClick', `${parentRouter}/${router.path}/${c.path}`,c)">
+    <!-- router.meta?.title -->
+
+    <template #title>{{ titleLocale(router.name?.toString() || "") === router.name ? router.meta?.title : titleLocale(router.name?.toString() || "") }}</template>
+    <a-menu-item v-for="c of router.children" :key="`${parentRouter}/${router.path}/${c.path}`" @click="$emit('titleClick', `${parentRouter}/${router.path}/${c.path}`, c)">
       <template #icon>
         <g-svg-icon :name="c.meta?.icon"></g-svg-icon>
       </template>
-      <span> {{ c.meta?.title || "Not Title" }}</span>
+      <span> {{ titleLocale(c.name?.toString() || "") === c.name ? c.meta?.title : titleLocale(c.name?.toString() || "") }}</span>
       <slot name="default"></slot>
     </a-menu-item>
   </a-sub-menu>
@@ -21,6 +23,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { RouteRecordRaw } from "vue-router";
+import { t } from "@/locale";
 
 export default defineComponent({
   props: {
@@ -36,5 +39,13 @@ export default defineComponent({
     },
   },
   emits: ["titleClick"],
+  setup() {
+    const titleLocale = (value: string) => t(value);
+
+    return {
+      // func
+      titleLocale,
+    };
+  },
 });
 </script>

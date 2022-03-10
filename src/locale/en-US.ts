@@ -1,7 +1,7 @@
 /*
  * @ModuleName: en-US
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 20:40:13
+ * @LastEditTime: 2022-03-10 07:48:19
  */
 export default {
   home: "home",
@@ -45,4 +45,6 @@ export default {
   chartLine: "Line",
   error: "Error",
   "404Index": "404",
+  localel: "I18n",
+  localelIndex: "I18n",
 };

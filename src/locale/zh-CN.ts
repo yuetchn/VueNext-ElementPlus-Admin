@@ -1,7 +1,7 @@
 /*
  * @ModuleName: zh-CN
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 20:39:16
+ * @LastEditTime: 2022-03-10 07:47:56
  */
 export default {
   home: "首页",
@@ -45,4 +45,6 @@ export default {
   chartLine: "Line",
   error: "错误",
   "404Index": "404",
+  localel: "国际化",
+  localelIndex: "国际化",
 };

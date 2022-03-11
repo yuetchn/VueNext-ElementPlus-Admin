@@ -1,7 +1,7 @@
 /*
  * @ModuleName: i18n
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:18:39
+ * @LastEditTime: 2022-03-11 10:31:25
  */
 import { createI18n } from "vue-i18n";
 import e_zhCN from "element-plus/es/locale/lang/zh-cn";
@@ -64,7 +64,6 @@ export const localeTypes = [
 
 // You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
 // 此警告开发者已知晓，并承诺在 9.2.0 版本修复。
-// Element-Plus、Ant-Design 尚未国际化同步，后期改造
 const i18n = createI18n({
   // legacy: false, // Composition API 模式
   globalInjection: true, // 全局注册 $t方法

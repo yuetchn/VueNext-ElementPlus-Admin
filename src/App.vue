@@ -1,10 +1,10 @@
 <!--
  * @ModuleName: App
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:20:02
+ * @LastEditTime: 2022-03-11 10:30:48
 -->
 <template>
-  <el-config-provider :locale="elementLocle">
+  <el-config-provider :locale="elementLocle" :size="elementSize">
     <suspense>
       <router-view />
     </suspense>
@@ -30,6 +30,7 @@ export default defineComponent({
       }
       return "";
     });
+    const elementSize = computed(() => (store.state.AppModule.size))
     onMounted(() => {
       store.dispatch("AppModule/setClientWidth", document.body.clientWidth);
 
@@ -44,6 +45,7 @@ export default defineComponent({
 
     return {
       elementLocle,
+      elementSize,
     };
   },
 });

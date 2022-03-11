@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 权限拦截
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 20:40:44
+ * @LastEditTime: 2022-03-11 11:27:07
  */
 import { computed, watch } from "vue";
 import { RouteRecordRaw } from "vue-router";
@@ -15,20 +15,20 @@ import { UserStates } from "@/store/modules/user";
 import { t } from "@/locale";
 
 const RouterWrite = ["/login", "/404"];
-const StaticRouterCount = computed < number >(() => GetStaticRoutes());
+const StaticRouterCount = computed<number>(() => GetStaticRoutes());
 let NowRoute: any = null;
 Nprogress.configure({});
 
 watch(
   () => (store.state as any).AppModule.locale,
   () => {
-    document.title = import.meta.env.VITE_APP_TITLE + (NowRoute.meta.title ? ` - ${ t(NowRoute.name?.toString() || "") === NowRoute.name ? NowRoute.meta.title : t(NowRoute.name?.toString() || "") }` : "");
+    document.title = (NowRoute.meta.title ? `${ t(NowRoute.name?.toString() || "") === NowRoute.name ? NowRoute.meta.title : t(NowRoute.name?.toString() || "") } - ` : "") + import.meta.env.VITE_APP_TITLE;
   },
 );
 
 router.beforeEach((to, from, next) => {
   NowRoute = to;
-  document.title = import.meta.env.VITE_APP_TITLE + (to.meta.title ? ` - ${ t(to.name?.toString() || "") === to.name ? to.meta.title : t(to.name?.toString() || "") }` : "");
+  document.title = (to.meta.title ? `${ t(to.name?.toString() || "") === to.name ? to.meta.title : t(to.name?.toString() || "") } - ` : "") + import.meta.env.VITE_APP_TITLE;
   Nprogress.start();
 
   if (!GetToken()) {

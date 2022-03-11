@@ -1,7 +1,7 @@
 /*
  * @ModuleName: App Module
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 14:23:16
+ * @LastEditTime: 2022-03-11 10:29:25
  */
 import { Module } from "vuex";
 import RootStates from "@/types/store/storeInterface";
@@ -19,6 +19,8 @@ export interface AppStates {
   clientWidth: number;
   /** 国际化语言 */
   locale: string;
+  /** 组件大小 "large" | "default" | "small" */
+  size: string;
 }
 const UserModule: Module<AppStates, RootStates> = {
   namespaced: true,
@@ -29,6 +31,7 @@ const UserModule: Module<AppStates, RootStates> = {
     nowRouteSpread: sessionStorage.getItem("nowRouteSpread") || "",
     clientWidth: 0,
     locale: localStorage.getItem("locale") || "zh-CN",
+    size: (localStorage.getItem("size") as any) || "default",
   },
   mutations: {
     SET_LOADING_SHADE(state, loadingShade: boolean) {
@@ -59,6 +62,10 @@ const UserModule: Module<AppStates, RootStates> = {
       state.locale = locale;
       localStorage.setItem("locale", locale);
     },
+    SET_SIZE(state, size: string) {
+      state.size = size;
+      localStorage.setItem("size", size);
+    },
   },
   actions: {
     // 修改遮罩状态
@@ -86,6 +93,9 @@ const UserModule: Module<AppStates, RootStates> = {
     },
     setLocale({ commit }, locale: string) {
       commit("SET_LOCALE", locale);
+    },
+    setSize({ commit }, size: string) {
+      commit("SET_SIZE", size);
     },
   },
   getters: {

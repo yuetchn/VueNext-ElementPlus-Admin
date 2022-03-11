@@ -1,7 +1,7 @@
 /*
  * @ModuleName: zh-CN
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:18:29
+ * @LastEditTime: 2022-03-11 10:26:21
  */
 export default {
   // NavBar
@@ -44,6 +44,6 @@ export default {
   chartLine: "Line",
   error: "错误",
   "404Index": "404",
-  localel: "国际化",
-  localelIndex: "国际化",
+  locale: "国际化",
+  localeIndex: "国际化",
 };

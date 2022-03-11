@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: NavBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:19:49
+ * @LastEditTime: 2022-03-11 11:32:12
 -->
 <template>
   <div class="m_navbar">
@@ -12,14 +12,6 @@
       <BreadCrumbs class="u_bread_crumbs"></BreadCrumbs>
     </div>
     <div class="m_right">
-      <el-dropdown class="u_nav_item">
-        <div><g-svg-icon size="20" color="#A4A4A4" name="locale" /></div>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item v-for="item of localeList" :key="item.key" :disabled="$store.state.AppModule.locale === item.key" @click="setLocale(item.key)">{{ item.name }}</el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
       <el-tooltip :content="$t('navBar.refresh')" placement="bottom">
         <div class="u_nav_item" @click="reload">
           <g-svg-icon size="20" color="#A4A4A4" name="refresh" />
@@ -30,7 +22,22 @@
           <g-svg-icon size="20" color="#A4A4A4" :name="isOpen ? 'no-fullscreen' : 'fullscreen'" />
         </div>
       </el-tooltip>
-
+      <el-dropdown class="u_nav_item">
+        <div><g-svg-icon size="20" color="#A4A4A4" name="fontSize" /></div>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item v-for="item in sizeList" :key="item" :disabled="$store.state.AppModule.size === item" @click="$store.dispatch('AppModule/setSize', item)">{{ item }}</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+      <el-dropdown class="u_nav_item">
+        <div><g-svg-icon size="20" color="#A4A4A4" name="locale" /></div>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item v-for="item of localeList" :key="item.key" :disabled="$store.state.AppModule.locale === item.key" @click="setLocale(item.key)">{{ item.name }}</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
       <div class="m_right_dropdown">
         <el-dropdown>
           <div class="u_name">{{ $t("navBar.hellow") }},{{ userName }}</div>
@@ -61,6 +68,7 @@ export default defineComponent({
     const router = useRouter();
     const route = useRoute();
     const localeList = localeTypes;
+    const sizeList = ["large", "default", "small"];
 
     const isOpen = ref(screenfull.isFullscreen);
     const isShrink = computed(() => store.state.AppModule.isShrink);
@@ -97,6 +105,7 @@ export default defineComponent({
     });
 
     return {
+      sizeList,
       localeList,
       // computed
       isShrink,

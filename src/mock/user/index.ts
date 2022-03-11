@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-10 07:47:41
+ * @LastEditTime: 2022-03-11 10:26:48
  */
 import { mock } from "mockjs";
 
@@ -255,8 +255,8 @@ const adminMenu = [
     },
     children: [
       {
-        path: "localelIndex",
-        name: "localelIndex",
+        path: "localeIndex",
+        name: "localeIndex",
         component: "components/locale",
         meta: {
           title: "国际化",

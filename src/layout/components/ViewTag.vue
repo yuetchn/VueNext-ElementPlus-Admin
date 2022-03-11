@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: ViewTag
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 15:41:44
+ * @LastEditTime: 2022-03-11 10:08:23
 -->
 <template>
   <div class="m_view_tag">
@@ -22,7 +22,7 @@
       </el-scrollbar>
     </div>
 
-    <el-tooltip :content="$t('closeAllTags')" placement="left">
+    <el-tooltip :content="$t('navBar.closeAllTags')" placement="left">
       <div class="m_view_operate" @click="closeAllTag">
         <!-- Close All -->
         <g-svg-icon name="close" size="13"></g-svg-icon>

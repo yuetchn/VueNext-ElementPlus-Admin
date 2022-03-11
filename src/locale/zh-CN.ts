@@ -1,20 +1,19 @@
 /*
  * @ModuleName: zh-CN
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 15:38:23
+ * @LastEditTime: 2022-03-11 10:04:25
  */
 export default {
-  home: "首页",
-
   // NavBar
-  refresh: "刷新",
-  fullScreen: "全屏",
-  userCenter: "个人中心",
-  loginOut: "退出登录",
-  closeAllTags: "关闭所有Tag",
-  hellow: "你好",
-  locale: "语言",
-
+  navBar: {
+    refresh: "刷新",
+    fullScreen: "全屏",
+    userCenter: "个人中心",
+    loginOut: "退出登录",
+    closeAllTags: "关闭所有Tag",
+    hellow: "你好",
+    locale: "语言",
+  },
   // routes
   dashboard: "首页",
   components: "组件展示",

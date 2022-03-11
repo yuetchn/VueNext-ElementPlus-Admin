@@ -1,26 +1,35 @@
 <!--
  * @ModuleName: App
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 13:29:45
+ * @LastEditTime: 2022-03-11 10:14:48
 -->
 <template>
-  <suspense>
-    <router-view />
-  </suspense>
-  <LoadingShade></LoadingShade>
+  <el-config-provider :locale="elementLocle">
+    <suspense>
+      <router-view />
+    </suspense>
+    <LoadingShade></LoadingShade>
+  </el-config-provider>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, onMounted, computed } from "vue";
 import { useStore } from "@/store";
 import { Throttle } from "@/utils/func";
 import LoadingShade from "@/components/LoadingShade/LoadingShade.vue";
+import { localeTypes } from "@/locale";
 
 export default defineComponent({
   components: { LoadingShade },
   setup() {
     const store = useStore();
-
+    const elementLocle = computed(() => {
+      const locale = localeTypes.find((f) => f.key === store.state.AppModule.locale);
+      if (locale) {
+        return locale.elementUI;
+      }
+      return "";
+    });
     onMounted(() => {
       store.dispatch("AppModule/setClientWidth", document.body.clientWidth);
 
@@ -32,6 +41,10 @@ export default defineComponent({
         onResize();
       });
     });
+
+    return {
+      elementLocle,
+    };
   },
 });
 </script>

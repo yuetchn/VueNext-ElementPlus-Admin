@@ -1,20 +1,19 @@
 /*
  * @ModuleName: en-US
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 15:39:56
+ * @LastEditTime: 2022-03-11 10:04:25
  */
 export default {
-  home: "home",
-
   // NavBar
-  refresh: "Refresh",
-  fullScreen: "FullScreen",
-  userCenter: "UserCenter",
-  loginOut: "LoginOut",
-  closeAllTags: "CloseAllTags",
-  hellow: "Hellow",
-  locale: "Language",
-
+  navBar: {
+    refresh: "Refresh",
+    fullScreen: "FullScreen",
+    userCenter: "UserCenter",
+    loginOut: "LoginOut",
+    closeAllTags: "CloseAllTags",
+    hellow: "Hellow",
+    locale: "Language",
+  },
   // routes
   dashboard: "Home",
   components: "Components",

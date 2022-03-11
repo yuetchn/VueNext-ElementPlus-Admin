@@ -1,9 +1,11 @@
 /*
  * @ModuleName: i18n
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 15:53:43
+ * @LastEditTime: 2022-03-11 10:09:47
  */
 import { createI18n } from "vue-i18n";
+import e_zhCN from "element-plus/es/locale/lang/zh-cn";
+import e_enUS from "element-plus/es/locale/lang/en";
 import store from "@/store";
 
 const modules = import.meta.globEager("./*.ts");
@@ -51,12 +53,12 @@ export const localeTypes = [
   {
     key: "zh-CN",
     name: "中文",
-    disabled: false,
+    elementUI: e_zhCN,
   },
   {
     key: "en-US",
     name: "English",
-    disabled: false,
+    elementUI: e_enUS,
   },
 ];
 

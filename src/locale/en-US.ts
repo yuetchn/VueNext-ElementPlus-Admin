@@ -1,20 +1,19 @@
 /*
  * @ModuleName: en-US
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 15:39:56
+ * @LastEditTime: 2022-03-11 10:26:16
  */
 export default {
-  home: "home",
-
   // NavBar
-  refresh: "Refresh",
-  fullScreen: "FullScreen",
-  userCenter: "UserCenter",
-  loginOut: "LoginOut",
-  closeAllTags: "CloseAllTags",
-  hellow: "Hellow",
-  locale: "Language",
-
+  navBar: {
+    refresh: "Refresh",
+    fullScreen: "FullScreen",
+    userCenter: "UserCenter",
+    loginOut: "LoginOut",
+    closeAllTags: "CloseAllTags",
+    hellow: "Hellow",
+    locale: "Language",
+  },
   // routes
   dashboard: "Home",
   components: "Components",
@@ -41,4 +40,10 @@ export default {
   exportExcelIndex: "ExportExcel",
   link: "ExternalLink",
   linkIndex: "ExternalLink",
+  echarts: "Echarts",
+  chartLine: "Line",
+  error: "Error",
+  "404Index": "404",
+  locale: "I18n",
+  localeIndex: "I18n",
 };

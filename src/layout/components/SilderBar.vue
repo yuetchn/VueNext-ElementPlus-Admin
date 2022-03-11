@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 15:31:00
+ * @LastEditTime: 2022-03-09 20:37:18
 -->
 <template>
   <div class="m_silder_bar" :class="{ m_silder_bar_shrink: isShrink }">

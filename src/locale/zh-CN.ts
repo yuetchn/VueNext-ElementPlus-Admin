@@ -1,20 +1,19 @@
 /*
  * @ModuleName: zh-CN
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 15:38:23
+ * @LastEditTime: 2022-03-11 10:26:21
  */
 export default {
-  home: "首页",
-
   // NavBar
-  refresh: "刷新",
-  fullScreen: "全屏",
-  userCenter: "个人中心",
-  loginOut: "退出登录",
-  closeAllTags: "关闭所有Tag",
-  hellow: "你好",
-  locale: "语言",
-
+  navBar: {
+    refresh: "刷新",
+    fullScreen: "全屏",
+    userCenter: "个人中心",
+    loginOut: "退出登录",
+    closeAllTags: "关闭所有Tag",
+    hellow: "你好",
+    locale: "语言",
+  },
   // routes
   dashboard: "首页",
   components: "组件展示",
@@ -26,6 +25,7 @@ export default {
   fileUpload: "文件上传",
   dialog: "弹窗",
   clipboard: "剪切板",
+  clipboardIndex: "剪切板",
   permission: "权限",
   permissionTest: "菜单权限",
   permissionTest2: "菜单权限2",
@@ -40,4 +40,10 @@ export default {
   exportExcelIndex: "导出Excel",
   link: "外链",
   linkIndex: "外链",
+  echarts: "图表",
+  chartLine: "Line",
+  error: "错误",
+  "404Index": "404",
+  locale: "国际化",
+  localeIndex: "国际化",
 };

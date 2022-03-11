@@ -1,7 +1,7 @@
 /*
  * @ModuleName: en-US
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:04:25
+ * @LastEditTime: 2022-03-11 10:19:15
  */
 export default {
   // NavBar
@@ -40,4 +40,10 @@ export default {
   exportExcelIndex: "ExportExcel",
   link: "ExternalLink",
   linkIndex: "ExternalLink",
+  echarts: "Echarts",
+  chartLine: "Line",
+  error: "Error",
+  "404Index": "404",
+  localel: "I18n",
+  localelIndex: "I18n",
 };

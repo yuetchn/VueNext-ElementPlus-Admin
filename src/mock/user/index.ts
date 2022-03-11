@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 15:38:21
+ * @LastEditTime: 2022-03-10 07:47:41
  */
 import { mock } from "mockjs";
 
@@ -241,6 +241,26 @@ const adminMenu = [
         meta: {
           title: "子路由3",
           icon: "module",
+        },
+      },
+    ],
+  },
+  {
+    path: "/locale",
+    name: "locale",
+    component: "Layout",
+    meta: {
+      title: "国际化",
+      icon: "locale",
+    },
+    children: [
+      {
+        path: "localelIndex",
+        name: "localelIndex",
+        component: "components/locale",
+        meta: {
+          title: "国际化",
+          icon: "locale",
         },
       },
     ],

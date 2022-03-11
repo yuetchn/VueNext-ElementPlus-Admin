@@ -1,7 +1,7 @@
 /*
  * @ModuleName: i18n
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:09:47
+ * @LastEditTime: 2022-03-11 10:18:39
  */
 import { createI18n } from "vue-i18n";
 import e_zhCN from "element-plus/es/locale/lang/zh-cn";
@@ -45,8 +45,8 @@ export const t = (value: string) => {
 };
 
 export const toggleLocale = (key: string) => {
+  store.dispatch("AppModule/setLocale", key)
   i18n.global.locale = key;
-  store.dispatch("AppModule/setLocale", key);
 };
 
 export const localeTypes = [

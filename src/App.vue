@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: App
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:14:48
+ * @LastEditTime: 2022-03-11 10:20:02
 -->
 <template>
   <el-config-provider :locale="elementLocle">
@@ -49,15 +49,17 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
-html,
-body {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-}
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color:#333333;
+  }
 
-#app {
-  height: 100%;
-}
+  #app {
+    height: 100%;
+  }
 </style>

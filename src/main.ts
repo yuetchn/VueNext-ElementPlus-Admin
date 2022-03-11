@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Main
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 15:53:44
+ * @LastEditTime: 2022-03-10 07:59:33
  */
 import { createApp } from "vue";
 import Antd from "ant-design-vue";
@@ -35,7 +35,7 @@ RegisterGlobal(app);
 
 // Element-Plus、Ant-Design 尚未国际化同步，后期改造
 // ElementPlus
-app.use(ElementPlus, { size: "mini", locale });
+app.use(ElementPlus, { size: "default", locale });
 // AntDesign
 app.use(Antd);
 

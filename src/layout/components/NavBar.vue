@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: NavBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:05:44
+ * @LastEditTime: 2022-03-11 10:19:49
 -->
 <template>
   <div class="m_navbar">
@@ -165,7 +165,7 @@ export default defineComponent({
   cursor: pointer;
 
   .u_name {
-    width: 130px;
+    width: 120px;
     overflow: hidden;
     text-align: right;
     font-size: 18px;

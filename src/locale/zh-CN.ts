@@ -1,7 +1,7 @@
 /*
  * @ModuleName: zh-CN
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:04:25
+ * @LastEditTime: 2022-03-11 10:18:29
  */
 export default {
   // NavBar
@@ -25,6 +25,7 @@ export default {
   fileUpload: "文件上传",
   dialog: "弹窗",
   clipboard: "剪切板",
+  clipboardIndex: "剪切板",
   permission: "权限",
   permissionTest: "菜单权限",
   permissionTest2: "菜单权限2",
@@ -39,4 +40,10 @@ export default {
   exportExcelIndex: "导出Excel",
   link: "外链",
   linkIndex: "外链",
+  echarts: "图表",
+  chartLine: "Line",
+  error: "错误",
+  "404Index": "404",
+  localel: "国际化",
+  localelIndex: "国际化",
 };

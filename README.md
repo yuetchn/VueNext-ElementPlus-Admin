@@ -4,12 +4,12 @@
 <img src="https://img.shields.io/badge/vue-3.2.25-%23FFC21A" />
 <img src="https://img.shields.io/badge/vite-2.8.6-23FFC21A" />
 <img src="https://img.shields.io/badge/typescript-4.6.2-23FFC21A" />
-<img src="https://img.shields.io/badge/element--plus-2.0.5-FFC21A" />
+<img src="https://img.shields.io/badge/element--plus-2.1.4-FFC21A" />
 <img src="https://img.shields.io/badge/ant--design--vue-2.2.8-%23FFC21A" />
 <img src="https://img.shields.io/badge/license-MIT-FFC21A" />
 </p>
 
-# 简介
+# ⚡简介
 `VueNext-ElementPlus-Admin` 是一个后台前端解决方案，它基于 [vue3.x](https://v3.cn.vuejs.org/ "vue官网") 和 [element-plus](https://element-plus.gitee.io/zh-CN/ "Element-Plus官网")实现。它使用了前沿的前端技术栈，内置了动态路由，权限验证，提炼了典型的业务模型，模块化开发，提供了丰富的功能组件，内置 `i18n` 国际化解决方案，拥抱 [Vite](https://vitejs.cn/ "Vite") 急速的服务启动以及轻量快速的热重载提高开发效率，可以帮助你快速搭建企业级中后台产品原型。
 轻量级框架只保留了基本核心功能，不冗余不需要的功能，可根据业务随意扩展，快速搭建定制的后台应用。
 
@@ -24,7 +24,7 @@
 <img align="center" src="http://www.yuetchn.top/img.png">
 </p>
 
-# 特性
+# 💒特性
 
 - 速度快
 - 轻量化
@@ -34,7 +34,7 @@
 - Tsx/Jsx支持
 - 国际化支持
 
-# 准备
+# 🌈准备
 
 你需要在本地安装 `node` 和 `git`。本项目技术栈基于 `ES2016>`、`vue3.x`、`vuex@next`、`vue-router@next` 、`vite` 、`axios` 和 `element-plus`,提前了解和学习这些知识会对使用本项目有很大的帮助。
 
@@ -47,7 +47,7 @@
 [[Gitee](https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin)]
 [[GitHub](https://github.com/yuetchn/VueNext-ElementPlus-Admin)]
 
-# 功能
+# 🏭功能
 
 - ✅路由
 - ✅缓存
@@ -145,7 +145,7 @@
     ├── tsconfig.json
     └── vite.config.ts
 
-# 开发
+# 🚧开发
 
     # 拉取代码仓库到本地
     git clone https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin
@@ -193,8 +193,8 @@
 |-|-|-|-|
 |non-supported|last 2 versions|last 2 versions|last 2 versions|
 
-# 🍕
-Could you please give me an ⭐ if it is helpful
+# 🍕支持作者
+如果你在使用中或使用过后，觉得框架不错，希望你能帮我点个 ⭐ Star，这将是对我极大的鼓励与支持。
 
 # License
 

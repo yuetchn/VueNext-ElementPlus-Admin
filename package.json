@@ -2,7 +2,7 @@
   "name": "vuenext-elementplus-admin",
   "version": "1.0.1",
   "license": "MIT",
-  "author": "YuetChn",
+  "author": "yuetchn@163.com",
   "scripts": {
     "dev": "npm run lint && vite --host",
     "serve": "npm run lint && vue-tsc --noEmit && vite serve --mode production",
@@ -16,7 +16,7 @@
     "axios": "^0.24.0",
     "dayjs": "^1.10.7",
     "echarts": "^5.2.2",
-    "element-plus": "^2.0.5",
+    "element-plus": "^2.1.4",
     "file-saver": "^2.0.5",
     "js-cookie": "^3.0.1",
     "markdown-it": "^12.3.2",

@@ -177,45 +177,29 @@ export default defineComponent({
       user-select: none;
     }
 
-    ::v-deep {
-      .el-form-item {
-        padding-right: 0;
-        margin: 20px 0;
-        color: #454545;
-        background: transparent;
-        border: 1px solid transparent;
-        border-radius: 2px;
+    ::v-deep(.el-form-item) {
+      padding-right: 0;
+      margin: 20px 0;
+      color: #454545;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 2px;
+    }
 
-        &__content {
-          min-height: 35px;
-          // min-height: $base-input-height;
-          // line-height: $base-input-height;
-        }
+    ::v-deep(.el-input) {
+      box-sizing: border-box;
 
-        &__error {
-          position: absolute;
-          top: 100%;
-          left: 18px;
-          // font-size: $base-font-size-small;
-          line-height: 18px;
-          // color: $base-color-red;
-        }
-      }
-
-      .el-input {
-        box-sizing: border-box;
-
-        input {
-          height: 58px;
-          padding-left: 45px;
-          // font-size: $base-font-size-default;
-          line-height: 58px;
-          // color: $base-font-color;
-          background: #f6f4fc;
-          border: 0;
-          // caret-color: $base-font-color;
-        }
+      input {
+        height: 58px;
+        padding-left: 45px;
+        // font-size: $base-font-size-default;
+        line-height: 58px;
+        // color: $base-font-color;
+        background: #f6f4fc;
+        border: 0;
+        // caret-color: $base-font-color;
       }
     }
+
   }
 </style>

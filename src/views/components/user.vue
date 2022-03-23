@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: User
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-23 16:27:06
+ * @LastEditTime: 2022-03-23 16:40:42
 -->
 <template>
   <div class="user_root">
@@ -48,7 +48,13 @@
     </el-row>
   </div>
 </template>
-<script lang="ts"></script>
+<script lang="ts">
+import { defineComponent } from "vue"
+
+export default defineComponent({
+  
+})
+</script>
 <style lang="scss" scoped>
   .el-row {
     height: 100%;

@@ -59,12 +59,20 @@
         </div>
       </el-col>
     </el-row>
+
+    <el-row style="margin-top:15px;">
+      <el-col :span="24">
+        <user style="padding:0;" />
+      </el-col>
+    </el-row>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
+import user from "@/views/components/user.vue"
 
 export default defineComponent({
+  components: { user },
   setup() {
     return {
       lineOptions: {
@@ -80,13 +88,11 @@ export default defineComponent({
         yAxis: {
           type: "value",
         },
-        series: [
-          {
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: "line",
-            smooth: true,
-          },
-        ],
+        series: [{
+          data: [820, 932, 901, 934, 1290, 1330, 1320],
+          type: "line",
+          smooth: true,
+        }],
       },
       pieOptions: {
         title: {
@@ -101,73 +107,73 @@ export default defineComponent({
           top: "8%",
           left: "center",
         },
-        series: [
-          {
-            name: "来源",
-            type: "pie",
-            radius: ["40%", "70%"],
-            avoidLabelOverlap: false,
-            label: {
-              show: false,
-              position: "center",
-            },
-            emphasis: {
-              label: {
-                show: true,
-                fontSize: "40",
-                fontWeight: "bold",
-              },
-            },
-            labelLine: {
-              show: false,
-            },
-            data: [
-              { value: 1048, name: "网络" },
-              { value: 735, name: "官网" },
-              { value: 580, name: "朋友" },
-              { value: 484, name: "链接" },
-              { value: 300, name: "广告" },
-            ],
+        series: [{
+          name: "来源",
+          type: "pie",
+          radius: ["40%", "70%"],
+          avoidLabelOverlap: false,
+          label: {
+            show: false,
+            position: "center",
           },
-        ],
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: "40",
+              fontWeight: "bold",
+            },
+          },
+          labelLine: {
+            show: false,
+          },
+          data: [
+            { value: 1048, name: "网络" },
+            { value: 735, name: "官网" },
+            { value: 580, name: "朋友" },
+            { value: 484, name: "链接" },
+            { value: 300, name: "广告" },
+          ],
+        }],
       },
     };
   },
 });
 </script>
 <style lang="scss" scoped>
-.m_card_item {
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 4px;
-  box-sizing: border-box;
-  padding: 25px;
-  padding-bottom: 40px;
-  height: 120px;
+  .m_card_item {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 25px;
+    padding-bottom: 40px;
+    height: 120px;
 
-  .m_card_left {
-    flex: 1;
-  }
+    .m_card_left {
+      flex: 1;
+    }
 
-  .m_card_right {
-    padding: 15px;
-    transition: all 0.3s;
-  }
-  .u_card_num {
-    font-size: 30px;
-    transition: all 0.3s;
-  }
-
-  &:hover {
-    cursor: pointer;
-
-    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.08);
     .m_card_right {
-      background: rgba(0, 0, 0, 0.05);
-      border-radius: 8px;
+      padding: 15px;
+      transition: all 0.3s;
+    }
+
+    .u_card_num {
+      font-size: 30px;
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.08);
+
+      .m_card_right {
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+      }
     }
   }
-}
 </style>

@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Logo
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-10 15:15:14
+ * @LastEditTime: 2022-03-23 11:49:55
 -->
 <template>
   <div class="m_logo">
@@ -32,8 +32,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .m_logo {
   height: 45px;
-  background: #333333;
-  color: #fff;
+  background: $g-silderBar-logo-background-color;
+  color: $g-silderBar-logo-color;
   line-height: 45px;
   text-align: center;
   overflow: hidden;

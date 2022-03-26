@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:26:48
+ * @LastEditTime: 2022-03-26 21:05:45
  */
 import { mock } from "mockjs";
 
@@ -61,6 +61,15 @@ const adminMenu = [
         meta: {
           title: "弹窗",
           icon: "dialog",
+        },
+      },
+      {
+        path: "qrCode",
+        name: "qrCode",
+        component: "components/qrCode",
+        meta: {
+          title: "二维码",
+          icon: "qrCode",
         },
       },
     ],

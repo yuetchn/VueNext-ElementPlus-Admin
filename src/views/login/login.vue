@@ -12,13 +12,15 @@
           <el-form-item style="margin-top: 40px" prop="username">
             <span class="svg-container svg-container-admin">
               <!-- <vab-icon :icon="['fas', 'user']" /> -->
+              <g-svg-icon :size="16" style="z-index:99999;position:relative;" name="user" />
             </span>
             <el-input v-model.trim="loginForm.account" placeholder="请输入用户名" tabindex="1" type="text" />
           </el-form-item>
           <el-form-item prop="password">
-            <!-- <span class="svg-container">
-              <vab-icon :icon="['fas', 'lock']" />
-            </span> -->
+            <span class="svg-container">
+              <g-svg-icon :size="16" style="z-index:99999;position:relative;" name="password" />
+              <!-- <vab-icon :icon="['fas', 'lock']" /> -->
+            </span>
             <el-input v-model.trim="loginForm.password" tabindex="2" placeholder="请输入密码" @keyup.enter="login" />
             <!-- <span v-if="passwordType === 'password'" class="show-password" @click="handlePassword">
               <vab-icon :icon="['fas', 'eye-slash']"></vab-icon>
@@ -102,7 +104,7 @@ export default defineComponent({
     .login-btn {
       display: inherit;
       width: 220px;
-      height: 60px;
+      height: 50px;
       margin-top: 5px;
       border: 0;
 
@@ -158,7 +160,7 @@ export default defineComponent({
 
     .svg-container {
       position: absolute;
-      top: 14px;
+      top: 7px;
       left: 15px;
       // z-index: $base-z-index;
       font-size: 16px;
@@ -190,12 +192,12 @@ export default defineComponent({
       box-sizing: border-box;
 
       input {
-        height: 58px;
+        height: 50px;
         padding-left: 45px;
         // font-size: $base-font-size-default;
         line-height: 58px;
         // color: $base-font-color;
-        background: #f6f4fc;
+        // background: #f6f4fc;
         border: 0;
         // caret-color: $base-font-color;
       }

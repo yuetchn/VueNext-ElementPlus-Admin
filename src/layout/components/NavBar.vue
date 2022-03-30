@@ -1,17 +1,17 @@
 <!--
  * @ModuleName: NavBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 11:32:12
+ * @LastEditTime: 2022-03-30 20:13:40
 -->
 <template>
-  <div class="m_navbar">
-    <div class="m_left_bread">
-      <div class="m_shrink" @click="check">
+  <div class="navbar">
+    <div class="left_bread">
+      <div class="shrink_item" @click="check">
         <g-svg-icon name="shrink" size="18" color="#606266" :class="{ shrink: isShrink }"></g-svg-icon>
       </div>
       <BreadCrumbs class="u_bread_crumbs"></BreadCrumbs>
     </div>
-    <div class="m_right">
+    <div class="right">
       <el-tooltip :content="$t('navBar.refresh')" placement="bottom">
         <div class="u_nav_item" @click="reload">
           <g-svg-icon size="20" color="#A4A4A4" name="refresh" />
@@ -38,7 +38,7 @@
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <div class="m_right_dropdown">
+      <div class="right_dropdown">
         <el-dropdown>
           <div class="u_name">{{ $t("navBar.hellow") }},{{ userName }}</div>
           <template #dropdown>
@@ -123,7 +123,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.m_navbar {
+.navbar {
   height: 45px;
   // box-shadow: 2px 0 5px 2px rgba(0, 0, 0, 0.08);
   border-bottom: 1px solid rgba(0, 0, 0, 0.03);
@@ -133,7 +133,7 @@ export default defineComponent({
   background: #fff;
 }
 
-.m_shrink {
+.shrink_item {
   height: 100%;
   cursor: pointer;
   display: flex;
@@ -151,7 +151,7 @@ export default defineComponent({
   }
 }
 
-.m_left_bread {
+.left_bread {
   display: flex;
   align-items: center;
   height: 100%;
@@ -161,14 +161,14 @@ export default defineComponent({
   }
 }
 
-.m_right {
+.right {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.m_right_dropdown {
+.right_dropdown {
   padding-right: 20px;
   margin-left: 10px;
   cursor: pointer;

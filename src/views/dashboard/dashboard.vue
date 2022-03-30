@@ -3,44 +3,44 @@
     <el-row :gutter="15">
       <el-col :span="6">
         <div class="m_card_item">
-          <div class="m_card_left">
+          <div class="card_left">
             <div class="u_card_num">{{ $func.formatNumber(12312311) }}</div>
             <div>访问人数</div>
           </div>
-          <div class="m_card_right">
+          <div class="card_right">
             <g-svg-icon size="38" color="#409EFF" name="dashboard-count"></g-svg-icon>
           </div>
         </div>
       </el-col>
       <el-col :span="6">
         <div class="m_card_item">
-          <div class="m_card_left">
+          <div class="card_left">
             <div class="u_card_num">{{ $func.formatNumber(56847512) }}</div>
             <div>动态</div>
           </div>
-          <div class="m_card_right">
+          <div class="card_right">
             <g-svg-icon size="38" color="#409EFF" name="dashboard-dt"></g-svg-icon>
           </div>
         </div>
       </el-col>
       <el-col :span="6">
         <div class="m_card_item">
-          <div class="m_card_left">
+          <div class="card_left">
             <div class="u_card_num">{{ $func.formatNumber(23232456) }}</div>
             <div>关注</div>
           </div>
-          <div class="m_card_right">
+          <div class="card_right">
             <g-svg-icon size="38" color="#409EFF" name="dashboard-gz"></g-svg-icon>
           </div>
         </div>
       </el-col>
       <el-col :span="6">
         <div class="m_card_item">
-          <div class="m_card_left">
+          <div class="card_left">
             <div class="u_card_num">{{ $func.formatNumber(45633213) }}</div>
             <div>订阅</div>
           </div>
-          <div class="m_card_right">
+          <div class="card_right">
             <g-svg-icon size="38" color="#409EFF" name="dashboard-watch"></g-svg-icon>
           </div>
         </div>
@@ -151,11 +151,11 @@ export default defineComponent({
     padding-bottom: 40px;
     height: 120px;
 
-    .m_card_left {
+    .card_left {
       flex: 1;
     }
 
-    .m_card_right {
+    .card_right {
       padding: 15px;
       transition: all 0.3s;
     }
@@ -170,7 +170,7 @@ export default defineComponent({
 
       box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.08);
 
-      .m_card_right {
+      .card_right {
         background: rgba(0, 0, 0, 0.05);
         border-radius: 8px;
       }

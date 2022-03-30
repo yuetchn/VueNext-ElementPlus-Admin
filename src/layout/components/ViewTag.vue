@@ -1,13 +1,13 @@
 <!--
  * @ModuleName: ViewTag
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:08:23
+ * @LastEditTime: 2022-03-30 20:12:13
 -->
 <template>
-  <div class="m_view_tag">
-    <div class="m_view_tags">
+  <div class="view_tag">
+    <div class="view_tags">
       <el-scrollbar style="width: 100%">
-        <div class="m_view_tag_scrollbar">
+        <div class="view_tag_scrollbar">
           <div v-for="(item, i) in viewTags" :key="i" class="u_view_tag" :class="{ u_view_tag__active: item.path === selTag.path }" @click="$router.push(item.path)" @mouseenter="showIndex = i" @mouseleave="showIndex = -1">
             <div v-if="selTag.path === item.path" class="beforeTip"></div>
             <div class="tag_title">
@@ -98,7 +98,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.m_view_tag {
+.view_tag {
   height: 35px;
   overflow: hidden;
   background: #fff;
@@ -109,7 +109,7 @@ export default defineComponent({
   align-items: center;
 }
 
-.m_view_tags {
+.view_tags {
   flex: 1;
   padding: 5px 10px 0;
 }
@@ -178,7 +178,7 @@ export default defineComponent({
   }
 }
 
-.m_view_tag_scrollbar {
+.view_tag_scrollbar {
   display: flex;
   align-items: center;
   width: 100%;

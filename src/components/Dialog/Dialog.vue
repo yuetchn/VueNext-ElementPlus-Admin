@@ -1,29 +1,29 @@
 <!--
  * @ModuleName: Dialog 对话框
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-08 15:22:50
+ * @LastEditTime: 2022-03-30 20:15:40
 -->
 
 <template>
   <teleport to="body">
-    <div v-if="modelValue && shade" class="m_dialog_shade" @click="close"></div>
-    <transition enter-active-class="m_dialog_enter_active" leave-active-class="m_dialog_leave_active">
+    <div v-if="modelValue && shade" class="dialog_shade" @click="close"></div>
+    <transition enter-active-class="dialog_enter_active" leave-active-class="m_dialog_leave_active">
       <div v-if="modelValue" ref="dialogRef" class="m_dialog" tabindex="0" :style="dialogStyle" @keydown.esc="close">
         <!-- title -->
-        <div class="m_dialog_header">
+        <div class="dialog_header">
           <slot name="title">
-            <div class="u_dialog_title">{{ title }}</div>
+            <div class="dialog_title">{{ title }}</div>
           </slot>
-          <div class="u_dialog_close" @click="close">
+          <div class="dialog_close" @click="close">
             <g-svg-icon size="12" name="close"></g-svg-icon>
           </div>
         </div>
         <!-- content -->
-        <div class="m_dialog_content">
+        <div class="dialog_content">
           <slot name="default"></slot>
         </div>
         <!-- footer -->
-        <div class="m_dialog_footer" :style="{ textAlign: align }">
+        <div class="dialog_footer" :style="{ textAlign: align }">
           <slot name="footer"></slot>
         </div>
       </div>
@@ -115,7 +115,7 @@ export default defineComponent({
           nextTick(() => {
             dialogRef.value.focus();
             console.log(props);
-            init("m_dialog", "m_dialog_header", props.drag);
+            init("m_dialog", "dialog_header", props.drag);
           });
         }
       },
@@ -135,7 +135,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.m_dialog_shade {
+.dialog_shade {
   position: absolute;
   z-index: 1199;
   width: 100%;
@@ -158,15 +158,15 @@ export default defineComponent({
   flex-direction: column;
 }
 
-.m_dialog_enter_active {
+.dialog_enter_active {
   animation: dialog_enter_active 0.2s ease;
 }
 .m_dialog_leave_active {
-  @extend .m_dialog_enter_active;
+  @extend .dialog_enter_active;
   animation-direction: reverse;
 }
 
-.m_dialog_header {
+.dialog_header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -175,10 +175,10 @@ export default defineComponent({
   height: 40px;
   overflow: hidden;
   padding: 5px;
-  .u_dialog_title {
+  .dialog_title {
     padding: 5px;
   }
-  .u_dialog_close {
+  .dialog_close {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -194,13 +194,13 @@ export default defineComponent({
   }
 }
 
-.m_dialog_content {
+.dialog_content {
   padding: 10px;
   min-height: 100px;
   flex: 1;
 }
 
-.m_dialog_footer {
+.dialog_footer {
   flex: 0 0 auto;
   padding: 10px;
   // text-align: center;

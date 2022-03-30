@@ -1,14 +1,14 @@
 <!--
  * @ModuleName: Layout
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-10 16:18:16
+ * @LastEditTime: 2022-03-30 20:14:35
 -->
 <template>
-  <div class="m_layout">
-    <div class="m_left_silder">
+  <div class="layout">
+    <div class="left_silder">
       <SilderBar></SilderBar>
     </div>
-    <div class="m_right_content" :style="mRightContent">
+    <div class="right_content" :style="mRightContent">
       <NavBar></NavBar>
       <ViewTag></ViewTag>
       <Main></Main>
@@ -53,11 +53,11 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.m_layout {
+.layout {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.05);
 }
-.m_left_silder {
+.left_silder {
   height: 100%;
   position: fixed;
   top: 0;
@@ -67,7 +67,7 @@ export default defineComponent({
   z-index: 1000;
 }
 
-.m_right_content {
+.right_content {
   overflow: hidden;
   margin-left: 220px;
   transition: margin-left 0.3s;

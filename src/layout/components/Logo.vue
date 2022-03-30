@@ -1,13 +1,13 @@
 <!--
  * @ModuleName: Logo
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-23 11:49:55
+ * @LastEditTime: 2022-03-30 20:14:03
 -->
 <template>
-  <div class="m_logo">
+  <div class="logo">
     <div>
       <img src="/favicon.ico" :alt="title" />
-      <span v-show="!isShrink" class="m_logo_content">{{ title }}</span>
+      <span v-show="!isShrink" class="logo_content">{{ title }}</span>
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.m_logo {
+.logo {
   height: 45px;
   background: $g-silderBar-logo-background-color;
   color: $g-silderBar-logo-color;

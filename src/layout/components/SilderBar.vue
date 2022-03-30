@@ -1,10 +1,10 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-23 11:51:38
+ * @LastEditTime: 2022-03-30 20:12:29
 -->
 <template>
-  <div class="m_silder_bar" :class="{ m_silder_bar_shrink: isShrink }">
+  <div class="silder_bar" :class="{ silder_bar_shrink: isShrink }">
     <el-scrollbar>
       <a-menu v-model:selectedKeys="nowSelMenuKeys" v-model:openKeys="nowOpemMenuKeys" :inline-collapsed="isShrink" mode="inline">
         <Logo></Logo>
@@ -111,7 +111,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.m_silder_bar {
+.silder_bar {
   width: 220px;
   height: 100%;
   transition: all 0.3s;
@@ -120,7 +120,7 @@ export default defineComponent({
   border-right:1px solid rgba(0, 0, 0, 0.1);
 }
 
-.m_silder_bar_shrink {
+.silder_bar_shrink {
   width: 80px;
 }
 

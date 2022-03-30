@@ -1,11 +1,11 @@
 <!--
  * @ModuleName: Main
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-01 09:45:41
+ * @LastEditTime: 2022-03-30 20:13:53
 -->
 <template>
-  <section class="m_main">
-    <div class="m_main_content">
+  <section class="main">
+    <div class="main_content">
       <router-view v-slot="{ Component, route }">
         <transition :name="route.name" enter-active-class="enter_active">
           <keep-alive :include="cacheNames" :exclude="[]" :max="cacheMax">
@@ -38,14 +38,14 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.m_main {
+.main {
   height: calc(100% - 45px - 35px);
   background-color: $g-main-background-color;
   color: $text-color-primary;
   overflow: hidden;
 }
 
-.m_main_content {
+.main_content {
   padding: 15px;
   box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05);
   height: 100%;

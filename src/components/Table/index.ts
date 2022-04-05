@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Custom Table Attribute
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-11 16:42:25
+ * @LastEditTime: 2022-04-05 22:10:53
  */
 import { PropType } from "vue";
 import { TableColumns as columns } from "./columns";

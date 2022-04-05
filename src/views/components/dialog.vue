@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Dialog
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-08 15:23:43
+ * @LastEditTime: 2022-04-05 22:15:47
 -->
 <template>
   <div>
@@ -43,17 +43,17 @@
 
     <el-card style="margin-top: 15px">
       <template #header>弹窗属性</template>
-      <g-table :columns="help.PropertyColumns" :data="data"></g-table>
+      <g-table style="height:300px" :columns="help.PropertyColumns" :data="data"></g-table>
     </el-card>
 
     <el-card style="margin-top: 15px">
       <template #header>弹窗方法</template>
-      <g-table :columns="help.FuncColumns" :data="data2"></g-table>
+      <g-table style="height:300px" :columns="help.FuncColumns" :data="data2"></g-table>
     </el-card>
 
     <el-card style="margin-top: 15px">
       <template #header>弹窗插槽</template>
-      <g-table :columns="help.SlotColumns" :data="data3"></g-table>
+      <g-table style="height:300px" :columns="help.SlotColumns" :data="data3"></g-table>
     </el-card>
   </div>
 </template>

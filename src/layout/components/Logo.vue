@@ -1,14 +1,14 @@
 <!--
  * @ModuleName: Logo
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-30 20:14:03
+ * @LastEditTime: 2022-04-05 21:34:32
 -->
 <template>
   <div class="logo" @click="$router.push('/')">
     <div>
       <img v-if="isShrink" src="/favicon.ico" :alt="title" />
       <img v-if="!isShrink" src="@/assets/logo.png" style="width:auto;height:45px" :alt="title" />
-      <span v-if="!isShrink&&showLogoTitle" class="logo_content">{{ title }}</span>
+      <span v-if="showLogoTitle" v-show="!isShrink" class="logo_content">{{ title }}</span>
     </div>
   </div>
 </template>
@@ -22,9 +22,9 @@ export default defineComponent({
     const state = reactive({
       title: import.meta.env.VITE_APP_TITLE,
       isShrink: computed(() => store.state.AppModule.isShrink),
-      showLogoTitle :import.meta.env.VITE_SHOW_LOGO_TITLE
+      showLogoTitle: import.meta.env.VITE_SHOW_LOGO_TITLE,
     });
-
+    console.log(import.meta.env.VITE_SHOW_LOGO_TITLE)
     return {
       ...toRefs(state),
     };

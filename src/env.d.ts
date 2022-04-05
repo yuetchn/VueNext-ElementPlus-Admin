@@ -20,6 +20,8 @@ interface ImportMetaEnv {
   VITE_BASE_HOST: string;
   /** 标题 */
   VITE_APP_TITLE: string;
+  /** 是否显示Logo标题 */
+  VITE_SHOW_LOGO_TITLE: boolean;
   /** 路由最大缓存数量 */
   VITE_ROUTER_CACHE_MAX: any;
 }

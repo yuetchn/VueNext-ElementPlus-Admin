@@ -1,11 +1,11 @@
 <!--
  * @ModuleName: 请求加载遮罩层
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-12 11:17:37
+ * @LastEditTime: 2022-03-30 20:16:03
 -->
 <template>
   <teleport to="body">
-    <div v-if="showLoadingShade" class="m-shade"></div>
+    <div v-if="showLoadingShade" class="loading_shade"></div>
   </teleport>
 </template>
 <script lang="ts">
@@ -25,7 +25,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.m-shade {
+.loading_shade {
   position: absolute;
   top: 0;
   width: 100%;

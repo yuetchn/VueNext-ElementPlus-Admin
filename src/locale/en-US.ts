@@ -1,7 +1,7 @@
 /*
  * @ModuleName: en-US
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:26:16
+ * @LastEditTime: 2022-03-26 22:02:19
  */
 export default {
   // NavBar
@@ -46,4 +46,5 @@ export default {
   "404Index": "404",
   locale: "I18n",
   localeIndex: "I18n",
+  qrCode: "QrCode",
 };

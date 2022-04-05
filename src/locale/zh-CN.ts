@@ -1,7 +1,7 @@
 /*
  * @ModuleName: zh-CN
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:26:21
+ * @LastEditTime: 2022-03-26 22:02:05
  */
 export default {
   // NavBar
@@ -46,4 +46,5 @@ export default {
   "404Index": "404",
   locale: "国际化",
   localeIndex: "国际化",
+  qrCode: "二维码",
 };

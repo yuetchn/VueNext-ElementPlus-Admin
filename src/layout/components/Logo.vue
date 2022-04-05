@@ -1,13 +1,14 @@
 <!--
  * @ModuleName: Logo
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-10 15:15:14
+ * @LastEditTime: 2022-04-05 21:37:04
 -->
 <template>
-  <div class="m_logo">
+  <div class="logo" @click="$router.push('/')">
     <div>
-      <img src="/favicon.ico" :alt="title" />
-      <span v-show="!isShrink" class="m_logo_content">{{ title }}</span>
+      <img v-if="isShrink" src="/favicon.ico" :alt="title" />
+      <img v-if="!isShrink" src="@/assets/logo.png" style="width:auto;height:45px" :alt="title" />
+      <span v-if="showLogoTitle" v-show="!isShrink" class="logo_content">{{ title }}</span>
     </div>
   </div>
 </template>
@@ -21,8 +22,9 @@ export default defineComponent({
     const state = reactive({
       title: import.meta.env.VITE_APP_TITLE,
       isShrink: computed(() => store.state.AppModule.isShrink),
+      showLogoTitle: import.meta.env.VITE_SHOW_LOGO_TITLE === "true",
     });
-
+    console.log(import.meta.env.VITE_SHOW_LOGO_TITLE)
     return {
       ...toRefs(state),
     };
@@ -30,10 +32,10 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.m_logo {
+.logo {
   height: 45px;
-  background: #333333;
-  color: #fff;
+  background: $g-silderBar-logo-background-color;
+  color: $g-silderBar-logo-color;
   line-height: 45px;
   text-align: center;
   overflow: hidden;

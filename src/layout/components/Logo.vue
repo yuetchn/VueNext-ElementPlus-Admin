@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Logo
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-05 21:34:32
+ * @LastEditTime: 2022-04-05 21:37:04
 -->
 <template>
   <div class="logo" @click="$router.push('/')">
@@ -22,7 +22,7 @@ export default defineComponent({
     const state = reactive({
       title: import.meta.env.VITE_APP_TITLE,
       isShrink: computed(() => store.state.AppModule.isShrink),
-      showLogoTitle: import.meta.env.VITE_SHOW_LOGO_TITLE,
+      showLogoTitle: import.meta.env.VITE_SHOW_LOGO_TITLE === "true",
     });
     console.log(import.meta.env.VITE_SHOW_LOGO_TITLE)
     return {

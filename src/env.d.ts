@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Vite环境变量
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-21 13:26:38
+ * @LastEditTime: 2022-04-05 21:37:36
  */
 /// <reference types="vite/client" />
 
@@ -21,7 +21,7 @@ interface ImportMetaEnv {
   /** 标题 */
   VITE_APP_TITLE: string;
   /** 是否显示Logo标题 */
-  VITE_SHOW_LOGO_TITLE: boolean;
+  VITE_SHOW_LOGO_TITLE: string;
   /** 路由最大缓存数量 */
   VITE_ROUTER_CACHE_MAX: any;
 }

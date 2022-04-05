@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Icons
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 16:11:02
+ * @LastEditTime: 2022-04-05 22:15:57
 -->
 <template>
   <div>
@@ -26,7 +26,7 @@
 
     <el-card style="margin-top: 15px">
       <template #header>属性</template>
-      <g-table :columns="help.PropertyColumns" :data="data"></g-table>
+      <g-table style="height:300px" :columns="help.PropertyColumns" :data="data"></g-table>
     </el-card>
   </div>
 </template>

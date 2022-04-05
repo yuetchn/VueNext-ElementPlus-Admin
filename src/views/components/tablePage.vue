@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: TablePage
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 15:17:54
+ * @LastEditTime: 2022-04-05 22:16:24
 -->
 <template>
   <div>
@@ -20,19 +20,19 @@
       <template #header> 表格属性 </template>
       <a href="https://element-plus.gitee.io/zh-CN/component/table.html#table-attributes">参考Element-Plus官网属性</a>
       <br /><br />以下为二次封装提供属性：<br />
-      <g-table :columns="help.PropertyColumns" :data="table1Data"></g-table>
+      <g-table style="height:300px" :columns="help.PropertyColumns" :data="table1Data"></g-table>
     </el-card>
     <el-card style="margin-top: 15px">
       <template #header> 表格方法 </template>
       <a href="https://element-plus.gitee.io/zh-CN/component/table.html#table-attributes">参考Element-Plus官网方法</a>
       <br /><br />以下为二次封装提供方法：<br />
-      <g-table :columns="help.FuncColumns" :data="table2Data"></g-table>
+      <g-table style="height:300px" :columns="help.FuncColumns" :data="table2Data"></g-table>
     </el-card>
     <el-card style="margin-top: 15px">
       <template #header> 表格插槽 </template>
       <a href="https://element-plus.gitee.io/zh-CN/component/table.html#table-slots">参考Element-Plus官网插槽</a>
       <br /><br />以下为二次封装提供插槽：<br />
-      <g-table :columns="help.SlotColumns" :data="table3Data"></g-table>
+      <g-table style="height:300px" :columns="help.SlotColumns" :data="table3Data"></g-table>
     </el-card>
   </div>
 </template>

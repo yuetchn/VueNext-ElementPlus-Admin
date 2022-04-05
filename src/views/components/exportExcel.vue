@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: ExportExcel
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 16:02:30
+ * @LastEditTime: 2022-04-05 22:15:53
 -->
 <template>
   <div>
@@ -17,7 +17,7 @@
 
     <el-card style="margin-top: 15px">
       <template #header>函数</template>
-      <g-table :columns="help.FuncColumns" :data="data1"></g-table>
+      <g-table style="height:300px" :columns="help.FuncColumns" :data="data1"></g-table>
     </el-card>
   </div>
 </template>

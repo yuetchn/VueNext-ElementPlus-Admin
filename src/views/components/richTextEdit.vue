@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: richTextEdit
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-08 20:16:40
+ * @LastEditTime: 2022-04-05 22:16:12
 -->
 <template>
   <div>
@@ -26,11 +26,11 @@
     </el-card>
     <el-card style="margin-top: 15px">
       <template #header>属性说明</template>
-      <g-table :columns="help.PropertyColumns" :data="data"></g-table>
+      <g-table style="height:300px" :columns="help.PropertyColumns" :data="data"></g-table>
     </el-card>
     <el-card style="margin-top: 15px">
       <template #header>方法说明</template>
-      <g-table :columns="help.FuncColumns" :data="data1"></g-table>
+      <g-table style="height:300px" :columns="help.FuncColumns" :data="data1"></g-table>
     </el-card>
   </div>
 </template>

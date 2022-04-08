@@ -1,12 +1,12 @@
 <!--
  * @ModuleName: User
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-23 16:40:42
+ * @LastEditTime: 2022-04-08 19:19:38
 -->
 <template>
   <div class="user_root">
     <el-row :gutter="20">
-      <el-col :span="4">
+      <el-col :span="5">
         <div class="user_info">
           <div class="head">
             <img src="https://portrait.gitee.com/uploads/avatars/user/1842/5526674_yuetchn_admin_1642658194.png!avatar200" />
@@ -38,7 +38,7 @@
           </div>
         </div>
       </el-col>
-      <el-col :span="20">
+      <el-col :span="19">
         <div class="gitee_info">
           <a href="https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin">
             <img src="https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin/widgets/widget_card.svg?colors=4183c4,ffffff,ffffff,e3e9ed,666666,9b9b9b" />

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 权限拦截
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 11:27:07
+ * @LastEditTime: 2022-04-08 19:18:11
  */
 import { computed, watch } from "vue";
 import { RouteRecordRaw } from "vue-router";
@@ -15,20 +15,24 @@ import { UserStates } from "@/store/modules/user";
 import { t } from "@/locale";
 
 const RouterWrite = ["/login", "/404"];
-const StaticRouterCount = computed<number>(() => GetStaticRoutes());
+const StaticRouterCount = computed < number >(() => GetStaticRoutes());
 let NowRoute: any = null;
-Nprogress.configure({});
+Nprogress.configure({
+  showSpinner: false,
+});
 
 watch(
   () => (store.state as any).AppModule.locale,
   () => {
-    document.title = (NowRoute.meta.title ? `${ t(NowRoute.name?.toString() || "") === NowRoute.name ? NowRoute.meta.title : t(NowRoute.name?.toString() || "") } - ` : "") + import.meta.env.VITE_APP_TITLE;
+    document.title = (NowRoute.meta.title ? `${ t(NowRoute.name?.toString() || "") === NowRoute.name ? NowRoute.meta.title : t(NowRoute.name?.toString() || "") } - ` : "")
+      + import.meta.env.VITE_APP_TITLE;
   },
 );
 
 router.beforeEach((to, from, next) => {
   NowRoute = to;
-  document.title = (to.meta.title ? `${ t(to.name?.toString() || "") === to.name ? to.meta.title : t(to.name?.toString() || "") } - ` : "") + import.meta.env.VITE_APP_TITLE;
+  document.title = (to.meta.title ? `${ t(to.name?.toString() || "") === to.name ? to.meta.title : t(to.name?.toString() || "") } - ` : "")
+    + import.meta.env.VITE_APP_TITLE;
   Nprogress.start();
 
   if (!GetToken()) {
@@ -47,12 +51,13 @@ router.beforeEach((to, from, next) => {
 
   // 挂载动态路由
   if (router.getRoutes().length === StaticRouterCount.value) {
+    const _startTime = performance.now();
     const dynamicRoutes = ((store.state as any).UserModule as UserStates).menus;
     if (!dynamicRoutes.length) {
       return next();
     }
     const routerComponents = import.meta.glob("/src/views/**/*.vue");
-    const registerRoute = (routes: RouteRecordRaw[]) => {
+    const registerRoute = (routes: RouteRecordRaw[], isRoot: boolean) => {
       const routers: RouteRecordRaw[] = [];
       routes.forEach((f: RouteRecordRaw) => {
         if ((f.component as any) === "Layout") {
@@ -64,18 +69,18 @@ router.beforeEach((to, from, next) => {
           return;
         }
         if (f.children) {
-          f.children = registerRoute(f.children);
+          f.children = registerRoute(f.children, false);
+        }
+        if (isRoot) {
+          router.addRoute(f);
         }
         routers.push(f);
       });
       return routers;
     };
-    const rts = registerRoute(dynamicRoutes);
-    rts.forEach((f) => {
-      router.addRoute(f);
-    });
+    registerRoute(dynamicRoutes, true);
     store.dispatch("ViewTagModule/initTags");
-
+    console.info(`🎉Route mounting time：${ performance.now() - _startTime }/ms`)
     return next(to.fullPath);
   }
 

@@ -24,7 +24,6 @@ export default defineComponent({
       isShrink: computed(() => store.state.AppModule.isShrink),
       showLogoTitle: import.meta.env.VITE_SHOW_LOGO_TITLE === "true",
     });
-    console.log(import.meta.env.VITE_SHOW_LOGO_TITLE)
     return {
       ...toRefs(state),
     };

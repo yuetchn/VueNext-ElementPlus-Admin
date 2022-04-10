@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-26 21:05:45
+ * @LastEditTime: 2022-04-10 06:53:06
  */
 import { mock } from "mockjs";
 
@@ -310,6 +310,26 @@ const adminMenu = [
         meta: {
           title: "Line",
           icon: "echart",
+        },
+      },
+    ],
+  },
+  {
+    path: "/cache",
+    name: "cache",
+    component: "Layout",
+    meta: {
+      title: "缓存",
+      icon: "cache",
+    },
+    children: [
+      {
+        path: "cacheIndex",
+        name: "cacheIndex",
+        component: "components/cache",
+        meta: {
+          title: "缓存",
+          icon: "cache",
         },
       },
     ],

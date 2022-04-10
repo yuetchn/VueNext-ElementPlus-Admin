@@ -1,7 +1,7 @@
 /*
  * @ModuleName: en-US
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-26 22:02:19
+ * @LastEditTime: 2022-04-10 06:56:29
  */
 export default {
   // NavBar
@@ -47,4 +47,6 @@ export default {
   locale: "I18n",
   localeIndex: "I18n",
   qrCode: "QrCode",
+  cache: "Cache",
+  cacheIndex: "Cache",
 };

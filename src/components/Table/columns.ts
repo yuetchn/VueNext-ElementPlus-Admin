@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Custom Table Columns
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-11 14:58:16
+ * @LastEditTime: 2022-04-10 07:09:14
  */
 
 export interface TableColumns {
@@ -9,9 +9,9 @@ export interface TableColumns {
   type?: "selection" | "index" | "expand";
   /** 如果设置了 type=index，可以通过传递 index 属性来自定义索引 */
   index?: Number | Function;
-  /** column 的 key，如果需要使用 filter-change 事件，则需要此属性标识是哪个 column 的筛选条件 */
+  /** column 的 标题 */
   label?: String;
-  /** column 的 key， column 的 key， 如果需要使用 filter-change 事件，则需要此属性标识是哪个 column 的筛选条件 */
+  /** column 的 key， 如果需要使用 filter-change 事件，则需要此属性标识是哪个 column 的筛选条件 */
   columnKey?: String;
   /** 字段名称 对应列内容的字段名， 也可以使用 property属性 */
   prop: string;

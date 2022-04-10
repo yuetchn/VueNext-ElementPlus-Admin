@@ -1,7 +1,7 @@
 /*
  * @ModuleName: zh-CN
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-26 22:02:05
+ * @LastEditTime: 2022-04-10 06:56:16
  */
 export default {
   // NavBar
@@ -47,4 +47,6 @@ export default {
   locale: "国际化",
   localeIndex: "国际化",
   qrCode: "二维码",
+  cache: "缓存",
+  cacheIndex: "缓存",
 };

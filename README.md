@@ -39,13 +39,15 @@
 你需要在本地安装 `node` 和 `git`。本项目技术栈基于 `ES2016>`、`vue3.x`、`vuex@next`、`vue-router@next` 、`vite` 、`axios` 和 `element-plus`,提前了解和学习这些知识会对使用本项目有很大的帮助。
 
 
+### 文档
+[中文文档](http://doc.yuetchn.top)
 ### 示例
 
-[[后台Demo](http://demo.yuetchn.top )]
+[后台Demo](http://demo.yuetchn.top )
 
 ### 链接
-[[Gitee](https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin)]
-[[GitHub](https://github.com/yuetchn/VueNext-ElementPlus-Admin)]
+[Gitee](https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin) |
+[GitHub](https://github.com/yuetchn/VueNext-ElementPlus-Admin)
 
 # 🏭功能
 

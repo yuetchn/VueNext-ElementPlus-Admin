@@ -1,13 +1,13 @@
 /*
  * @ModuleName: 组件展示
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-01 13:14:43
+ * @LastEditTime: 2022-04-15 15:43:31
  */
 import { RouteRecordRaw } from "vue-router";
 
 const Layout = () => import("@/layout/Layout.vue");
 
-const staticRoutes: RouteRecordRaw[] = [
+export default <RouteRecordRaw[]>[
   {
     path: "/components",
     redirect: "/components/tablePage",
@@ -300,5 +300,3 @@ const staticRoutes: RouteRecordRaw[] = [
     ],
   },
 ];
-
-export default staticRoutes;

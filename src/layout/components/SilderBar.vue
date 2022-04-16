@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-30 20:12:29
+ * @LastEditTime: 2022-04-16 11:16:02
 -->
 <template>
   <div class="silder_bar" :class="{ silder_bar_shrink: isShrink }">
@@ -152,10 +152,6 @@ export default defineComponent({
 
 ::v-deep(.ant-menu-sub.ant-menu-inline){
   background-color:$g-silderBar-sub-background-color;
-}
-
-::v-deep(.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected){
-  background-color:$g-silderBar-selected-background-color
 }
 
 .ant-menu-inline,

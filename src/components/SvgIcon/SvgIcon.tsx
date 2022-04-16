@@ -17,10 +17,18 @@ export default defineComponent({
       type: [Number, String],
       default: 16,
     },
+    width: {
+      type: [Number, String],
+      default: null,
+    },
+    height: {
+      type: [Number, String],
+      default: null,
+    },
   },
   setup(props) {
     return () => (
-      <svg style={`color:${ props.color };width:${ props.size }px;height:${ props.size }px;fill:currentColor;vertical-align:middle;`}>
+      <svg style={`color:${ props.color };width:${ props.width ? props.width : props.size }px;height:${ props.height ? props.height : props.size }px;fill:currentColor;vertical-align:middle;`}>
         <use xlinkHref={`#icon-${ props.name }`}></use>
       </svg>
     );

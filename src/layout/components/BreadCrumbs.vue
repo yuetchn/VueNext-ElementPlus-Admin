@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: BreadCrumbs
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-21 11:41:17
+ * @LastEditTime: 2022-04-15 15:34:10
 -->
 <template>
   <div>
@@ -15,13 +15,27 @@
 </template>
 <script lang="ts">
 import { defineComponent, computed, toRefs, reactive } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 export default defineComponent({
   setup() {
     const route = useRoute();
+    const router = useRouter();
+    const root = computed(() => {
+      let _r = router.getRoutes().find(f => f.path === "/")
+      if (_r?.redirect) {
+        _r = router.getRoutes().find(f => f.path === _r?.redirect)
+      }
+      return _r
+    })
     const state = reactive({
-      paths: computed(() => route.matched),
+      paths: computed(() => {
+        const _r = [...route.matched]
+        if (!_r.find(f => f.path === root.value?.path)) {
+          _r.unshift(root.value as any)
+        }
+        return _r
+      }),
     });
 
     return {

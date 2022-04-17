@@ -15,7 +15,7 @@
 
 ***该项目不支持 `IE` 浏览器***
 
-[Vue 3 已经官方放弃对 IE11 的支持 ](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md)
+[Vue 3 官方已经放弃对 IE11 的支持 ](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md)
 
 
 ***
@@ -26,42 +26,62 @@
 
 # 💒特性
 
-- 速度快
-- 轻量化
-- 组件丰富
-- 高扩展性
-- TypeScript支持
-- Tsx/Jsx支持
-- 国际化支持
+- ⚡️  速度快
+- 🍃  轻量化
+- 📦  组件丰富
+- 🚀  高扩展性
+- 📠  Typescript
+- 🌈  Tsx/Jsx
+- 🌎  国际化
 
-# 🌈准备
+# 🎯准备
 
 你需要在本地安装 `node` 和 `git`。本项目技术栈基于 `ES2016>`、`vue3.x`、`vuex@next`、`vue-router@next` 、`vite` 、`axios` 和 `element-plus`,提前了解和学习这些知识会对使用本项目有很大的帮助。
 
 
+### 文档
+[中文文档](http://doc.yuetchn.top)
 ### 示例
 
-[[后台Demo](http://demo.yuetchn.top )]
+[后台Demo](http://demo.yuetchn.top )
 
 ### 链接
-[[Gitee](https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin)]
-[[GitHub](https://github.com/yuetchn/VueNext-ElementPlus-Admin)]
+[Gitee](https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin) |
+[GitHub](https://github.com/yuetchn/VueNext-ElementPlus-Admin)
 
 # 🏭功能
 
 - ✅路由
+    - 动态路由
+    - 静态路由
 - ✅缓存
+    - Vuex
+    - Cookie
 - ✅丰富组件
+    - 表格
+    - 富文本
+    - MarkDown
+    - 文件上传
+    - 弹窗
+    - 二维码
+    - Svg
+    - PDF
 - ✅权限验证
+    - Permission
 - ✅环境变量
-- ✅I18n
-- ✅Request
-- ✅Mock
-- ✅Ts/Tsx
-- ✅Mixin混入
-- ✅MarkDown
-- ❎文件上传
-- ❎pdf
+    - env
+    - env.dev
+    - env.prod
+- ✅国际化
+    - I18n
+- ✅Utils
+    - Xss
+    - 导出Excel
+    - 剪切板
+    - 表单验证
+    - 节流/防抖
+    - Md5
+    - 全局挂载
 
 # 目录
 

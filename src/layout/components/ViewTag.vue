@@ -1,13 +1,13 @@
 <!--
  * @ModuleName: ViewTag
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-30 20:12:13
+ * @LastEditTime: 2022-04-15 10:19:10
 -->
 <template>
   <div class="view_tag">
     <div class="view_tags">
-      <el-scrollbar style="width: 100%">
-        <div class="view_tag_scrollbar">
+      <el-scrollbar ref="tagScrollBar" style="width: 100%">
+        <div class="view_tag_scrollbar" @mouseenter="tagMouseEnter">
           <div v-for="(item, i) in viewTags" :key="i" class="u_view_tag" :class="{ u_view_tag__active: item.path === selTag.path }" @click="$router.push(item.path)" @mouseenter="showIndex = i" @mouseleave="showIndex = -1">
             <div v-if="selTag.path === item.path" class="beforeTip"></div>
             <div class="tag_title">
@@ -39,7 +39,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, watch, toRefs, reactive, computed } from "vue";
+import { defineComponent, watch, ref, toRefs, reactive, computed } from "vue";
 import { useRoute, useRouter, RouteLocationNormalizedLoaded } from "vue-router";
 import { useStore } from "@/store";
 
@@ -48,6 +48,9 @@ export default defineComponent({
     const route = useRoute();
     const router = useRouter();
     const store = useStore();
+    const tagScrollBar = ref()
+    const tagViewMax = ref<number>(0)
+    const tagViewNow = ref<number>(0)
     const state = reactive({
       initTags: computed(() => store.state.ViewTagModule.initTags),
       selTag: computed(() => <RouteLocationNormalizedLoaded>store.getters["ViewTagModule/getTag"]),
@@ -67,6 +70,34 @@ export default defineComponent({
       store.dispatch("ViewTagModule/closeAllTag");
       router.replace("/");
     };
+
+    const tagMouseEnter = (e:MouseEvent) => {
+      const _d = (e.target as HTMLDivElement)
+      tagViewMax.value = _d.scrollWidth - _d.clientWidth
+      e.target?.addEventListener("wheel", tagWhell as any)
+      e.target?.addEventListener("mouseleave", tagMouseLeave as any)
+    }
+
+    const tagMouseLeave = (e:MouseEvent) => {
+      e.target?.removeEventListener("wheel", tagWhell as any)
+      e.target?.removeEventListener("mouseenter", tagMouseEnter as any)
+      e.target?.removeEventListener("mouseleave", tagMouseLeave as any)
+    }
+
+    const tagWhell = (e:WheelEvent) => {
+      if (Math.sign(e.deltaY) === 1 && tagViewNow.value + 10 <= tagViewMax.value) {
+        tagViewNow.value += 10
+      } else if (Math.sign(e.deltaY) === -1 && tagViewNow.value !== 0 && tagViewNow.value - 10 >= 0) {
+        if (tagViewNow.value - 10 < 10) {
+          tagViewNow.value = 0;
+        } else {
+          tagViewNow.value -= 10
+        }
+      } else {
+        return
+      }
+      tagScrollBar.value.setScrollLeft(tagViewNow.value)
+    }
     watch(
       () => route,
       (v) => {
@@ -84,6 +115,9 @@ export default defineComponent({
     );
 
     return {
+      // ref
+      tagScrollBar,
+      
       // refs
       ...toRefs(state),
 
@@ -93,6 +127,7 @@ export default defineComponent({
       // func
       closeTag,
       closeAllTag,
+      tagMouseEnter,
     };
   },
 });
@@ -127,12 +162,12 @@ export default defineComponent({
   cursor: pointer;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: $g-tagView-background-color__active;
   }
 }
 .u_view_tag {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
+  background-color: $g-tagView-background-color;
+  color: $g-tagView-color;
   margin-right: 5px;
   padding: 3px 8px 3px 15px;
   border-radius: 2px;
@@ -168,11 +203,11 @@ export default defineComponent({
   }
 
   &:hover {
-    padding-left: 20px;
-    // padding-right: 25px;
-    .tag_title {
-      margin-right: 10px;
-    }
+    // padding-left: 20px;
+    // // padding-right: 25px;
+    // .tag_title {
+    //   margin-right: 10px;
+    // }
 
     background-color: #333;
   }

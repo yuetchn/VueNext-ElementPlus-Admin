@@ -1,16 +1,16 @@
 <!--
  * @ModuleName: Dialog 对话框
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-18 15:20:30
+ * @LastEditTime: 2022-04-18 15:28:19
 -->
 
 <template>
   <teleport to="#app">
     <div v-if="modelValue" class="g_dialog_root">
-      <div v-if="shade" class="g_dialog_root__shade" @click="close"></div>
+      <div v-if="shade" class="g_dialog_root__shade"></div>
       <transition enter-active-class="dialog_enter_active" leave-active-class="m_dialog_leave_active">
-        <div class="g_dialog_root__content">
-          <div ref="dialogRef" class="m_dialog" tabindex="0" :style="dialogStyle" @keydown.esc="close">
+        <div class="g_dialog_root__content" @click.prevent="close">
+          <div ref="dialogRef" class="m_dialog" tabindex="0" :style="dialogStyle" @click.stop="()=>{}" @keydown.esc="close">
             <!-- title -->
             <div class="dialog_header">
               <slot name="title">
@@ -116,7 +116,6 @@ export default defineComponent({
           open();
           nextTick(() => {
             dialogRef.value.focus();
-            console.log(props);
             init("m_dialog", "dialog_header", props.drag);
           });
         }

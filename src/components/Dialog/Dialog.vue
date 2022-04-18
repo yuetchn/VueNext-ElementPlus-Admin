@@ -1,33 +1,37 @@
 <!--
  * @ModuleName: Dialog 对话框
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-30 20:15:40
+ * @LastEditTime: 2022-04-18 15:20:30
 -->
 
 <template>
-  <teleport to="body">
-    <div v-if="modelValue && shade" class="dialog_shade" @click="close"></div>
-    <transition enter-active-class="dialog_enter_active" leave-active-class="m_dialog_leave_active">
-      <div v-if="modelValue" ref="dialogRef" class="m_dialog" tabindex="0" :style="dialogStyle" @keydown.esc="close">
-        <!-- title -->
-        <div class="dialog_header">
-          <slot name="title">
-            <div class="dialog_title">{{ title }}</div>
-          </slot>
-          <div class="dialog_close" @click="close">
-            <g-svg-icon size="12" name="close"></g-svg-icon>
+  <teleport to="#app">
+    <div v-if="modelValue" class="g_dialog_root">
+      <div v-if="shade" class="g_dialog_root__shade" @click="close"></div>
+      <transition enter-active-class="dialog_enter_active" leave-active-class="m_dialog_leave_active">
+        <div class="g_dialog_root__content">
+          <div ref="dialogRef" class="m_dialog" tabindex="0" :style="dialogStyle" @keydown.esc="close">
+            <!-- title -->
+            <div class="dialog_header">
+              <slot name="title">
+                <div class="dialog_title">{{ title }}</div>
+              </slot>
+              <div class="dialog_close" @click="close">
+                <g-svg-icon size="12" name="close"></g-svg-icon>
+              </div>
+            </div>
+            <!-- content -->
+            <div class="dialog_content">
+              <slot name="default"></slot>
+            </div>
+            <!-- footer -->
+            <div class="dialog_footer" :style="{ textAlign: align }">
+              <slot name="footer"></slot>
+            </div>
           </div>
         </div>
-        <!-- content -->
-        <div class="dialog_content">
-          <slot name="default"></slot>
-        </div>
-        <!-- footer -->
-        <div class="dialog_footer" :style="{ textAlign: align }">
-          <slot name="footer"></slot>
-        </div>
-      </div>
-    </transition>
+      </transition>
+    </div>
   </teleport>
 </template>
 <script lang="ts">
@@ -76,7 +80,7 @@ export default defineComponent({
     },
     /** 底部对齐格式 */
     align: {
-      type: String as PropType<"left" | "center" | "right">,
+      type: String as PropType < "left" | "center" | "right" >,
       default: "center",
     },
   },
@@ -88,17 +92,15 @@ export default defineComponent({
   setup(props, { emit }) {
     const dialogRef = ref();
     const state = reactive({
-      dialogStyle: props.isFull
-        ? {
-          top: 0,
-          width: "100%",
-          height: "100%",
-        }
-        : {
-          top: props.top,
-          width: props.width,
-          height: props.height,
-        },
+      dialogStyle: props.isFull ? {
+        top: 0,
+        width: "100%",
+        height: "100%",
+      } : {
+        top: props.top,
+        width: props.width,
+        height: props.height,
+      },
     });
 
     const open = () => emit("open");
@@ -119,6 +121,7 @@ export default defineComponent({
           });
         }
       },
+
       { immediate: true },
     );
     return {
@@ -135,85 +138,102 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.dialog_shade {
-  position: absolute;
-  z-index: 1199;
-  width: 100%;
-  top: 0;
-  height: 100%;
-  cursor: pointer;
-  // background: rgba(0, 0, 0, 0.1);
-}
-
-.m_dialog {
-  position: absolute;
-  // left: 50%;
-  // transform: translate(-50%, 0);
-  z-index: 1200;
-  border-radius: 4px;
-  box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.08);
-  background: #ffffff;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.dialog_enter_active {
-  animation: dialog_enter_active 0.2s ease;
-}
-.m_dialog_leave_active {
-  @extend .dialog_enter_active;
-  animation-direction: reverse;
-}
-
-.dialog_header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  flex: 0 0 auto;
-  height: 40px;
-  overflow: hidden;
-  padding: 5px;
-  .dialog_title {
-    padding: 5px;
-  }
-  .dialog_close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 8px;
+  .g_dialog_root {
+    position: absolute;
+    width: 100%;
+    top: 0;
     height: 100%;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-    cursor: pointer;
+    z-index: 1199;
+  }
 
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.08);
+  .g_dialog_root__shade {
+    position: absolute;
+    z-index: 1200;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  .g_dialog_root__content {
+    height: 100%;
+    overflow: auto;
+    position: relative;
+    z-index: 1201;
+  }
+
+  .m_dialog {
+    position: absolute;
+    // left: 50%;
+    // transform: translate(-50%, 0);
+    border-radius: 4px;
+    box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dialog_enter_active {
+    animation: dialog_enter_active 0.2s ease;
+  }
+
+  .m_dialog_leave_active {
+    @extend .dialog_enter_active;
+    animation-direction: reverse;
+  }
+
+  .dialog_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    flex: 0 0 auto;
+    height: 40px;
+    overflow: hidden;
+    padding: 5px;
+
+    .dialog_title {
+      padding: 5px;
+    }
+
+    .dialog_close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 8px;
+      height: 100%;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.08);
+      }
     }
   }
-}
 
-.dialog_content {
-  padding: 10px;
-  min-height: 100px;
-  flex: 1;
-}
-
-.dialog_footer {
-  flex: 0 0 auto;
-  padding: 10px;
-  // text-align: center;
-  // border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-@keyframes dialog_enter_active {
-  0% {
-    opacity: 0;
+  .dialog_content {
+    padding: 10px;
+    min-height: 100px;
+    flex: 1;
   }
 
-  100% {
-    opacity: 1;
+  .dialog_footer {
+    flex: 0 0 auto;
+    padding: 10px;
+    // text-align: center;
+    // border-top: 1px solid rgba(0, 0, 0, 0.08);
   }
-}
+
+  @keyframes dialog_enter_active {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
 </style>

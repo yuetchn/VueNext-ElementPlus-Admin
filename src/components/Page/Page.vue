@@ -1,10 +1,10 @@
 <!--
  * @ModuleName: Page
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-23 13:49:37
+ * @LastEditTime: 2022-04-18 11:09:04
 -->
 <template>
-  <div class="g_page">
+  <div class="g_page" :style="{justifyContent:pageAlign}">
     <el-pagination 
       v-model:currentPage="currentPage"
       v-model:page-size="nowPageSize"
@@ -17,13 +17,18 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, toRefs, watch } from "vue"
+import { defineComponent, PropType, reactive, toRefs, watch } from "vue"
 
 export default defineComponent({
   props: {
     pageSize: {
       type: Number,
       default: 10,
+    },
+    /** 分页位置，默认：'left' */
+    pageAlign: {
+      type: String as PropType < "left" | "center" | "right" >,
+      default: "left",
     },
     pageNumber: {
       type: Number,
@@ -67,6 +72,8 @@ export default defineComponent({
 <style lang="scss" scoped>
   .g_page {
     padding: 5px;
-    text-align: right;
+  }
+  ::v-deep(.el-pagination){
+    justify-content: inherit;
   }
 </style>

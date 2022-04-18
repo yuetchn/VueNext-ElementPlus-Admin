@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Custom Table Attribute
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-05 22:10:53
+ * @LastEditTime: 2022-04-18 11:09:26
  */
 import { PropType } from "vue";
 import { TableColumns as columns } from "./columns";
@@ -13,11 +13,16 @@ export { ElTable } from "element-plus";
 export const props = {
   data: Array,
   /** 表格列集合 */
-  columns: Array as PropType<columns[]>,
+  columns: Array as PropType < columns[] >,
   /** 是否开启分页,页码或者每页条数发生改变会触发 【page-change】 函数 */
   page: {
     type: Boolean,
     default: false,
+  },
+  /** 分页位置，默认：'left' */
+  pageAlign: {
+    type: String as PropType < "left" | "center" | "right" >,
+    default: "left",
   },
   /** 每页条数 */
   pageSize: {

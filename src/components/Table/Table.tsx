@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Custom Table
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 14:32:50
+ * @LastEditTime: 2022-04-18 11:09:34
  */
 import { defineComponent, reactive, ref, toRefs } from "vue";
 import { props, emits, ElTable } from "./index";
@@ -157,7 +157,7 @@ export default defineComponent({
         </div>
         {/* 底部,Page分页 */}
         <div v-show={p.page} class={style.m_table_page}>
-          <g-page v-model:pageNumber={this.pageNumber} v-model:pageSize={this.pageSize} total={this.total} on-change={this.pageChange()}></g-page>
+          <g-page page-align={ p.pageAlign} v-model:pageNumber={this.pageNumber} v-model:pageSize={this.pageSize} total={this.total} on-change={this.pageChange()}></g-page>
         </div>
       </div>
     );

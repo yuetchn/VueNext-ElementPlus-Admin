@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Dialog 对话框
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-18 15:28:19
+ * @LastEditTime: 2022-04-18 15:32:31
 -->
 
 <template>
@@ -16,7 +16,7 @@
               <slot name="title">
                 <div class="dialog_title">{{ title }}</div>
               </slot>
-              <div class="dialog_close" @click="close">
+              <div v-if="showClose" class="dialog_close" @click="close">
                 <g-svg-icon size="12" name="close"></g-svg-icon>
               </div>
             </div>
@@ -55,6 +55,16 @@ export default defineComponent({
     },
     /** 遮罩层是否显示 */
     shade: {
+      type: Boolean,
+      default: true,
+    },
+    /** 是否显示关闭按钮 */
+    showClose: {
+      type: Boolean,
+      default: true,
+    },
+    /** 是否通过点击Model关闭dialog */
+    closeOnClickModal: {
       type: Boolean,
       default: true,
     },
@@ -105,6 +115,7 @@ export default defineComponent({
 
     const open = () => emit("open");
     const close = () => {
+      if (!props.closeOnClickModal) { return }
       emit("close");
       emit("update:modelValue", false);
     };

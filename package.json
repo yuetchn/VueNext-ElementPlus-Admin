@@ -12,6 +12,7 @@
     "lint": "eslint --cache --max-warnings 0  \"src/**/*.{vue,ts,tsx,jsx,js}\" --fix"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^1.1.4",
     "ant-design-vue": "^2.2.8",
     "axios": "^0.24.0",
     "dayjs": "^1.10.7",

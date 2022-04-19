@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Dialog 对话框
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-18 15:32:31
+ * @LastEditTime: 2022-04-19 11:45:57
 -->
 
 <template>
@@ -21,7 +21,7 @@
               </div>
             </div>
             <!-- content -->
-            <div class="dialog_content">
+            <div class="dialog_content" :style="dialogContentStyle">
               <slot name="default"></slot>
             </div>
             <!-- footer -->
@@ -93,6 +93,11 @@ export default defineComponent({
       type: String as PropType < "left" | "center" | "right" >,
       default: "center",
     },
+    /** 弹窗内容内边距, */
+    padding: {
+      type: String,
+      default: "20px 50px",
+    },
   },
   emits: {
     close: null,
@@ -110,6 +115,9 @@ export default defineComponent({
         top: props.top,
         width: props.width,
         height: props.height,
+      },
+      dialogContentStyle: {
+        padding: props.padding,
       },
     });
 

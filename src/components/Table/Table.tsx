@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Custom Table
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-20 10:46:54
+ * @LastEditTime: 2022-04-20 11:07:33
  */
 import { defineComponent, reactive, ref, onMounted, unref, toRefs } from "vue";
 import Sortable from "sortablejs"
@@ -33,7 +33,7 @@ export default defineComponent({
     };
     const dragChange = (data:any[]) => {
       emit("update:data", data)
-      emit("dragChange", data)
+      emit("drag-change", data)
     }
 
     onMounted(() => {
@@ -42,6 +42,7 @@ export default defineComponent({
           unref(tableRef)?.$el.querySelector(".el-table__body-wrapper tbody"),
           {
             animation: 150,
+            filter: ".drag_disabled",
             onEnd: (e) => {
               const _data = JSON.parse(JSON.stringify(p.data))
               _data.splice(e.newIndex, 0, _data.splice(e.oldIndex, 1)[0])

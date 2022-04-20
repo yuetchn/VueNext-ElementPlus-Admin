@@ -168,8 +168,8 @@ export const emits = [
   "header-dragend",
   "expand-change",
   "page-change",
-  "drag-change",
+  "drag-start",
+  "drag-end",
   "update:pageSize",
   "update:pageNumber",
-  "update:data",
 ];

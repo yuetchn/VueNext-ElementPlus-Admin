@@ -1,9 +1,9 @@
 /*
  * @ModuleName: Custom Table
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-20 11:07:33
+ * @LastEditTime: 2022-04-20 17:41:57
  */
-import { defineComponent, reactive, ref, onMounted, unref, toRefs } from "vue";
+import { defineComponent, onMounted, reactive, ref, toRefs, unref } from "vue";
 import Sortable from "sortablejs"
 import { props, emits, ElTable } from "./index";
 import style from "./Table.module.scss";
@@ -31,10 +31,6 @@ export default defineComponent({
       emit("update:pageNumber", state.pageNumber);
       emit("page-change");
     };
-    const dragChange = (data:any[]) => {
-      emit("update:data", data)
-      emit("drag-change", data)
-    }
 
     onMounted(() => {
       if (p.drag) {
@@ -43,11 +39,8 @@ export default defineComponent({
           {
             animation: 150,
             filter: ".drag_disabled",
-            onEnd: (e) => {
-              const _data = JSON.parse(JSON.stringify(p.data))
-              _data.splice(e.newIndex, 0, _data.splice(e.oldIndex, 1)[0])
-              dragChange(_data)
-            },
+            onEnd: (e) => emit("drag-end", e),
+            onStart: (e) => emit("drag-start", e),
           },
         )
       }

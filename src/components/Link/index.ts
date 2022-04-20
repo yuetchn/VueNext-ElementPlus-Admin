@@ -1,7 +1,7 @@
 /*
  * @ModuleName: custon link props
  * @Author: 乐涛
- * @LastEditTime: 2022-04-19 10:58:35
+ * @LastEditTime: 2022-04-20 15:16:00
  */
 import { PropType } from "vue"
 
@@ -27,9 +27,13 @@ export const props = {
     type: String,
     default: "",
   },
-  /** icon 原生el-link属性 */
+  /** icon 不适用原生element-plus的icon，仅支持本项目svg-icon */
   icon: {
-    type: [String],
+    type: String,
     default: "",
+  },
+  iconSize: {
+    type: [Number, String],
+    default: 16,
   },
 }

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Custom Table Attribute
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-18 11:09:26
+ * @LastEditTime: 2022-04-20 11:08:04
  */
 import { PropType } from "vue";
 import { TableColumns as columns } from "./columns";
@@ -38,6 +38,11 @@ export const props = {
   total: {
     type: Number,
     default: 0,
+  },
+  /** 是否开启拖拽表格，如需禁用某一行，可通过element-plus表格row-class-name动态添加class类名[drag_disabled]到指定行中即可。 */
+  drag: {
+    type: Boolean,
+    default: false,
   },
   height: {
     type: [String, Number],
@@ -163,6 +168,8 @@ export const emits = [
   "header-dragend",
   "expand-change",
   "page-change",
+  "drag-start",
+  "drag-end",
   "update:pageSize",
   "update:pageNumber",
 ];

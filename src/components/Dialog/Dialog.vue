@@ -1,27 +1,27 @@
 <!--
  * @ModuleName: Dialog 对话框
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-18 15:20:30
+ * @LastEditTime: 2022-04-19 11:45:57
 -->
 
 <template>
   <teleport to="#app">
     <div v-if="modelValue" class="g_dialog_root">
-      <div v-if="shade" class="g_dialog_root__shade" @click="close"></div>
+      <div v-if="shade" class="g_dialog_root__shade"></div>
       <transition enter-active-class="dialog_enter_active" leave-active-class="m_dialog_leave_active">
-        <div class="g_dialog_root__content">
-          <div ref="dialogRef" class="m_dialog" tabindex="0" :style="dialogStyle" @keydown.esc="close">
+        <div class="g_dialog_root__content" @click.prevent="close">
+          <div ref="dialogRef" class="m_dialog" tabindex="0" :style="dialogStyle" @click.stop="()=>{}" @keydown.esc="close">
             <!-- title -->
             <div class="dialog_header">
               <slot name="title">
                 <div class="dialog_title">{{ title }}</div>
               </slot>
-              <div class="dialog_close" @click="close">
+              <div v-if="showClose" class="dialog_close" @click="close">
                 <g-svg-icon size="12" name="close"></g-svg-icon>
               </div>
             </div>
             <!-- content -->
-            <div class="dialog_content">
+            <div class="dialog_content" :style="dialogContentStyle">
               <slot name="default"></slot>
             </div>
             <!-- footer -->
@@ -58,6 +58,16 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /** 是否显示关闭按钮 */
+    showClose: {
+      type: Boolean,
+      default: true,
+    },
+    /** 是否通过点击Model关闭dialog */
+    closeOnClickModal: {
+      type: Boolean,
+      default: true,
+    },
     /** 距离顶部距离 */
     top: {
       type: String,
@@ -83,6 +93,11 @@ export default defineComponent({
       type: String as PropType < "left" | "center" | "right" >,
       default: "center",
     },
+    /** 弹窗内容内边距, */
+    padding: {
+      type: String,
+      default: "20px 50px",
+    },
   },
   emits: {
     close: null,
@@ -101,10 +116,14 @@ export default defineComponent({
         width: props.width,
         height: props.height,
       },
+      dialogContentStyle: {
+        padding: props.padding,
+      },
     });
 
     const open = () => emit("open");
     const close = () => {
+      if (!props.closeOnClickModal) { return }
       emit("close");
       emit("update:modelValue", false);
     };
@@ -116,7 +135,6 @@ export default defineComponent({
           open();
           nextTick(() => {
             dialogRef.value.focus();
-            console.log(props);
             init("m_dialog", "dialog_header", props.drag);
           });
         }

@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-16 11:16:02
+ * @LastEditTime: 2022-04-19 11:59:33
 -->
 <template>
   <div class="silder_bar" :class="{ silder_bar_shrink: isShrink }">
@@ -9,25 +9,22 @@
       <a-menu v-model:selectedKeys="nowSelMenuKeys" v-model:openKeys="nowOpemMenuKeys" :inline-collapsed="isShrink" mode="inline">
         <Logo></Logo>
         <template v-for="item of routes" :key="item.path">
-          <a-menu-item v-if="item.children?.length === 1" :key="`${item.path}/${item.children && item.children[0].path}`" @click="titleClick(`${item.path}/${item.children && item.children[0].path}`, item.children && item.children[0])">
+          <a-menu-item v-if="item.children?.filter((f) => !f.meta?.hide)?.length === 1" :key="`${item.path}/${item.children && item.children[0].path}`" @click="titleClick(`${item.path}/${item.children && item.children[0].path}`, item.children && item.children[0])">
             <template #icon>
               <g-svg-icon :name="item.children && item.children[0].meta?.icon"></g-svg-icon>
             </template>
-            <!-- <span> {{ (item.children && item.children[0].meta?.title) || "Not Title" }}</span> -->
             <span> {{ titleLocale((item.children && item.children[0].name?.toString()) || "") === (item.children && item.children[0].name) ? item.children && item.children[0].meta?.title : titleLocale((item.children && item.children[0].name?.toString()) || "") }}</span>
           </a-menu-item>
           <a-sub-menu v-else :key="item.path">
             <template #icon>
               <g-svg-icon :name="item.meta?.icon"></g-svg-icon>
             </template>
-            <!-- item.meta?.title -->
             <template #title>{{ titleLocale(item.name?.toString() || "") === item.name ? item.meta?.title : titleLocale(item.name?.toString() || "") }}</template>
-            <template v-for="c of item.children" :key="`${item.path}/${c.path}`">
-              <a-menu-item v-if="!c.children?.length" :key="`${item.path}/${c.path}`" @click="titleClick(`${item.path}/${c.path}`, c)">
+            <template v-for="c of item.children?.filter((f) => !f.meta?.hide)" :key="`${item.path}/${c.path}`">
+              <a-menu-item v-if="!c.children?.filter((f) => !f.meta?.hide)?.length" :key="`${item.path}/${c.path}`" @click="titleClick(`${item.path}/${c.path}`, c)">
                 <template #icon>
                   <g-svg-icon :name="c.meta?.icon"></g-svg-icon>
                 </template>
-                <!-- <span> {{ c.meta?.title || "Not Title" }}</span> -->
                 <span> {{ titleLocale(c.name?.toString() || "") === c.name ? c.meta?.title : titleLocale(c.name?.toString() || "") }}</span>
               </a-menu-item>
               <SilderBarItem v-else :router="c" :parent-router="item.path" @title-click="titleClick"></SilderBarItem>

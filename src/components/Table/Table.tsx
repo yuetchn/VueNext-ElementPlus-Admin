@@ -1,9 +1,10 @@
 /*
  * @ModuleName: Custom Table
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-18 11:09:34
+ * @LastEditTime: 2022-04-20 17:41:57
  */
-import { defineComponent, reactive, ref, toRefs } from "vue";
+import { defineComponent, onMounted, reactive, ref, toRefs, unref } from "vue";
+import Sortable from "sortablejs"
 import { props, emits, ElTable } from "./index";
 import style from "./Table.module.scss";
 
@@ -30,6 +31,20 @@ export default defineComponent({
       emit("update:pageNumber", state.pageNumber);
       emit("page-change");
     };
+
+    onMounted(() => {
+      if (p.drag) {
+        new Sortable(
+          unref(tableRef)?.$el.querySelector(".el-table__body-wrapper tbody"),
+          {
+            animation: 150,
+            filter: ".drag_disabled",
+            onEnd: (e) => emit("drag-end", e),
+            onStart: (e) => emit("drag-start", e),
+          },
+        )
+      }
+    })
 
     return {
       // ref

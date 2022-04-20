@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: SilderBarItem
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 20:37:22
+ * @LastEditTime: 2022-04-19 11:59:23
 -->
 <template>
   <a-sub-menu>
@@ -9,9 +9,8 @@
       <g-svg-icon :name="router.meta?.icon"></g-svg-icon>
     </template>
     <!-- router.meta?.title -->
-
     <template #title>{{ titleLocale(router.name?.toString() || "") === router.name ? router.meta?.title : titleLocale(router.name?.toString() || "") }}</template>
-    <a-menu-item v-for="c of router.children" :key="`${parentRouter}/${router.path}/${c.path}`" @click="$emit('titleClick', `${parentRouter}/${router.path}/${c.path}`, c)">
+    <a-menu-item v-for="c of router.children?.filter((f) => !f.meta?.hide)" :key="`${parentRouter}/${router.path}/${c.path}`" @click="$emit('titleClick', `${parentRouter}/${router.path}/${c.path}`, c)">
       <template #icon>
         <g-svg-icon :name="c.meta?.icon"></g-svg-icon>
       </template>

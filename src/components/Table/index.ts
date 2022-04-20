@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Custom Table Attribute
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-18 11:09:26
+ * @LastEditTime: 2022-04-20 10:46:04
  */
 import { PropType } from "vue";
 import { TableColumns as columns } from "./columns";
@@ -38,6 +38,11 @@ export const props = {
   total: {
     type: Number,
     default: 0,
+  },
+  /** 是否开启拖拽表格 */
+  drag: {
+    type: Boolean,
+    default: false,
   },
   height: {
     type: [String, Number],
@@ -163,6 +168,8 @@ export const emits = [
   "header-dragend",
   "expand-change",
   "page-change",
+  "drag-change",
   "update:pageSize",
   "update:pageNumber",
+  "update:data",
 ];

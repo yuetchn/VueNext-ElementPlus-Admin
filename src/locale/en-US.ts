@@ -1,7 +1,7 @@
 /*
  * @ModuleName: en-US
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-10 06:56:29
+ * @LastEditTime: 2022-04-21 07:36:08
  */
 export default {
   // NavBar
@@ -49,4 +49,5 @@ export default {
   qrCode: "QrCode",
   cache: "Cache",
   cacheIndex: "Cache",
+  linkComponent: "Link",
 };

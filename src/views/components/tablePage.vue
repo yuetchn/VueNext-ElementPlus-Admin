@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: TablePage
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-05 22:16:24
+ * @LastEditTime: 2022-04-21 07:32:36
 -->
 <template>
   <div>
@@ -12,6 +12,22 @@
           <div>
             <el-button type="primary" @click="toggleSelect">全选/取消</el-button>
           </div>
+          <template #name="{ row }"> {{ row.name }} </template>
+        </g-table>
+      </div>
+    </el-card>
+    <el-card style="margin-top: 15px">
+      <template #header> 表格基本使用(拖拽表格) </template>
+      <div style="height: 500px">
+        <g-table ref="tableRef" v-model:page-size="search.pageSize" v-model:page-number="search.pageNumber" drag page :total="search.total" :data="tableData" :columns="columns" @page-change="pageChange">
+          <el-form inline>
+            <el-form-item>
+              <el-input clearable placeholder="用户名" />
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary">检索</el-button>
+            </el-form-item>
+          </el-form>
           <template #name="{ row }"> {{ row.name }} </template>
         </g-table>
       </div>
@@ -45,25 +61,24 @@ import help from "./index";
 export default defineComponent({
   name: "tablePage",
   setup() {
-    const tableRef = ref<InstanceType<typeof ElTable>>();
+    const tableRef = ref < InstanceType < typeof ElTable >>();
     const state = reactive({
       tableData: [],
       search: new SearchForm(),
-      columns: <TableColumns[]>[
-        {
-          type: "selection",
-          width: 50,
-        },
-        {
-          label: "ID",
-          prop: "id",
-          width: "120px",
-        },
-        {
-          label: "Name",
-          prop: "name",
-          slot: true,
-        },
+      columns: < TableColumns[] > [{
+        type: "selection",
+        width: 50,
+      },
+      {
+        label: "ID",
+        prop: "id",
+        width: "120px",
+      },
+      {
+        label: "Name",
+        prop: "name",
+        slot: true,
+      },
       ],
       searchInfo: {
         pageSize: 10,
@@ -72,60 +87,75 @@ export default defineComponent({
         keyWord: "",
       },
       help,
-      table1Data: [
-        {
-          name: "columns",
-          desc: "表格列集合",
-          default: "[]",
-          type: "Array<columns[]>",
-          options: "",
-        },
-        {
-          name: "page",
-          desc: "是否显示分页",
-          default: "false",
-          type: "boolean",
-          options: "true",
-        },
-        {
-          name: "page-size",
-          desc: "每页条数",
-          default: "20",
-          type: "number",
-          options: "",
-        },
-        {
-          name: "page-number",
-          desc: "页码",
-          default: "1",
-          type: "number",
-          options: "",
-        },
-        {
-          name: "total",
-          desc: "总条数",
-          default: "0",
-          type: "number",
-          options: "",
-        },
+      table1Data: [{
+        name: "columns",
+        desc: "表格列集合",
+        default: "[]",
+        type: "Array<columns[]>",
+        options: "",
+      },
+      {
+        name: "page",
+        desc: "是否显示分页",
+        default: "false",
+        type: "boolean",
+        options: "true",
+      },
+      {
+        name: "page-size",
+        desc: "每页条数",
+        default: "20",
+        type: "number",
+        options: "",
+      },
+      {
+        name: "page-number",
+        desc: "页码",
+        default: "1",
+        type: "number",
+        options: "",
+      },
+      {
+        name: "total",
+        desc: "总条数",
+        default: "0",
+        type: "number",
+        options: "",
+      },
+      {
+        name: "drag",
+        desc: "拖拽模式",
+        default: "false",
+        type: "boolean",
+        options: "true",
+      },
       ],
-      table2Data: [
-        {
-          name: "page-change",
-          desc: "分页改变触发",
-          type: "function",
-          default: "",
-        },
-      ],
-      table3Data: [
-        {
-          name: "default",
-          desc: "头部插槽,一般用于表格头部表单",
-        },
-        {
-          name: "footer",
-          desc: "底部插槽",
-        },
+      table2Data: [{
+        name: "page-change",
+        desc: "分页改变触发",
+        type: "function",
+        default: "",
+      },
+      {
+        name: "drag-start",
+        desc: "拖拽开始",
+        type: "function",
+        default: "",
+      },
+      {
+        name: "drag-end",
+        desc: "拖拽结束",
+        type: "function",
+        default: "",
+      }],
+      table3Data: [{
+        name: "default",
+        desc: "头部插槽,一般用于表格头部表单",
+      },
+      {
+        name: "footer",
+        desc: "底部插槽",
+      },
       ],
     });
 

@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: App
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:30:48
+ * @LastEditTime: 2022-04-21 07:31:40
 -->
 <template>
   <el-config-provider :locale="elementLocle" :size="elementSize">
@@ -42,6 +42,12 @@ export default defineComponent({
         onResize();
       });
     });
+
+    // 火狐浏览器拖拽阻止新开标签页
+    document.body.ondrop = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+    }
 
     return {
       elementLocle,

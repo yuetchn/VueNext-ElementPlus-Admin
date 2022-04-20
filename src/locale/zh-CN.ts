@@ -1,7 +1,7 @@
 /*
  * @ModuleName: zh-CN
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-10 06:56:16
+ * @LastEditTime: 2022-04-21 07:35:38
  */
 export default {
   // NavBar
@@ -49,4 +49,5 @@ export default {
   qrCode: "二维码",
   cache: "缓存",
   cacheIndex: "缓存",
+  linkComponent: "链接",
 };

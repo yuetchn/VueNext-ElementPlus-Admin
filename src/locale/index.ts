@@ -1,9 +1,9 @@
 /*
  * @ModuleName: i18n
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:31:25
+ * @LastEditTime: 2022-04-22 13:09:35
  */
-import { createI18n } from "vue-i18n";
+import { createI18n, useI18n as _use } from "vue-i18n";
 import e_zhCN from "element-plus/es/locale/lang/zh-cn";
 import e_enUS from "element-plus/es/locale/lang/en";
 import store from "@/store";
@@ -37,9 +37,9 @@ const getLangFiles = (mList: any, msg: any) => {
   }
 };
 
-export const t = (value: string) => {
+const t = (value: string) => {
   if (i18n.global.te(value)) {
-    return i18n.global.t(value);
+    return _t(value);
   }
   return value;
 };
@@ -69,7 +69,11 @@ const i18n = createI18n({
   globalInjection: true, // 全局注册 $t方法
   locale: (store.state as any).AppModule.locale,
   messages: getLangAll(),
-  $t: t,
 });
+
+const _t = i18n.global.t
+i18n.global.t = t
+
+export const useI18n = () => ({ ..._use(), t })
 
 export default i18n;

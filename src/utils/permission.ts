@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 权限拦截
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-08 19:18:11
+ * @LastEditTime: 2022-04-22 13:11:50
  */
 import { computed, watch } from "vue";
 import { RouteRecordRaw } from "vue-router";
@@ -12,8 +12,9 @@ import { GetToken } from "@/utils/cookie";
 import "nprogress/nprogress.css";
 import store from "@/store";
 import { UserStates } from "@/store/modules/user";
-import { t } from "@/locale";
+import locale from "@/locale";
 
+const { t } = locale.global;
 const RouterWrite = ["/login", "/404"];
 const StaticRouterCount = computed < number >(() => GetStaticRoutes());
 let NowRoute: any = null;

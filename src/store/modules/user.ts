@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User Module
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 14:26:16
+ * @LastEditTime: 2022-04-22 17:48:26
  */
 import { Module } from "vuex";
 import { RouteRecordRaw } from "vue-router";
@@ -22,7 +22,7 @@ export interface UserStates {
   /** menus */
   menus: RouteRecordRaw[];
 }
-const UserModule: Module<UserStates, RootStates> = {
+const UserModule: Module < UserStates, RootStates > = {
   namespaced: true,
   state: {
     token: GetToken(),
@@ -78,8 +78,12 @@ const UserModule: Module<UserStates, RootStates> = {
   },
   actions: {
     // 登录
-    async login({ commit }, dt: { account: string; password: string }) {
-      const { data } = await Login(dt);
+    async login({ commit }, dt: { account: string;password: string }) {
+      const { data, status } = await Login(dt).catch((dt) => dt);
+
+      if (status !== 200) {
+        return Promise.reject(data);
+      }
       if (data.code === 200) {
         // 此处可调用自己的方法获取用户数据，或者通过login接口直接返回数据
         const res = await GetUserInfo(data.data);
@@ -88,10 +92,9 @@ const UserModule: Module<UserStates, RootStates> = {
           commit("SET_TOKEN", data.data);
           await store.dispatch("ViewTagModule/closeAllTag");
           commit("SET_MENUS", res.data.data.menu);
-          return Promise.resolve({ data });
         }
       }
-      return Promise.reject(data);
+      return Promise.resolve({ data });
     },
 
     // 退出登录

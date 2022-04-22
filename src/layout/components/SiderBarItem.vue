@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: SilderBarItem
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-19 11:59:23
+ * @LastEditTime: 2022-04-22 13:10:35
 -->
 <template>
   <a-sub-menu>
@@ -22,7 +22,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { RouteRecordRaw } from "vue-router";
-import { t } from "@/locale";
+import { useI18n } from "@/locale";
 
 export default defineComponent({
   props: {
@@ -39,6 +39,7 @@ export default defineComponent({
   },
   emits: ["titleClick"],
   setup() {
+    const { t } = useI18n()
     const titleLocale = (value: string) => t(value);
 
     return {

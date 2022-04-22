@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-19 11:59:33
+ * @LastEditTime: 2022-04-22 13:10:20
 -->
 <template>
   <div class="silder_bar" :class="{ silder_bar_shrink: isShrink }">
@@ -43,7 +43,7 @@ import SilderBarItem from "./SiderBarItem.vue";
 import { routes } from "@/router";
 import { useStore } from "@/store";
 import Logo from "./Logo.vue";
-import { t } from "@/locale";
+import { useI18n } from "@/locale";
 
 export default defineComponent({
   components: { Logo, SilderBarItem },
@@ -51,6 +51,7 @@ export default defineComponent({
     const store = useStore();
     const router = useRouter();
     const route = useRoute();
+    const { t } = useI18n()
 
     const state = reactive({
       nowSelMenuKeys: <string[]>[],

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Router
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 13:09:14
+ * @LastEditTime: 2022-04-25 13:35:14
  */
 import { createRouter, RouteRecordRaw, createWebHashHistory } from "vue-router";
 import { computed } from "vue";
@@ -35,7 +35,7 @@ const generateStaticRoutes = computed(() => {
   Object.keys(_static_routes).forEach(f => {
     _r = _r.concat(...[_static_routes[f].default as RouteRecordRaw])
   }) 
-  return registerStaticRoutes(_r, true);
+  return registerStaticRoutes(JSON.parse(JSON.stringify(_r)), true);
 })
 
 /**
@@ -73,7 +73,7 @@ const registerStaticRoutes = (routes: RouteRecordRaw[], isRoot:boolean) => {
       return
     }
     if (f.children) {
-      f.children = registerAsyncRoutes(f.children, false);
+      f.children = registerStaticRoutes(f.children, false);
     }
     if (isRoot) {
       router.addRoute(f);

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 权限拦截
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 13:04:01
+ * @LastEditTime: 2022-04-25 13:11:53
  */
 import { computed, watch } from "vue";
 import Nprogress from "nprogress";
@@ -51,14 +51,9 @@ router.beforeEach((to, from, next) => {
   if (router.getRoutes().length === StaticRouterCount.value) {
     const _startTime = performance.now();
     // 提供动态路由、静态路由两种方式,根据需要选择，默认静态路由。
-    // 挂载动态路由
     if (!GenerateRoutes("async").length) {
       return next()
     }
-
-    // 挂载静态路由
-    // GenerateRoutes()
-
     store.dispatch("ViewTagModule/initTags");
     console.info(`🎉Route mounting time：${ performance.now() - _startTime }/ms`)
     return next(to.fullPath);

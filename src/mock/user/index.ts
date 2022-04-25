@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 12:08:52
+ * @LastEditTime: 2022-04-25 13:07:17
  */
 import { mock } from "mockjs";
 
@@ -13,7 +13,7 @@ const adminMenu = [{
   meta: {
     title: "组件展示",
     icon: "component",
-    roles: ["admin"],
+
   },
   children: [{
     path: "tablePage",
@@ -23,7 +23,7 @@ const adminMenu = [{
       title: "表格",
       icon: "table",
       // affix: 1,
-      roles: ["admin"],
+
       cache: 1,
     },
   },
@@ -34,7 +34,7 @@ const adminMenu = [{
     meta: {
       title: "富文本编辑器",
       icon: "richText",
-      roles: ["admin"],
+
     },
   },
   {
@@ -44,7 +44,7 @@ const adminMenu = [{
     meta: {
       title: "MarkDown",
       icon: "markdown",
-      roles: ["admin"],
+
     },
   },
   {
@@ -54,7 +54,7 @@ const adminMenu = [{
     meta: {
       title: "文件上传",
       icon: "upload",
-      roles: ["admin"],
+
     },
   },
   {
@@ -64,7 +64,7 @@ const adminMenu = [{
     meta: {
       title: "弹窗",
       icon: "dialog",
-      roles: ["admin"],
+
     },
   },
   {
@@ -74,7 +74,7 @@ const adminMenu = [{
     meta: {
       title: "二维码",
       icon: "qrCode",
-      roles: ["admin"],
+
     },
   },
   {
@@ -84,7 +84,7 @@ const adminMenu = [{
     meta: {
       title: "链接",
       icon: "link",
-      roles: ["admin"],
+
     },
   },
   ],
@@ -96,7 +96,7 @@ const adminMenu = [{
   meta: {
     title: "剪切板",
     icon: "clipboard",
-    roles: ["admin", "test"],
+
   },
   children: [{
     path: "clipboardIndex",
@@ -105,7 +105,7 @@ const adminMenu = [{
     meta: {
       title: "剪切板",
       icon: "clipboard",
-      roles: ["admin", "test"],
+
     },
   }],
 },
@@ -116,7 +116,7 @@ const adminMenu = [{
   meta: {
     title: "权限",
     icon: "permission",
-    roles: ["admin", "test"],
+
   },
   children: [{
     path: "test",
@@ -125,7 +125,7 @@ const adminMenu = [{
     meta: {
       title: "菜单权限",
       icon: "permission",
-      roles: ["admin"],
+
     },
   },
   {
@@ -135,7 +135,7 @@ const adminMenu = [{
     meta: {
       title: "菜单权限2",
       icon: "permission",
-      roles: ["admin", "test"],
+
     },
   },
   ],
@@ -148,7 +148,7 @@ const adminMenu = [{
   meta: {
     title: "Icon",
     icon: "icon",
-    roles: ["admin"],
+
   },
   children: [{
     path: "index",
@@ -157,7 +157,7 @@ const adminMenu = [{
     meta: {
       title: "Icon",
       icon: "icon",
-      roles: ["admin"],
+
     },
   }],
 },
@@ -169,7 +169,7 @@ const adminMenu = [{
   meta: {
     title: "正则验证",
     icon: "verify",
-    roles: ["admin"],
+
   },
   children: [{
     path: "index",
@@ -178,7 +178,7 @@ const adminMenu = [{
     meta: {
       title: "正则验证",
       icon: "verify",
-      roles: ["admin"],
+
     },
   }],
 },
@@ -190,7 +190,7 @@ const adminMenu = [{
   meta: {
     title: "Xss注入",
     icon: "xss",
-    roles: ["admin"],
+
   },
   children: [{
     path: "index",
@@ -199,7 +199,7 @@ const adminMenu = [{
     meta: {
       title: "Xss注入",
       icon: "xss",
-      roles: ["admin"],
+
     },
   }],
 },
@@ -211,7 +211,7 @@ const adminMenu = [{
   meta: {
     title: "路由嵌套",
     icon: "module",
-    roles: ["admin"],
+
   },
   children: [{
     path: "index",
@@ -220,7 +220,7 @@ const adminMenu = [{
     meta: {
       title: "子路由1",
       icon: "module",
-      roles: ["admin"],
+
     },
     children: [{
       path: "routerNestChildrenIndex",
@@ -229,7 +229,7 @@ const adminMenu = [{
       meta: {
         title: "子子路由1",
         icon: "module",
-        roles: ["admin"],
+
       },
     },
     {
@@ -239,7 +239,7 @@ const adminMenu = [{
       meta: {
         title: "子子路由2",
         icon: "module",
-        roles: ["admin"],
+
       },
     },
     {
@@ -249,7 +249,7 @@ const adminMenu = [{
       meta: {
         title: "子子路由3",
         icon: "module",
-        roles: ["admin"],
+
       },
     },
     ],
@@ -261,7 +261,7 @@ const adminMenu = [{
     meta: {
       title: "子路由2",
       icon: "module",
-      roles: ["admin"],
+
     },
   },
   {
@@ -271,7 +271,7 @@ const adminMenu = [{
     meta: {
       title: "子路由3",
       icon: "module",
-      roles: ["admin"],
+
     },
   },
   ],
@@ -283,7 +283,7 @@ const adminMenu = [{
   meta: {
     title: "国际化",
     icon: "locale",
-    roles: ["admin"],
+
   },
   children: [{
     path: "localeIndex",
@@ -292,7 +292,7 @@ const adminMenu = [{
     meta: {
       title: "国际化",
       icon: "locale",
-      roles: ["admin"],
+
     },
   }],
 },
@@ -303,7 +303,7 @@ const adminMenu = [{
   meta: {
     title: "导出Excel",
     icon: "exportExcel",
-    roles: ["admin"],
+
   },
   children: [{
     path: "exportExcelIndex",
@@ -312,7 +312,7 @@ const adminMenu = [{
     meta: {
       title: "导出Excel",
       icon: "exportExcel",
-      roles: ["admin"],
+
     },
   }],
 },
@@ -323,7 +323,7 @@ const adminMenu = [{
   meta: {
     title: "图表",
     icon: "echart",
-    roles: ["admin"],
+
   },
   children: [{
     path: "chartLine",
@@ -332,7 +332,7 @@ const adminMenu = [{
     meta: {
       title: "Line",
       icon: "echart",
-      roles: ["admin"],
+
     },
   }],
 },
@@ -343,7 +343,7 @@ const adminMenu = [{
   meta: {
     title: "缓存",
     icon: "cache",
-    roles: ["admin"],
+
   },
   children: [{
     path: "cacheIndex",
@@ -352,7 +352,7 @@ const adminMenu = [{
     meta: {
       title: "缓存",
       icon: "cache",
-      roles: ["admin"],
+
     },
   }],
 },
@@ -364,7 +364,7 @@ const adminMenu = [{
   meta: {
     title: "错误页面",
     icon: "404",
-    roles: ["admin"],
+
   },
   children: [{
     path: "404Index",
@@ -373,7 +373,6 @@ const adminMenu = [{
     meta: {
       title: "404",
       icon: "404",
-      roles: ["admin"],
     },
   }],
 },
@@ -384,7 +383,6 @@ const adminMenu = [{
   meta: {
     title: "PDF",
     icon: "pdf",
-    roles: ["admin"],
   },
   children: [],
 },
@@ -396,7 +394,6 @@ const adminMenu = [{
   meta: {
     title: "外链",
     icon: "link",
-    roles: ["admin"],
   },
   children: [{
     path: "index",
@@ -405,7 +402,6 @@ const adminMenu = [{
     meta: {
       title: "外链",
       icon: "link",
-      roles: ["admin"],
       link: "https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin",
     },
   }],
@@ -417,7 +413,54 @@ const adminMenu = [{
   meta: {
     title: "个人中心",
     hide: true,
-    roles: ["admin", "test"],
+  },
+},
+];
+const testMenu = [{
+  path: "/components",
+  redirect: "/components/tablePage",
+  name: "components",
+  component: "Layout",
+  meta: {
+    title: "组件展示",
+    icon: "component",
+    hide: false,
+  },
+  children: [{
+    path: "tablePage",
+    name: "tablePage",
+    component: "components/tablePage",
+    meta: {
+      title: "表格",
+      icon: "table",
+    },
+  }],
+},
+{
+  path: "/permission",
+  name: "permission",
+  component: "Layout",
+  meta: {
+    title: "权限",
+    icon: "permission",
+  },
+  children: [{
+    path: "test2",
+    name: "permissionTest2",
+    component: "components/permission/test2",
+    meta: {
+      title: "菜单权限2",
+      icon: "permission",
+    },
+  }],
+},
+{
+  path: "/user",
+  component: "components/user",
+  name: "user",
+  meta: {
+    title: "个人中心",
+    hide: true,
   },
 },
 ];
@@ -450,8 +493,7 @@ export const getUserInfo = (data: any) => {
     data: {
       userName: params[0],
       avatar: "http://www.baidu.com",
-      menu: adminMenu,
-      roles: [params[0]],
+      menu: params[0] === "admin" ? adminMenu : testMenu,
     },
   };
 };

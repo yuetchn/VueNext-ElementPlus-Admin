@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Dialog 对话框
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-19 11:45:57
+ * @LastEditTime: 2022-04-25 17:51:50
 -->
 
 <template>
@@ -161,12 +161,12 @@ export default defineComponent({
     width: 100%;
     top: 0;
     height: 100%;
-    z-index: 1199;
+    z-index: 999;
   }
 
   .g_dialog_root__shade {
     position: absolute;
-    z-index: 1200;
+    z-index: 1000;
     width: 100%;
     top: 0;
     height: 100%;
@@ -178,7 +178,7 @@ export default defineComponent({
     height: 100%;
     overflow: auto;
     position: relative;
-    z-index: 1201;
+    z-index: 1001;
   }
 
   .m_dialog {

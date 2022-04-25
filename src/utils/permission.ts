@@ -1,12 +1,11 @@
 /*
  * @ModuleName: 权限拦截
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 12:14:41
+ * @LastEditTime: 2022-04-25 13:38:20
  */
 import { computed, watch } from "vue";
 import Nprogress from "nprogress";
-import { UserStates } from "@/store/modules/user";
-import router, { GenerateDynamicRoutes, GenerateStaticRoutes } from "@/router";
+import router, { GenerateRoutes } from "@/router";
 import { GetStaticRoutes } from "@/router/static";
 import { GetToken } from "@/utils/cookie";
 import "nprogress/nprogress.css";
@@ -49,21 +48,11 @@ router.beforeEach((to, from, next) => {
     return;
   }
 
-  // 角色判断
-  if (!((store.state as any).UserModule as UserStates).roles.length) {
-    store.dispatch("UserModule/loginOut");
-    next()
-  } else if (router.getRoutes().length === StaticRouterCount.value) {
+  if (router.getRoutes().length === StaticRouterCount.value) {
     const _startTime = performance.now();
-    // 提供动态路由、静态路由两种方式,根据需要选择，可以同时使用也可以两者结合使用。
-    // 挂载动态路由
-    if (!GenerateDynamicRoutes.value.length) {
+    if (!GenerateRoutes().length) {
       return next()
     }
-
-    // 挂载静态路由
-    GenerateStaticRoutes.value
-
     store.dispatch("ViewTagModule/initTags");
     console.info(`🎉Route mounting time：${ performance.now() - _startTime }/ms`)
     return next(to.fullPath);

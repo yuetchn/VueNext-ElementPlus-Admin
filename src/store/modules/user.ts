@@ -1,10 +1,9 @@
 /*
  * @ModuleName: User Module
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 11:38:28
+ * @LastEditTime: 2022-04-25 12:37:02
  */
 import { Module } from "vuex";
-import { RouteRecordRaw } from "vue-router";
 import RootStates from "@/types/store/storeInterface";
 import { GetToken, SetToken, RemoveToken } from "@/utils/cookie";
 import { Login } from "@/api/login";
@@ -20,9 +19,7 @@ export interface UserStates {
   /** avatar */
   avatar: string;
   /** menus */
-  menus: RouteRecordRaw[];
-  /** roles */
-  roles: string[];
+  menus: any[];
 }
 const UserModule: Module < UserStates, RootStates > = {
   namespaced: true,
@@ -31,7 +28,6 @@ const UserModule: Module < UserStates, RootStates > = {
     userName: localStorage.getItem("userName") || "",
     avatar: localStorage.getItem("avatar") || "",
     menus: localStorage.getItem("menus") ? JSON.parse(localStorage.getItem("menus") as any) : [],
-    roles: (localStorage.getItem("roles")?.split(",") || []),
   },
   mutations: {
     SET_TOKEN(state, token: string) {
@@ -54,7 +50,7 @@ const UserModule: Module < UserStates, RootStates > = {
       localStorage.removeItem("userName");
       localStorage.removeItem("avatar");
     },
-    SET_MENUS(state, menus: RouteRecordRaw[]) {
+    SET_MENUS(state, menus: any[]) {
       // 移除动态路由
       state.menus.forEach((f) => {
         if (!router.hasRoute(f.name as string)) {
@@ -65,10 +61,6 @@ const UserModule: Module < UserStates, RootStates > = {
 
       state.menus = menus;
       localStorage.setItem("menus", JSON.stringify(menus));
-    },
-    SET_ROLES(state, roles: string[]) {
-      state.roles = roles;
-      localStorage.setItem("roles", roles.toString())
     },
     REMOVE_MENUS(state) {
       // 移除动态路由
@@ -99,7 +91,6 @@ const UserModule: Module < UserStates, RootStates > = {
           commit("SET_TOKEN", data.data);
           await store.dispatch("ViewTagModule/closeAllTag");
           commit("SET_MENUS", res.data.data.menu);
-          commit("SET_ROLES", res.data.data.roles)
         }
       }
       return Promise.resolve({ data });

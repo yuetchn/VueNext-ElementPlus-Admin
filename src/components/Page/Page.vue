@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Page
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-18 11:09:04
+ * @LastEditTime: 2022-04-25 15:37:46
 -->
 <template>
   <div class="g_page" :style="{justifyContent:pageAlign}">
@@ -12,12 +12,14 @@
       :background="background"
       layout="total, sizes, prev, pager, next, jumper"
       :total="total"
+      @current-change="currentChange"
+      @size-change="sizeChange"
     >
     </el-pagination>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType, reactive, toRefs, watch } from "vue"
+import { defineComponent, PropType, reactive, toRefs } from "vue"
 
 export default defineComponent({
   props: {
@@ -54,17 +56,22 @@ export default defineComponent({
       nowPageSize: props.pageSize,
     })
 
-    watch(state, (val) => {
-      emit("update:pageSize", val.nowPageSize)
-      emit("update:pageNumber", val.currentPage)
+    const currentChange = (current:number) => {
+      emit("update:pageNumber", current)
       emit("change")
-    })
+    }
 
+    const sizeChange = (size:number) => {
+      emit("update:pageSize", size)
+      emit("change")
+    }
     return {
       // refs
       ...toRefs(state),
 
       // func
+      currentChange,
+      sizeChange,
     }
   },
 })

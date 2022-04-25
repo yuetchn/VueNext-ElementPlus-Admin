@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User Module
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-22 17:48:26
+ * @LastEditTime: 2022-04-25 11:38:28
  */
 import { Module } from "vuex";
 import { RouteRecordRaw } from "vue-router";
@@ -21,6 +21,8 @@ export interface UserStates {
   avatar: string;
   /** menus */
   menus: RouteRecordRaw[];
+  /** roles */
+  roles: string[];
 }
 const UserModule: Module < UserStates, RootStates > = {
   namespaced: true,
@@ -29,6 +31,7 @@ const UserModule: Module < UserStates, RootStates > = {
     userName: localStorage.getItem("userName") || "",
     avatar: localStorage.getItem("avatar") || "",
     menus: localStorage.getItem("menus") ? JSON.parse(localStorage.getItem("menus") as any) : [],
+    roles: (localStorage.getItem("roles")?.split(",") || []),
   },
   mutations: {
     SET_TOKEN(state, token: string) {
@@ -63,6 +66,10 @@ const UserModule: Module < UserStates, RootStates > = {
       state.menus = menus;
       localStorage.setItem("menus", JSON.stringify(menus));
     },
+    SET_ROLES(state, roles: string[]) {
+      state.roles = roles;
+      localStorage.setItem("roles", roles.toString())
+    },
     REMOVE_MENUS(state) {
       // 移除动态路由
       state.menus.forEach((f) => {
@@ -92,6 +99,7 @@ const UserModule: Module < UserStates, RootStates > = {
           commit("SET_TOKEN", data.data);
           await store.dispatch("ViewTagModule/closeAllTag");
           commit("SET_MENUS", res.data.data.menu);
+          commit("SET_ROLES", res.data.data.roles)
         }
       }
       return Promise.resolve({ data });

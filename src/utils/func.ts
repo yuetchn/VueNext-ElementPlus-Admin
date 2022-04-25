@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 通用函数
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 11:55:15
+ * @LastEditTime: 2022-04-25 14:08:05
  */
 import { Md5 as tsMd5 } from "ts-md5";
 
@@ -92,3 +92,27 @@ export const formatNumber = (number: number, decimals = 0, decPoint = ".", thous
 
   return `${ s.join(thousandsSep) }${ decimals !== 0 ? decPoint : "" }${ last }`;
 };
+
+/**
+ * 深拷贝对象
+ * @param data 
+ * @returns 
+ */
+export const deepClone = (data:any) => {
+  const type = Object.prototype.toString.call(data);
+  let obj: any
+  if (type === "[object Object]") {
+    obj = {}
+    for (const k in data) {
+      obj[k] = deepClone(data[k])
+    }
+  } else if (type === "[object Array]") {
+    obj = []
+    data.forEach((f:any, i:number) => {
+      obj[i] = deepClone(f)
+    })
+  } else {
+    obj = data
+  }
+  return obj
+}

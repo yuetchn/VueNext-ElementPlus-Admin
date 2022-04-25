@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Custom Table
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-20 17:41:57
+ * @LastEditTime: 2022-04-25 15:37:57
  */
 import { defineComponent, onMounted, reactive, ref, toRefs, unref } from "vue";
 import Sortable from "sortablejs"
@@ -26,11 +26,6 @@ export default defineComponent({
     const clearFilter = (...args: any[]) => tableRef.value?.clearFilter(args);
     const doLayout = () => tableRef.value?.doLayout();
     const sort = (...args: any[]) => tableRef.value?.sort(args[0], args[1]);
-    const pageChange = () => {
-      emit("update:pageSize", state.pageSize);
-      emit("update:pageNumber", state.pageNumber);
-      emit("page-change");
-    };
 
     onMounted(() => {
       if (p.drag) {
@@ -63,13 +58,17 @@ export default defineComponent({
       clearFilter,
       doLayout,
       sort,
-      pageChange,
     };
   },
   render() {
     const p = this.$props;
     const slots = this.$slots;
     const emit = this.$emit;
+    const pageChange = () => {
+      emit("update:pageSize", this.pageSize);
+      emit("update:pageNumber", this.pageNumber);
+      emit("page-change");
+    };
     const elTableColumns = p.columns?.map((f) => {
       const column = (
         <el-table-column
@@ -148,31 +147,31 @@ export default defineComponent({
             lazy={p.lazy}
             load={p.load}
             tree-props={p.treeProps}
-            on-select={emit("select")}
-            on-select-all={emit("select-all")}
-            selection-change={emit("selection-change")}
-            cell-mouse-enter={emit("cell-mouse-enter")}
-            cell-mouse-leave={emit("cell-mouse-leave")}
-            cell-click={emit("cell-click")}
-            cell-dblclick={emit("cell-dblclick")}
-            cell-contextmenu={emit("cell-contextmenu")}
-            row-click={emit("row-click")}
-            row-contextmenu={emit("row-contextmenu")}
-            row-dblclick={emit("row-dblclick")}
-            header-click={emit("header-click")}
-            header-contextmenu={emit("header-contextmenu")}
-            sort-change={emit("sort-change")}
-            filter-change={emit("filter-change")}
-            current-change={emit("current-change")}
-            header-dragend={emit("header-dragend")}
-            expand-change={emit("expand-change")}
+            onSelect={(...args: any[]) => { emit("select", args) }}
+            onSelectAll={(...args: any[]) => { emit("select-all", args) }}
+            onSelectionChange={(...args: any[]) => { emit("selection-change", args) }}
+            onCellMouseEnter={(...args:any[]) => { emit("cell-mouse-enter", args) }}
+            onCellMouseLeave={(...args:any[]) => { emit("cell-mouse-leave", args) }}
+            onCellClick={(...args:any[]) => { emit("cell-click", args) }}
+            onCellDblclick={(...args:any[]) => { emit("cell-dblclick", args) }}
+            onCellContextmenu={(...args:any[]) => { emit("cell-contextmenu", args) }}
+            onRowClick={(...args:any[]) => { emit("row-click", args) }}
+            onRowContextmenu={(...args:any[]) => { emit("row-contextmenu", args) }}
+            onRowDblclick={(...args:any[]) => { emit("row-dblclick", args) }}
+            oHeaderClick={(...args:any[]) => { emit("header-click", args) }}
+            onHeaderContextmenu={(...args:any[]) => { emit("header-contextmenu", args) }}
+            onSortChange={(...args:any[]) => { emit("sort-change", args) }}
+            onFilterChange={(...args:any[]) => { emit("filter-change", args) }}
+            onCurrentChange={(...args:any[]) => { emit("current-change", args) }}
+            onHeaderDragend={(...args:any[]) => { emit("header-dragend", args) }}
+            onExpandChange={(...args:any[]) => { emit("expand-change", args) }}
           >
             {elTableColumns}
           </el-table>
         </div>
         {/* 底部,Page分页 */}
         <div v-show={p.page} class={style.m_table_page}>
-          <g-page page-align={ p.pageAlign} v-model:pageNumber={this.pageNumber} v-model:pageSize={this.pageSize} total={this.total} on-change={this.pageChange()}></g-page>
+          <g-page page-align={ p.pageAlign} v-model:pageNumber={this.pageNumber} v-model:pageSize={this.pageSize} total={this.total} onChange={() => pageChange()}></g-page>
         </div>
       </div>
     );

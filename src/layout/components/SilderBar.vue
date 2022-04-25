@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-22 13:10:20
+ * @LastEditTime: 2022-04-25 12:02:41
 -->
 <template>
   <div class="silder_bar" :class="{ silder_bar_shrink: isShrink }">
@@ -40,7 +40,7 @@
 import { computed, defineComponent, watch, reactive, toRefs } from "vue";
 import { useRouter, useRoute, RouteRecordRaw } from "vue-router";
 import SilderBarItem from "./SiderBarItem.vue";
-import { routes } from "@/router";
+import { routes, GenerateDynamicRoutes } from "@/router";
 import { useStore } from "@/store";
 import Logo from "./Logo.vue";
 import { useI18n } from "@/locale";
@@ -57,7 +57,7 @@ export default defineComponent({
       nowSelMenuKeys: <string[]>[],
       nowOpemMenuKeys: <string[]>[],
       isShrink: computed(() => store.state.AppModule.isShrink),
-      routes: computed(() => [...routes, ...store.state.UserModule.menus].filter((f) => !f.meta?.hide)),
+      routes: computed(() => [...routes, ...GenerateDynamicRoutes.value].filter((f) => !f.meta?.hide)),
       clientWidth: computed(() => store.state.AppModule.clientWidth),
     });
 

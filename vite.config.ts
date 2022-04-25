@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Vite Config
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 10:38:20
+ * @LastEditTime: 2022-04-22 17:48:49
  */
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -16,7 +16,7 @@ import path from "path";
 const timeStamp = new Date().valueOf();
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default () => defineConfig({
   plugins: [
     vue(),
     legacy(),

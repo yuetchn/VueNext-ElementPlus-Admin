@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 13:04:59
+ * @LastEditTime: 2022-04-25 13:38:53
 -->
 <template>
   <div class="silder_bar" :class="{ silder_bar_shrink: isShrink }">
@@ -57,7 +57,7 @@ export default defineComponent({
       nowSelMenuKeys: <string[]>[],
       nowOpemMenuKeys: <string[]>[],
       isShrink: computed(() => store.state.AppModule.isShrink),
-      routes: computed(() => [...routes, ...GenerateRoutes("async")].filter((f) => !f.meta?.hide)),
+      routes: computed(() => [...routes, ...GenerateRoutes()].filter((f) => !f.meta?.hide)),
       clientWidth: computed(() => store.state.AppModule.clientWidth),
     });
 

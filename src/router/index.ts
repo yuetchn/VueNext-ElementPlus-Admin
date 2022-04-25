@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Router
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 13:35:14
+ * @LastEditTime: 2022-04-25 13:38:46
  */
 import { createRouter, RouteRecordRaw, createWebHashHistory } from "vue-router";
 import { computed } from "vue";
@@ -15,7 +15,7 @@ let UserModule: UserStates
 
 const routerComponents = import.meta.glob("/src/views/**/*.vue");
 
-export const GenerateRoutes = (type?: string) => (type === "async" ? generateDynamicRoutes.value : generateStaticRoutes.value);
+export const GenerateRoutes = () => (import.meta.env.VITE_ROUTER_MODE === "async" ? generateDynamicRoutes.value : generateStaticRoutes.value);
 
 /**
  * 生成动态路由

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 通用函数
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 14:08:05
+ * @LastEditTime: 2022-04-28 10:25:46
  */
 import { Md5 as tsMd5 } from "ts-md5";
 
@@ -63,6 +63,9 @@ export { clipboardFunc } from "@/directive/clipboard";
  * @param thousandsSep：千分位符号 默认为,
  */
 export const formatNumber = (number: number, decimals = 0, decPoint = ".", thousandsSep = ",") => {
+  if (number / 1000 < 1) {
+    return number
+  }
   const s = [];
   let n = (number / 1000).toString();
 

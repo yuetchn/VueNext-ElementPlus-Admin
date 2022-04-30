@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: verify
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-01 13:16:46
+ * @LastEditTime: 2022-04-25 16:04:26
 -->
 <template>
   <div>
@@ -46,6 +46,7 @@ import { NewVerify } from "@/utils/verifys";
 
 export default defineComponent({
   setup() {
+    const v = new NewVerify()
     const state = reactive({
       verifyForm: {
         email: "",
@@ -58,46 +59,25 @@ export default defineComponent({
       },
       verifyRules: {
         email: [
-          {
-            validator: new NewVerify().Email(),
-            trigger: ["change", "blur"],
-          },
+          v.Email(),
         ],
         domain: [
-          {
-            validator: new NewVerify().Domain(),
-            trigger: ["change", "blur"],
-          },
+          v.Domain(),
         ],
         url: [
-          {
-            validator: new NewVerify().Url(),
-            trigger: ["change", "blur"],
-          },
+          v.Url(), 
         ],
         mobile: [
-          {
-            validator: new NewVerify().Mobile(),
-            trigger: ["change", "blur"],
-          },
+          v.Mobile(), 
         ],
         idCard: [
-          {
-            validator: new NewVerify().IdCard(),
-            trigger: ["change", "blur"],
-          },
+          v.IdCard(), 
         ],
         ipv4: [
-          {
-            validator: new NewVerify().Ipv4(),
-            trigger: ["change", "blur"],
-          },
+          v.Ipv4(), 
         ],
         account: [
-          {
-            validator: new NewVerify().Account(),
-            trigger: ["change", "blur"],
-          },
+          v.Account(), 
         ],
       },
     });

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Dialog Drag
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-08 15:32:17
+ * @LastEditTime: 2022-04-30 09:01:21
  */
 
 let dialogHeader: HTMLDivElement | null = null;
@@ -27,7 +27,7 @@ const up = () => {
 
 const move = (e: MouseEvent) => {
   if (dialogRoot) {
-    // 留个坑,此处未做拖拽超出范围限制
+    // 留个坑,此处未做拖拽超出范围限制,且更新版本后拖拽定位有点问题，暂时没时间处理
     // if (e.clientX - cX <= 0 || e.clientX - cX >= document.body.clientWidth || e.clientY - cY <= 0 || e.clientY - cY >= document.body.clientHeight) {
     //   return;
     // }
@@ -35,14 +35,14 @@ const move = (e: MouseEvent) => {
     dialogRoot.style.top = `${ e.clientY - cY }px`;
   }
 };
-const init = (dialogClassName: string, className: string, isDrag = false) => {
-  dialogHeader = document.querySelector(`.${ className }`);
-  dialogRoot = document.querySelector(`.${ dialogClassName }`);
+const init = (el:any, dialogClassName: string, className: string) => {
+  dialogHeader = el.querySelector(`.${ className }`);
+  dialogRoot = el.querySelector(`.${ dialogClassName }`);
 
   if (dialogRoot) {
     dialogRoot.style.left = `${ (document.body.clientWidth - dialogRoot.clientWidth) / 2 }px`;
   }
-  if (isDrag && dialogHeader) {
+  if (dialogHeader) {
     dialogHeader.style.cursor = "move";
     dialogHeader.addEventListener("mousedown", down);
 

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Cahrt
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-01 13:21:25
+ * @LastEditTime: 2022-04-28 10:28:25
  */
 
 import { defineComponent, onMounted, reactive, toRefs, ref, watch } from "vue";
@@ -33,6 +33,7 @@ export default defineComponent({
       (v) => {
         echarts?.setOption(v);
       },
+      { deep: true },
     );
 
     return {

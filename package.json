@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
-    "ant-design-vue": "^2.2.8",
+    "ant-design-vue": "^3.2.1",
     "axios": "^0.24.0",
     "dayjs": "^1.10.7",
     "echarts": "^5.2.2",

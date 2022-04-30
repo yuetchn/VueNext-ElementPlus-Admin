@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Validations
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-01 13:17:49
+ * @LastEditTime: 2022-04-25 16:49:55
  */
 
 /** 邮箱验证 */
@@ -25,6 +25,9 @@ const Ipv4 = /((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})(\.((2(5[0-5]|[0-4]\d))|[0-1]?\
 /** 账号验证: 字母、数字、下划线 */
 const Account = /^[a-zA-Z][a-zA-Z0-9_]{4,15}$/;
 
+/** 密码验证: 字母、数字、特殊符号(8-16) */
+const Password = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{6,30}$/;
+
 export class NewVerify {
   public validator!: Function;
 
@@ -32,8 +35,18 @@ export class NewVerify {
     this.validator = (r: any, v: any, call: any) => (reg?.test(v) ? call() : call(new Error(error)));
   }
 
-  private createValidator(reg: RegExp, error: string) {
-    return (r: any, v: any, call: any) => (reg.test(v) ? call() : call(new Error(error)));
+  private createValidator(reg: RegExp, error: string, trigger = ["blur"]) {
+    return { validator: (r: any, v: any, call: any) => (reg.test(v) ? call() : call(new Error(error))), trigger };
+  }
+
+  /**
+   * 表单字段非空验证
+   * @param field 
+   * @param after 
+   * @returns 
+   */
+  public Required(field = "字段", after = "不能为空！") {
+    return { required: true, message: `${ field }${ after }`, trigger: ["blur"] }
   }
 
   /** 邮箱验证 */
@@ -69,6 +82,11 @@ export class NewVerify {
   /** 账号验证 */
   public Account(error = "账号格式错误") {
     return this.createValidator(Account, error);
+  }
+
+  /** 密码验证 */
+  public Password(error = "请输入8-16位密码，密码由数字、字母、特殊符号组成") {
+    return this.createValidator(Password, error)
   }
 }
 

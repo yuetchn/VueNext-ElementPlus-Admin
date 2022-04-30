@@ -1,14 +1,14 @@
 <!--
  * @ModuleName: Dialog 对话框
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 17:51:50
+ * @LastEditTime: 2022-04-30 09:04:11
 -->
 
 <template>
   <teleport to="#app">
-    <div v-if="modelValue" class="g_dialog_root">
-      <div v-if="shade" class="g_dialog_root__shade"></div>
-      <transition enter-active-class="dialog_enter_active" leave-active-class="m_dialog_leave_active">
+    <transition enter-active-class="dialog_enter_active" leave-active-class="m_dialog_leave_active">
+      <div v-show="modelValue" ref="dialogRootRef" class="g_dialog_root">
+        <div v-show="shade" class="g_dialog_root__shade"></div>
         <div class="g_dialog_root__content" @click.prevent="close">
           <div ref="dialogRef" class="m_dialog" tabindex="0" :style="dialogStyle" @click.stop="()=>{}" @keydown.esc="close">
             <!-- title -->
@@ -30,8 +30,8 @@
             </div>
           </div>
         </div>
-      </transition>
-    </div>
+      </div>
+    </transition>
   </teleport>
 </template>
 <script lang="ts">
@@ -42,6 +42,7 @@ export default defineComponent({
   props: {
     modelValue: {
       type: Boolean,
+      default: false,
     },
     /** 标题 */
     title: {
@@ -102,10 +103,11 @@ export default defineComponent({
   emits: {
     close: null,
     open: null,
-    "update:modelValue": null,
+    "update:model-value": null,
   },
   setup(props, { emit }) {
     const dialogRef = ref();
+    const dialogRootRef = ref();
     const state = reactive({
       dialogStyle: props.isFull ? {
         top: 0,
@@ -124,8 +126,7 @@ export default defineComponent({
     const open = () => emit("open");
     const close = () => {
       if (!props.closeOnClickModal) { return }
-      emit("close");
-      emit("update:modelValue", false);
+      emit("update:model-value", false);
     };
 
     watch(
@@ -135,19 +136,22 @@ export default defineComponent({
           open();
           nextTick(() => {
             dialogRef.value.focus();
-            init("m_dialog", "dialog_header", props.drag);
+            if (props.drag) {
+              init(dialogRootRef.value, "m_dialog", "dialog_header");
+            }
           });
+        } else {
+          emit("close")
         }
       },
 
       { immediate: true },
     );
     return {
-      // ref
-      dialogRef,
-
       // refs
       ...toRefs(state),
+      dialogRef,
+      dialogRootRef,
 
       // func
       close,
@@ -183,8 +187,8 @@ export default defineComponent({
 
   .m_dialog {
     position: absolute;
-    // left: 50%;
-    // transform: translate(-50%, 0);
+    left: 50%;
+    transform: translate(-50%, 0);
     border-radius: 4px;
     box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.08);
     background: #ffffff;

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Global Components Types
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-18 14:09:07
+ * @LastEditTime: 2022-04-26 11:55:48
  */
 
 import Table from "@/components/Table/Table";
@@ -15,15 +15,13 @@ import Link from "@/components/Link/Link";
 
 declare module "@vue/runtime-core" {
   export interface GlobalComponents {
-    "g-table": typeof Table;
-    "g-dialog": typeof Dialog;
-    "g-svg-icon": typeof SvgIcon;
-    "g-page": typeof Page;
-    "g-chart": typeof Chart;
-    "g-mark-dowm": typeof MarkDown;
-    "g-qr-code": typeof QrCode;
-    "g-link":typeof Link;
+    "g-table": InstanceType<typeof Table>;
+    "g-dialog": InstanceType<typeof Dialog>;
+    "g-svg-icon": InstanceType<typeof SvgIcon>;
+    "g-page": InstanceType<typeof Page>;
+    "g-chart": InstanceType<typeof Chart>;
+    "g-mark-dowm": InstanceType<typeof MarkDown>;
+    "g-qr-code": InstanceType<typeof QrCode>;
+    "g-link":InstanceType<typeof Link>;
   }
 }
-
-export {};

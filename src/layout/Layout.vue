@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Layout
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-30 20:14:35
+ * @LastEditTime: 2022-04-30 08:45:40
 -->
 <template>
   <div class="layout">
@@ -64,7 +64,7 @@ export default defineComponent({
   left: 0;
   bottom: 0;
   overflow: hidden;
-  z-index: 1000;
+  z-index: 998;
 }
 
 .right_content {

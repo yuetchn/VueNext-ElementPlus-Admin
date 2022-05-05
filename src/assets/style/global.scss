@@ -2,6 +2,8 @@
 @import "./element/index.scss";
 // Variables
 @import "./_variables";
+// Component
+@import '../../components/index.scss';
 
 .app-container {
   height: 100%;

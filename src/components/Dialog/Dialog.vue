@@ -1,18 +1,18 @@
 <!--
  * @ModuleName: Dialog 对话框
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-30 09:04:11
+ * @LastEditTime: 2022-05-05 12:46:02
 -->
 
 <template>
   <teleport to="#app">
-    <transition enter-active-class="dialog_enter_active" leave-active-class="m_dialog_leave_active">
+    <transition enter-active-class="g_dialog_enter_active" leave-active-class="g_dialog_leave_active">
       <div v-show="modelValue" ref="dialogRootRef" class="g_dialog_root">
         <div v-show="shade" class="g_dialog_root__shade"></div>
         <div class="g_dialog_root__content" @click.prevent="close">
-          <div ref="dialogRef" class="m_dialog" tabindex="0" :style="dialogStyle" @click.stop="()=>{}" @keydown.esc="close">
+          <div ref="dialogRef" class="g_dialog" tabindex="0" :style="dialogStyle" @click.stop="()=>{}" @keydown.esc="close">
             <!-- title -->
-            <div class="dialog_header">
+            <div class="g_dialog_header">
               <slot name="title">
                 <div class="dialog_title">{{ title }}</div>
               </slot>
@@ -21,7 +21,7 @@
               </div>
             </div>
             <!-- content -->
-            <div class="dialog_content" :style="dialogContentStyle">
+            <div class="g_dialog_content" :style="dialogContentStyle">
               <slot name="default"></slot>
             </div>
             <!-- footer -->
@@ -137,7 +137,7 @@ export default defineComponent({
           nextTick(() => {
             dialogRef.value.focus();
             if (props.drag) {
-              init(dialogRootRef.value, "m_dialog", "dialog_header");
+              init(dialogRootRef.value, "g_dialog", "g_dialog_header");
             }
           });
         } else {
@@ -159,103 +159,3 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="scss" scoped>
-  .g_dialog_root {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    height: 100%;
-    z-index: 999;
-  }
-
-  .g_dialog_root__shade {
-    position: absolute;
-    z-index: 1000;
-    width: 100%;
-    top: 0;
-    height: 100%;
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.55);
-  }
-
-  .g_dialog_root__content {
-    height: 100%;
-    overflow: auto;
-    position: relative;
-    z-index: 1001;
-  }
-
-  .m_dialog {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    border-radius: 4px;
-    box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.08);
-    background: #ffffff;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .dialog_enter_active {
-    animation: dialog_enter_active 0.2s ease;
-  }
-
-  .m_dialog_leave_active {
-    @extend .dialog_enter_active;
-    animation-direction: reverse;
-  }
-
-  .dialog_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    flex: 0 0 auto;
-    height: 40px;
-    overflow: hidden;
-    padding: 5px;
-
-    .dialog_title {
-      padding: 5px;
-    }
-
-    .dialog_close {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 8px;
-      height: 100%;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-      cursor: pointer;
-
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.08);
-      }
-    }
-  }
-
-  .dialog_content {
-    padding: 10px;
-    min-height: 100px;
-    flex: 1;
-  }
-
-  .dialog_footer {
-    flex: 0 0 auto;
-    padding: 10px;
-    // text-align: center;
-    // border-top: 1px solid rgba(0, 0, 0, 0.08);
-  }
-
-  @keyframes dialog_enter_active {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-</style>

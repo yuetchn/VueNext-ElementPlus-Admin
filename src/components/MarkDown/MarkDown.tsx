@@ -1,11 +1,10 @@
 /*
  * @ModuleName: MarkDown
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-08 15:37:53
+ * @LastEditTime: 2022-05-05 12:47:20
  */
 import { defineComponent } from "vue";
 import MD from "markdown-it";
-import style from "./MarkDown.module.scss";
 
 export default defineComponent({
   props: {
@@ -40,6 +39,6 @@ export default defineComponent({
         return "";
       },
     }).render(v);
-    return () => <div class={style.mark_down} v-html={mdRender(props.modelValue)}></div>;
+    return () => <div class="g_mark_down" v-html={mdRender(props.modelValue)}></div>;
   },
 });

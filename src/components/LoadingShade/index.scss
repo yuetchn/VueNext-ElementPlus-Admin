@@ -1,0 +1,10 @@
+.g_loading_shade {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  // background: rgba(0, 0, 0, 0.4);
+  background: transparent;
+  z-index: 800;
+  cursor: not-allowed;
+}

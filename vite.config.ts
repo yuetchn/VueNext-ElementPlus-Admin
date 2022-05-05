@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Vite Config
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-22 17:48:49
+ * @LastEditTime: 2022-05-05 13:22:57
  */
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -66,6 +66,15 @@ export default () => defineConfig({
     rollupOptions: {
       plugins: [],
       output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            return id
+            .toString()
+            .split("node_modules/")[1]
+            .split("/")[0]
+            .toString();
+          }
+        },
         entryFileNames: `enteryJs/e_[name].${ timeStamp }.js`,
         chunkFileNames: `chunkJs/c_[name].${ timeStamp }.js`,
         assetFileNames: `assets/f_[name].${ timeStamp }.[ext]`,

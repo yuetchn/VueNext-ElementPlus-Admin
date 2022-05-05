@@ -1,12 +1,11 @@
 /*
  * @ModuleName: Custom Table
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 15:37:57
+ * @LastEditTime: 2022-05-05 12:50:46
  */
 import { defineComponent, onMounted, reactive, ref, toRefs, unref } from "vue";
 import Sortable from "sortablejs"
 import { props, emits, ElTable } from "./index";
-import style from "./Table.module.scss";
 
 export default defineComponent({
   props,
@@ -109,10 +108,10 @@ export default defineComponent({
     });
 
     return (
-      <div class={style.g_table_root}>
+      <div class="g_table_root">
         {/* 头部,表单查询 - 默认插槽#default */}
-        <div class={style.m_table_nav}>{slots.default?.()}</div>
-        <div class={style.m_table_table}>
+        <div class="g_table_nav">{slots.default?.()}</div>
+        <div class="g_table_table">
           <el-table
             ref="tableRef"
             data={p.data}
@@ -170,7 +169,7 @@ export default defineComponent({
           </el-table>
         </div>
         {/* 底部,Page分页 */}
-        <div v-show={p.page} class={style.m_table_page}>
+        <div v-show={p.page} class="g_table_page">
           <g-page page-align={ p.pageAlign} v-model:pageNumber={this.pageNumber} v-model:pageSize={this.pageSize} total={this.total} onChange={() => pageChange()}></g-page>
         </div>
       </div>

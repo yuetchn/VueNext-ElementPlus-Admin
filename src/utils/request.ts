@@ -1,9 +1,9 @@
 /*
  * @ModuleName: 请求封装
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 14:48:38
+ * @LastEditTime: 2022-05-05 19:19:51
  */
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { message } from "ant-design-vue";
 import { GetToken } from "@/utils/cookie";
 import store from "@/store";
@@ -46,7 +46,7 @@ req.interceptors.request.use(
   (config) => {
     ShowLoading();
     // headers
-    const headers: { [key: string]: any } = {
+    const headers: Record<string, string> = {
       "Accept-Language": (store.state as any).AppModule.locale,
     };
 
@@ -54,8 +54,7 @@ req.interceptors.request.use(
       headers["X-Access-Token"] = GetToken() as string;
     }
 
-    config.headers = headers;
-    config.data = JSON.stringify(config.data);
+    config.headers = { ...config.headers, ...headers }
     return config;
   },
   (err) => Promise.reject(err),
@@ -100,10 +99,11 @@ req.interceptors.response.use(
  * @param params
  * @returns
  */
-const Get = (url: string, params?: any) => req({
+const Get = (url: string, params?: any, options?:AxiosRequestConfig) => req({
   url,
   method: "GET",
-  params,
+  params: params && JSON.stringify(params),
+  ...options,
 });
 
 /**
@@ -112,13 +112,15 @@ const Get = (url: string, params?: any) => req({
  * @param data
  * @returns
  */
-const Post = (url: string, data?: any) => req({
+const Post = (url: string, data?: any, options?:AxiosRequestConfig) => req({
   url,
   method: "POST",
-  data,
+  data: data && JSON.stringify(data),
+  ...options,
 });
 
 export default {
   Get,
   Post,
+  Request: req,
 };

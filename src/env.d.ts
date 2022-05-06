@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Vite环境变量
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 13:38:06
+ * @LastEditTime: 2022-05-06 11:52:01
  */
 /// <reference types="vite/client" />
 
@@ -26,4 +26,6 @@ interface ImportMetaEnv {
   VITE_ROUTER_CACHE_MAX: any;
   /** 路由模式 */
   VITE_ROUTER_MODE: string;
+  /** Base Public Path */
+  VITE_BASE_PUBLIC_PATH: string;
 }

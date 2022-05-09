@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Dialog
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-05 22:15:47
+ * @LastEditTime: 2022-05-09 12:10:33
 -->
 <template>
   <div>
@@ -43,7 +43,7 @@
 
     <el-card style="margin-top: 15px">
       <template #header>弹窗属性</template>
-      <g-table style="height:300px" :columns="help.PropertyColumns" :data="data"></g-table>
+      <g-table style="height:500px" :columns="help.PropertyColumns" :data="data"></g-table>
     </el-card>
 
     <el-card style="margin-top: 15px">

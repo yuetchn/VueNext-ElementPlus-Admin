@@ -1,13 +1,13 @@
 <!--
  * @ModuleName: richTextEdit
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-05 22:16:12
+ * @LastEditTime: 2022-05-09 12:09:38
 -->
 <template>
   <div>
     <el-card>
       <template #header> 使用富文本 </template>
-      <div style="height:300px">
+      <div>
         <el-form label-position="top">
           <el-form-item label="插入内容">
             <el-row :gutter="15" style="width:100%">
@@ -21,7 +21,7 @@
           </el-form-item>
         </el-form>
 
-        <g-editor ref="editor" v-model="text"></g-editor>
+        <g-editor ref="editor" v-model="text" height="800px"></g-editor>
       </div>
     </el-card>
     <el-card style="margin-top: 15px">

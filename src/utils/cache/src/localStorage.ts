@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Local Storage
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-09 11:22:59
+ * @LastEditTime: 2022-05-09 11:59:30
  */
 
 import { DeepClone } from "@/utils/func"
@@ -9,7 +9,7 @@ import { DeepClone } from "@/utils/func"
 export const setLocalStorageByObject = (key:string, val:object) => {
   let _val = ""
   _val = DeepClone(val)
-  localStorage.setItem(key, _val)
+  localStorage.setItem(key, JSON.stringify(_val))
 }
 
 export const getLocalStorageByObject = <T>(key: string):T|null => {
@@ -20,7 +20,7 @@ export const getLocalStorageByObject = <T>(key: string):T|null => {
   try {
     _val = JSON.parse(_val)
   } catch (err) {
-    console.error(new Error("localStorage：key is null"))
+    console.error(new Error(`localStorage：the '${ key }' key doesn't exist.`))
     return null
   }
   return _val ? (_val as unknown) as T : null

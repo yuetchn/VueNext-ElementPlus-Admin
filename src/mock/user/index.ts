@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 13:07:17
+ * @LastEditTime: 2022-05-09 11:40:03
  */
 import { mock } from "mockjs";
 
@@ -482,6 +482,7 @@ export const getUserData = (data: any) => {
 };
 
 export const getUserInfo = (data: any) => {
+  console.log(data)
   const path = data.url.split("?");
   const params = path[1]
   .replace(/^[^&]*=/, "")

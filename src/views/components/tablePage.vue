@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: TablePage
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-21 07:32:36
+ * @LastEditTime: 2022-05-09 12:09:00
 -->
 <template>
   <div>
@@ -9,9 +9,21 @@
       <template #header> 表格基本使用(自适应) </template>
       <div style="height: 500px">
         <g-table ref="tableRef" v-model:page-size="search.pageSize" v-model:page-number="search.pageNumber" page :total="search.total" :data="tableData" :columns="columns" @page-change="pageChange">
-          <div>
-            <el-button type="primary" @click="toggleSelect">全选/取消</el-button>
-          </div>
+          <el-form inline>
+            <el-form-item>
+              <el-input />
+            </el-form-item>
+            <el-form-item>
+              <el-select>
+                <!-- <el-option v-for="" :key=""></el-option> -->
+              </el-select>
+            </el-form-item>
+            <el-form-item>
+              <el-button>检索</el-button>
+              <el-button type="primary" @click="toggleSelect">全选/取消</el-button>
+            </el-form-item>
+          </el-form>
+          
           <template #name="{ row }"> {{ row.name }} </template>
         </g-table>
       </div>
@@ -19,7 +31,7 @@
     <el-card style="margin-top: 15px">
       <template #header> 表格基本使用(拖拽表格) </template>
       <div style="height: 500px">
-        <g-table ref="tableRef" v-model:page-size="search.pageSize" v-model:page-number="search.pageNumber" drag page :total="search.total" :data="tableData" :columns="columns" @page-change="pageChange">
+        <g-table v-model:page-size="search.pageSize" v-model:page-number="search.pageNumber" drag page :total="search.total" :data="tableData" :columns="columns" @page-change="pageChange">
           <el-form inline>
             <el-form-item>
               <el-input clearable placeholder="用户名" />
@@ -29,6 +41,26 @@
             </el-form-item>
           </el-form>
           <template #name="{ row }"> {{ row.name }} </template>
+        </g-table>
+      </div>
+    </el-card>
+    <el-card style="margin-top: 15px">
+      <template #header> 表格基本使用(表格插槽) </template>
+      <div style="height: 500px">
+        <g-table v-model:page-size="search.pageSize" v-model:page-number="search.pageNumber" drag page :total="search.total" :data="tableData" :columns="columnsEdit" @page-change="pageChange">
+          <el-form inline>
+            <el-form-item>
+              <el-input clearable placeholder="用户名" />
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary">检索</el-button>
+            </el-form-item>
+          </el-form>
+          <template #name="{ row }"> {{ row.name }} </template>
+          <template #cz> 
+            <g-link type="primary">编辑</g-link>
+            <g-link type="danger">删除</g-link>
+          </template>
         </g-table>
       </div>
     </el-card>
@@ -80,6 +112,28 @@ export default defineComponent({
         slot: true,
       },
       ],
+      columnsEdit: < TableColumns[] > [{
+        type: "selection",
+        width: 50,
+      },
+      {
+        label: "ID",
+        prop: "id",
+        width: "120px",
+      },
+      {
+        label: "Name",
+        prop: "name",
+        slot: true,
+      },
+      {
+        label: "操作",
+        width: "120px",
+        fixed: "right",
+        prop: "cz",
+        slot: true,
+      },
+      ],
       searchInfo: {
         pageSize: 10,
         pageNumber: 1,
@@ -124,7 +178,7 @@ export default defineComponent({
       },
       {
         name: "drag",
-        desc: "拖拽模式",
+        desc: "拖拽模式,如需禁用某一行，可通过element-plus表格row-class-name动态添加class类名[drag_disabled]到指定行中即可",
         default: "false",
         type: "boolean",
         options: "true",

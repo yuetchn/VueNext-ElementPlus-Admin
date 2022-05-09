@@ -85,6 +85,9 @@ export default defineComponent({
           type: "category",
           data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
         },
+        tooltip: {
+          show: true,
+        },
         yAxis: {
           type: "value",
         },

@@ -1,11 +1,10 @@
 /*
  * @ModuleName: Request
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-09 11:26:23
+ * @LastEditTime: 2022-05-09 11:59:49
  */
 import axios, { AxiosRequestConfig } from "axios";
 import { message } from "ant-design-vue";
-import qs from "qs"
 import { GetToken } from "@/utils/cookie";
 import store from "@/store";
 
@@ -103,7 +102,7 @@ req.interceptors.response.use(
 const Get = (url: string, params?: any, options?:AxiosRequestConfig) => req({
   url,
   method: "GET",
-  params: params && qs.stringify(params),
+  params,
   ...options,
 });
 
@@ -116,7 +115,7 @@ const Get = (url: string, params?: any, options?:AxiosRequestConfig) => req({
 const Post = (url: string, data?: any, options?:AxiosRequestConfig) => req({
   url,
   method: "POST",
-  data: data && qs.stringify(data),
+  data: data && JSON.stringify(data),
   ...options,
 });
 

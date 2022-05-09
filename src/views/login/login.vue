@@ -44,7 +44,7 @@ import { message } from "ant-design-vue";
 
 import { useRouter } from "vue-router";
 import { useStore } from "@/store";
-import { md5 } from "@/utils/func";
+import { MD5 } from "@/utils/func";
 
 export default defineComponent({
   setup() {
@@ -61,7 +61,7 @@ export default defineComponent({
     const login = async () => {
       const { data } = await store.dispatch("UserModule/login", {
         account: state.loginForm.account,
-        password: md5(state.loginForm.password),
+        password: MD5(state.loginForm.password),
       });
       if (data.code === 200) {
         message.success(data.info);

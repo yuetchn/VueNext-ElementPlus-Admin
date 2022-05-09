@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: xss
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-08 11:20:34
+ * @LastEditTime: 2022-05-09 10:43:42
 -->
 <template>
   <div>
@@ -18,7 +18,7 @@
       <template #header>使用</template>
       <div style="padding: 10px 0">
         <span style="display: block; color: rgba(0, 0, 0, 0.35); font-weight: bold; font-size: 15px">模板中使用：</span>
-        <div>全局方法：$xss('html')</div>
+        <div>全局方法：$func.Xss('html')</div>
         <br />
         <span style="display: block; color: rgba(0, 0, 0, 0.35); font-weight: bold; font-size: 15px">script中使用：</span>
         <div>
@@ -34,7 +34,7 @@
         <div v-html="val"></div>
         <br />
         <span style="display: block; color: rgba(0, 0, 0, 0.35); font-weight: bold; font-size: 15px">使用xss防御：</span>
-        <div v-html="$xss(val)"></div>
+        <div v-html="$func.Xss(val)"></div>
       </div>
     </el-card>
     <el-card style="margin-top: 15px">

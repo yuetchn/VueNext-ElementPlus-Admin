@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: clipboard
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-05 22:15:34
+ * @LastEditTime: 2022-05-09 11:30:53
 -->
 <template>
   <div>
@@ -17,9 +17,9 @@
     </el-card>
 
     <el-card style="margin-top: 15px">
-      <template #header>函数调用[clipboardFunc]</template>
+      <template #header>函数调用[ClipboardFunc]</template>
       <el-input v-model="text" style="width: 200px; margin-right: 10px"></el-input>
-      <el-button type="primary" @click="copy">函数调用clipboardFunc</el-button>
+      <el-button type="primary" @click="copy">函数调用ClipboardFunc</el-button>
     </el-card>
 
     <el-card style="margin-top: 15px">
@@ -36,7 +36,7 @@
 <script lang="ts" setup>
 import { message } from "ant-design-vue";
 import { ref } from "vue";
-import { clipboardFunc } from "@/utils/func";
+import { ClipboardFunc } from "@/utils/func";
 import help from "./index";
 
 const text = ref("测试Copy");
@@ -50,7 +50,7 @@ const copyError = () => {
 };
 
 const copy = () => {
-  clipboardFunc(text.value)
+  ClipboardFunc(text.value)
   .then(() => copySuccess())
   .catch(() => copyError());
 };
@@ -75,7 +75,7 @@ const data = ref([
 
 const data1 = ref([
   {
-    name: "clipboardFunc(data)",
+    name: "ClipboardFunc(data)",
     desc: "函数调用,返回<Promise>",
   },
 ]);

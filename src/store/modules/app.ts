@@ -1,10 +1,11 @@
 /*
  * @ModuleName: App Module
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-11 10:29:25
+ * @LastEditTime: 2022-05-09 11:22:06
  */
 import { Module } from "vuex";
 import RootStates from "@/types/store/storeInterface";
+import * as cache from "@/utils/cache"
 
 export interface AppStates {
   /** 遮罩状态 */
@@ -26,12 +27,12 @@ const UserModule: Module<AppStates, RootStates> = {
   namespaced: true,
   state: {
     loadingShade: false,
-    nowRoutePath: sessionStorage.getItem("nowRoutePath") || "/",
-    isShrink: sessionStorage.getItem("isShrink") === "1" ? true : false || false,
-    nowRouteSpread: sessionStorage.getItem("nowRouteSpread") || "",
+    nowRoutePath: cache.getSessionStorageByString("nowRoutePath") || "/",
+    isShrink: cache.getSessionStorageByString("isShrink") === "1" ? true : false || false,
+    nowRouteSpread: cache.getSessionStorageByString("nowRouteSpread") || "",
     clientWidth: 0,
-    locale: localStorage.getItem("locale") || "zh-CN",
-    size: (localStorage.getItem("size") as any) || "default",
+    locale: cache.getLocalStorageByString("locale") || "zh-CN",
+    size: (cache.getLocalStorageByString("size") as any) || "default",
   },
   mutations: {
     SET_LOADING_SHADE(state, loadingShade: boolean) {
@@ -39,32 +40,32 @@ const UserModule: Module<AppStates, RootStates> = {
     },
     SET_SHRINK(state, isShrink: boolean) {
       state.isShrink = isShrink;
-      sessionStorage.setItem("isShrink", isShrink ? "1" : "0");
+      cache.setSessionStorageByString("isShrink", isShrink ? "1" : "0");
     },
     SET_NOW_ROUTE_PATH(state, nowRoutePath: string) {
       state.nowRoutePath = nowRoutePath;
-      sessionStorage.setItem("nowRoutePath", nowRoutePath);
+      cache.setSessionStorageByString("nowRoutePath", nowRoutePath);
     },
     SET_NOW_ROUTE_SPREAD(state, nowRouteSpread: string) {
       state.nowRouteSpread = nowRouteSpread;
-      sessionStorage.setItem("nowRouteSpread", nowRouteSpread);
+      cache.setSessionStorageByString("nowRouteSpread", nowRouteSpread);
     },
     RESET_ROUTE_STATE(state) {
       state.nowRoutePath = "/";
       state.nowRouteSpread = "";
-      sessionStorage.removeItem("nowRoutePath");
-      sessionStorage.removeItem("nowRouteSpread");
+      cache.removeSessionStorage("nowRoutePath");
+      cache.removeSessionStorage("nowRouteSpread");
     },
     SET_CLIENT_WIDTH(state, clientWidth: number) {
       state.clientWidth = clientWidth;
     },
     SET_LOCALE(state, locale: string) {
       state.locale = locale;
-      localStorage.setItem("locale", locale);
+      cache.setLocalStorageByString("locale", locale);
     },
     SET_SIZE(state, size: string) {
       state.size = size;
-      localStorage.setItem("size", size);
+      cache.setLocalStorageByString("size", size);
     },
   },
   actions: {

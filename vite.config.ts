@@ -1,9 +1,9 @@
 /*
  * @ModuleName: Vite Config
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-05 13:22:57
+ * @LastEditTime: 2022-05-06 11:52:14
  */
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import legacy from "@vitejs/plugin-legacy";
 import vueJsx from "@vitejs/plugin-vue-jsx";
@@ -16,7 +16,8 @@ import path from "path";
 const timeStamp = new Date().valueOf();
 
 // https://vitejs.dev/config/
-export default () => defineConfig({
+export default ({ mode }) => defineConfig({
+  base: loadEnv(mode, process.cwd()).VITE_BASE_PUBLIC_PATH,
   plugins: [
     vue(),
     legacy(),

@@ -1,14 +1,14 @@
 /*
- * @ModuleName: 请求封装
+ * @ModuleName: Request
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-09 14:48:38
+ * @LastEditTime: 2022-05-09 11:59:49
  */
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { message } from "ant-design-vue";
 import { GetToken } from "@/utils/cookie";
 import store from "@/store";
 
-const timeout = 1000 * 30;
+const timeout = 1000 * import.meta.env.VITE_HTTP_REQUEST_TIME_OUT;
 const req = axios.create({
   baseURL: import.meta.env.VITE_BASE_HOST,
   timeout,
@@ -46,7 +46,7 @@ req.interceptors.request.use(
   (config) => {
     ShowLoading();
     // headers
-    const headers: { [key: string]: any } = {
+    const headers: Record<string, string> = {
       "Accept-Language": (store.state as any).AppModule.locale,
     };
 
@@ -54,8 +54,7 @@ req.interceptors.request.use(
       headers["X-Access-Token"] = GetToken() as string;
     }
 
-    config.headers = headers;
-    config.data = JSON.stringify(config.data);
+    config.headers = { ...config.headers, ...headers }
     return config;
   },
   (err) => Promise.reject(err),
@@ -66,11 +65,11 @@ req.interceptors.response.use(
     HiddenLoading();
     const data = response.data;
     if (response.status === 200 && data.code !== 200) {
-      /// 根据业务结合后端在不同状态码执行不同操作
-      /// 2xx - 成功
-      /// 3xx - 重定向
-      /// 4xx - 错误
-      /// 5xx - 服务异常
+      /// Response Server Code
+      /// 2xx - Success
+      /// 3xx - Redirect
+      /// 4xx - Error
+      /// 5xx - Server Error
       switch (data.code) {
         case 401:
           message.warning("会话超时");
@@ -100,10 +99,11 @@ req.interceptors.response.use(
  * @param params
  * @returns
  */
-const Get = (url: string, params?: any) => req({
+const Get = (url: string, params?: any, options?:AxiosRequestConfig) => req({
   url,
   method: "GET",
   params,
+  ...options,
 });
 
 /**
@@ -112,13 +112,17 @@ const Get = (url: string, params?: any) => req({
  * @param data
  * @returns
  */
-const Post = (url: string, data?: any) => req({
+const Post = (url: string, data?: any, options?:AxiosRequestConfig) => req({
   url,
   method: "POST",
-  data,
+  data: data && JSON.stringify(data),
+  ...options,
 });
+
+// ...
 
 export default {
   Get,
   Post,
+  Request: req,
 };

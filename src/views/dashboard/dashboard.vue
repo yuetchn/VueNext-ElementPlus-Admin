@@ -4,7 +4,7 @@
       <el-col :span="6">
         <div class="m_card_item">
           <div class="card_left">
-            <div class="u_card_num">{{ $func.formatNumber(12312311) }}</div>
+            <div class="u_card_num">{{ $func.FormatNumber(12312311) }}</div>
             <div>访问人数</div>
           </div>
           <div class="card_right">
@@ -15,7 +15,7 @@
       <el-col :span="6">
         <div class="m_card_item">
           <div class="card_left">
-            <div class="u_card_num">{{ $func.formatNumber(56847512) }}</div>
+            <div class="u_card_num">{{ $func.FormatNumber(56847512) }}</div>
             <div>动态</div>
           </div>
           <div class="card_right">
@@ -26,7 +26,7 @@
       <el-col :span="6">
         <div class="m_card_item">
           <div class="card_left">
-            <div class="u_card_num">{{ $func.formatNumber(23232456) }}</div>
+            <div class="u_card_num">{{ $func.FormatNumber(23232456) }}</div>
             <div>关注</div>
           </div>
           <div class="card_right">
@@ -37,7 +37,7 @@
       <el-col :span="6">
         <div class="m_card_item">
           <div class="card_left">
-            <div class="u_card_num">{{ $func.formatNumber(45633213) }}</div>
+            <div class="u_card_num">{{ $func.FormatNumber(45633213) }}</div>
             <div>订阅</div>
           </div>
           <div class="card_right">

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 通用函数
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-28 10:25:46
+ * @LastEditTime: 2022-05-09 10:36:15
  */
 import { Md5 as tsMd5 } from "ts-md5";
 
@@ -97,7 +97,7 @@ export const formatNumber = (number: number, decimals = 0, decPoint = ".", thous
 };
 
 /**
- * 深拷贝对象
+ * 深拷贝
  * @param data 
  * @returns 
  */

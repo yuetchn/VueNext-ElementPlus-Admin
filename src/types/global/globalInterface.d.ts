@@ -1,18 +1,17 @@
 /*
  * @ModuleName: 全局属性注解
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-08 09:20:25
+ * @LastEditTime: 2022-05-09 10:43:17
  */
 import { message } from "ant-design-vue";
 import { Store } from "vuex";
-import xss from "@/utils/xss";
 import axios from "@/utils/request";
 import * as func from "@/utils/func";
 import { AllStates } from "@/types/store/storeInterface";
 
 declare module "@vue/runtime-core" {
   export interface ComponentCustomProperties {
-    /** Axios */
+    /** Request */
     $http: typeof axios;
     // Ant Message
     $message: typeof message;
@@ -20,7 +19,5 @@ declare module "@vue/runtime-core" {
     $store: Store<AllStates>;
     // Func
     $func: typeof func;
-    // Xss
-    $xss: typeof xss;
   }
 }

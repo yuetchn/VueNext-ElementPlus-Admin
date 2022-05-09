@@ -1,10 +1,9 @@
 /*
  * @ModuleName: 全局属性挂载
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-08 09:20:05
+ * @LastEditTime: 2022-05-09 10:43:05
  */
 import { App } from "vue";
-import xss from "./xss";
 import axios from "@/utils/request";
 import * as func from "@/utils/func";
 
@@ -13,5 +12,4 @@ import * as func from "@/utils/func";
 export default (app: App) => {
   app.config.globalProperties.$http = axios;
   app.config.globalProperties.$func = func;
-  app.config.globalProperties.$xss = xss;
 };

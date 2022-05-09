@@ -1,14 +1,15 @@
 /*
- * @ModuleName: 请求封装
+ * @ModuleName: Request
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-05 19:19:51
+ * @LastEditTime: 2022-05-09 11:26:23
  */
 import axios, { AxiosRequestConfig } from "axios";
 import { message } from "ant-design-vue";
+import qs from "qs"
 import { GetToken } from "@/utils/cookie";
 import store from "@/store";
 
-const timeout = 1000 * 30;
+const timeout = 1000 * import.meta.env.VITE_HTTP_REQUEST_TIME_OUT;
 const req = axios.create({
   baseURL: import.meta.env.VITE_BASE_HOST,
   timeout,
@@ -65,11 +66,11 @@ req.interceptors.response.use(
     HiddenLoading();
     const data = response.data;
     if (response.status === 200 && data.code !== 200) {
-      /// 根据业务结合后端在不同状态码执行不同操作
-      /// 2xx - 成功
-      /// 3xx - 重定向
-      /// 4xx - 错误
-      /// 5xx - 服务异常
+      /// Response Server Code
+      /// 2xx - Success
+      /// 3xx - Redirect
+      /// 4xx - Error
+      /// 5xx - Server Error
       switch (data.code) {
         case 401:
           message.warning("会话超时");
@@ -102,7 +103,7 @@ req.interceptors.response.use(
 const Get = (url: string, params?: any, options?:AxiosRequestConfig) => req({
   url,
   method: "GET",
-  params: params && JSON.stringify(params),
+  params: params && qs.stringify(params),
   ...options,
 });
 
@@ -115,9 +116,11 @@ const Get = (url: string, params?: any, options?:AxiosRequestConfig) => req({
 const Post = (url: string, data?: any, options?:AxiosRequestConfig) => req({
   url,
   method: "POST",
-  data: data && JSON.stringify(data),
+  data: data && qs.stringify(data),
   ...options,
 });
+
+// ...
 
 export default {
   Get,

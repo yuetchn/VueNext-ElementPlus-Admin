@@ -1,7 +1,7 @@
 /*
  * @ModuleName: ViewTagModule
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-27 09:52:33
+ * @LastEditTime: 2022-05-09 11:21:57
  */
 import { Module } from "vuex";
 import { RouteLocationNormalizedLoaded, RouteRecordRaw } from "vue-router";

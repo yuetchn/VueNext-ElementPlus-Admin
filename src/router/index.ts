@@ -1,13 +1,13 @@
 /*
  * @ModuleName: Router
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 14:08:44
+ * @LastEditTime: 2022-05-09 10:38:50
  */
 import { createRouter, RouteRecordRaw, createWebHashHistory } from "vue-router";
 import { computed } from "vue";
 import store from "@/store";
 import { UserStates } from "@/store/modules/user";
-import { deepClone } from "@/utils/func"
+import { DeepClone } from "@/utils/func"
 // 静态路由
 import staticRoutes from "./static";
 
@@ -35,7 +35,7 @@ const generateStaticRoutes = computed(() => {
   Object.keys(_static_routes).forEach(f => {
     _r = _r.concat(...[_static_routes[f].default as RouteRecordRaw])
   }) 
-  return registerStaticRoutes(deepClone(_r), true);
+  return registerStaticRoutes(DeepClone(_r), true);
 })
 
 /**
@@ -66,6 +66,12 @@ const registerAsyncRoutes = (routes: RouteRecordRaw[], isRoot: boolean) => {
   return routers;
 };
 
+/**
+ * 注册静态路由组件
+ * @param routes 
+ * @param isRoot 
+ * @returns 
+ */
 const registerStaticRoutes = (routes: RouteRecordRaw[], isRoot:boolean) => {
   const routers: RouteRecordRaw[] = [];
   routes.forEach((f: RouteRecordRaw) => {

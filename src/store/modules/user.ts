@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User Module
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 12:37:02
+ * @LastEditTime: 2022-05-09 11:21:26
  */
 import { Module } from "vuex";
 import RootStates from "@/types/store/storeInterface";
@@ -10,6 +10,7 @@ import { Login } from "@/api/login";
 import { GetUserInfo } from "@/api/user";
 import router from "@/router";
 import store from "@/store";
+import * as cache from "@/utils/cache"
 
 export interface UserStates {
   /** token */
@@ -25,9 +26,9 @@ const UserModule: Module < UserStates, RootStates > = {
   namespaced: true,
   state: {
     token: GetToken(),
-    userName: localStorage.getItem("userName") || "",
-    avatar: localStorage.getItem("avatar") || "",
-    menus: localStorage.getItem("menus") ? JSON.parse(localStorage.getItem("menus") as any) : [],
+    userName: cache.getLocalStorageByString("userName") || "",
+    avatar: cache.getLocalStorageByString("avatar") || "",
+    menus: cache.getLocalStorageByObject<any[]>("menus") || [],
   },
   mutations: {
     SET_TOKEN(state, token: string) {
@@ -41,14 +42,14 @@ const UserModule: Module < UserStates, RootStates > = {
     SET_USER_INFO(state, { userName, avatar }) {
       state.userName = userName;
       state.avatar = avatar;
-      localStorage.setItem("userName", userName);
-      localStorage.setItem("avatar", avatar);
+      cache.setLocalStorageByString("userName", userName);
+      cache.setLocalStorageByString("avatar", avatar);
     },
     REMOVE_USER_INFO(state) {
       state.userName = "";
       state.avatar = "";
-      localStorage.removeItem("userName");
-      localStorage.removeItem("avatar");
+      cache.removeLocalStorage("userName");
+      cache.removeLocalStorage("avatar");
     },
     SET_MENUS(state, menus: any[]) {
       // 移除动态路由
@@ -60,7 +61,7 @@ const UserModule: Module < UserStates, RootStates > = {
       });
 
       state.menus = menus;
-      localStorage.setItem("menus", JSON.stringify(menus));
+      cache.setLocalStorageByObject("menus", menus);
     },
     REMOVE_MENUS(state) {
       // 移除动态路由
@@ -72,7 +73,7 @@ const UserModule: Module < UserStates, RootStates > = {
       });
 
       state.menus = [];
-      localStorage.removeItem("menus");
+      cache.removeLocalStorage("menus");
     },
   },
   actions: {

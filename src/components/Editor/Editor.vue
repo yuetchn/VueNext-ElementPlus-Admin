@@ -71,6 +71,7 @@ export default defineComponent({
     const state = reactive({
       init: {
         selector: `#${ props.id }`,
+        convert_urls: false, // 自动转换URL
         height: props.height,
         language_url: "tinymce/langs/zh_CN.js", // 中文语言包路径
         language: "zh_CN",

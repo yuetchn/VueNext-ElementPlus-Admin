@@ -26,9 +26,9 @@ const UserModule: Module < UserStates, RootStates > = {
   namespaced: true,
   state: {
     token: GetToken(),
-    userName: cache.getLocalStorageByString("userName") || "",
-    avatar: cache.getLocalStorageByString("avatar") || "",
-    menus: cache.getLocalStorageByObject<any[]>("menus") || [],
+    userName: cache.GetLocalStorageByString("userName") || "",
+    avatar: cache.GetLocalStorageByString("avatar") || "",
+    menus: cache.GetLocalStorageByObject<any[]>("menus") || [],
   },
   mutations: {
     SET_TOKEN(state, token: string) {
@@ -42,14 +42,14 @@ const UserModule: Module < UserStates, RootStates > = {
     SET_USER_INFO(state, { userName, avatar }) {
       state.userName = userName;
       state.avatar = avatar;
-      cache.setLocalStorageByString("userName", userName);
-      cache.setLocalStorageByString("avatar", avatar);
+      cache.SetLocalStorageByString("userName", userName);
+      cache.SetLocalStorageByString("avatar", avatar);
     },
     REMOVE_USER_INFO(state) {
       state.userName = "";
       state.avatar = "";
-      cache.removeLocalStorage("userName");
-      cache.removeLocalStorage("avatar");
+      cache.RemoveLocalStorage("userName");
+      cache.RemoveLocalStorage("avatar");
     },
     SET_MENUS(state, menus: any[]) {
       // 移除动态路由
@@ -61,7 +61,7 @@ const UserModule: Module < UserStates, RootStates > = {
       });
 
       state.menus = menus;
-      cache.setLocalStorageByObject("menus", menus);
+      cache.SetLocalStorageByObject("menus", menus);
     },
     REMOVE_MENUS(state) {
       // 移除动态路由
@@ -73,7 +73,7 @@ const UserModule: Module < UserStates, RootStates > = {
       });
 
       state.menus = [];
-      cache.removeLocalStorage("menus");
+      cache.RemoveLocalStorage("menus");
     },
   },
   actions: {

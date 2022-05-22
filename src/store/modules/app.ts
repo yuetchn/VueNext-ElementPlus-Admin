@@ -27,12 +27,12 @@ const UserModule: Module<AppStates, RootStates> = {
   namespaced: true,
   state: {
     loadingShade: false,
-    nowRoutePath: cache.getSessionStorageByString("nowRoutePath") || "/",
-    isShrink: cache.getSessionStorageByString("isShrink") === "1" ? true : false || false,
-    nowRouteSpread: cache.getSessionStorageByString("nowRouteSpread") || "",
+    nowRoutePath: cache.GetSessionStorageByString("nowRoutePath") || "/",
+    isShrink: cache.GetSessionStorageByString("isShrink") === "1" ? true : false || false,
+    nowRouteSpread: cache.GetSessionStorageByString("nowRouteSpread") || "",
     clientWidth: 0,
-    locale: cache.getLocalStorageByString("locale") || "zh-CN",
-    size: (cache.getLocalStorageByString("size") as any) || "default",
+    locale: cache.GetLocalStorageByString("locale") || "zh-CN",
+    size: (cache.GetLocalStorageByString("size") as any) || "default",
   },
   mutations: {
     SET_LOADING_SHADE(state, loadingShade: boolean) {
@@ -40,32 +40,32 @@ const UserModule: Module<AppStates, RootStates> = {
     },
     SET_SHRINK(state, isShrink: boolean) {
       state.isShrink = isShrink;
-      cache.setSessionStorageByString("isShrink", isShrink ? "1" : "0");
+      cache.SetSessionStorageByString("isShrink", isShrink ? "1" : "0");
     },
     SET_NOW_ROUTE_PATH(state, nowRoutePath: string) {
       state.nowRoutePath = nowRoutePath;
-      cache.setSessionStorageByString("nowRoutePath", nowRoutePath);
+      cache.SetSessionStorageByString("nowRoutePath", nowRoutePath);
     },
     SET_NOW_ROUTE_SPREAD(state, nowRouteSpread: string) {
       state.nowRouteSpread = nowRouteSpread;
-      cache.setSessionStorageByString("nowRouteSpread", nowRouteSpread);
+      cache.SetSessionStorageByString("nowRouteSpread", nowRouteSpread);
     },
     RESET_ROUTE_STATE(state) {
       state.nowRoutePath = "/";
       state.nowRouteSpread = "";
-      cache.removeSessionStorage("nowRoutePath");
-      cache.removeSessionStorage("nowRouteSpread");
+      cache.RemoveSessionStorage("nowRoutePath");
+      cache.RemoveSessionStorage("nowRouteSpread");
     },
     SET_CLIENT_WIDTH(state, clientWidth: number) {
       state.clientWidth = clientWidth;
     },
     SET_LOCALE(state, locale: string) {
       state.locale = locale;
-      cache.setLocalStorageByString("locale", locale);
+      cache.SetLocalStorageByString("locale", locale);
     },
     SET_SIZE(state, size: string) {
       state.size = size;
-      cache.setLocalStorageByString("size", size);
+      cache.SetLocalStorageByString("size", size);
     },
   },
   actions: {

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Vite Config
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-06-01 13:53:57
+ * @LastEditTime: 2022-06-02 22:33:58
  */
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -45,7 +45,7 @@ export default ({ mode }) => defineConfig({
     strictPort: false,
     proxy: {
       // "/api/": {
-      //   target: config.VITE_BASE_HOST,
+      //   target: loadEnv(mode, process.cwd()).VITE_BASE_HOST,
       //   changeOrigin: true,
       //   rewrite: (path) => path.replace(/^\/api\//, ""),
       // },

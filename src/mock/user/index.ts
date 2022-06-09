@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-13 18:16:44
+ * @LastEditTime: 2022-06-01 14:10:39
  */
 import { mock } from "mockjs";
 
@@ -80,11 +80,10 @@ const adminMenu = [{
   {
     path: "linkComponent",
     name: "linkComponent",
-    component: "components/link",
+    component: "components/Glink",
     meta: {
       title: "链接",
       icon: "link",
-
     },
   },
   ],

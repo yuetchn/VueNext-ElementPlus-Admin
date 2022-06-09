@@ -16,6 +16,7 @@
       "@/*": ["./src/*"],
       "@base": ["./src/utils/base.ts"]
     },
+    "types": ["element-plus/global"],
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]

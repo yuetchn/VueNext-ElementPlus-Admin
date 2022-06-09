@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 通用函数
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-09 10:36:15
+ * @LastEditTime: 2022-06-01 14:48:34
  */
 import { Md5 as tsMd5 } from "ts-md5";
 
@@ -52,8 +52,6 @@ export class Throttle {
 
 /** MD5加密 */
 export const md5 = (str: string) => tsMd5.hashStr(str);
-
-export { clipboardFunc } from "@/directive/clipboard";
 
 /**
  * @description 格式化数字

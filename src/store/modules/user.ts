@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User Module
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-09 11:53:40
+ * @LastEditTime: 2022-06-16 10:28:58
  */
 import { Module } from "vuex";
 import RootStates from "@/types/store/storeInterface";
@@ -39,11 +39,11 @@ const UserModule: Module < UserStates, RootStates > = {
       state.token = undefined;
       RemoveToken();
     },
-    SET_USER_INFO(state, { userName, avatar }) {
-      state.userName = userName;
-      state.avatar = avatar;
-      cache.SetLocalStorageByString("userName", userName);
-      cache.SetLocalStorageByString("avatar", avatar);
+    SET_USER_INFO(state, user: {userName:string, avatar:string}) {
+      state.userName = user.userName;
+      state.avatar = user.avatar;
+      cache.SetLocalStorageByString("userName", user.userName);
+      cache.SetLocalStorageByString("avatar", user.avatar);
     },
     REMOVE_USER_INFO(state) {
       state.userName = "";
@@ -91,6 +91,7 @@ const UserModule: Module < UserStates, RootStates > = {
           commit("SET_USER_INFO", res.data.data);
           commit("SET_TOKEN", data.data);
           await store.dispatch("ViewTagModule/closeAllTag");
+          res.data.data
           commit("SET_MENUS", res.data.data.menu);
         }
       }

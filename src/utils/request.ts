@@ -1,14 +1,15 @@
 /*
  * @ModuleName: Request
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-09 11:59:49
+ * @LastEditTime: 2022-06-16 10:32:04
  */
 import axios, { AxiosRequestConfig } from "axios";
 import { message } from "ant-design-vue";
 import { GetToken } from "@/utils/cookie";
 import store from "@/store";
 
-const timeout = 1000 * import.meta.env.VITE_HTTP_REQUEST_TIME_OUT;
+const timeout = 1000
+  * import.meta.env.VITE_HTTP_REQUEST_TIME_OUT;
 const req = axios.create({
   baseURL: import.meta.env.VITE_BASE_HOST,
   timeout,
@@ -46,7 +47,7 @@ req.interceptors.request.use(
   (config) => {
     ShowLoading();
     // headers
-    const headers: Record<string, string> = {
+    const headers: Record < string, string > = {
       "Accept-Language": (store.state as any).AppModule.locale,
     };
 
@@ -99,7 +100,7 @@ req.interceptors.response.use(
  * @param params
  * @returns
  */
-const Get = (url: string, params?: any, options?:AxiosRequestConfig) => req({
+const Get = < D = any > (url: string, params ? : any, options ? : AxiosRequestConfig) => req < D >({
   url,
   method: "GET",
   params,
@@ -112,7 +113,7 @@ const Get = (url: string, params?: any, options?:AxiosRequestConfig) => req({
  * @param data
  * @returns
  */
-const Post = (url: string, data?: any, options?:AxiosRequestConfig) => req({
+const Post = < D = any >(url: string, data ? : any, options ? : AxiosRequestConfig) => req < D >({
   url,
   method: "POST",
   data: data && JSON.stringify(data),

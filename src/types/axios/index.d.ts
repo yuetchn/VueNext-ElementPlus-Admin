@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Http Request 
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-06-16 10:30:53
+ * @LastEditTime: 2022-06-16 10:55:55
  */
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 
@@ -10,6 +10,7 @@ export interface IResponseBody<D> {
   code: number
   data: D
   msg: string
+  total:number
 }
 
 declare module "axios" {

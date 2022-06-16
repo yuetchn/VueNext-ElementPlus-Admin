@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Cache
  * @Author: 乐涛
- * @LastEditTime: 2022-04-10 08:03:49
+ * @LastEditTime: 2022-06-16 10:58:25
 -->
 <template>
   <div class="app-container container">
@@ -121,7 +121,7 @@ export default defineComponent({
       return data
     }
 
-    const tabChange = (val: string) => {
+    const tabChange = (val: string | number) => {
       switch (val) {
         case "local":
           state.localStorageData = getStorageData(val)

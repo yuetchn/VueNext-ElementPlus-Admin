@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Page
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 15:37:46
+ * @LastEditTime: 2022-06-16 10:56:22
 -->
 <template>
   <div class="g_page" :style="{justifyContent:pageAlign}">
@@ -45,7 +45,7 @@ export default defineComponent({
       default: true,
     },
     pageSizes: {
-      type: Array,
+      type: Array as PropType<number[]>,
       default: () => [10, 20, 50, 100, 200, 500, 1000],
     },
   },

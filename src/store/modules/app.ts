@@ -1,7 +1,7 @@
 /*
  * @ModuleName: App Module
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-09 11:22:06
+ * @LastEditTime: 2022-06-16 10:49:25
  */
 import { Module } from "vuex";
 import RootStates from "@/types/store/storeInterface";
@@ -23,7 +23,7 @@ export interface AppStates {
   /** 组件大小 "large" | "default" | "small" */
   size: string;
 }
-const UserModule: Module<AppStates, RootStates> = {
+const UserModule: Module < AppStates, RootStates > = {
   namespaced: true,
   state: {
     loadingShade: false,

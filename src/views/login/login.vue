@@ -1,40 +1,54 @@
 <template>
-  <div class="login-container">
-    <!-- <el-alert title="Gitee仓库地址：https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin" type="success" :closable="false" style="position: fixed"></el-alert> -->
-    <el-row>
-      <el-col :xs="24" :sm="24" :md="12" :lg="16" :xl="16">
-        <div style="color: transparent"></div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
-        <el-form ref="form" :model="loginForm" class="login-form" label-position="left">
-          <div class="title">hello !</div>
-          <div class="title-tips">欢迎来到{{ title }}！</div>
-          <el-form-item style="margin-top: 40px" prop="username">
-            <span class="svg-container svg-container-admin">
-              <!-- <vab-icon :icon="['fas', 'user']" /> -->
-              <g-svg-icon :size="16" style="z-index:99999;position:relative;" name="user" />
-            </span>
-            <el-input v-model.trim="loginForm.account" placeholder="请输入用户名" tabindex="1" type="text" />
+  <div id="userLayout">
+    <div class="login_panle">
+      <div class="login_panle_form">
+        <div class="login_panle_form_title">
+          <img class="login_panle_form_title_logo" src="../../assets/logo.png">
+        </div>
+        <el-form ref="loginFormRef  " :model="loginForm">
+          <el-form-item prop="username">
+            <el-input v-model="loginForm.account" placeholder="请输入用户名">
+              <template #suffix>
+                <span class="input-icon">
+                  <g-svg-icon name="user" size="22" />
+                </span>
+              </template>
+            </el-input>
           </el-form-item>
           <el-form-item prop="password">
-            <span class="svg-container">
-              <g-svg-icon :size="16" style="z-index:99999;position:relative;" name="password" />
-              <!-- <vab-icon :icon="['fas', 'lock']" /> -->
-            </span>
-            <el-input v-model.trim="loginForm.password" tabindex="2" placeholder="请输入密码" @keyup.enter="login" />
-            <!-- <span v-if="passwordType === 'password'" class="show-password" @click="handlePassword">
-              <vab-icon :icon="['fas', 'eye-slash']"></vab-icon>
-            </span> -->
-            <!-- <span v-else class="show-password" @click="handlePassword">
-              <vab-icon :icon="['fas', 'eye']"></vab-icon>
-            </span> -->
+            <el-input v-model="loginForm.password" type="password" placeholder="请输入密码" @keydown.enter="login()">
+              <template #suffix>
+                <span class="input-icon">
+                  <g-svg-icon name="password" size="22" />
+                </span>
+              </template>
+            </el-input>
           </el-form-item>
-          <el-button :loading="loading" class="login-btn" type="primary" @click="login">
-            登录
-          </el-button>
+          <el-form-item>
+            <el-button :disabled="!loginForm.password||!loginForm.account" type="primary" size="large" style="width:100%" @click="login()">
+              登 录
+            </el-button>
+          </el-form-item>
         </el-form>
-      </el-col>
-    </el-row>
+      </div>
+      <div class="login_panle_right" />
+      <div class="login_panle_foot">
+        <div class="links">
+          <a href="http://doc.yuetchn.top/#/" target="_blank">
+            <img src="@/assets/imgs/login/docs.png" class="link-icon">
+          </a>
+          <a href="https://gitee.com/yuetchn_admin/VueNext-ElementPlus-Admin" target="_blank">
+            <img src="https://toscode.gitee.com/static/images/logo-en.svg" class="link-icon">
+          </a>
+          <a href="https://github.com/yuetchn/VueNext-ElementPlus-Admin" target="_blank">
+            <img src="@/assets/imgs/login/github.png" class="link-icon">
+          </a>
+        </div>
+        <div class="copyright">
+          Copyright © 2022 {{ title }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -81,127 +95,121 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-  .login-container {
-    height: 100vh;
-    background: url('@/assets/imgs/login/background.jpg') center center fixed no-repeat;
+  #userLayout {
+    margin: 0;
+    padding: 0;
+    background-image: url("@/assets/imgs/login/login_background.jpg");
     background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: relative;
 
-    .title {
-      font-size: 54px;
-      font-weight: 500;
-      color: rgba(14, 18, 26, 1);
+    .input-icon {
+      padding:3px 0;
     }
 
-    .title-tips {
-      margin-top: 29px;
-      font-size: 26px;
-      font-weight: 400;
-      color: rgba(14, 18, 26, 1);
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+    .login_panle {
+      position: absolute;
+      top: 3vh;
+      left: 2vw;
+      width: 96vw;
+      height: 94vh;
+      background-color: rgba(255, 255, 255, .8);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
 
-    .login-btn {
-      display: inherit;
-      width: 220px;
-      height: 50px;
-      margin-top: 5px;
-      border: 0;
-
-      &:hover {
-        opacity: 0.9;
+      .login_panle_right {
+        background-image: url("@/assets/imgs/login/login_left.svg");
+        background-size: cover;
+        width: 40%;
+        height: 60%;
+        float: right !important;
       }
-    }
 
-    .login-form {
-      position: relative;
-      max-width: 100%;
-      margin: calc((100vh - 425px) / 2) 10% 10%;
-      overflow: hidden;
+      .login_panle_form {
+        width: 420px;
+        background-color: #fff;
+        padding: 40px 40px 40px 40px;
+        border-radius: 10px;
+        box-shadow: 2px 3px 7px rgba(0, 0, 0, .2);
 
-      .forget-password {
-        width: 100%;
-        margin-top: 40px;
-        text-align: left;
+        .login_panle_form_title {
+          display: flex;
+          align-items: center;
+          margin: 20px 0;
+          justify-content: center;
 
-        .forget-pass {
-          width: 129px;
-          height: 19px;
-          font-size: 20px;
-          font-weight: 400;
-          color: rgba(92, 102, 240, 1);
+          .login_panle_form_title_logo {
+            width: 285px;
+            height: 120px;
+          }
+
+          .login_panle_form_title_p {
+            font-size: 40px;
+            padding-left: 20px;
+          }
+        }
+
+        .vPicBox {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+        }
+
+        .vPic {
+          width: 33%;
+          height: 38px;
+          background: #ccc;
+
+          img {
+            width: 100%;
+            height: 100%;
+            vertical-align: middle;
+          }
+        }
+      }
+
+      .login_panle_foot {
+        position: absolute;
+        bottom: 20px;
+
+        .links {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .link-icon {
+            width: 30px;
+            height: 30px;
+          }
+        }
+
+        .copyright {
+          color: #777777;
+          margin-top: 5px;
+          text-align: center;
         }
       }
     }
+  }
 
-    .tips {
-      margin-bottom: 10px;
-      font-size: 14px;
-      // color: $base-color-white;
-
-      span {
-        &:first-of-type {
-          margin-right: 16px;
-        }
-      }
+  //小屏幕不显示右侧，将登陆框居中
+  @media (max-width: 750px) {
+    .login_panle_right {
+      display: none;
     }
 
-    .title-container {
-      position: relative;
-
-      .title {
-        margin: 0 auto 40px auto;
-        font-size: 34px;
-        font-weight: bold;
-        // color: $base-color-blue;
-        text-align: center;
-      }
+    .login_panle {
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
     }
 
-    .svg-container {
-      position: absolute;
-      top: 7px;
-      left: 15px;
-      // z-index: $base-z-index;
-      font-size: 16px;
-      color: #d7dee3;
-      cursor: pointer;
-      user-select: none;
+    .login_panle_form {
+      width: 100%;
     }
-
-    .show-password {
-      position: absolute;
-      top: 14px;
-      right: 25px;
-      font-size: 16px;
-      color: #d7dee3;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    ::v-deep(.el-form-item) {
-      padding-right: 0;
-      margin: 20px 0;
-      color: #454545;
-      background: transparent;
-      border: 1px solid transparent;
-      border-radius: 2px;
-    }
-
-    ::v-deep(.el-input) {
-      box-sizing: border-box;
-
-      input {
-        height: 50px;
-        padding-left: 45px;
-        // font-size: $base-font-size-default;
-        line-height: 58px;
-        // color: $base-font-color;
-        // background: #f6f4fc;
-        border: 0;
-        // caret-color: $base-font-color;
-      }
-    }
-
   }
 </style>

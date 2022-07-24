@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 13:38:53
+ * @LastEditTime: 2022-07-24 13:01:44
 -->
 <template>
   <div class="silder_bar" :class="{ silder_bar_shrink: isShrink }">
@@ -9,7 +9,7 @@
       <a-menu v-model:selectedKeys="nowSelMenuKeys" v-model:openKeys="nowOpemMenuKeys" :inline-collapsed="isShrink" mode="inline">
         <Logo></Logo>
         <template v-for="item of routes" :key="item.path">
-          <a-menu-item v-if="item.children?.filter((f) => !f.meta?.hide)?.length === 1" :key="`${item.path}/${item.children && item.children[0].path}`" @click="titleClick(`${item.path}/${item.children && item.children[0].path}`, item.children && item.children[0])">
+          <a-menu-item v-if="!isExistsChildren(item)" :key="`${item.path}/${item.children && item.children[0].path}`" @click="titleClick(`${item.path}/${item.children && item.children[0].path}`, item.children && item.children[0])">
             <template #icon>
               <g-svg-icon :name="item.children && item.children[0].meta?.icon"></g-svg-icon>
             </template>
@@ -21,7 +21,7 @@
             </template>
             <template #title>{{ titleLocale(item.name?.toString() || "") === item.name ? item.meta?.title : titleLocale(item.name?.toString() || "") }}</template>
             <template v-for="c of item.children?.filter((f) => !f.meta?.hide)" :key="`${item.path}/${c.path}`">
-              <a-menu-item v-if="!c.children?.filter((f) => !f.meta?.hide)?.length" :key="`${item.path}/${c.path}`" @click="titleClick(`${item.path}/${c.path}`, c)">
+              <a-menu-item v-if="!isExistsChildren(c,'children')" :key="`${item.path}/${c.path}`" @click="titleClick(`${item.path}/${c.path}`, c)">
                 <template #icon>
                   <g-svg-icon :name="c.meta?.icon"></g-svg-icon>
                 </template>
@@ -51,7 +51,7 @@ export default defineComponent({
     const store = useStore();
     const router = useRouter();
     const route = useRoute();
-    const { t } = useI18n()
+    const { t } = useI18n();
 
     const state = reactive({
       nowSelMenuKeys: <string[]>[],
@@ -71,6 +71,16 @@ export default defineComponent({
       router.push(path);
     };
     const titleLocale = (value: string) => t(value);
+    const isExistsChildren = (r:RouteRecordRaw, type = "root"):boolean => {
+      const children = r.children?.filter(f => !f.meta?.hide) || []
+      if (!children.length) {
+        return type === "root"
+      }
+      if ((children.length === 1 && !children[0].children?.filter(f => !f.meta?.hide).length)) {
+        return false
+      }
+      return true
+    }
 
     watch(
       () => state.nowOpemMenuKeys,
@@ -104,6 +114,7 @@ export default defineComponent({
       // func
       titleClick,
       titleLocale,
+      isExistsChildren,
     };
   },
 });

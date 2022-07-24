@@ -1,10 +1,10 @@
 /*
  * @ModuleName: ViewTagModule
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-09 11:21:57
+ * @LastEditTime: 2022-07-24 13:46:34
  */
 import { Module } from "vuex";
-import { RouteLocationNormalizedLoaded, RouteRecordRaw } from "vue-router";
+import { RouteLocationNormalizedLoaded, RouteRecordNormalized } from "vue-router";
 import RootStates from "@/types/store/storeInterface";
 import router from "@/router";
 
@@ -43,7 +43,7 @@ const ViewTagModule: Module<ViewTagStates, RootStates> = {
   },
   actions: {
     initTags({ commit }) {
-      const getAffixRoutes = (routes: RouteRecordRaw[]) => {
+      const getAffixRoutes = (routes: RouteRecordNormalized[]) => {
         let rts: RouteLocationNormalizedLoaded[] = [];
         routes.forEach((r) => {
           if (r.meta && r.meta.affix && !r.meta.noTag) {
@@ -60,7 +60,7 @@ const ViewTagModule: Module<ViewTagStates, RootStates> = {
             });
 
             if (r.children) {
-              rts = [...rts, ...getAffixRoutes(r.children)];
+              rts = [...rts, ...getAffixRoutes(r.children as RouteRecordNormalized[])];
             }
           }
         });

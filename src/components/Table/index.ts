@@ -1,14 +1,14 @@
 /*
  * @ModuleName: Custom Table Attribute
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-20 11:08:04
+ * @LastEditTime: 2022-07-21 09:07:31
  */
 import { PropType } from "vue";
 import { TableColumns as columns } from "./columns";
 
 export * from "./columns";
 
-export { ElTable } from "element-plus";
+export { ElTable, ElLoading } from "element-plus";
 
 export const props = {
   data: Array,
@@ -41,6 +41,10 @@ export const props = {
   },
   /** 是否开启拖拽表格，如需禁用某一行，可通过element-plus表格row-class-name动态添加class类名[drag_disabled]到指定行中即可。 */
   drag: {
+    type: Boolean,
+    default: false,
+  },
+  loading: {
     type: Boolean,
     default: false,
   },

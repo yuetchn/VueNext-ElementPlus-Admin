@@ -25,7 +25,7 @@
             </el-input>
           </el-form-item>
           <el-form-item>
-            <el-button :disabled="!loginForm.password||!loginForm.account" type="primary" size="large" style="width:100%" @click="login()">
+            <el-button :loading="loading" :disabled="!loginForm.password||!loginForm.account" type="primary" size="large" style="width:100%" @click="login()">
               登 录
             </el-button>
           </el-form-item>
@@ -73,13 +73,18 @@ export default defineComponent({
       },
     });
     const login = async () => {
-      const { data } = await store.dispatch("UserModule/login", {
-        account: state.loginForm.account,
-        password: MD5(state.loginForm.password),
-      });
-      if (data.code === 200) {
-        message.success(data.info);
-        router.push("/");
+      try {
+        state.loading = true
+        const { data } = await store.dispatch("UserModule/login", {
+          account: state.loginForm.account,
+          password: MD5(state.loginForm.password),
+        });
+        if (data.code === 200) {
+          message.success(data.msg);
+          router.push("/");
+        }
+      } finally {
+        state.loading = false
       }
     };
 

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Request
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-06-16 10:32:04
+ * @LastEditTime: 2022-07-21 11:05:58
  */
 import axios, { AxiosRequestConfig } from "axios";
 import { message } from "ant-design-vue";
@@ -52,7 +52,7 @@ req.interceptors.request.use(
     };
 
     if (GetToken()) {
-      headers["X-Access-Token"] = GetToken() as string;
+      headers.Authorization = GetToken() as string;
     }
 
     config.headers = { ...config.headers, ...headers }
@@ -87,9 +87,20 @@ req.interceptors.response.use(
 
     return response;
   },
-  (err) => {
+  (err:any) => {
     HiddenLoading(true);
-    message.error("连接失败");
+    switch (err.response.status) {
+      case 401:
+        message.warning("会话超时");
+        setTimeout(() => {
+          store.dispatch("UserModule/loginOut");
+        }, 1000);
+        break;
+    
+      default:
+        message.error(err.response.data?.msg || "连接失败");   
+        break;
+    }
     return Promise.reject(err);
   },
 );
@@ -116,14 +127,40 @@ const Get = < D = any > (url: string, params ? : any, options ? : AxiosRequestCo
 const Post = < D = any >(url: string, data ? : any, options ? : AxiosRequestConfig) => req < D >({
   url,
   method: "POST",
-  data: data && JSON.stringify(data),
+  data,
   ...options,
 });
 
-// ...
+/**
+ * Http Delete Request
+ * @param url
+ * @param data
+ * @returns
+ */
+const Delete = < D = any >(url: string, params ? : any, options ? : AxiosRequestConfig) => req < D >({
+  url,
+  method: "DELETE",
+  params,
+  ...options,
+});
+
+/**
+ * Http Put Request
+ * @param url
+ * @param data
+ * @returns
+ */
+const Put = < D = any >(url: string, data ? : any, options ? : AxiosRequestConfig) => req < D >({
+  url,
+  method: "PUT",
+  data,
+  ...options,
+});
 
 export default {
   Get,
   Post,
+  Put,
+  Delete,
   Request: req,
 };

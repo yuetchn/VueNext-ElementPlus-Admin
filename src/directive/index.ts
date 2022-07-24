@@ -1,13 +1,15 @@
 /*
  * @ModuleName: 全局指令注册
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-01-25 11:08:41
+ * @LastEditTime: 2022-07-22 15:23:06
  */
 import { App } from "vue";
-import clipboard from "./clipboard";
+import clipboard from "./src/clipboard";
+import per from "./src/permission"
 
 export default (app: App) => {
-  // app.directive("per", Per);
+  /** 按钮权限 */
+  app.directive("per", per);
 
   /** 写入剪切板 */
   app.directive("copy", clipboard);

@@ -1,14 +1,19 @@
 <!--
  * @ModuleName: TablePage
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-09 12:09:00
+ * @LastEditTime: 2022-07-24 13:50:06
 -->
 <template>
   <div>
+    <div style="padding:10px;margin-bottom:15px;background:#ffffff;">
+      <el-alert type="info">
+        相关模块正在迁移对接中，完整实例可查看系统管理 > 菜单管理模块，此模块目前仅供查看。
+      </el-alert>
+    </div>
     <el-card>
       <template #header> 表格基本使用(自适应) </template>
       <div style="height: 500px">
-        <g-table ref="tableRef" v-model:page-size="search.pageSize" v-model:page-number="search.pageNumber" page :total="search.total" :data="tableData" :columns="columns" @page-change="pageChange">
+        <g-table ref="tableRef" v-model:page-size="search.page_size" v-model:page-number="search.page_number" page :total="search.total" :data="tableData" :columns="columns" @page-change="pageChange">
           <el-form inline>
             <el-form-item>
               <el-input />
@@ -31,7 +36,7 @@
     <el-card style="margin-top: 15px">
       <template #header> 表格基本使用(拖拽表格) </template>
       <div style="height: 500px">
-        <g-table v-model:page-size="search.pageSize" v-model:page-number="search.pageNumber" drag page :total="search.total" :data="tableData" :columns="columns" @page-change="pageChange">
+        <g-table v-model:page-size="search.page_size" v-model:page-number="search.page_number" drag page :total="search.total" :data="tableData" :columns="columns" @page-change="pageChange">
           <el-form inline>
             <el-form-item>
               <el-input clearable placeholder="用户名" />
@@ -47,7 +52,7 @@
     <el-card style="margin-top: 15px">
       <template #header> 表格基本使用(表格插槽) </template>
       <div style="height: 500px">
-        <g-table v-model:page-size="search.pageSize" v-model:page-number="search.pageNumber" drag page :total="search.total" :data="tableData" :columns="columnsEdit" @page-change="pageChange">
+        <g-table v-model:page-size="search.page_size" v-model:page-number="search.page_number" drag page :total="search.total" :data="tableData" :columns="columnsEdit" @page-change="pageChange">
           <el-form inline>
             <el-form-item>
               <el-input clearable placeholder="用户名" />
@@ -68,7 +73,7 @@
       <template #header> 表格属性 </template>
       <a href="https://element-plus.gitee.io/zh-CN/component/table.html#table-attributes">参考Element-Plus官网属性</a>
       <br /><br />以下为二次封装提供属性：<br />
-      <g-table style="height:300px" :columns="help.PropertyColumns" :data="table1Data"></g-table>
+      <g-table style="height:400px" :columns="help.PropertyColumns" :data="table1Data"></g-table>
     </el-card>
     <el-card style="margin-top: 15px">
       <template #header> 表格方法 </template>
@@ -87,7 +92,8 @@
 <script lang="ts">
 import { defineComponent, onMounted, reactive, toRefs, ref } from "vue";
 import { TableColumns, ElTable, SearchForm } from "@base";
-import { GetUserData } from "@/api/user";
+// import { GetUserData } from "@/api/user";
+import { mock } from "mockjs";
 import help from "./index";
 
 export default defineComponent({
@@ -135,8 +141,8 @@ export default defineComponent({
       },
       ],
       searchInfo: {
-        pageSize: 10,
-        pageNumber: 1,
+        page_size: 10,
+        page_number: 1,
         total: 0,
         keyWord: "",
       },
@@ -147,6 +153,13 @@ export default defineComponent({
         default: "[]",
         type: "Array<columns[]>",
         options: "",
+      },
+      {
+        name: "loading",
+        desc: "加载",
+        default: "false",
+        type: "boolean",
+        options: "true",
       },
       {
         name: "page",
@@ -214,7 +227,19 @@ export default defineComponent({
     });
 
     const getUserDt = async () => {
-      const { data } = await GetUserData(state.searchInfo);
+      // const { data } = await GetUserData(state.searchInfo);
+      const data = mock({
+        code: 200,
+        "data|10": [{
+          id: ["@integer(10,10000)"],
+          name: "@name()",
+          address: "@region()",
+          email: "@email()",
+          status: "@pick([{type:'danger',label:'异常'},{type:'success',label:'正常'},{type:'warning',label:'质疑'},{type:'info',label:'未知'}])",
+        }],
+        info: "操作成功",
+        total: 10000,
+      });
       if (data.code === 200) {
         state.tableData = data.data;
         state.searchInfo.total = data.total;

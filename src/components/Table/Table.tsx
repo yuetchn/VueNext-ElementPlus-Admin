@@ -1,11 +1,11 @@
 /*
  * @ModuleName: Custom Table
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-05 12:50:46
+ * @LastEditTime: 2022-07-24 11:59:55
  */
-import { defineComponent, onMounted, reactive, ref, toRefs, unref } from "vue";
+import { defineComponent, onMounted, watch, reactive, ref, toRefs, unref } from "vue";
 import Sortable from "sortablejs"
-import { props, emits, ElTable } from "./index";
+import { props, emits, ElTable, ElLoading } from "./index";
 
 export default defineComponent({
   props,
@@ -16,6 +16,9 @@ export default defineComponent({
       pageSize: p.pageSize,
       pageNumber: p.pageNumber,
     });
+
+    let tableLoading:any = null
+ 
     const clearSelection = () => tableRef.value?.clearSelection();
     const toggleRowSelection = (...args: any[]) => tableRef.value?.toggleRowSelection(args[0], args[1]);
     const toggleAllSelection = () => tableRef.value?.toggleAllSelection();
@@ -38,6 +41,17 @@ export default defineComponent({
           },
         )
       }
+    })
+
+    watch(() => p.loading, (v) => {
+      if (v) {
+        tableLoading = ElLoading.service({
+          target: unref(tableRef)?.$el.querySelector(".el-table__body-wrapper"),
+          text: "Loading...",
+        })
+        return
+      }
+      tableLoading && tableLoading.close()
     })
 
     return {
@@ -146,24 +160,24 @@ export default defineComponent({
             lazy={p.lazy}
             load={p.load}
             tree-props={p.treeProps}
-            onSelect={(...args: any[]) => { emit("select", args) }}
-            onSelectAll={(...args: any[]) => { emit("select-all", args) }}
-            onSelectionChange={(...args: any[]) => { emit("selection-change", args) }}
-            onCellMouseEnter={(...args:any[]) => { emit("cell-mouse-enter", args) }}
-            onCellMouseLeave={(...args:any[]) => { emit("cell-mouse-leave", args) }}
-            onCellClick={(...args:any[]) => { emit("cell-click", args) }}
-            onCellDblclick={(...args:any[]) => { emit("cell-dblclick", args) }}
-            onCellContextmenu={(...args:any[]) => { emit("cell-contextmenu", args) }}
-            onRowClick={(...args:any[]) => { emit("row-click", args) }}
-            onRowContextmenu={(...args:any[]) => { emit("row-contextmenu", args) }}
-            onRowDblclick={(...args:any[]) => { emit("row-dblclick", args) }}
-            oHeaderClick={(...args:any[]) => { emit("header-click", args) }}
-            onHeaderContextmenu={(...args:any[]) => { emit("header-contextmenu", args) }}
-            onSortChange={(...args:any[]) => { emit("sort-change", args) }}
-            onFilterChange={(...args:any[]) => { emit("filter-change", args) }}
-            onCurrentChange={(...args:any[]) => { emit("current-change", args) }}
-            onHeaderDragend={(...args:any[]) => { emit("header-dragend", args) }}
-            onExpandChange={(...args:any[]) => { emit("expand-change", args) }}
+            onSelect={(...args: any[]) => { emit("select", ...args) }}
+            onSelectAll={(...args: any[]) => { emit("select-all", ...args) }}
+            onSelectionChange={(...args: any[]) => { emit("selection-change", ...args) }}
+            onCellMouseEnter={(...args:any[]) => { emit("cell-mouse-enter", ...args) }}
+            onCellMouseLeave={(...args:any[]) => { emit("cell-mouse-leave", ...args) }}
+            onCellClick={(...args:any[]) => { emit("cell-click", ...args) }}
+            onCellDblclick={(...args:any[]) => { emit("cell-dblclick", ...args) }}
+            onCellContextmenu={(...args:any[]) => { emit("cell-contextmenu", ...args) }}
+            onRowClick={(...args:any[]) => { emit("row-click", ...args) }}
+            onRowContextmenu={(...args:any[]) => { emit("row-contextmenu", ...args) }}
+            onRowDblclick={(...args:any[]) => { emit("row-dblclick", ...args) }}
+            oHeaderClick={(...args:any[]) => { emit("header-click", ...args) }}
+            onHeaderContextmenu={(...args:any[]) => { emit("header-contextmenu", ...args) }}
+            onSortChange={(...args:any[]) => { emit("sort-change", ...args) }}
+            onFilterChange={(...args:any[]) => { emit("filter-change", ...args) }}
+            onCurrentChange={(...args:any[]) => { emit("current-change", ...args) }}
+            onHeaderDragend={(...args:any[]) => { emit("header-dragend", ...args) }}
+            onExpandChange={(...args:any[]) => { emit("expand-change", ...args) }}
           >
             {elTableColumns}
           </el-table>

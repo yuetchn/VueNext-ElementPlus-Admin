@@ -1,13 +1,13 @@
 /*
  * @ModuleName: User Module
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-06-16 10:28:58
+ * @LastEditTime: 2022-07-19 15:19:15
  */
 import { Module } from "vuex";
 import RootStates from "@/types/store/storeInterface";
 import { GetToken, SetToken, RemoveToken } from "@/utils/cookie";
-import { Login } from "@/api/login";
-import { GetUserInfo } from "@/api/user";
+import { Login } from "@/api/v1/oAuth/authorization";
+import { GetCurrentUserInfo } from "@/api/v1/system/user"
 import router from "@/router";
 import store from "@/store";
 import * as cache from "@/utils/cache"
@@ -39,10 +39,10 @@ const UserModule: Module < UserStates, RootStates > = {
       state.token = undefined;
       RemoveToken();
     },
-    SET_USER_INFO(state, user: {userName:string, avatar:string}) {
-      state.userName = user.userName;
+    SET_USER_INFO(state, user: {nick_name:string, avatar:string}) {
+      state.userName = user.nick_name;
       state.avatar = user.avatar;
-      cache.SetLocalStorageByString("userName", user.userName);
+      cache.SetLocalStorageByString("userName", user.nick_name);
       cache.SetLocalStorageByString("avatar", user.avatar);
     },
     REMOVE_USER_INFO(state) {
@@ -85,14 +85,17 @@ const UserModule: Module < UserStates, RootStates > = {
         return Promise.reject(data);
       }
       if (data.code === 200) {
+        commit("SET_TOKEN", data.data);
         // 此处可调用自己的方法获取用户数据，或者通过login接口直接返回数据
-        const res = await GetUserInfo(data.data);
-        if (res.data.code === 200) {
-          commit("SET_USER_INFO", res.data.data);
-          commit("SET_TOKEN", data.data);
-          await store.dispatch("ViewTagModule/closeAllTag");
-          res.data.data
-          commit("SET_MENUS", res.data.data.menu);
+        try {
+          const res = await GetCurrentUserInfo();
+          if (res.data.code === 200) {
+            commit("SET_USER_INFO", res.data.data.user_info);
+            await store.dispatch("ViewTagModule/closeAllTag");
+            commit("SET_MENUS", res.data.data.menus);
+          }
+        } catch (error) {
+          commit("REMOVE_TOKEN");
         }
       }
       return Promise.resolve({ data });

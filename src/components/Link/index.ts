@@ -1,7 +1,7 @@
 /*
  * @ModuleName: custon link props
  * @Author: 乐涛
- * @LastEditTime: 2022-04-20 15:16:00
+ * @LastEditTime: 2022-07-20 11:11:07
  */
 import { PropType } from "vue"
 
@@ -18,6 +18,14 @@ export const props = {
   align: {
     type: String as PropType<"left" | "right">,
     default: "left",
+  },
+  right: {
+    type: [Number, String],
+    default: 0,
+  },
+  left: {
+    type: [Number, String],
+    default: 0,
   },
   disabled: {
     type: Boolean,

@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Vite Config
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-06-02 22:33:58
+ * @LastEditTime: 2022-07-24 15:04:43
  */
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -44,11 +44,12 @@ export default ({ mode }) => defineConfig({
     port: 85,
     strictPort: false,
     proxy: {
-      // "/api/": {
-      //   target: loadEnv(mode, process.cwd()).VITE_BASE_HOST,
-      //   changeOrigin: true,
-      //   rewrite: (path) => path.replace(/^\/api\//, ""),
-      // },
+      "/v1/": {
+        // 如果本地没有环境启动后台服务，可使用提供的生产预览环境：http://106.12.115.85:8989/
+        target: "http://localhost:8989",
+        changeOrigin: true,
+        // rewrite: (path) => path.replace(/^\/v1\//, "v1"),
+      },
     },
   },
   resolve: {

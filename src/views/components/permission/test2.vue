@@ -1,10 +1,15 @@
 <!--
  * @ModuleName: Permissin Test
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 15:52:09
+ * @LastEditTime: 2022-07-24 14:18:56
 -->
 <template>
   <div>
+    <div style="padding:10px;margin-bottom:15px;background:#ffffff;">
+      <el-alert type="info">
+        由于近期Mock服务转Go服务，目前个别模块后台接口开发中，正在逐步对接。
+      </el-alert>
+    </div>
     <el-card>
       <template #header>权限说明</template>
       <div>
@@ -40,10 +45,10 @@ const userName = computed(() => store.state.UserModule.userName);
 const toggleUser = async (type: number) => {
   switch (type) {
     case 1:
-      await store.dispatch("UserModule/login", { account: "admin", password: "" });
+      await store.dispatch("UserModule/login", { account: "admin", password: "e10adc3949ba59abbe56e057f20f883e" });
       break;
     case 2:
-      await store.dispatch("UserModule/login", { account: "test", password: "" });
+      await store.dispatch("UserModule/login", { account: "test", password: "e10adc3949ba59abbe56e057f20f883e" });
       break;
     default:
       break;

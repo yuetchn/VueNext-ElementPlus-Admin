@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Dialog 对话框
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-05 12:46:02
+ * @LastEditTime: 2022-07-19 21:27:57
 -->
 
 <template>
@@ -77,7 +77,7 @@ export default defineComponent({
     /** 对话框宽度 */
     width: {
       type: String,
-      default: "500px",
+      default: "900px",
     },
     /** 对话框高度 */
     height: {
@@ -145,7 +145,7 @@ export default defineComponent({
         }
       },
 
-      { immediate: true },
+      { immediate: false },
     );
     return {
       // refs

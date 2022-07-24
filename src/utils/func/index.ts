@@ -7,5 +7,6 @@ export const Throttle = func.Throttle;
 export const MD5 = func.md5;
 export const FormatNumber = func.formatNumber;
 export const DeepClone = func.deepClone;
+export const GetCascaderParent = func.getCascaderParent
 export const ClipboardFunc = clipboard.ClipboardFunc;
 export const Xss = xss.default;

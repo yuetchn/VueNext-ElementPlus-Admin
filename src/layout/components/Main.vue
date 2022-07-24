@@ -1,13 +1,13 @@
 <!--
  * @ModuleName: Main
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-30 20:13:53
+ * @LastEditTime: 2022-07-24 13:55:29
 -->
 <template>
   <section class="main">
     <div class="main_content">
       <router-view v-slot="{ Component, route }">
-        <transition :name="route.name" enter-active-class="enter_active">
+        <transition :name="route.name?.toString()" enter-active-class="enter_active">
           <keep-alive :include="cacheNames" :exclude="[]" :max="cacheMax">
             <component :is="Component"></component>
           </keep-alive>

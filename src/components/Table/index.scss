@@ -14,3 +14,10 @@
   flex: 1;
   overflow: hidden;
 }
+
+// 解决弹窗与 Elloading 层叠
+::v-deep(.el-table__body-wrapper){
+  .el-loading-mask{
+    z-index:998;
+  }
+}

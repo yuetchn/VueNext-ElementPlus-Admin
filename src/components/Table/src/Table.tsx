@@ -1,21 +1,29 @@
 /*
  * @ModuleName: Custom Table
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-24 11:59:55
+ * @LastEditTime: 2022-07-29 22:23:57
  */
 import { defineComponent, onMounted, watch, reactive, ref, toRefs, unref } from "vue";
 import Sortable from "sortablejs"
-import { props, emits, ElTable, ElLoading } from "./index";
+import { tableProps, tableEmits } from "./options";
+import { ElTable, ElLoading } from "./element"
 
 export default defineComponent({
-  props,
-  emits,
-  setup(p, { emit }) {
+  props: tableProps,
+  emits: tableEmits,
+  setup(props, { emit }) {
     const tableRef = ref<InstanceType<typeof ElTable>>();
     const state = reactive({
-      pageSize: p.pageSize,
-      pageNumber: p.pageNumber,
+      pageSize: props.pageSize,
+      pageNumber: props.pageNumber,
+      total: props.total,
     });
+
+    watch(() => props, (v) => {
+      state.pageNumber = v.pageNumber
+      state.pageSize = v.pageSize
+      state.total = v.total
+    }, { deep: true })
 
     let tableLoading:any = null
  
@@ -30,7 +38,7 @@ export default defineComponent({
     const sort = (...args: any[]) => tableRef.value?.sort(args[0], args[1]);
 
     onMounted(() => {
-      if (p.drag) {
+      if (props.drag) {
         new Sortable(
           unref(tableRef)?.$el.querySelector(".el-table__body-wrapper tbody"),
           {
@@ -43,7 +51,7 @@ export default defineComponent({
       }
     })
 
-    watch(() => p.loading, (v) => {
+    watch(() => props.loading, (v) => {
       if (v) {
         tableLoading = ElLoading.service({
           target: unref(tableRef)?.$el.querySelector(".el-table__body-wrapper"),
@@ -74,7 +82,7 @@ export default defineComponent({
     };
   },
   render() {
-    const p = this.$props;
+    const props = this.$props;
     const slots = this.$slots;
     const emit = this.$emit;
     const pageChange = () => {
@@ -82,7 +90,7 @@ export default defineComponent({
       emit("update:pageNumber", this.pageNumber);
       emit("page-change");
     };
-    const elTableColumns = p.columns?.map((f) => {
+    const elTableColumns = props.columns?.map((f) => {
       const column = (
         <el-table-column
           label={f.label}
@@ -128,38 +136,38 @@ export default defineComponent({
         <div class="g_table_table">
           <el-table
             ref="tableRef"
-            data={p.data}
-            height={p.height}
-            max-height={p.maxHeight}
-            stripe={p.stripe}
-            border={p.border}
-            size={p.size}
-            fit={p.fit}
-            show-header={p.showHeader}
-            highlight-current-row={p.highlightCurrentRow}
-            current-row-key={p.currentRowKey}
-            row-class-name={p.rowClassName}
-            row-style={p.rowStyle}
-            cell-class-name={p.cellClassName}
-            cell-style={p.cellStyle}
-            header-row-class-name={p.headerRowClassName}
-            header-row-style={p.headerRowStyle}
-            header-cell-class-name={p.headerCellClassName}
-            header-cell-style={p.headerCellStyle}
-            row-key={p.rowKey}
-            empty-text={p.emptyText}
-            default-expand-all={p.defaultExpandAll}
-            default-sort={p.defaultSort}
-            tooltip-effect={p.tooltipEffect}
-            show-summary={p.showSummary}
-            sum-text={p.sumText}
-            summary-method={p.summaryMethod}
-            span-method={p.spanMethod}
-            select-on-indeterminate={p.selectOnIndeterminate}
-            indent={p.indent}
-            lazy={p.lazy}
-            load={p.load}
-            tree-props={p.treeProps}
+            data={props.data}
+            height={props.height}
+            max-height={props.maxHeight}
+            stripe={props.stripe}
+            border={props.border}
+            size={props.size}
+            fit={props.fit}
+            show-header={props.showHeader}
+            highlight-current-row={props.highlightCurrentRow}
+            current-row-key={props.currentRowKey}
+            row-class-name={props.rowClassName}
+            row-style={props.rowStyle}
+            cell-class-name={props.cellClassName}
+            cell-style={props.cellStyle}
+            header-row-class-name={props.headerRowClassName}
+            header-row-style={props.headerRowStyle}
+            header-cell-class-name={props.headerCellClassName}
+            header-cell-style={props.headerCellStyle}
+            row-key={props.rowKey}
+            empty-text={props.emptyText}
+            default-expand-all={props.defaultExpandAll}
+            default-sort={props.defaultSort}
+            tooltip-effect={props.tooltipEffect}
+            show-summary={props.showSummary}
+            sum-text={props.sumText}
+            summary-method={props.summaryMethod}
+            span-method={props.spanMethod}
+            select-on-indeterminate={props.selectOnIndeterminate}
+            indent={props.indent}
+            lazy={props.lazy}
+            load={props.load}
+            tree-props={props.treeProps}
             onSelect={(...args: any[]) => { emit("select", ...args) }}
             onSelectAll={(...args: any[]) => { emit("select-all", ...args) }}
             onSelectionChange={(...args: any[]) => { emit("selection-change", ...args) }}
@@ -183,8 +191,8 @@ export default defineComponent({
           </el-table>
         </div>
         {/* 底部,Page分页 */}
-        <div v-show={p.page} class="g_table_page">
-          <g-page page-align={ p.pageAlign} v-model:pageNumber={this.pageNumber} v-model:pageSize={this.pageSize} total={this.total} onChange={() => pageChange()}></g-page>
+        <div v-show={props.page} class="g_table_page">
+          <g-page page-align={ props.pageAlign} v-model:pageNumber={this.pageNumber} v-model:pageSize={this.pageSize} v-model:total={this.total} onChange={() => pageChange()}></g-page>
         </div>
       </div>
     );

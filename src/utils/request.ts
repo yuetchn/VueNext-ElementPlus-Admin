@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Request
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-21 11:05:58
+ * @LastEditTime: 2022-07-27 10:13:13
  */
 import axios, { AxiosRequestConfig } from "axios";
 import { message } from "ant-design-vue";
@@ -87,20 +87,25 @@ req.interceptors.response.use(
 
     return response;
   },
-  (err:any) => {
+  (err: any) => {
     HiddenLoading(true);
-    switch (err.response.status) {
-      case 401:
-        message.warning("会话超时");
-        setTimeout(() => {
-          store.dispatch("UserModule/loginOut");
-        }, 1000);
-        break;
-    
-      default:
-        message.error(err.response.data?.msg || "连接失败");   
-        break;
+    if (err.message.includes("timeout")) {   
+      message.error("连接超时");   
+    } else {
+      switch (err.response.status) {
+        case 401:
+          message.warning("会话超时");
+          setTimeout(() => {
+            store.dispatch("UserModule/loginOut");
+          }, 1000);
+          break;
+      
+        default:
+          message.error(err.response.data?.msg || "连接失败");   
+          break;
+      }
     }
+    
     return Promise.reject(err);
   },
 );

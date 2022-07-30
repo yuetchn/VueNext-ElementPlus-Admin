@@ -1,0 +1,31 @@
+.g-icon-select {
+  width: 100%;
+  height: 100%;
+  background:#ffffff;
+  display:flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  overflow:auto;
+  padding:10px;
+  padding-right:0;
+
+  .icon-template-body {
+    width:50px;
+    height:50px;
+    margin-right:10px;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+
+    &:hover {
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
+}

@@ -1,18 +1,14 @@
 /*
  * @ModuleName: MarkDown
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-05 12:47:20
+ * @LastEditTime: 2022-07-25 11:11:25
  */
 import { defineComponent } from "vue";
 import MD from "markdown-it";
+import { markDownProps } from "./options"
 
 export default defineComponent({
-  props: {
-    modelValue: {
-      type: String,
-      default: "",
-    },
-  },
+  props: markDownProps,
   setup(props) {
     const mdRender = (v: string) => new MD({
       html: true, // 在源码中启用 HTML 标签

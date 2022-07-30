@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-23 11:04:56
+ * @LastEditTime: 2022-07-26 14:59:22
  */
 import { IRequestPageInfo } from "@base"
 import req from "@/utils/request"
@@ -59,3 +59,11 @@ export const GetMenuBtnByPage_API = "/v1/menu/getMenuBtnByPage"
  */
 export const SaveOrUpdateBtn = (data: any) => req.Post(SaveOrUpdateBtn_API, data)
 export const SaveOrUpdateBtn_API = "/v1/menu/saveOrUpdateBtn"
+
+/**
+ * 删除菜单按钮
+ * @param id 
+ * @returns 
+ */
+export const DeleteBtnByID = (id: number) => req.Delete(DeleteBtnByID_API, { id })
+export const DeleteBtnByID_API = "/v1/menu/deleteBtnById"

@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Icons
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-05 22:15:57
+ * @LastEditTime: 2022-07-25 13:45:10
 -->
 <template>
   <div>
@@ -39,7 +39,7 @@ export default defineComponent({
     const icons = import.meta.glob("/src/assets/icons/**/*.svg");
     const state = reactive({
       help,
-      icons: Object.keys(icons).map((f) => f.replace(/^.*\//, "").replace(/.svg/, "")),
+      icons: Object.keys(icons).map((f) => f.replace(/^.*\/icons\//, "").replace(/\//, "-").replace(/.svg/, "")),
       data: [
         {
           name: "name",
@@ -65,6 +65,9 @@ export default defineComponent({
     return {
       // refs
       ...toRefs(state),
+
+      // func
+ 
     };
   },
 });
@@ -80,8 +83,8 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   cursor: pointer;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.08);

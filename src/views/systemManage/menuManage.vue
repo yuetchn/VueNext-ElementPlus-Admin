@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: 菜单管理
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-24 13:14:41
+ * @LastEditTime: 2022-07-28 14:06:15
 -->
 <template>
   <div class="container">
@@ -36,12 +36,12 @@
           <el-row :gutter="20">
             <el-col :span="12">
               <el-form-item required label="菜单名称" prop="name">
-                <el-input v-model.trim="menuForm.name" placeholder="菜单名称" />
+                <el-input v-model.trim="menuForm.name" clearable maxlength="100" placeholder="菜单名称" />
               </el-form-item>
             </el-col>
             <el-col :span="12">
               <el-form-item required label="菜单标题" prop="title">
-                <el-input v-model.trim="menuForm.title" placeholder="菜单标题" />
+                <el-input v-model.trim="menuForm.title" clearable maxlength="100" placeholder="菜单标题" />
               </el-form-item>
             </el-col>
           </el-row>
@@ -54,7 +54,27 @@
             </el-col>
             <el-col :span="12">
               <el-form-item label="图标" prop="icon">
-                <el-input v-model.trim="menuForm.icon" placeholder="图标" />
+                <el-input v-model.trim="menuForm.icon" class="icon-select-input" disabled clearable placeholder="图标">
+                  <template #prepend>
+                    <span>
+                      <g-svg-icon :name="menuForm.icon" />
+                    </span>
+                  </template>
+                  <template #append>
+                    <el-popover :width="300" placement="left" trigger="click">
+                      <template #reference>
+                        <el-button>
+                          <g-svg-icon name="system" color="#ffffff" />
+                        </el-button>
+                      </template>
+                      <template #default>
+                        <div style="width:300px;height:300px;">
+                          <g-icon-select @change="menuFormIconChange" />
+                        </div>
+                      </template>
+                    </el-popover>
+                  </template>
+                </el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -62,7 +82,7 @@
           <el-row :gutter="20">
             <el-col :span="24">
               <el-form-item required label="路由地址" prop="path">
-                <el-input v-model.trim="menuForm.path" placeholder="路由地址" />
+                <el-input v-model.trim="menuForm.path" clearable placeholder="路由地址" />
               </el-form-item>
             </el-col>
           </el-row>
@@ -70,7 +90,7 @@
           <el-row :gutter="20">
             <el-col :span="24">
               <el-form-item required label="模块地址" prop="component">
-                <el-input v-model.trim="menuForm.component" placeholder="模块地址" />
+                <el-input v-model.trim="menuForm.component" clearable placeholder="模块地址" />
               </el-form-item>
             </el-col>
           </el-row>
@@ -107,8 +127,8 @@
         
         <div style="flex:1">
           <g-table :loading="btnTableLoading" :data="btnTableData" :columns="btnColumns">
-            <template #cz>
-              <g-link v-per="'deleteBtn'" icon="delete" type="warning">删除</g-link>
+            <template #cz="{ row }">
+              <g-link v-per="'deleteBtn'" icon="delete" type="warning" @click="deleteMenuBtn(row)">删除</g-link>
             </template>
           </g-table>
         </div>
@@ -124,7 +144,7 @@ import { TableColumns, FormInstance, ElCascader, SearchForm } from "@base"
 import { defineComponent, ref, onMounted, reactive, toRefs } from "vue"
 import { message } from "ant-design-vue"
 import { ElMessageBox } from "element-plus"
-import { GetAllMenuTree, SaveOrUpdate, GetMenuByID, DeleteMenuByID, GetMenuBtnByPage } from "@/api/v1/system/menu"
+import { GetAllMenuTree, SaveOrUpdate, GetMenuByID, DeleteMenuByID, GetMenuBtnByPage, DeleteBtnByID } from "@/api/v1/system/menu"
 import { GetCascaderParent } from "@/utils/func"
 import menuBtnUpdate from "./components/menuBtnUpdate.vue"
 
@@ -156,7 +176,7 @@ export default defineComponent({
           slot: true,
         }],
       btnTableData: <any[]>[],
-      btnSearchForm: new SearchForm({ menu_id: 0 }),
+      btnSearchForm: new SearchForm({ menu_id: 0 }, 999999),
       btnTableLoading: false,
       menuTreeData: <any[]>[],
       menuTreeDataLoading: false,
@@ -167,12 +187,12 @@ export default defineComponent({
       formType: <string> "",
       menuForm: {
         id: 0,
-        parent_id: <any> [],
+        parent_id: <number[]> [],
         title: null,
         name: null,
         path: null,
-        component: null,
-        icon: null,
+        component: "",
+        icon: "",
         status: 1,
         sort: 0,
         is_hide: 0,
@@ -201,6 +221,7 @@ export default defineComponent({
       await formReset()
       state.formType = "add"
       await formShow()
+      state.menuForm.component = "Layout"
     }
 
     const editMenu = async (row:any) => {
@@ -235,6 +256,18 @@ export default defineComponent({
           state.formType = ""
           formReset()
         }
+      }
+    }
+
+    const deleteMenuBtn = async (row:any) => {
+      await ElMessageBox.confirm("确认删除此按钮？", "警告", {
+        type: "warning",
+      })
+ 
+      const { data } = await DeleteBtnByID(row.id)
+      if (data.code === 200) {
+        message.success(data.msg)
+        getMenuBtnsByPage()
       }
     }
 
@@ -301,6 +334,9 @@ export default defineComponent({
       }
     }
 
+    const menuFormIconChange = (name: string) => {
+      state.menuForm.icon = name
+    }
     return {
       // ref
       ...toRefs(state),
@@ -314,6 +350,8 @@ export default defineComponent({
       addChildrenMenu,
       deleteMenu,
       getMenuBtnsByPage,
+      menuFormIconChange,
+      deleteMenuBtn,
     }
   },
 })
@@ -410,4 +448,11 @@ export default defineComponent({
     display:flex;
     flex-direction: column;
   }
+
+.icon-select-input{
+  ::v-deep(.el-input-group__append){
+    background:$color-primary;
+  }
+}
+
 </style>

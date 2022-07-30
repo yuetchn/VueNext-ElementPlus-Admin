@@ -1,5 +1,8 @@
+// vue components
 @import './Dialog/index.scss';
-@import './MarkDown/index.scss';
-@import './Link/index.scss';
-@import './Table/index.scss';
 @import './LoadingShade/index.scss';
+
+// tsx module components
+@import './MarkDown/src/index.scss';
+@import './Link/src/index.scss';
+@import './Table/src/index.scss';

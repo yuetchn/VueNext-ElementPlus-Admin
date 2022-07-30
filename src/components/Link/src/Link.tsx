@@ -1,13 +1,13 @@
 /*
  * @ModuleName: custom link
  * @Author: 乐涛
- * @LastEditTime: 2022-07-20 11:07:35
+ * @LastEditTime: 2022-07-25 11:09:58
  */
 import { defineComponent } from "vue"
-import { props } from "./index"
+import { linkProps } from "./options"
 
 export default defineComponent({
-  props,
+  props: linkProps,
   setup(props, { slots }) {
     const svg = <g-svg-icon size={ props.iconSize } name={ props.icon}></g-svg-icon>
     const icon = (

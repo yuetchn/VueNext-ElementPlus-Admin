@@ -1,17 +1,17 @@
 /*
  * @ModuleName: Cahrt
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-28 10:28:25
+ * @LastEditTime: 2022-07-25 11:06:13
  */
 
 import { defineComponent, onMounted, reactive, toRefs, ref, watch } from "vue";
 import * as charts from "echarts";
-import ChartProps from "./index";
+import { chartProps } from "./options";
 import useEchart from "./setup";
 
 export default defineComponent({
-  props: ChartProps,
-  setup(p) {
+  props: chartProps,
+  setup(props) {
     const state = reactive({});
     const domRef = ref();
     let echarts: charts.ECharts;
@@ -19,17 +19,17 @@ export default defineComponent({
     onMounted(() => {
       echarts = charts.init(domRef.value, undefined, {
         renderer: "canvas",
-        width: p.width as any,
-        height: p.height as any,
+        width: props.width as any,
+        height: props.height as any,
       });
 
-      echarts.setOption(p.options);
+      echarts.setOption(props.options);
 
       useEchart(echarts);
     });
 
     watch(
-      () => p.options,
+      () => props.options,
       (v) => {
         echarts?.setOption(v);
       },

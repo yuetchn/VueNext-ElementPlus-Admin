@@ -1,22 +1,22 @@
 /*
  * @ModuleName: Http Request 
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-29 21:38:19
+ * @LastEditTime: 2022-08-17 13:41:58
  */
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 
-/** Response Data */
-export interface IResponseBody<D> {
-  code: number
-  data: D
-  msg: string
-}
+ /** Response Data */
+ interface IAxiosResponseBody < T > {
+   code: number
+   data: T
+   msg: string
+ }
 
 declare module "axios" {
   export interface AxiosInstance {
     // eslint-disable-next-line
-    < D > (config: AxiosRequestConfig): Promise < AxiosResponse < IResponseBody < D >>> ;
+    < D = any > (config: AxiosRequestConfig): Promise < AxiosResponse < IAxiosResponseBody < D >>> ;
     // eslint-disable-next-line
-    < D >(url: string, config ? : AxiosRequestConfig): Promise < AxiosResponse < IResponseBody < D > >> ;
+    < D = any >(url: string, config ? : AxiosRequestConfig): Promise < AxiosResponse < IAxiosResponseBody < D > >> ;
   }
 }

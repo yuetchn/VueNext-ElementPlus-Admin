@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Router
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-09 10:38:50
+ * @LastEditTime: 2022-08-06 13:12:44
  */
 import { createRouter, RouteRecordRaw, createWebHashHistory } from "vue-router";
 import { computed } from "vue";
@@ -30,7 +30,7 @@ const generateDynamicRoutes = computed(() => {
  */
 const generateStaticRoutes = computed(() => {
   UserModule = ((store.state as any).UserModule as UserStates)
-  const _static_routes = import.meta.globEager("./modules/**/*.ts")
+  const _static_routes = import.meta.globEager<string, any>("./modules/**/*.ts")
   let _r:RouteRecordRaw[] = []
   Object.keys(_static_routes).forEach(f => {
     _r = _r.concat(...[_static_routes[f].default as RouteRecordRaw])

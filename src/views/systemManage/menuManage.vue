@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: 菜单管理
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-28 14:06:15
+ * @LastEditTime: 2022-08-02 10:02:05
 -->
 <template>
   <div class="container">
@@ -12,17 +12,19 @@
           <g-link v-per="'add'" :disabled="menuTreeDataLoading" type="primary" icon="add" @click="addMenu">新增</g-link>
         </div>
       </div>
-      <el-tree v-loading="menuTreeDataLoading" :expand-on-click-node="false" default-expand-all :data="menuTreeData" :props="{label:'title'}" node-key="id" highlight-current class="tree-content">
-        <template #default="{node,data}">
-          <span class="u_tree_template_content">
-            <span class="u_tree_template_title" @click="editMenu(data)">{{ node.label }}</span>
-            <span class="u_tree_template_btns">
-              <g-link v-per="'addChildren'" icon="add" right="10" type="primary" @click="addChildrenMenu(data)">子菜单</g-link>
-              <g-link v-per="'delete'" icon="delete" type="warning" @click="deleteMenu(data)">删除</g-link>
+      <el-scrollbar class="tree-content">
+        <el-tree v-loading="menuTreeDataLoading" :expand-on-click-node="false" default-expand-all :data="menuTreeData" :props="{label:'title'}" node-key="id" highlight-current>
+          <template #default="{node,data}">
+            <span class="u_tree_template_content">
+              <span class="u_tree_template_title" @click="editMenu(data)">{{ node.label }}</span>
+              <span class="u_tree_template_btns">
+                <g-link v-per="'addChildren'" icon="add" right="10" type="primary" @click="addChildrenMenu(data)">子菜单</g-link>
+                <g-link v-per="'delete'" icon="delete" type="warning" @click="deleteMenu(data)">删除</g-link>
+              </span>
             </span>
-          </span>
-        </template>
-      </el-tree>
+          </template>
+        </el-tree>
+      </el-scrollbar>
     </div>
     <div v-show="formType" class="detail">
       <div class="menu-form">

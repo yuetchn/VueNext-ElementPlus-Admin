@@ -1,18 +1,18 @@
 /*
  * @ModuleName: Vite Config
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-24 15:04:43
+ * @LastEditTime: 2022-08-06 13:58:05
  */
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import legacy from "@vitejs/plugin-legacy";
 import vueJsx from "@vitejs/plugin-vue-jsx";
-import viteSvgIcons from "vite-plugin-svg-icons";
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import { VitePWA } from "vite-plugin-pwa"
 // 解决首次启动页面加载慢,本地第一次运行会创建缓存,之后从缓存中读取预加载项
 import OptimizationPersist from "vite-plugin-optimize-persist";
 import PkgConfig from "vite-plugin-package-config";
-import path from "path";
+import path from "path"
 
 const timeStamp = new Date().valueOf();
 
@@ -25,7 +25,7 @@ export default ({ mode }) => defineConfig({
     vueJsx(),
     OptimizationPersist(),
     PkgConfig(),
-    viteSvgIcons({
+    createSvgIconsPlugin({
       // 指定需要缓存的图标文件夹，地址可改
       iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
       // 指定symbolId格式
@@ -56,6 +56,7 @@ export default ({ mode }) => defineConfig({
     alias: {
       "@": "/src/",
       "@base": "/src/utils/base.ts",
+      "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js",
     },
   },
   css: {
@@ -77,7 +78,7 @@ export default ({ mode }) => defineConfig({
     outDir: "dists",
     chunkSizeWarningLimit: 2048,
     sourcemap: false,
-    brotliSize: false,
+    reportCompressedSize: false,
     rollupOptions: {
       plugins: [],
       output: {

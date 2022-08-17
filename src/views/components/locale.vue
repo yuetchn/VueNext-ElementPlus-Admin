@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Locale
  * @Author: 乐涛
- * @LastEditTime: 2022-03-11 11:25:01
+ * @LastEditTime: 2022-08-09 10:46:36
 -->
 <template>
   <div>
@@ -41,25 +41,38 @@
 
       <div style="line-height: 35px">
         <span style="font-size: 16px; color: rgba(0, 0, 0, 0.4)">1.使用</span><br />
-        <div style="color: #333333">Template 模板中使用全局挂载方法：$('key')</div>
-        <div style="color: #333333; margin-bottom: 15px">Script 中手动导入方法 import { t } from '@/locale'</div>
-        <span style="font-size: 16px; color: rgba(0, 0, 0, 0.4)">2.切换语言方法：toggleLocale</span><br />
-        <div style="color: #333333">通过调用 toggleLocale 方法实现动态切换,localeTypes 导出已安装的所有语言列表。</div>
+        <div style="color: #333333">(1).Template 模板中使用全局挂载方法：$('key')</div>
+        <div style="color: #333333; margin-bottom: 15px">
+          (2).Script 中使用 useI18n 组合式API实现： <br />
+          import { useI18n } from "@/locale" <br />
+          const { t } = useI18n(); <br />
+          // console.log(t("test"))
+        </div>
+        <div style="color: #333333; margin-bottom: 15px">
+          (3).支持导航地址侦听动态切换语言： <br />
+          http://localhost:85/#/components/richTextEdit?lang=zh-CN
+        </div>
+        <span style="font-size: 16px; color: rgba(0, 0, 0, 0.4)">2.切换语言方法（异步）：toggleLocaleAsync</span><br />
+        <div style="color: #333333">通过调用 toggleLocaleAsync 方法实现动态切换,localeTypes 导出已安装的所有语言列表。</div>
+
+        <span style="font-size: 16px; color: rgba(0, 0, 0, 0.4)">3.切换语言方法（导航栏地址切换）</span><br />
+        <div style="color: #333333">通过导航地址附带参数 'lang' 动态切换语言</div>
       </div>
     </el-card>
   </div>
 </template>
 <script lang="ts" setup>
 import { ref, watch } from "vue";
-import i18n, { toggleLocale, localeTypes } from "@/locale";
+import i18n, { toggleLocaleAsync, localeTypes } from "@/locale";
 
 const typeList = localeTypes;
 const now = ref(i18n.global.locale);
-const toggle = () => toggleLocale(now.value);
+const toggle = () => toggleLocaleAsync(now.value);
+
 watch(
   () => i18n.global.locale,
-  (v: string) => {
-    now.value = v;
+  (v) => {
+    now.value = v as any;
   },
 );
 </script>

@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Page
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-06-16 10:56:22
+ * @LastEditTime: 2022-08-17 14:01:37
 -->
 <template>
   <div class="g_page" :style="{justifyContent:pageAlign}">
@@ -19,7 +19,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType, reactive, toRefs } from "vue"
+import { defineComponent, watch, PropType, reactive, toRefs } from "vue"
 
 export default defineComponent({
   props: {
@@ -52,9 +52,16 @@ export default defineComponent({
   emits: ["change", "update:pageSize", "update:pageNumber"],
   setup(props, { emit }) {
     const state = reactive({
-      currentPage: props.pageNumber,
-      nowPageSize: props.pageSize,
+      currentPage: 0,
+      nowPageSize: 0,
     })
+    watch(() => props.pageNumber, (v) => {
+      state.currentPage = v
+    }, { immediate: true })
+
+    watch(() => props.pageSize, (v) => {
+      state.nowPageSize = v
+    }, { immediate: true })
 
     const currentChange = (current:number) => {
       emit("update:pageNumber", current)

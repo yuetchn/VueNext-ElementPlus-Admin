@@ -1,14 +1,14 @@
 /*
  * @ModuleName: Base Import
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-29 22:13:05
+ * @LastEditTime: 2022-08-17 14:09:46
  */
 import { IRequestPageInfo } from "@/types/request"
 // Custom Table Types
 export * from "@/components/Table";
 // ElementPlus
 export * from "element-plus"
-// Form Search Interface
+// Request Interface
 export * from "@/types/request"
 
 /** Form Search Class */
@@ -40,8 +40,8 @@ export class SearchForm<T> implements IRequestPageInfo<T> {
   }
 
   /**
-     * Reset Search
-     */
+   * Resetting Search default values
+   */
   Reset() {
     this.page_number = 1;
     this.keyword = ""
@@ -50,5 +50,10 @@ export class SearchForm<T> implements IRequestPageInfo<T> {
     } else {
       this.query = {} as any
     }
+  }
+
+  ResetPage() {
+    this.page_number = 1
+    this.page_size = 20
   }
 }

@@ -2,7 +2,7 @@
 <h1 align="center">VueNext-ElementPlus-Admin</h1>
 <p align="center">
 <img src="https://img.shields.io/badge/vue-3.2.25-%23FFC21A" />
-<img src="https://img.shields.io/badge/vite-2.8.6-23FFC21A" />
+<img src="https://img.shields.io/badge/vite-3.0.4-FFC21A" />
 <img src="https://img.shields.io/badge/typescript-4.6.2-23FFC21A" />
 <img src="https://img.shields.io/badge/element--plus-2.1.8-FFC21A" />
 <img src="https://img.shields.io/badge/ant--design--vue-2.2.8-%23FFC21A" />

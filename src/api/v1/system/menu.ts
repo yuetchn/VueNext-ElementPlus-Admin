@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-26 14:59:22
+ * @LastEditTime: 2022-08-17 13:23:55
  */
 import { IRequestPageInfo } from "@base"
 import req from "@/utils/request"
@@ -17,7 +17,7 @@ export const GetAllMenuTree_API = "/v1/menu/getAllMenuTree"
  * @param data 
  * @returns 
  */
-export const SaveOrUpdate = (data:any) => req.Post(SaveOrUpdate_API, data)
+export const SaveOrUpdate = (data: any) => req.Post(SaveOrUpdate_API, data)
 export const SaveOrUpdate_API = "/v1/menu/saveOrUpdate"
 
 /**
@@ -49,7 +49,7 @@ export const DeleteMenuByIDS_API = "/v1/menu/deleteMenuByIds"
  * @param page 
  * @returns 
  */
-export const GetMenuBtnByPage = <T>(page:IRequestPageInfo<T>) => req.Post(GetMenuBtnByPage_API, page)
+export const GetMenuBtnByPage = (page: IRequestPageInfo < any >) => req.Post(GetMenuBtnByPage_API, page)
 export const GetMenuBtnByPage_API = "/v1/menu/getMenuBtnByPage"
 
 /**

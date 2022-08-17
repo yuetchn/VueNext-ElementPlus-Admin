@@ -1,14 +1,12 @@
 /*
  * @ModuleName: i18n
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-22 13:09:35
+ * @LastEditTime: 2022-08-09 10:41:57
  */
 import { createI18n, useI18n as _use } from "vue-i18n";
-import e_zhCN from "element-plus/es/locale/lang/zh-cn";
-import e_enUS from "element-plus/es/locale/lang/en";
 import store from "@/store";
 
-const modules = import.meta.globEager("./*.ts");
+const modules = import.meta.globEager("./src/*.ts");
 const getLangAll = () => {
   const message: any = {};
   getLangFiles(modules, message);
@@ -37,43 +35,41 @@ const getLangFiles = (mList: any, msg: any) => {
   }
 };
 
-const t = (value: string) => {
-  if (i18n.global.te(value)) {
-    return _t(value);
+/**
+ * 异步切换语言
+ * @param key 
+ * @returns 
+ */
+export const toggleLocaleAsync = async (key: string) => {
+  try {
+    if (!key) {
+      return Promise.resolve()
+    }
+
+    await store.dispatch("AppModule/setLocale", key)
+    if (i18n.mode === "legacy") {
+      i18n.global.locale = key as any
+    } else {
+      i18n.global.locale.value = key as any
+    }
+    return Promise.resolve()
+  } catch (error) {
+    return Promise.reject(new Error("🚧Failed to load language!"))
   }
-  return value;
 };
 
-export const toggleLocale = (key: string) => {
-  store.dispatch("AppModule/setLocale", key)
-  i18n.global.locale = key;
-};
-
-export const localeTypes = [
-  {
-    key: "zh-CN",
-    name: "中文",
-    elementUI: e_zhCN,
-  },
-  {
-    key: "en-US",
-    name: "English",
-    elementUI: e_enUS,
-  },
-];
-
-// You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
-// 此警告开发者已知晓，并承诺在 9.2.0 版本修复。
 const i18n = createI18n({
-  // legacy: false, // Composition API 模式
+  legacy: false, // Composition API 模式
   globalInjection: true, // 全局注册 $t方法
+  allowComposition: true,
+  fallbackWarn: false,
   locale: (store.state as any).AppModule.locale,
   messages: getLangAll(),
+  missing: (_, k: string) => k,
 });
 
-const _t = i18n.global.t
-i18n.global.t = t
+export * from "./langs"
 
-export const useI18n = () => ({ ..._use(), t })
+export const useI18n = () => ({ ..._use() })
 
 export default i18n;

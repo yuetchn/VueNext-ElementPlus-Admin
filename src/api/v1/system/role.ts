@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 角色管理
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-29 22:56:54
+ * @LastEditTime: 2022-08-17 13:22:47
  */
 import { IRequestPageInfo } from "@/utils/base"
 import req from "@/utils/request"
@@ -11,7 +11,7 @@ import req from "@/utils/request"
  * @param data 
  * @returns 
  */
-export const GetRoleByPage = <D>(data:IRequestPageInfo<any>) => req.Post<D>(GetRoleByPage_API, data)
+export const GetRoleByPage = (data: IRequestPageInfo < any >) => req.Post(GetRoleByPage_API, data)
 export const GetRoleByPage_API = "/v1/role/getRoleByPage"
 /**
  * 新增/修改角色信息

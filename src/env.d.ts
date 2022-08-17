@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Vite环境变量
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-09 11:25:40
+ * @LastEditTime: 2022-08-09 10:37:26
  */
 /// <reference types="vite/client" />
 
@@ -16,7 +16,7 @@ declare module "*.vue" {
 declare module "*.js";
 
 interface ImportMetaEnv {
-  /** 服务器地址 */
+  /** BASE服务器地址 */
   VITE_BASE_HOST: string;
   /** 标题 */
   VITE_APP_TITLE: string;

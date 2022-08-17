@@ -33,7 +33,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { computed } from "vue-demi";
+import { computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "@/store";
 

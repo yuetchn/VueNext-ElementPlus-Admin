@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: NavBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-03-30 20:13:40
+ * @LastEditTime: 2022-08-09 09:11:52
 -->
 <template>
   <div class="navbar">
@@ -59,7 +59,7 @@ import { message } from "ant-design-vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "@/store";
 import BreadCrumbs from "./BreadCrumbs.vue";
-import { localeTypes, toggleLocale } from "@/locale";
+import { localeTypes, toggleLocaleAsync } from "@/locale";
 
 export default defineComponent({
   components: { BreadCrumbs },
@@ -80,8 +80,7 @@ export default defineComponent({
     const check = () => {
       store.dispatch("AppModule/set_shrink", !isShrink.value);
     };
-
-    const setLocale = (key: string) => toggleLocale(key);
+    const setLocale = (key: string) => toggleLocaleAsync(key);
 
     const toggleScreen = () => {
       if (!screenfull.isEnabled) {

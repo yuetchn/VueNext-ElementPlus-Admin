@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 权限拦截
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 13:38:20
+ * @LastEditTime: 2022-08-09 10:39:25
  */
 import { computed, watch } from "vue";
 import Nprogress from "nprogress";
@@ -10,8 +10,10 @@ import { GetStaticRoutes } from "@/router/static";
 import { GetToken } from "@/utils/cookie";
 import "nprogress/nprogress.css";
 import store from "@/store";
-import locale from "@/locale";
+import locale, { toggleLocaleAsync } from "@/locale";
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const { t } = locale.global;
 const RouterWrite = ["/login", "/404"];
 const StaticRouterCount = computed < number >(() => GetStaticRoutes());
@@ -28,24 +30,25 @@ watch(
   },
 );
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   NowRoute = to;
   document.title = (to.meta.title ? `${ t(to.name?.toString() || "") === to.name ? to.meta.title : t(to.name?.toString() || "") } - ` : "")
     + import.meta.env.VITE_APP_TITLE;
   Nprogress.start();
 
+  // 侦听语言切换
+  await toggleLocaleAsync(to.query.lang as string)
+
   if (!GetToken()) {
     if (RouterWrite.includes(to.path)) {
-      next();
-      return;
+      return next();
     }
     router.replace("/login");
-    return;
+    return next("/login")
   }
 
   if (to.path === "/login") {
-    next(from.path);
-    return;
+    return next(from.path);
   }
 
   if (router.getRoutes().length === StaticRouterCount.value) {

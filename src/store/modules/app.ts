@@ -1,7 +1,7 @@
 /*
  * @ModuleName: App Module
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-06-16 10:49:25
+ * @LastEditTime: 2022-08-09 10:37:44
  */
 import { Module } from "vuex";
 import RootStates from "@/types/store/storeInterface";

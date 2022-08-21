@@ -1,7 +1,7 @@
 /*
  * @ModuleName: user
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-17 13:42:48
+ * @LastEditTime: 2022-08-19 22:25:25
  */
 import { IRequestPageInfo, IResponsePageInfo } from "@base"
 import req from "@/utils/request"
@@ -19,3 +19,19 @@ export const GetCurrentUserInfo_API = "/v1/user/getCurrentUserInfo"
  */
 export const GetUserInfoByPage = (params: IRequestPageInfo < any >) => req.Get<IResponsePageInfo<any>>(GetUserInfoByPage_API, params)
 export const GetUserInfoByPage_API = "/v1/user/getUserInfoByPage"
+
+/**
+ * 获取用户详情
+ * @param id 
+ * @returns 
+ */
+export const GetUserInfoByID = (id: number) => req.Get(GetUserInfoByID_API, { id })
+export const GetUserInfoByID_API = "/v1/user/getUserInfoById"
+
+/**
+ * 新增/修改用户
+ * @param data 
+ * @returns 
+ */
+export const SaveOrUpdateUser = (data: any) => req.Post(SaveOrUpdateUser_API, data)
+export const SaveOrUpdateUser_API = "/v1/user/saveOrUpdateUser"

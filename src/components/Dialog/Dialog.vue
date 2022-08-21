@@ -1,13 +1,13 @@
 <!--
  * @ModuleName: Dialog 对话框
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-19 21:27:57
+ * @LastEditTime: 2022-08-20 09:48:19
 -->
 
 <template>
   <teleport to="#app">
     <transition enter-active-class="g_dialog_enter_active" leave-active-class="g_dialog_leave_active">
-      <div v-show="modelValue" ref="dialogRootRef" class="g_dialog_root">
+      <div v-show="modelValue" v-if="!isUnmounte" ref="dialogRootRef" class="g_dialog_root">
         <div v-show="shade" class="g_dialog_root__shade"></div>
         <div class="g_dialog_root__content" @click.prevent="close">
           <div ref="dialogRef" class="g_dialog" tabindex="0" :style="dialogStyle" @click.stop="()=>{}" @keydown.esc="close">
@@ -121,9 +121,13 @@ export default defineComponent({
       dialogContentStyle: {
         padding: props.padding,
       },
+      isUnmounte: true,
     });
 
-    const open = () => emit("open");
+    const open = () => {
+      state.isUnmounte = false
+      emit("open");
+    }
     const close = () => {
       if (!props.closeOnClickModal) { return }
       emit("update:model-value", false);
@@ -142,11 +146,13 @@ export default defineComponent({
           });
         } else {
           emit("close")
+          state.isUnmounte = true
         }
       },
 
       { immediate: false },
     );
+    
     return {
       // refs
       ...toRefs(state),

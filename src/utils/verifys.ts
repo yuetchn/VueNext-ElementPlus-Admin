@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Validations
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 16:49:55
+ * @LastEditTime: 2022-08-19 20:28:15
  */
 
 /** 邮箱验证 */
@@ -36,7 +36,7 @@ export class NewVerify {
   }
 
   private createValidator(reg: RegExp, error: string, trigger = ["blur"]) {
-    return { validator: (r: any, v: any, call: any) => (reg.test(v) ? call() : call(new Error(error))), trigger };
+    return { validator: (r: any, v: any, call: any) => (v !== 0 && !!v ? reg.test(v) ? call() : call(new Error(error)) : call()), trigger };
   }
 
   /**

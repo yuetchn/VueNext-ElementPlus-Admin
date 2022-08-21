@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: 角色管理
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-17 14:09:49
+ * @LastEditTime: 2022-08-19 23:52:50
 -->
 <template>
   <div class="app-container">
@@ -181,7 +181,7 @@ const roleFormSubmit = () => {
         message.success(data.msg);
       }
       dialogVis.value = false;
-      getTableData(true);
+      getTableData(false);
     } finally {
       roleFormLoading.value = false;
     }

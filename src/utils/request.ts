@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Request
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-27 10:13:13
+ * @LastEditTime: 2022-08-20 20:49:03
  */
 import axios, { AxiosRequestConfig } from "axios";
 import { message } from "ant-design-vue";
@@ -18,6 +18,7 @@ const req = axios.create({
 
 // 请求队列
 let queue = 0;
+const msg_key = "request_queue_message_key";
 const ShowLoading = ((info: string) => {
   let time: any = 0;
   return () => {
@@ -29,6 +30,7 @@ const ShowLoading = ((info: string) => {
       message.loading({
         content: info,
         duration: timeout,
+        key: msg_key,
       });
     }
   };
@@ -40,7 +42,7 @@ const HiddenLoading = (isForce = false) => {
     return;
   }
   store.dispatch("AppModule/set_loadingShade", false);
-  message.destroy();
+  message.destroy(msg_key) 
 };
 
 req.interceptors.request.use(

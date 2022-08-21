@@ -1,11 +1,11 @@
 <!--
  * @ModuleName: 用户管理
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-20 10:01:27
+ * @LastEditTime: 2022-08-21 16:23:27
 -->
 <template>
   <div class="app-container">
-    <g-table v-model:page-number="searchForm.page_number" v-model:page-size="searchForm.page_size" page :total="searchForm.total" :data="tableData" :columns="tableColumns" @page-change="init()">
+    <g-table v-model:page-number="searchForm.page_number" v-model:page-size="searchForm.page_size" :loading="tableDataLoading" page :total="searchForm.total" :data="tableData" :columns="tableColumns" @page-change="init()">
       <el-form inline @submit.prevent>
         <el-form-item>
           <el-input v-model.trim="searchForm.keyword" clearable placeholder="用户名、昵称" @clear="init(true)" @keydown.enter="init(true)" />
@@ -110,7 +110,7 @@
   </div>
 </template>
 <script lang="ts">
-import { onMounted, ref, reactive, nextTick } from "vue"
+import { onMounted, ref, reactive } from "vue"
 import { SearchForm, TableColumns, FormInstance } from "@base"
 import { message } from "ant-design-vue"
 import { NewVerify } from "@/utils/verifys"
@@ -131,6 +131,7 @@ const tableData = ref < any[] >([])
 const visible = ref(false)
 const userFormLoading = ref(false)
 const roleListLoading = ref(false)
+const tableDataLoading = ref(false)
 const formType = ref < "add" | "edit" | "view" >("add")
 const tableColumns = < TableColumns[] > [{
   label: "编号",
@@ -209,13 +210,18 @@ onMounted(() => {
 })
 
 const init = async (reset = false) => {
-  if (reset) {
-    searchForm.ResetPage()
-  }
-  const { data } = await GetUserInfoByPage(searchForm)
-  if (data.code === 200) {
-    tableData.value = data.data.list
-    searchForm.total = data.data.total
+  try {
+    tableDataLoading.value = true
+    if (reset) {
+      searchForm.ResetPage()
+    }
+    const { data } = await GetUserInfoByPage(searchForm)
+    if (data.code === 200) {
+      tableData.value = data.data.list
+      searchForm.total = data.data.total
+    }
+  } finally {
+    tableDataLoading.value = false
   }
 }
 
@@ -224,12 +230,9 @@ const dialogOpen = async () => {
 }
 
 const dialogClose = () => {
-  userFormRef.value?.resetFields();
+  userFormRef.value?.resetFields()
   userForm.id = 0;
-
-  nextTick(() => {
-    formType.value = "add";
-  })
+  formType.value = "add";
 }
 
 const getRoleList = async () => {
@@ -239,10 +242,10 @@ const getRoleList = async () => {
     if (data.code === 200) {
       roleList.value = data.data.list
     } else {
-      return new Error(data.msg)
+      throw new Error(data.msg)
     }
   } catch (error:any) {
-    message.error(error)
+    message.error(error.message)
   } finally {
     roleListLoading.value = false
   }
@@ -264,10 +267,10 @@ const userFormSubmit = () => {
         visible.value = false
         init()
       } else {
-        return new Error(data.msg)
+        throw new Error(data.msg)
       }
     } catch (error:any) {
-      message.error(error)
+      message.error(error.message)
     } finally {
       userFormLoading.value = false
     }

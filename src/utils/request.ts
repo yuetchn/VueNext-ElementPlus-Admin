@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Request
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-20 20:49:03
+ * @LastEditTime: 2022-08-21 16:25:18
  */
 import axios, { AxiosRequestConfig } from "axios";
 import { message } from "ant-design-vue";
@@ -42,7 +42,7 @@ const HiddenLoading = (isForce = false) => {
     return;
   }
   store.dispatch("AppModule/set_loadingShade", false);
-  message.destroy(msg_key) 
+  message.destroy(msg_key);
 };
 
 req.interceptors.request.use(
@@ -82,7 +82,7 @@ req.interceptors.response.use(
 
           break;
         default:
-          message.error(data.info);
+          message.error(data.msg);
           break;
       }
     }

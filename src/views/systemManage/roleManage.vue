@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: 角色管理
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-19 23:52:50
+ * @LastEditTime: 2022-08-21 16:23:41
 -->
 <template>
   <div class="app-container">
@@ -222,10 +222,10 @@ const rolePermission = async (row: any) => {
       Object.assign(roleForm, data2.data);
       rolePermissionTreeRef.value?.setCheckedKeys(roleForm.menu_ids);
     } else {
-      return new Error("获取详情失败");
+      throw new Error("获取详情失败");
     }
-  } catch (err: any) {
-    message.error(err);
+  } catch (err:any) {
+    message.error(err.message);
   } finally {
     rolePermissionLoading.value = false;
   }
@@ -250,10 +250,10 @@ const rolePermissionSubmit = async () => {
       message.success(data.msg);
       rolePermissionDialogVis.value = false;
     } else {
-      return new Error(data.msg);
+      throw new Error(data.msg);
     }
   } catch (error: any) {
-    message.error(error);
+    message.error(error.message);
   } finally {
     rolePermissionLoading.value = false;
   }

@@ -1,11 +1,11 @@
 /*
  * @ModuleName: Vuex
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-09 10:11:51
+ * @LastEditTime: 2022-09-03 10:21:52
  */
 import { createStore, Store, useStore as _useStore } from "vuex";
 import { InjectionKey } from "vue";
-import RootStates, { AllStates } from "@/types/store/storeInterface";
+import RootStates, { AllStates } from "@/types/src/store/storeInterface";
 import UserModule from "./modules/user";
 import AppModule from "./modules/app";
 import ViewTagModule from "./modules/viewTag";

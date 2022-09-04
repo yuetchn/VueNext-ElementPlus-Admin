@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: 用户管理
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-21 16:23:27
+ * @LastEditTime: 2022-09-03 10:13:57
 -->
 <template>
   <div class="app-container">
@@ -36,7 +36,7 @@
       <!-- 状态 -->
       <template #status="{row}">
         <el-tag v-if="row.status">启用</el-tag>
-        <el-tag v-else>禁用</el-tag>
+        <el-tag v-else type="danger">禁用</el-tag>
       </template>
 
       <template #cz="{row}">
@@ -111,9 +111,9 @@
 </template>
 <script lang="ts">
 import { onMounted, ref, reactive } from "vue"
-import { SearchForm, TableColumns, FormInstance } from "@base"
 import { message } from "ant-design-vue"
-import { NewVerify } from "@/utils/verifys"
+import { TableColumns, FormInstance } from "@/types"
+import { useVerify, useSearchForm } from "@/hooks"
 import { MD5 } from "@/utils/func"
 import { GetUserInfoByPage, GetUserInfoByID, SaveOrUpdateUser } from "@/api/v1/system/user"
 import { GetRoleByPage } from "@/api/v1/system/role"
@@ -123,17 +123,16 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-const v = new NewVerify()
-const searchForm = reactive(new SearchForm({
-  role_ids: [],
-}))
+const v = useVerify()
+const searchForm = useSearchForm({ role_ids: [] })
+
 const tableData = ref < any[] >([])
 const visible = ref(false)
 const userFormLoading = ref(false)
 const roleListLoading = ref(false)
 const tableDataLoading = ref(false)
 const formType = ref < "add" | "edit" | "view" >("add")
-const tableColumns = < TableColumns[] > [{
+const tableColumns = [{
   label: "编号",
   prop: "id",
   width: "100px",
@@ -179,7 +178,7 @@ const tableColumns = < TableColumns[] > [{
   align: "center",
   fixed: "right",
 },
-]
+] as TableColumns[]
 const userFormRef = ref < FormInstance >()
 const userForm = reactive({
   id: 0,
@@ -215,7 +214,7 @@ const init = async (reset = false) => {
     if (reset) {
       searchForm.ResetPage()
     }
-    const { data } = await GetUserInfoByPage(searchForm)
+    const { data } = await GetUserInfoByPage(searchForm.FormatQuery())
     if (data.code === 200) {
       tableData.value = data.data.list
       searchForm.total = data.data.total
@@ -238,7 +237,7 @@ const dialogClose = () => {
 const getRoleList = async () => {
   try {
     roleListLoading.value = true
-    const { data } = await GetRoleByPage(new SearchForm(null, 999999))
+    const { data } = await GetRoleByPage(useSearchForm(null, 999999))
     if (data.code === 200) {
       roleList.value = data.data.list
     } else {

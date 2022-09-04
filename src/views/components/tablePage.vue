@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: TablePage
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-24 13:50:06
+ * @LastEditTime: 2022-09-03 10:23:52
 -->
 <template>
   <div>
@@ -91,9 +91,9 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, reactive, toRefs, ref } from "vue";
-import { TableColumns, ElTable, SearchForm } from "@base";
-// import { GetUserData } from "@/api/user";
 import { mock } from "mockjs";
+import { TableColumns, ElTable } from "@/types";
+import { useSearchForm } from "@/hooks";
 import help from "./index";
 
 export default defineComponent({
@@ -102,8 +102,8 @@ export default defineComponent({
     const tableRef = ref < InstanceType < typeof ElTable >>();
     const state = reactive({
       tableData: [],
-      search: new SearchForm(),
-      columns: < TableColumns[] > [{
+      search: useSearchForm(),
+      columns: [{
         type: "selection",
         width: 50,
       },
@@ -117,8 +117,8 @@ export default defineComponent({
         prop: "name",
         slot: true,
       },
-      ],
-      columnsEdit: < TableColumns[] > [{
+      ] as TableColumns[],
+      columnsEdit: [{
         type: "selection",
         width: 50,
       },
@@ -139,7 +139,7 @@ export default defineComponent({
         prop: "cz",
         slot: true,
       },
-      ],
+      ] as TableColumns[],
       searchInfo: {
         page_size: 10,
         page_number: 1,

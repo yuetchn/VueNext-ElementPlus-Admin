@@ -1,18 +1,19 @@
-import { IResponsePageInfo } from "../../../types/request/index";
 /*
  * @ModuleName: 角色管理
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-19 23:00:32
+ * @LastEditTime: 2022-09-03 10:11:12
  */
-import { IRequestPageInfo } from "@/utils/base"
-import req from "@/utils/request"
+import { IRequestPageInfo, IResponsePageInfo } from "@/types"
+import { useRequest } from "@/hooks"
+
+const req = useRequest() 
 
 /**
  * 获取角色集合
  * @param data 
  * @returns 
  */
-export const GetRoleByPage = (data: IRequestPageInfo < any >) => req.Post<IResponsePageInfo<any>>(GetRoleByPage_API, data)
+export const GetRoleByPage = (data: IRequestPageInfo) => req.Post<IResponsePageInfo<any>>(GetRoleByPage_API, data)
 export const GetRoleByPage_API = "/v1/role/getRoleByPage"
 /**
  * 新增/修改角色信息

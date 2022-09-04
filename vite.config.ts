@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Vite Config
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-06 13:58:05
+ * @LastEditTime: 2022-09-03 10:30:50
  */
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -10,8 +10,6 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import { VitePWA } from "vite-plugin-pwa"
 // 解决首次启动页面加载慢,本地第一次运行会创建缓存,之后从缓存中读取预加载项
-import OptimizationPersist from "vite-plugin-optimize-persist";
-import PkgConfig from "vite-plugin-package-config";
 import path from "path"
 
 const timeStamp = new Date().valueOf();
@@ -23,8 +21,6 @@ export default ({ mode }) => defineConfig({
     vue(),
     legacy(),
     vueJsx(),
-    OptimizationPersist(),
-    PkgConfig(),
     createSvgIconsPlugin({
       // 指定需要缓存的图标文件夹，地址可改
       iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
@@ -55,7 +51,6 @@ export default ({ mode }) => defineConfig({
   resolve: {
     alias: {
       "@": "/src/",
-      "@base": "/src/utils/base.ts",
       "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js",
     },
   },

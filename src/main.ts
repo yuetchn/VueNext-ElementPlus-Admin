@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Main
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-24 12:34:32
+ * @LastEditTime: 2022-09-03 09:38:27
  */
 import { createApp } from "vue";
 import Antd from "ant-design-vue";
@@ -13,7 +13,6 @@ import "@/utils/permission";
 // mock server
 // import "@/mock";
 
-import { GlobalMixin } from "@/mixins";
 import store, { key } from "@/store";
 import router from "@/router";
 import RegisterDirective from "@/directive";
@@ -26,7 +25,6 @@ const app = createApp(App);
 app.use(store, key);
 app.use(router);
 app.use(VueI18n);
-app.mixin(GlobalMixin);
 RegisterDirective(app);
 RegisterComponent(app);
 RegisterGlobal(app);

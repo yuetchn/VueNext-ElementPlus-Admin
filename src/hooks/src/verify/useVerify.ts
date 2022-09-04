@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Validations
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-19 20:28:15
+ * @LastEditTime: 2022-09-03 09:44:39
  */
 
 /** 邮箱验证 */
@@ -28,7 +28,7 @@ const Account = /^[a-zA-Z][a-zA-Z0-9_]{4,15}$/;
 /** 密码验证: 字母、数字、特殊符号(8-16) */
 const Password = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{6,30}$/;
 
-export class NewVerify {
+class NewVerify {
   public validator!: Function;
 
   constructor(reg?: RegExp, error = "格式错误") {
@@ -89,6 +89,14 @@ export class NewVerify {
     return this.createValidator(Password, error)
   }
 }
+
+/**
+ * 表单验证 Hook
+ * @param reg 
+ * @param error 
+ * @returns 
+ */
+export const useVerify = (reg?: RegExp, error?:string) => new NewVerify(reg, error)
 
 export default {
   Email,

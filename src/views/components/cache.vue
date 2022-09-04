@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: Cache
  * @Author: 乐涛
- * @LastEditTime: 2022-06-16 10:58:25
+ * @LastEditTime: 2022-09-03 10:25:28
 -->
 <template>
   <div class="app-container container">
@@ -27,13 +27,13 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive, toRefs, onMounted, computed } from "vue"
-import { TableColumns } from "@base"
+import { TableColumns } from "@/types"
 import { useStore } from "@/store"
 
 export default defineComponent({
   setup() {
     const state = reactive({
-      storeColumns: < TableColumns[] > [{
+      storeColumns: [{
         label: "索引",
         prop: "index",
         type: "index",
@@ -51,8 +51,8 @@ export default defineComponent({
         label: "value",
         prop: "value",
       },
-      ],
-      storageColumns: < TableColumns[] > [{
+      ] as TableColumns[],
+      storageColumns: [{
         label: "索引",
         prop: "index",
         type: "index",
@@ -66,9 +66,9 @@ export default defineComponent({
         label: "value",
         prop: "value",
       },
-      ],
-      localStorageData: < any[] > [],
-      sessionStorageData: < any[] > [],
+      ] as TableColumns[],
+      localStorageData: [] as any[],
+      sessionStorageData: [] as any[],
     })
     const store = useStore()
     onMounted(() => {
@@ -85,7 +85,7 @@ export default defineComponent({
           module: i,
           key: "-",
           value: "-",
-          children: < any[] > [],
+          children: [] as any[],
         }
         if (typeof _module === "object") {
           for (const m in _module) {

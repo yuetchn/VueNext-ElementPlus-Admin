@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: 角色管理
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-21 16:23:41
+ * @LastEditTime: 2022-09-03 10:22:13
 -->
 <template>
   <div class="app-container">
@@ -73,10 +73,11 @@
 </template>
 <script lang="ts">
 import { reactive, ref, onMounted } from "vue";
-import { TableColumns, SearchForm, FormInstance, ElMessageBox, ElTree } from "@base";
 import { message } from "ant-design-vue";
+import { TableColumns, FormInstance, ElMessageBox, ElTree } from "@/types";
 import { GetRoleByPage, GetRoleByID, SaveOrUpdateRole, DeleteRoleByID } from "@/api/v1/system/role";
 import { GetAllMenuTree } from "@/api/v1/system/menu";
+import { useSearchForm } from "@/hooks";
 
 export default {
   name: "roleManage",
@@ -127,14 +128,14 @@ const tableColumns: TableColumns[] = [{
 ];
 const tableData = ref < any[] >([]);
 const menuTreeData = ref < any[] >([]);
-const searchForm = reactive(new SearchForm());
+const searchForm = useSearchForm();
 const roleForm = reactive({
   role_name: "",
   id: 0,
   remark: "",
   status: 1,
-  menu_ids: < any[] > [],
-  btn_ids: < any[] > [],
+  menu_ids: [] as any[],
+  btn_ids: [] as any [],
 });
 
 onMounted(() => {
@@ -148,7 +149,7 @@ const getTableData = async (reset = false) => {
   }
   try {
     tableDataLoading.value = true;
-    const { data } = await GetRoleByPage(searchForm);
+    const { data } = await GetRoleByPage(searchForm.FormatQuery());
 
     if (data.code === 200) {
       tableData.value = data.data.list;

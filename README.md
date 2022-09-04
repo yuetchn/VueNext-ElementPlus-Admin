@@ -1,9 +1,9 @@
 
 <h1 align="center">VueNext-ElementPlus-Admin</h1>
 <p align="center">
-<img src="https://img.shields.io/badge/vue-3.2.25-%23FFC21A" />
-<img src="https://img.shields.io/badge/vite-3.0.4-FFC21A" />
-<img src="https://img.shields.io/badge/typescript-4.6.2-23FFC21A" />
+<img src="https://img.shields.io/badge/vue-3.2.37-23FFC21A" />
+<img src="https://img.shields.io/badge/vite-3.0.9-FFC21A" />
+<img src="https://img.shields.io/badge/typescript-4.8.2-23FFC21A" />
 <img src="https://img.shields.io/badge/element--plus-2.1.8-FFC21A" />
 <img src="https://img.shields.io/badge/ant--design--vue-2.2.8-%23FFC21A" />
 <img src="https://img.shields.io/badge/license-MIT-FFC21A" />
@@ -39,7 +39,6 @@
 
 你需要在本地安装 `node` 和 `git`。本项目技术栈基于 `ES2016>`、`vue3.x`、`vuex@next`、`vue-router@next` 、`vite` 、`axios` 和 `element-plus`,提前了解和学习这些知识会对使用本项目有很大的帮助。
 
-
 ### 文档
 [中文文档](http://doc.yuetchn.top)
 ### 示例
@@ -59,6 +58,13 @@
 - ✅多环境变量
 - ✅国际化（i18n）
 - ✅Utils
+
+# 🔨Volar
+[`Volar —— Vue3 完美的配套工具`](https://github.com/johnsoncodehk/volar-plugins)
+
+⚡ Fast Vue Language Support Extension
+
+注意：此插件与 `Vetur` 冲突，需要先禁用 `Vetur`
 
 # 🔌服务端
 
@@ -104,7 +110,8 @@
     │   │   ├── en-US.ts
     │   │   ├── index.ts
     │   │   └── zh-CN.ts
-    │   ├── mixins
+    │   ├── hooks
+    │   │   ├── src
     │   │   └── index.ts
     │   ├── mock
     │   │   ├── user
@@ -127,12 +134,9 @@
     │   │   ├── cache
     │   │   ├── excel
     │   │   ├── func
-    │   │   ├── base.ts
     │   │   ├── cookie.ts
     │   │   ├── global.ts
-    │   │   ├── permission.ts
-    │   │   ├── request.ts
-    │   │   └── verifys.ts
+    │   │   └── permission.ts
     │   ├── views
     │   │   ├── 404
     │   │   ├── components
@@ -199,9 +203,9 @@
     or
     yarn lint
 
-|IE|Edge|Firefox|Google|
-|-|-|-|-|
-|non-supported|last 2 versions|last 2 versions|last 2 versions|
+|IE|Edge|Firefox|Google|Node
+|-|-|-|-|-|
+|non-supported|last 2 versions|last 2 versions|last 2 versions|> 14|
 
 # 🍕支持作者
 如果你在使用中或使用过后，觉得框架不错，希望你能帮我点个 ⭐ Star，这将是对我极大的鼓励与支持。

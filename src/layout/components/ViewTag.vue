@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: ViewTag
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-21 13:15:40
+ * @LastEditTime: 2022-09-02 15:04:34
 -->
 <template>
   <div class="view_tag">
@@ -47,7 +47,7 @@ export default defineComponent({
     const tagViewNow = ref < number >(0)
     const state = reactive({
       initTags: computed(() => store.state.ViewTagModule.initTags),
-      selTag: computed(() => < RouteLocationNormalizedLoaded > store.getters["ViewTagModule/getTag"]),
+      selTag: computed(() => store.getters["ViewTagModule/getTag"] as RouteLocationNormalizedLoaded),
       showIndex: -1,
     });
 

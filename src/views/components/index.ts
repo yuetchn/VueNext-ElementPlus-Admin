@@ -1,9 +1,9 @@
 /*
  * @ModuleName: help export
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-02-28 15:13:26
+ * @LastEditTime: 2022-09-03 10:27:11
  */
-import { TableColumns } from "@base";
+import { TableColumns } from "@/types";
 
 const PropertyColumns = <TableColumns[]>[
   {

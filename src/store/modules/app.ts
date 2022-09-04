@@ -1,10 +1,10 @@
 /*
  * @ModuleName: App Module
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-09 10:37:44
+ * @LastEditTime: 2022-09-03 10:21:46
  */
 import { Module } from "vuex";
-import RootStates from "@/types/store/storeInterface";
+import RootStates from "@/types/src/store/storeInterface";
 import * as cache from "@/utils/cache"
 
 export interface AppStates {

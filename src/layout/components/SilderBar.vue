@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-24 13:01:44
+ * @LastEditTime: 2022-09-02 15:04:57
 -->
 <template>
   <div class="silder_bar" :class="{ silder_bar_shrink: isShrink }">
@@ -54,8 +54,8 @@ export default defineComponent({
     const { t } = useI18n();
 
     const state = reactive({
-      nowSelMenuKeys: <string[]>[],
-      nowOpemMenuKeys: <string[]>[],
+      nowSelMenuKeys: [] as string[],
+      nowOpemMenuKeys: [] as string[],
       isShrink: computed(() => store.state.AppModule.isShrink),
       routes: computed(() => [...routes, ...GenerateRoutes()].filter((f) => !f.meta?.hide)),
       clientWidth: computed(() => store.state.AppModule.clientWidth),

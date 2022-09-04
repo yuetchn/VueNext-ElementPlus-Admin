@@ -3,10 +3,13 @@
 .gitee
 .eslintcache
 .yarn-error.log
+
 node_modules
 dist
 dists
 dist-ssr
+
 yarn.lock
 yarn.error.log
+package.lock.json
 *.local

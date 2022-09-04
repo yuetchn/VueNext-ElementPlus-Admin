@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: verify
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-25 16:04:26
+ * @LastEditTime: 2022-09-03 09:51:42
 -->
 <template>
   <div>
@@ -36,17 +36,19 @@
 
     <el-card style="margin-top: 15px">
       <template #header>说明</template>
-      <div>utils包中的<b>verifys</b>模块包含了基本验证规则,可配合Element表单完成基本验证。</div>
+      <div>全局Hooks <b>useVerify</b> 包含了基本验证规则,可配合Element表单完成基本验证。</div><br />
+      <div> const v = useVerify();</div> 
+      <div> email: [ v.Email() ] </div>
     </el-card>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from "vue";
-import { NewVerify } from "@/utils/verifys";
+import { useVerify } from "@/hooks"
 
 export default defineComponent({
   setup() {
-    const v = new NewVerify()
+    const v = useVerify()
     const state = reactive({
       verifyForm: {
         email: "",

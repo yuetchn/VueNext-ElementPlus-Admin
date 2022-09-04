@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: App
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-06-16 10:52:51
+ * @LastEditTime: 2022-09-02 15:06:39
 -->
 <template>
   <el-config-provider :locale="elementLocle" :size="elementSize">
@@ -23,14 +23,14 @@ export default defineComponent({
   components: { LoadingShade },
   setup() {
     const store = useStore();
-    const elementLocle = <any>computed(() => {
+    const elementLocle = computed(() => {
       const locale = localeTypes.find((f) => f.key === store.state.AppModule.locale);
       if (locale) {
         return locale.elementUI;
       }
       return "";
-    });
-    const elementSize = <any >computed(() => (store.state.AppModule.size))
+    }) as any;
+    const elementSize = computed(() => (store.state.AppModule.size)) as any
     onMounted(() => {
       store.dispatch("AppModule/setClientWidth", document.body.clientWidth);
 

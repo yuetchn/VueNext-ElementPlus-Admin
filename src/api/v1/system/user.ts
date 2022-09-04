@@ -1,10 +1,13 @@
 /*
  * @ModuleName: user
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-19 22:25:25
+ * @LastEditTime: 2022-09-03 10:11:17
  */
-import { IRequestPageInfo, IResponsePageInfo } from "@base"
-import req from "@/utils/request"
+import { IRequestPageInfo, IResponsePageInfo } from "@/types"
+import { useRequest } from "@/hooks"
+
+const req = useRequest()
+
 /**
  * 获取当前登录用户信息
  * @returns 
@@ -17,7 +20,7 @@ export const GetCurrentUserInfo_API = "/v1/user/getCurrentUserInfo"
  * @param params 
  * @returns 
  */
-export const GetUserInfoByPage = (params: IRequestPageInfo < any >) => req.Get<IResponsePageInfo<any>>(GetUserInfoByPage_API, params)
+export const GetUserInfoByPage = (params: IRequestPageInfo) => req.Get<IResponsePageInfo<any>>(GetUserInfoByPage_API, params)
 export const GetUserInfoByPage_API = "/v1/user/getUserInfoByPage"
 
 /**

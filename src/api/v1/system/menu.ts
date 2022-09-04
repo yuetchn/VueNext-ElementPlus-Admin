@@ -1,10 +1,12 @@
 /*
  * @ModuleName: 
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-17 13:23:55
+ * @LastEditTime: 2022-09-03 10:10:52
  */
-import { IRequestPageInfo } from "@base"
-import req from "@/utils/request"
+import { IRequestPageInfo } from "@/types"
+import { useRequest } from "@/hooks"
+
+const req = useRequest()
 /**
  * 获取所有菜单Tree
  * @returns 
@@ -49,7 +51,7 @@ export const DeleteMenuByIDS_API = "/v1/menu/deleteMenuByIds"
  * @param page 
  * @returns 
  */
-export const GetMenuBtnByPage = (page: IRequestPageInfo < any >) => req.Post(GetMenuBtnByPage_API, page)
+export const GetMenuBtnByPage = (page: IRequestPageInfo) => req.Get(GetMenuBtnByPage_API, page)
 export const GetMenuBtnByPage_API = "/v1/menu/getMenuBtnByPage"
 
 /**

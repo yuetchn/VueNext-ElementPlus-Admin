@@ -1,23 +1,23 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "target": "esnext",
+    "target": "ESNext",
     "skipLibCheck": true,
     "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
+    "lib": ["ESNext", "DOM"],
     "paths": {
       "@/*": ["./src/*"],
-      "@base": ["./src/utils/base.ts"]
     },
-    "types": ["element-plus/global"],
+    "types": ["vite/client", "node","element-plus/global"],
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "references": [{ "path": "./tsconfig.node.json" }],
 }

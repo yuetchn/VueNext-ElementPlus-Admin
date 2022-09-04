@@ -1,4 +1,9 @@
 /*
+ * @ModuleName: Request Hook
+ * @Author: yuetchn@163.com
+ * @LastEditTime: 2022-09-03 09:56:48
+ */
+/*
  * @ModuleName: Request
  * @Author: yuetchn@163.com
  * @LastEditTime: 2022-08-21 16:25:18
@@ -163,11 +168,17 @@ const Put = < D = any >(url: string, data ? : any, options ? : AxiosRequestConfi
   data,
   ...options,
 });
-
-export default {
-  Get,
-  Post,
-  Put,
-  Delete,
-  Request: req,
-};
+ 
+/**
+ * Http Request Hook
+ * @returns 
+ */
+export const useRequest = () => (
+  {
+    Get,
+    Post,
+    Put,
+    Delete,
+    Request: req,
+  }
+)

@@ -1,10 +1,10 @@
 /*
  * @ModuleName: User Module
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-19 15:19:15
+ * @LastEditTime: 2022-09-03 10:21:04
  */
 import { Module } from "vuex";
-import RootStates from "@/types/store/storeInterface";
+import RootStates from "@/types/src/store/storeInterface";
 import { GetToken, SetToken, RemoveToken } from "@/utils/cookie";
 import { Login } from "@/api/v1/oAuth/authorization";
 import { GetCurrentUserInfo } from "@/api/v1/system/user"

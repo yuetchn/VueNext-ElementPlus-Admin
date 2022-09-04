@@ -1,11 +1,11 @@
 /*
  * @ModuleName: ViewTagModule
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-24 13:46:34
+ * @LastEditTime: 2022-09-03 10:21:50
  */
 import { Module } from "vuex";
 import { RouteLocationNormalizedLoaded, RouteRecordNormalized } from "vue-router";
-import RootStates from "@/types/store/storeInterface";
+import RootStates from "@/types/src/store/storeInterface";
 import router from "@/router";
 
 export interface ViewTagStates {

@@ -1,10 +1,12 @@
 /*
  * @ModuleName: auth
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-19 13:37:46
+ * @LastEditTime: 2022-09-03 09:58:54
  */
 
-import req from "@/utils/request"
+import { useRequest } from "@/hooks"
+
+const req = useRequest()
 
 /**
  * 登录

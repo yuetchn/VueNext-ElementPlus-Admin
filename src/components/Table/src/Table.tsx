@@ -1,12 +1,12 @@
 /*
  * @ModuleName: Custom Table
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-17 13:58:50
+ * @LastEditTime: 2022-09-10 16:07:06
  */
 import { defineComponent, onMounted, watch, reactive, ref, toRefs, unref } from "vue";
 import Sortable from "sortablejs"
+import { ElTable, ElLoading } from "element-plus"
 import { tableProps, tableEmits } from "./options";
-import { ElTable, ElLoading } from "./element"
 
 export default defineComponent({
   props: tableProps,

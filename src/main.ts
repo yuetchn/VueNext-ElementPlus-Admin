@@ -1,10 +1,10 @@
 /*
  * @ModuleName: Main
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-03 09:38:27
+ * @LastEditTime: 2022-09-10 16:45:39
  */
 import { createApp } from "vue";
-import Antd from "ant-design-vue";
+import { Menu } from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
 import ElementPlus from "element-plus";
 import App from "@/App.vue";
@@ -31,7 +31,6 @@ RegisterGlobal(app);
 
 // ElementPlus
 app.use(ElementPlus);
-// AntDesign
-app.use(Antd);
-
+// Antdv Part Component
+app.use(Menu);
 app.mount("#app");

@@ -1,8 +1,9 @@
 /*
  * @ModuleName: QrCode Options
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-25 11:12:09
+ * @LastEditTime: 2022-09-10 15:41:54
  */
+ 
 export const qrCodeProps = {
   /** 内容 */
   value: {

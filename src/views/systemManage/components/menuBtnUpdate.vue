@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: 菜单按钮
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-03 10:23:17
+ * @LastEditTime: 2022-09-10 16:27:10
 -->
 <template>
   <div>
@@ -25,7 +25,7 @@
 <script lang="ts">
 import { ref, reactive, defineProps, defineEmits, watch, computed } from "vue"
 import { message } from "ant-design-vue"
-import { FormInstance } from "@/types"
+import { FormInstance } from "element-plus"
 import { SaveOrUpdateBtn } from "@/api/v1/system/menu"
 
 export default {}

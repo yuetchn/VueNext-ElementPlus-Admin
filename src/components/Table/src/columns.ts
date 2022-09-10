@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Custom Table Columns
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-20 13:19:25
+ * @LastEditTime: 2022-09-10 16:14:52
  */
 
 export interface TableColumns {

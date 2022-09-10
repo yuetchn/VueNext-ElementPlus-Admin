@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: QrCode
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-04-05 22:16:08
+ * @LastEditTime: 2022-09-10 15:41:41
 -->
 <template>
   <div>

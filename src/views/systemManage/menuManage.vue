@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: 菜单管理
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-03 10:23:08
+ * @LastEditTime: 2022-09-10 15:56:39
 -->
 <template>
   <div class="container">
@@ -144,8 +144,8 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted, reactive, toRefs } from "vue";
 import { message } from "ant-design-vue";
-import { ElMessageBox } from "element-plus";
-import { TableColumns, FormInstance, ElCascader } from "@/types";
+import { ElMessageBox, FormInstance, ElCascader } from "element-plus";
+import { TableColumns } from "@/types";
 import { GetAllMenuTree, SaveOrUpdate, GetMenuByID, DeleteMenuByID, GetMenuBtnByPage, DeleteBtnByID } from "@/api/v1/system/menu";
 import { GetCascaderParent } from "@/utils/func";
 import menuBtnUpdate from "./components/menuBtnUpdate.vue";

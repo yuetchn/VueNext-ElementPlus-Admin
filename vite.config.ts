@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Vite Config
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-03 10:30:50
+ * @LastEditTime: 2022-09-10 15:17:36
  */
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -9,7 +9,6 @@ import legacy from "@vitejs/plugin-legacy";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import { VitePWA } from "vite-plugin-pwa"
-// 解决首次启动页面加载慢,本地第一次运行会创建缓存,之后从缓存中读取预加载项
 import path from "path"
 
 const timeStamp = new Date().valueOf();
@@ -17,6 +16,10 @@ const timeStamp = new Date().valueOf();
 // https://vitejs.dev/config/
 export default ({ mode }) => defineConfig({
   base: loadEnv(mode, process.cwd()).VITE_BASE_PUBLIC_PATH,
+  publicDir: "./public",
+  assetsInclude: [
+    "**/*.svg",
+  ],
   plugins: [
     vue(),
     legacy(),
@@ -74,6 +77,13 @@ export default ({ mode }) => defineConfig({
     chunkSizeWarningLimit: 2048,
     sourcemap: false,
     reportCompressedSize: false,
+    minify: "terser",
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
     rollupOptions: {
       plugins: [],
       output: {

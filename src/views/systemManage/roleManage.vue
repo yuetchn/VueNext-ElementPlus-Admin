@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: 角色管理
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-03 10:22:13
+ * @LastEditTime: 2022-09-10 16:28:39
 -->
 <template>
   <div class="app-container">
@@ -74,7 +74,8 @@
 <script lang="ts">
 import { reactive, ref, onMounted } from "vue";
 import { message } from "ant-design-vue";
-import { TableColumns, FormInstance, ElMessageBox, ElTree } from "@/types";
+import { FormInstance, ElMessageBox, ElTree } from "element-plus"
+import { TableColumns } from "@/types";
 import { GetRoleByPage, GetRoleByID, SaveOrUpdateRole, DeleteRoleByID } from "@/api/v1/system/role";
 import { GetAllMenuTree } from "@/api/v1/system/menu";
 import { useSearchForm } from "@/hooks";

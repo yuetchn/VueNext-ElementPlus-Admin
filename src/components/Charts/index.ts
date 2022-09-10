@@ -1,9 +1,9 @@
 /*
  * @ModuleName: ChartLine Props
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-25 11:07:37
+ * @LastEditTime: 2022-09-10 16:32:01
  */
 import Chart from "./src/Chart"
 
-export * from "./src/options"
+export { chartProps as ChartProps } from "./src/options"
 export default Chart

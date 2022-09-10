@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Global components
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-25 13:44:05
+ * @LastEditTime: 2022-09-10 16:25:18
  */
 import { App } from "vue";
 import Dialog from "./Dialog/Dialog.vue";
@@ -29,3 +29,14 @@ export default (app: App) => {
   app.component("g-link", Link);
   app.component("g-icon-select", IconSelect);
 };
+
+export const GTable = Table
+export const GEditor = Editor
+export const GDialog = Dialog
+export const GSvgIcon = SvgIcon
+export const GPage = Page
+export const GChart = Chart
+export const GMarkDown = MarkDown
+export const GQrCode = QrCode
+export const GLink = Link
+export const GIconSelect = IconSelect

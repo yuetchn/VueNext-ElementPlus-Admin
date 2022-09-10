@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: richTextEdit
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-09 12:09:38
+ * @LastEditTime: 2022-09-10 16:25:33
 -->
 <template>
   <div>
@@ -15,12 +15,11 @@
                 <el-input v-model="appendText" placeholder="请输入要插入的内容"></el-input>
               </el-col>
               <el-col :span="2">
-                <el-button style="width:100%" type="primary" @click="editor.insertContent(appendText)">插入内容</el-button>
+                <el-button style="width:100%" type="primary" @click="appendContent()">插入内容</el-button>
               </el-col>
             </el-row>
           </el-form-item>
         </el-form>
-
         <g-editor ref="editor" v-model="text" height="800px"></g-editor>
       </div>
     </el-card>
@@ -37,7 +36,8 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import help from "./index";
-
+import { GEditor } from "@/components"
+ 
 const data = ref([{
   name: "id",
   desc: "Dom ID",
@@ -89,5 +89,7 @@ const data1 = [{
 ]
 const text = ref("<p>测试文档编辑</p>");
 const appendText = ref()
-const editor = ref()
+const editor = ref<InstanceType<typeof GEditor>>()
+  
+const appendContent = () => editor.value?.insertContent(appendText.value)
 </script>

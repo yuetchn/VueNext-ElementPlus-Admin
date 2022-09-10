@@ -1,10 +1,10 @@
 /*
  * @ModuleName: Global Components Types
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-03 10:26:46
+ * @LastEditTime: 2022-09-10 16:31:10
  */
 
-import Table from "@/components/Table";
+import Table from "@/components/Table/index";
 import Dialog from "@/components/Dialog/Dialog.vue";
 import SvgIcon from "@/components/SvgIcon";
 import Page from "@/components/Page/Page.vue";
@@ -13,19 +13,19 @@ import MarkDown from "@/components/MarkDown";
 import QrCode from "@/components/QrCode";
 import Link from "@/components/Link";
 import IconSelect from "@/components/IconSelect";
+import Editor from "@/components/Editor/Editor.vue";
 
 declare module "@vue/runtime-core" {
   export interface GlobalComponents {
-    "g-table": InstanceType<typeof Table>["g-table"];
-    "g-dialog": InstanceType<typeof Dialog>["g-dialog"];
-    "g-svg-icon": InstanceType<typeof SvgIcon>["g-svg-icon"];
-    "g-page": InstanceType<typeof Page>["g-page"];
-    "g-chart": InstanceType<typeof Chart>["g-chart"];
-    "g-mark-dowm": InstanceType<typeof MarkDown>["g-mark-down"];
-    "g-qr-code": InstanceType<typeof QrCode>["g-qr-code"];
-    "g-link": InstanceType<typeof Link>["g-link"];
-    "g-icon-select": InstanceType<typeof IconSelect>["g-icon-select"];
+    "g-table": typeof Table;
+    "g-dialog": typeof Dialog;
+    "g-svg-icon": typeof SvgIcon;
+    "g-page": typeof Page;
+    "g-chart": typeof Chart;
+    "g-mark-dowm": typeof MarkDown;
+    "g-qr-code": typeof QrCode;
+    "g-link": typeof Link;
+    "g-editor": typeof Editor;
+    "g-icon-select": typeof IconSelect;
   }
 }
-
-export { };

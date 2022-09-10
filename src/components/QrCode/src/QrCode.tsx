@@ -1,7 +1,7 @@
 /*
  * @ModuleName: QrCode
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-25 11:25:03
+ * @LastEditTime: 2022-09-10 15:36:46
  */
 import { defineComponent, onMounted, ref } from "vue";
 import qr from "qrcode";

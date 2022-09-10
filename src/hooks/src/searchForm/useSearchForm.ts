@@ -9,8 +9,6 @@ import { IRequestPageInfo } from "@/types"
 import { DeepClone } from "@/utils/func"
 // Custom Table Types
 export * from "@/components/Table";
-// ElementPlus
-export * from "element-plus"
 // Request Interface
 export * from "@/types"
 

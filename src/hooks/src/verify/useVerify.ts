@@ -1,7 +1,7 @@
 /*
- * @ModuleName: Validations
+ * @ModuleName: Verify Hook
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-03 09:44:39
+ * @LastEditTime: 2022-09-05 11:29:11
  */
 
 /** 邮箱验证 */

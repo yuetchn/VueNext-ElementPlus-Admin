@@ -1,13 +1,9 @@
 /*
  * @ModuleName: Request Hook
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-03 09:56:48
+ * @LastEditTime: 2022-09-05 11:28:56
  */
-/*
- * @ModuleName: Request
- * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-21 16:25:18
- */
+
 import axios, { AxiosRequestConfig } from "axios";
 import { message } from "ant-design-vue";
 import { GetToken } from "@/utils/cookie";

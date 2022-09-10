@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: 用户管理
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-03 10:13:57
+ * @LastEditTime: 2022-09-10 16:27:39
 -->
 <template>
   <div class="app-container">
@@ -112,7 +112,8 @@
 <script lang="ts">
 import { onMounted, ref, reactive } from "vue"
 import { message } from "ant-design-vue"
-import { TableColumns, FormInstance } from "@/types"
+import { ElMessageBox, FormInstance } from "element-plus"
+import { TableColumns } from "@/types"
 import { useVerify, useSearchForm } from "@/hooks"
 import { MD5 } from "@/utils/func"
 import { GetUserInfoByPage, GetUserInfoByID, SaveOrUpdateUser } from "@/api/v1/system/user"
@@ -286,6 +287,10 @@ const editRow = async (id: number) => {
 }
 
 const deleteRow = async () => {
+  await ElMessageBox({
+    title: "测试",
+    type: "warning",
+  })
   message.warning("达咩 达咩，这个不能删除哟~")
 }
 </script>

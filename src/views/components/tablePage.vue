@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: TablePage
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-03 10:23:52
+ * @LastEditTime: 2022-09-10 16:26:55
 -->
 <template>
   <div>
@@ -92,7 +92,8 @@
 <script lang="ts">
 import { defineComponent, onMounted, reactive, toRefs, ref } from "vue";
 import { mock } from "mockjs";
-import { TableColumns, ElTable } from "@/types";
+import { ElTable } from "element-plus"
+import { TableColumns } from "@/types";
 import { useSearchForm } from "@/hooks";
 import help from "./index";
 

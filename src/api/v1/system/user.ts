@@ -1,12 +1,10 @@
 /*
  * @ModuleName: user
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-03 10:11:17
+ * @LastEditTime: 2022-10-17 09:15:19
  */
 import { IRequestPageInfo, IResponsePageInfo } from "@/types"
-import { useRequest } from "@/hooks"
-
-const req = useRequest()
+import req from "@/utils/request"
 
 /**
  * 获取当前登录用户信息

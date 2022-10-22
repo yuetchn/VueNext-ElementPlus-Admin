@@ -1,7 +1,7 @@
 /*
  * @ModuleName: User Module
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-03 10:21:04
+ * @LastEditTime: 2022-10-17 13:02:34
  */
 import { Module } from "vuex";
 import RootStates from "@/types/src/store/storeInterface";
@@ -106,7 +106,7 @@ const UserModule: Module < UserStates, RootStates > = {
       commit("REMOVE_MENUS");
       commit("REMOVE_USER_INFO");
       commit("REMOVE_TOKEN");
-      router.replace("/login");
+      router.replace(import.meta.env.VITE_DEFAULT_START_ROUTER_PATH);
       // window.location.reload();
       // 重置路由缓存状态
       store.dispatch("AppModule/resetRouteState");

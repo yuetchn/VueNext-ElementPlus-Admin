@@ -1,7 +1,7 @@
 /*
- * @ModuleName: Request Hook
+ * @ModuleName: Http Request
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-05 11:28:56
+ * @LastEditTime: 2022-10-17 13:23:11
  */
 
 import axios, { AxiosRequestConfig } from "axios";
@@ -57,6 +57,11 @@ req.interceptors.request.use(
     if (GetToken()) {
       headers.Authorization = GetToken() as string;
     }
+
+    // custom params
+    config.params = Object.assign(config.params || {}, {
+      timestamp: new Date().getTime(),
+    })
 
     config.headers = { ...config.headers, ...headers }
     return config;
@@ -169,12 +174,10 @@ const Put = < D = any >(url: string, data ? : any, options ? : AxiosRequestConfi
  * Http Request Hook
  * @returns 
  */
-export const useRequest = () => (
-  {
-    Get,
-    Post,
-    Put,
-    Delete,
-    Request: req,
-  }
-)
+export default {
+  Get,
+  Post,
+  Put,
+  Delete,
+  Request: req,
+} 

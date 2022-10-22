@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 权限拦截
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-09 10:39:25
+ * @LastEditTime: 2022-10-17 13:04:17
  */
 import { computed, watch } from "vue";
 import Nprogress from "nprogress";
@@ -15,7 +15,8 @@ import locale, { toggleLocaleAsync } from "@/locale";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const { t } = locale.global;
-const RouterWrite = ["/login", "/404"];
+const startRouterPath = import.meta.env.VITE_DEFAULT_START_ROUTER_PATH
+const RouterWrite = import.meta.env.VITE_DEFAULT_ROUTER_WRITES;
 const StaticRouterCount = computed < number >(() => GetStaticRoutes());
 let NowRoute: any = null;
 Nprogress.configure({
@@ -43,11 +44,11 @@ router.beforeEach(async (to, from, next) => {
     if (RouterWrite.includes(to.path)) {
       return next();
     }
-    router.replace("/login");
-    return next("/login")
+    router.replace(startRouterPath);
+    return next(startRouterPath)
   }
 
-  if (to.path === "/login") {
+  if (to.path === startRouterPath) {
     return next(from.path);
   }
 

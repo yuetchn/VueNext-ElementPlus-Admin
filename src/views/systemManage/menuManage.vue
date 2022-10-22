@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: 菜单管理
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-10 15:56:39
+ * @LastEditTime: 2022-10-11 09:43:15
 -->
 <template>
   <div class="container">
@@ -362,6 +362,10 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
+::v-deep(.el-tree-node__label) {
+  width: 100%;
+}
+
 .u_tree_template_content {
   flex: 1;
   align-items: center;

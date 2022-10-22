@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Vite Config
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-10 15:17:36
+ * @LastEditTime: 2022-10-22 09:02:02
  */
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -22,7 +22,9 @@ export default ({ mode }) => defineConfig({
   ],
   plugins: [
     vue(),
-    legacy(),
+    legacy({
+      targets: ["defaults", "not IE 11", "chrome 61"],
+    }),
     vueJsx(),
     createSvgIconsPlugin({
       // 指定需要缓存的图标文件夹，地址可改
@@ -77,13 +79,6 @@ export default ({ mode }) => defineConfig({
     chunkSizeWarningLimit: 2048,
     sourcemap: false,
     reportCompressedSize: false,
-    minify: "terser",
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
     rollupOptions: {
       plugins: [],
       output: {

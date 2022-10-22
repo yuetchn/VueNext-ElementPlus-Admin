@@ -1,12 +1,11 @@
 /*
  * @ModuleName: 
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-03 10:10:52
+ * @LastEditTime: 2022-10-17 09:15:10
  */
 import { IRequestPageInfo } from "@/types"
-import { useRequest } from "@/hooks"
+import req from "@/utils/request"
 
-const req = useRequest()
 /**
  * 获取所有菜单Tree
  * @returns 

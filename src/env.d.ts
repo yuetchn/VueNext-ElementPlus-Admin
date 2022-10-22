@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Vite环境变量
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-09 10:37:26
+ * @LastEditTime: 2022-10-17 13:04:01
  */
 /// <reference types="vite/client" />
 
@@ -30,4 +30,8 @@ interface ImportMetaEnv {
   VITE_HTTP_REQUEST_TIME_OUT: number;
   /** Base Public Path */
   VITE_BASE_PUBLIC_PATH: string;
+  // 项目默认起始路由地址
+  VITE_DEFAULT_START_ROUTER_PATH: string;
+  // 项目默认路由白名单
+  VITE_DEFAULT_ROUTER_WRITES: string[];
 }

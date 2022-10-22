@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Table Options
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-25 11:15:05
+ * @LastEditTime: 2022-09-25 10:26:20
  */
 import { PropType } from "vue"
 import { TableColumns } from "./columns"
@@ -10,7 +10,7 @@ export const tableProps = {
   data: Array,
   /** 表格列集合 */
   columns: Array as PropType < TableColumns[] >,
-  /** 是否开启分页,页码或者每页条数发生改变会触发 【page-change】 函数 */
+  /** 是否开启分页,页码或者每页条数发生改变会触发 【page-change】 函数,total > 0 才会显示分页 */
   page: {
     type: Boolean,
     default: false,

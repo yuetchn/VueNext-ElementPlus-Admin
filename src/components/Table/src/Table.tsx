@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Custom Table
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-10 16:07:06
+ * @LastEditTime: 2022-09-25 10:38:42
  */
 import { defineComponent, onMounted, watch, reactive, ref, toRefs, unref } from "vue";
 import Sortable from "sortablejs"
@@ -191,7 +191,7 @@ export default defineComponent({
           </el-table>
         </div>
         {/* 底部,Page分页 */}
-        <div v-show={props.page} class="g_table_page">
+        <div v-show={ props.page && props.total > 0 } class="g_table_page">
           <g-page page-align={ props.pageAlign} v-model:pageNumber={this.pageNumber} v-model:pageSize={this.pageSize} v-model:total={this.total} onChange={() => pageChange()}></g-page>
         </div>
       </div>

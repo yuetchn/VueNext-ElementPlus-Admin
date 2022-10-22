@@ -1,12 +1,10 @@
 /*
  * @ModuleName: 角色管理
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-03 10:11:12
+ * @LastEditTime: 2022-10-17 09:15:16
  */
 import { IRequestPageInfo, IResponsePageInfo } from "@/types"
-import { useRequest } from "@/hooks"
-
-const req = useRequest() 
+import req from "@/utils/request"
 
 /**
  * 获取角色集合

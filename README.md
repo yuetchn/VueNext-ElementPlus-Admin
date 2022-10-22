@@ -2,9 +2,9 @@
 <h1 align="center">VueNext-ElementPlus-Admin</h1>
 <p align="center">
 <img src="https://img.shields.io/badge/vue-3.2.37-23FFC21A" />
-<img src="https://img.shields.io/badge/vite-3.0.9-FFC21A" />
+<img src="https://img.shields.io/badge/vite-3.1.3-FFC21A" />
 <img src="https://img.shields.io/badge/typescript-4.8.2-23FFC21A" />
-<img src="https://img.shields.io/badge/element--plus-2.1.8-FFC21A" />
+<img src="https://img.shields.io/badge/element--plus-2.2.17-FFC21A" />
 <img src="https://img.shields.io/badge/ant--design--vue-2.2.8-%23FFC21A" />
 <img src="https://img.shields.io/badge/license-MIT-FFC21A" />
 </p>
@@ -40,7 +40,7 @@
 你需要在本地安装 `node` 和 `git`。本项目技术栈基于 `ES2016>`、`vue3.x`、`vuex@next`、`vue-router@next` 、`vite` 、`axios` 和 `element-plus`,提前了解和学习这些知识会对使用本项目有很大的帮助。
 
 ### 文档
-[中文文档](http://doc.yuetchn.top)
+[中文文档（持续更新）](http://doc.yuetchn.top)
 ### 示例
 
 [点击我前往](http://demo.yuetchn.top )

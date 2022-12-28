@@ -1,15 +1,15 @@
 <!--
  * @ModuleName: Layout
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-02 13:52:55
+ * @LastEditTime: 2022-12-28 17:01:03
 -->
 <template>
   <div class="layout">
     <div class="left_silder">
-      <SilderBar></SilderBar>
+      <Silderbar></Silderbar>
     </div>
     <div class="right_content" :style="mRightContent">
-      <NavBar></NavBar>
+      <Navbar></Navbar>
       <ViewTag></ViewTag>
       <BaseMain></BaseMain>
     </div>
@@ -19,13 +19,13 @@
 import { defineComponent, reactive, watch, toRefs } from "vue";
 import { useStore } from "@/store";
 import BaseMain from "./components/Main.vue";
-import SilderBar from "./components/SilderBar.vue";
-import NavBar from "./components/NavBar.vue";
+import Silderbar from "./components/Silderbar.vue";
+import Navbar from "./components/Navbar.vue";
 import ViewTag from "./components/ViewTag.vue";
 
 export default defineComponent({
   name: "Layout",
-  components: { BaseMain, SilderBar, NavBar, ViewTag },
+  components: { BaseMain, Silderbar, Navbar, ViewTag },
   setup() {
     const store = useStore();
     const state = reactive({

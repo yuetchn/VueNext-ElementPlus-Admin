@@ -1,16 +1,12 @@
 /*
  * @ModuleName: Search Form Hook
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-03 10:20:04
+ * @LastEditTime: 2022-12-16 19:45:11
  */
  
 import { reactive } from "vue"
 import { IRequestPageInfo } from "@/types"
 import { DeepClone } from "@/utils/func"
-// Custom Table Types
-export * from "@/components/Table";
-// Request Interface
-export * from "@/types"
 
 /** Form Search Class */
 export class SearchForm < T > implements IRequestPageInfo {

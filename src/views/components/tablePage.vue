@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: TablePage
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-10 16:26:55
+ * @LastEditTime: 2022-11-04 09:08:27
 -->
 <template>
   <div>
@@ -256,7 +256,6 @@ export default defineComponent({
     };
 
     const pageChange = () => {
-      console.log("改变");
     };
     return {
       // ref

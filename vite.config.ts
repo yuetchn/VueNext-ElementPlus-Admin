@@ -1,7 +1,7 @@
 /*
  * @ModuleName: Vite Config
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-10-22 09:02:02
+ * @LastEditTime: 2022-10-25 15:42:07
  */
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -91,9 +91,9 @@ export default ({ mode }) => defineConfig({
             .toString();
           }
         },
-        entryFileNames: `enteryJs/e_[name].${ timeStamp }.js`,
-        chunkFileNames: `chunkJs/c_[name].${ timeStamp }.js`,
-        assetFileNames: `assets/f_[name].${ timeStamp }.[ext]`,
+        entryFileNames: `enteryJs/e_[name]_[hash].${ timeStamp }.js`,
+        chunkFileNames: `chunkJs/c_[name]_[hash].${ timeStamp }.js`,
+        assetFileNames: `assets/f_[name]_[hash].${ timeStamp }.[ext]`,
       },
     },
   },

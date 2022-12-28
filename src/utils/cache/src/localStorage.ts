@@ -1,14 +1,13 @@
 /*
  * @ModuleName: Local Storage
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-13 18:11:02
+ * @LastEditTime: 2022-11-04 09:08:10
  */
 
 import { DeepClone } from "@/utils/func"
 
 export const SetLocalStorageByObject = (key:string, val:object) => {
-  let _val = ""
-  _val = DeepClone(val)
+  const _val = DeepClone(val)
   localStorage.setItem(key, JSON.stringify(_val))
 }
 
@@ -20,6 +19,7 @@ export const GetLocalStorageByObject = <T>(key: string):T|null => {
   try {
     _val = JSON.parse(_val)
   } catch (err) {
+    // eslint-disable-next-line
     console.error(new Error(`localStorage：the '${ key }' key doesn't exist.`))
     return null
   }

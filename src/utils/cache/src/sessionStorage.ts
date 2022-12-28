@@ -1,13 +1,12 @@
 /*
  * @ModuleName: Session Storage
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-05-13 18:10:21
+ * @LastEditTime: 2022-11-04 09:08:03
  */
 import { DeepClone } from "@/utils/func"
 
 export const SetSessionStorageByObject = (key:string, val:object) => {
-  let _val = ""
-  _val = DeepClone(val)
+  const _val = DeepClone(val)
   sessionStorage.setItem(key, JSON.stringify(_val))
 }
   
@@ -19,6 +18,7 @@ export const GetSessionStorageByObject = <T>(key: string):T|null => {
   try {
     _val = JSON.parse(_val)
   } catch (err) {
+    // eslint-disable-next-line
     console.error(new Error(`sessionStorage：the '${ key }' key doesn't exist.`))
     return null
   }

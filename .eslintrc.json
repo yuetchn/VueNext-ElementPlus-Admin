@@ -1,29 +1,24 @@
-/*
- * @ModuleName:
- * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-30 13:56:08
- */
-module.exports = {
-  root: true,
-  globals: {
-    defineEmits: "readonly",
-    defineProps: "readonly",
+{
+  "root": true,
+  "globals": {
+    "defineEmits": "readonly",
+    "defineProps": "readonly"
   },
-  extends: ["plugin:@typescript-eslint/recommended", "plugin:vue/vue3-recommended", "airbnb-base"],
-  parserOptions: {
-    parser: "@typescript-eslint/parser",
-    ecmaVersion: 2020,
+  "extends": ["plugin:@typescript-eslint/recommended", "plugin:vue/vue3-recommended", "airbnb-base"],
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "ecmaVersion": 2020
   },
-  rules: {
-    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off", // 禁用 debugger
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off", // 禁用 console
+  "rules": {
+    "no-debugger": 1, // 禁用 debugger
+    "no-console": 1, // 禁用 console
     "no-bitwise": "off", // 禁用按位运算符
     "no-tabs": "off", // 禁用 tab
-    camelcase: 0,
+    "camelcase": 0,
     "@typescript-eslint/no-this-alias": 0,
     "array-element-newline": ["error", "consistent"], // 强制数组元素间出现换行
-    indent: ["error", 2, { MemberExpression: 0, SwitchCase: 1, ignoredNodes: ["TemplateLiteral"] }], // 强制使用一致的缩进
-    quotes: ["error", "double"], // 强制使用一致的反勾号、双引号或单引号
+    "indent": ["error", 2, { "MemberExpression": 0, "SwitchCase": 1, "ignoredNodes": ["TemplateLiteral"] }], // 强制使用一致的缩进
+    "quotes": ["error", "double"], // 强制使用一致的反勾号、双引号或单引号
     "comma-dangle": ["error", "always-multiline"], // 要求或禁止末尾逗号
     "object-curly-spacing": ["error", "always"], // 强制在大括号中使用一致的空格
     "max-len": ["error", 580], // 强制一行的最大长度
@@ -38,8 +33,8 @@ module.exports = {
     "import/no-cycle": "off", // 禁止一个模块导入一个有依赖路径的模块回到自己身上
     "arrow-parens": "off", // 要求箭头函数的参数使用圆括号
     // semi: ["error", "always"], // 要求或禁止使用分号代替 ASI
-    semi: 0,
-    eqeqeq: "off", // 要求使用 === 和 !==
+    "semi": 0,
+    "eqeqeq": "off", // 要求使用 === 和 !==
     "no-param-reassign": "off", // 禁止对 function 的参数进行重新赋值
     "import/prefer-default-export": "off", // 如果模块只输入一个名字，则倾向于默认输出
     "no-use-before-define": "off", // 禁止在变量定义之前使用它们，则倾向于默认输出
@@ -57,7 +52,7 @@ module.exports = {
     "default-case": "off", // 要求 switch 语句中有 default 分支
     "no-trailing-spaces": "off", // 禁用行尾空格
     "func-names": "off", // 要求或禁止使用命名的 function 表达式
-    radix: "off", // 强制在 parseInt() 使用基数参数
+    "radix": "off", // 强制在 parseInt() 使用基数参数
     "no-unused-expressions": "off", // 禁止出现未使用过的表达式
     "no-underscore-dangle": "off", // 禁止标识符中有悬空下划线
     "no-nested-ternary": "off", // 禁用嵌套的三元表达式
@@ -77,17 +72,17 @@ module.exports = {
     "vue/max-attributes-per-line": [
       "error",
       {
-        singleline: {
-          max: 10, // 单行最大允许绑定属性
+        "singleline": {
+          "max": 10 // 单行最大允许绑定属性
         },
-        multiline: {
-          max: 1,
-        },
-      },
+        "multiline": {
+          "max": 1
+        }
+      }
     ],
     "@typescript-eslint/ban-types": 0,
     "vue/require-explicit-emits": 0,
     "vue/component-definition-name-casing": 0,
-    "vue/no-v-html": 0, // no-xss
-  },
-};
+    "vue/no-v-html": 0 // no-xss
+  }
+}

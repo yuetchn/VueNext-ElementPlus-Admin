@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: NavBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-08-09 09:11:52
+ * @LastEditTime: 2022-12-28 17:01:32
 -->
 <template>
   <div class="navbar">
@@ -9,7 +9,7 @@
       <div class="shrink_item" @click="check">
         <g-svg-icon name="shrink" size="18" color="#606266" :class="{ shrink: isShrink }"></g-svg-icon>
       </div>
-      <BreadCrumbs class="u_bread_crumbs"></BreadCrumbs>
+      <Breadcrumbs class="u_bread_crumbs"></Breadcrumbs>
     </div>
     <div class="right">
       <el-tooltip :content="$t('navBar.refresh')" placement="bottom">
@@ -58,11 +58,11 @@ import screenfull from "screenfull";
 import { message } from "ant-design-vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "@/store";
-import BreadCrumbs from "./BreadCrumbs.vue";
+import Breadcrumbs from "./Breadcrumbs.vue";
 import { localeTypes, toggleLocaleAsync } from "@/locale";
 
 export default defineComponent({
-  components: { BreadCrumbs },
+  components: { Breadcrumbs },
   setup() {
     const store = useStore();
     const router = useRouter();

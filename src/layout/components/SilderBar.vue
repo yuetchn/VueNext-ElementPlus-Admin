@@ -1,7 +1,7 @@
 <!--
  * @ModuleName: SilderBar
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-09-02 15:04:57
+ * @LastEditTime: 2022-12-28 17:01:10
 -->
 <template>
   <div class="silder_bar" :class="{ silder_bar_shrink: isShrink }">
@@ -21,13 +21,13 @@
             </template>
             <template #title>{{ titleLocale(item.name?.toString() || "") === item.name ? item.meta?.title : titleLocale(item.name?.toString() || "") }}</template>
             <template v-for="c of item.children?.filter((f) => !f.meta?.hide)" :key="`${item.path}/${c.path}`">
-              <a-menu-item v-if="!isExistsChildren(c,'children')" :key="`${item.path}/${c.path}`" @click="titleClick(`${item.path}/${c.path}`, c)">
+              <a-menu-item v-if="!isExistsChildren(c, 'children')" :key="`${item.path}/${c.path}`" @click="titleClick(`${item.path}/${c.path}`, c)">
                 <template #icon>
                   <g-svg-icon :name="c.meta?.icon"></g-svg-icon>
                 </template>
                 <span> {{ titleLocale(c.name?.toString() || "") === c.name ? c.meta?.title : titleLocale(c.name?.toString() || "") }}</span>
               </a-menu-item>
-              <SilderBarItem v-else :router="c" :parent-router="item.path" @title-click="titleClick"></SilderBarItem>
+              <SilderbarItem v-else :router="c" :parent-router="item.path" @title-click="titleClick"></SilderbarItem>
             </template>
           </a-sub-menu>
         </template>
@@ -39,14 +39,14 @@
 <script lang="ts">
 import { computed, defineComponent, watch, reactive, toRefs } from "vue";
 import { useRouter, useRoute, RouteRecordRaw } from "vue-router";
-import SilderBarItem from "./SiderBarItem.vue";
+import SilderbarItem from "./SilderbarItem.vue";
 import { routes, GenerateRoutes } from "@/router";
 import { useStore } from "@/store";
 import Logo from "./Logo.vue";
 import { useI18n } from "@/locale";
 
 export default defineComponent({
-  components: { Logo, SilderBarItem },
+  components: { Logo, SilderbarItem },
   setup() {
     const store = useStore();
     const router = useRouter();
@@ -71,16 +71,16 @@ export default defineComponent({
       router.push(path);
     };
     const titleLocale = (value: string) => t(value);
-    const isExistsChildren = (r:RouteRecordRaw, type = "root"):boolean => {
-      const children = r.children?.filter(f => !f.meta?.hide) || []
+    const isExistsChildren = (r: RouteRecordRaw, type: "root" | "children" = "root"): boolean => {
+      const children = r.children?.filter((f) => !f.meta?.hide) || [];
       if (!children.length) {
-        return type === "root"
+        return type === "root";
       }
-      if ((children.length === 1 && !children[0].children?.filter(f => !f.meta?.hide).length)) {
-        return false
+      if (children.length === 1 && !children[0].children?.filter((f) => !f.meta?.hide).length) {
+        return type === "children";
       }
-      return true
-    }
+      return true;
+    };
 
     watch(
       () => state.nowOpemMenuKeys,
@@ -126,7 +126,7 @@ export default defineComponent({
   transition: all 0.3s;
   box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.08);
   background-color: $g-silderBar-background-color;
-  border-right:1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .silder_bar_shrink {
@@ -159,8 +159,8 @@ export default defineComponent({
   background-color: $g-silderBar-selected-background-color;
 }
 
-::v-deep(.ant-menu-sub.ant-menu-inline){
-  background-color:$g-silderBar-sub-background-color;
+::v-deep(.ant-menu-sub.ant-menu-inline) {
+  background-color: $g-silderBar-sub-background-color;
 }
 
 .ant-menu-inline,

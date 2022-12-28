@@ -1,9 +1,9 @@
 
 <h1 align="center">VueNext-ElementPlus-Admin</h1>
 <p align="center">
-<img src="https://img.shields.io/badge/vue-3.2.37-23FFC21A" />
-<img src="https://img.shields.io/badge/vite-3.1.3-FFC21A" />
-<img src="https://img.shields.io/badge/typescript-4.8.2-23FFC21A" />
+<img src="https://img.shields.io/badge/vue-3.2.41-23FFC21A" />
+<img src="https://img.shields.io/badge/vite-3.2.3-FFC21A" />
+<img src="https://img.shields.io/badge/typescript-4.8.4-23FFC21A" />
 <img src="https://img.shields.io/badge/element--plus-2.2.17-FFC21A" />
 <img src="https://img.shields.io/badge/ant--design--vue-2.2.8-%23FFC21A" />
 <img src="https://img.shields.io/badge/license-MIT-FFC21A" />

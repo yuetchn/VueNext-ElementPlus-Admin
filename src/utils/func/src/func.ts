@@ -1,7 +1,7 @@
 /*
  * @ModuleName: 通用函数
  * @Author: yuetchn@163.com
- * @LastEditTime: 2022-07-22 21:44:05
+ * @LastEditTime: 2022-12-06 17:07:20
  */
 import { Md5 as tsMd5 } from "ts-md5";
 
@@ -62,7 +62,7 @@ export const md5 = (str: string) => tsMd5.hashStr(str);
  */
 export const formatNumber = (number: number, decimals = 0, decPoint = ".", thousandsSep = ",") => {
   if (number / 1000 < 1) {
-    return number
+    return number;
   }
   const s = [];
   let n = (number / 1000).toString();
@@ -96,50 +96,68 @@ export const formatNumber = (number: number, decimals = 0, decPoint = ".", thous
 
 /**
  * 深拷贝
- * @param data 
- * @returns 
+ * @param data
+ * @returns
  */
-export const deepClone = (data:any) => {
+export const deepClone = <T extends Record<string, any>>(data: T) => {
   const type = Object.prototype.toString.call(data);
-  let obj: any
+  let obj: any;
   if (type === "[object Object]") {
-    obj = {}
+    obj = {};
     for (const k in data) {
-      obj[k] = deepClone(data[k])
+      obj[k] = deepClone(data[k]);
     }
   } else if (type === "[object Array]") {
-    obj = []
-    data.forEach((f:any, i:number) => {
-      obj[i] = deepClone(f)
-    })
+    obj = [];
+    data.forEach((f: any, i: number) => {
+      obj[i] = deepClone(f);
+    });
   } else {
-    obj = data
+    obj = data;
   }
-  return obj
-}
+  return obj as T;
+};
 
 /**
  * 级联选择器，通过最后一级获取所有父级节点，返回级联数组
- * @param list 
- * @param id 
- * @param options 
+ * @param list
+ * @param id
+ * @param options
  * @returns Array[]
  */
-export const getCascaderParent = (list: any[], id: string|number, options = { id: "id", parentId: "parent_id", children: "children" }) => {
-  let ids = []
+export const getCascaderParent = (list: any[], id: string | number, options = { id: "id", parentId: "parent_id", children: "children" }) => {
+  let ids = [];
 
-  const getParent = (_list:any[], _id: string | number, res:any[]) => {
-    _list.forEach(f => {
+  const getParent = (_list: any[], _id: string | number, res: any[]) => {
+    _list.forEach((f) => {
       if (f[options.id] === _id && f[options.parentId] !== 0) {
-        res.push(f[options.parentId])
-        res = res.concat(getParent(list, f[options.parentId], []))
-        return
+        res.push(f[options.parentId]);
+        res = res.concat(getParent(list, f[options.parentId], []));
+        return;
       }
-      res = res.concat(getParent(f.children, _id, []))
-    })
-    return res
+      res = res.concat(getParent(f.children, _id, []));
+    });
+    return res;
+  };
+  ids = getParent(list, id, [id]);
+  ids.reverse();
+  return ids;
+};
+
+/**
+ * 动态引入资源文件
+ * @param url 资源文件路径
+ * @returns
+ */
+export const importAssetsFile = (url: string) => {
+  if (!url) {
+    return "";
   }
-  ids = getParent(list, id, [id]) 
-  ids.reverse()
-  return ids
-}
+
+  // 处理 / 前缀
+  if (url[0].toString() === "/") {
+    url = url.substring(1);
+  }
+
+  return new URL(`../../../assets/${ url }`, import.meta.url).href;
+};

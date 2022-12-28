@@ -10,3 +10,4 @@ export const DeepClone = func.deepClone;
 export const GetCascaderParent = func.getCascaderParent
 export const ClipboardFunc = clipboard.ClipboardFunc;
 export const Xss = xss.default;
+export const ImportAssetsFile = func.importAssetsFile;
